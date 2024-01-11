@@ -1,4 +1,4 @@
-package com.intellibucket.pipeql.application.abstracts;
+package com.intellibucket.pipeql.application.kernel.abstracts;
 
 import com.intellibucket.pipeql.domain.port.input.service.abstracts.AbstractLookAndFeelProvider;
 

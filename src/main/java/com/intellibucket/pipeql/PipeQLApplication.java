@@ -1,7 +1,7 @@
 package com.intellibucket.pipeql;
 
-import com.intellibucket.pipeql.application.abstracts.AbstractApplicationKernel;
-import com.intellibucket.pipeql.application.concretes.ApplicationKernel;
+import com.intellibucket.pipeql.application.kernel.abstracts.AbstractApplicationKernel;
+import com.intellibucket.pipeql.application.kernel.concretes.ApplicationKernel;
 
 public class PipeQLApplication {
     private final static AbstractApplicationKernel APPLICATION_KERNEL = new ApplicationKernel();
