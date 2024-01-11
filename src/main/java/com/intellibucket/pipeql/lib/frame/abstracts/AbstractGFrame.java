@@ -1,10 +1,15 @@
 package com.intellibucket.pipeql.lib.frame.abstracts;
 
+import com.intellibucket.pipeql.view.components.ComponentInitializer;
+
 import javax.swing.*;
 import java.awt.*;
 
-public abstract class AbstractGFrame extends JFrame {
+public abstract class AbstractGFrame extends JFrame  implements ComponentInitializer {
 
+    {
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
     public AbstractGFrame() {
         super();
     }
@@ -19,5 +24,12 @@ public abstract class AbstractGFrame extends JFrame {
 
     public AbstractGFrame(String title, GraphicsConfiguration gc) {
         super(title, gc);
+    }
+
+
+    @Override
+    public void initialize() {
+        ComponentInitializer.super.initialize();
+        this.setVisible(true);
     }
 }

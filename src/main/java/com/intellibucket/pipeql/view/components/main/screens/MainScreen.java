@@ -1,15 +1,14 @@
 package com.intellibucket.pipeql.view.components.main.screens;
 
-import com.intellibucket.pipeql.view.behaviours.*;
-import com.intellibucket.pipeql.view.components.AbstractComponent;
+import com.intellibucket.pipeql.lib.frame.abstracts.MaximizedGFrame;
+import com.intellibucket.pipeql.view.components.ComponentInitializer;
 
 import java.util.List;
 
-public class MainScreen extends AbstractComponent {
-
+public class MainScreen extends MaximizedGFrame  {
 
     @Override
-    public List<ComponentLoader> getComponentLoaders() {
+    public List<ComponentInitializer> getComponentInitializers() {
         return null;
     }
 
@@ -18,8 +17,4 @@ public class MainScreen extends AbstractComponent {
 
     }
 
-    @Override
-    public void load() {
-
-    }
 }

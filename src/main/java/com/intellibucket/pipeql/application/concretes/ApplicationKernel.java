@@ -4,7 +4,7 @@ import com.intellibucket.pipeql.application.abstracts.AbstractApplicationKernel;
 import com.intellibucket.pipeql.view.components.main.screens.MainScreen;
 
 public class ApplicationKernel extends AbstractApplicationKernel {
-    private final MainScreen mainScreen = new MainScreen();
+    private static final MainScreen MAIN_SCREEN = new MainScreen();
 
     @Override
     protected void initSettings() {
@@ -12,6 +12,6 @@ public class ApplicationKernel extends AbstractApplicationKernel {
 
     @Override
     protected void run() {
-
+        ApplicationKernel.MAIN_SCREEN.initialize();
     }
 }

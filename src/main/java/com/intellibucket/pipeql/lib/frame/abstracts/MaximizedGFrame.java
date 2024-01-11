@@ -1,11 +1,15 @@
-package com.intellibucket.pipeql.lib.frame.concretes;
+package com.intellibucket.pipeql.lib.frame.abstracts;
 
 import com.intellibucket.pipeql.lib.frame.abstracts.AbstractGFrame;
 
 import java.awt.*;
 
-public class MaximizedGFrame extends AbstractGFrame {
+public abstract class MaximizedGFrame extends AbstractGFrame {
 
+    {
+        this.setExtendedState(Frame.MAXIMIZED_BOTH);
+        this.setLocationRelativeTo(null);
+    }
     public MaximizedGFrame()   {
         super();
     }

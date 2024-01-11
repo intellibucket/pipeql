@@ -4,10 +4,12 @@ import com.intellibucket.pipeql.domain.port.input.service.abstracts.AbstractLook
 
 public abstract class AbstractApplicationKernel {
 
-    private final AbstractLookAndFeelProvider lookAndFeelProvider = AbstractLookAndFeelProvider.Factory.create();
+    private static final AbstractLookAndFeelProvider LOOK_AND_FEEL_PROVIDER = AbstractLookAndFeelProvider.Factory.create();
 
+    static {
+        LOOK_AND_FEEL_PROVIDER.initLookAndFeel();
+    }
     public void start(){
-        this.lookAndFeelProvider.initLookAndFeel();
         this.initSettings();
         this.run();
     }
