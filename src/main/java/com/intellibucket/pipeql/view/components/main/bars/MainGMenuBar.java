@@ -34,7 +34,14 @@ public class MainGMenuBar extends GMenuBar {
 
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
-        return List.of(this.fileGMenu, this.editGMenu, this.viewGMenu, this.toolsGMenu, this.windowGMenu, this.helpGMenu);
+        return List.of(
+                this.fileGMenu,
+                this.editGMenu,
+                this.viewGMenu,
+                this.toolsGMenu,
+                this.windowGMenu,
+                this.helpGMenu
+        );
     }
 
     @Override
