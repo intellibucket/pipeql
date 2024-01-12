@@ -37,31 +37,43 @@ public class LeftSidePanel extends SimpleSideGPanel {
 class TopLeftSideInnerPanel extends InnerSideGPanel{
 
     private final AbstractVerticalGButton projectsButton;
+    private final AbstractVerticalGButton environmentButton;
+    private final AbstractVerticalGButton schemasButton;
 
     TopLeftSideInnerPanel() {
-        this.projectsButton = new SimpleVerticalGButton("Projects", IconProvider.getIcon("projects"));
+        this.projectsButton = new SimpleVerticalGButton("", IconProvider.getIcon("projectStructure"));
+        this.environmentButton = new SimpleVerticalGButton("", IconProvider.getIcon("value"));
+        this.schemasButton = new SimpleVerticalGButton("", IconProvider.getIcon("json"));
     }
 
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
-        return List.of(this.projectsButton);
+        return List.of(this.projectsButton,this.environmentButton,this.schemasButton);
     }
 
     @Override
     public void addComponents() {
         this.add(this.projectsButton);
+        this.add(this.environmentButton);
+        this.add(this.schemasButton);
     }
 }
 
 class BottomLeftSideInnerPanel extends InnerSideGPanel{
 
+    private final AbstractVerticalGButton dataSourcesButton;
+
+    BottomLeftSideInnerPanel() {
+        this.dataSourcesButton = new SimpleVerticalGButton("", IconProvider.getIcon("sql"));
+    }
+
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
-        return List.of();
+        return List.of(this.dataSourcesButton);
     }
 
     @Override
     public void addComponents() {
-
+        this.add(this.dataSourcesButton);
     }
 }
