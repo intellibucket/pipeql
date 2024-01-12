@@ -9,6 +9,7 @@ public abstract class MaximizedGFrame extends AbstractGFrame {
     {
         this.setExtendedState(Frame.MAXIMIZED_BOTH);
         this.setLocationRelativeTo(null);
+        this.setLayout(new BorderLayout());
     }
     public MaximizedGFrame()   {
         super();

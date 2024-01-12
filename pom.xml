@@ -50,5 +50,10 @@
             <artifactId>flatlaf-intellij-themes</artifactId>
             <version>${flat.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.xmlgraphics</groupId>
+            <artifactId>batik-transcoder</artifactId>
+            <version>1.14</version>
+        </dependency>
     </dependencies>
 </project>
