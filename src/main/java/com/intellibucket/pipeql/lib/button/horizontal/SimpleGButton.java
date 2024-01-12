@@ -1,4 +1,4 @@
-package com.intellibucket.pipeql.lib.button;
+package com.intellibucket.pipeql.lib.button.horizontal;
 
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 

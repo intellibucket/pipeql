@@ -1,9 +1,9 @@
 package com.intellibucket.pipeql.view.components.main.panel;
 
-import com.intellibucket.pipeql.lib.button.AbstractGButton;
-import com.intellibucket.pipeql.lib.button.SimpleIconGButton;
-import com.intellibucket.pipeql.lib.panel.InnerPanel;
-import com.intellibucket.pipeql.lib.panel.LinePanel;
+import com.intellibucket.pipeql.lib.button.horizontal.AbstractGButton;
+import com.intellibucket.pipeql.lib.button.horizontal.SimpleIconGButton;
+import com.intellibucket.pipeql.lib.panel.line.InnerPanel;
+import com.intellibucket.pipeql.lib.panel.line.LinePanel;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 
 import java.awt.*;

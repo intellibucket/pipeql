@@ -1,4 +1,4 @@
-package com.intellibucket.pipeql.lib.panel;
+package com.intellibucket.pipeql.lib.panel.line;
 
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 

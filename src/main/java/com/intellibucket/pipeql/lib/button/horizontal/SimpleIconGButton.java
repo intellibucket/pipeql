@@ -1,9 +1,8 @@
-package com.intellibucket.pipeql.lib.button;
+package com.intellibucket.pipeql.lib.button.horizontal;
 
 import com.intellibucket.pipeql.lib.file.IconProvider;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 
-import javax.swing.*;
 import java.util.List;
 
 public class SimpleIconGButton extends AbstractGButton{
