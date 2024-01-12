@@ -2,25 +2,19 @@ package com.intellibucket.pipeql.lib.file;
 
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.intellibucket.pipeql.application.profile.abstracts.AbstractApplicationProfileInitializer;
-import org.apache.batik.transcoder.TranscoderException;
-import org.apache.batik.transcoder.TranscoderInput;
-import org.apache.batik.transcoder.TranscoderOutput;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
-
-import org.apache.batik.transcoder.image.ImageTranscoder;
-
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
 
 public class IconContainer {
     private static final Map<String, Icon> ICON_CONTAINER  = new HashMap<>();
