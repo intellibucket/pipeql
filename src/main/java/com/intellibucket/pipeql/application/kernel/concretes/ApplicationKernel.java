@@ -7,7 +7,6 @@ import com.intellibucket.pipeql.lib.file.IconContainer;
 import com.intellibucket.pipeql.view.components.main.screens.MainScreen;
 
 public class ApplicationKernel extends AbstractApplicationKernel {
-    private static final MainScreen MAIN_SCREEN = new MainScreen();
     private static final AbstractApplicationProfileInitializer PROFILE_INITIALIZER = new ApplicationProfileInitializer();
 
     @Override
@@ -18,6 +17,6 @@ public class ApplicationKernel extends AbstractApplicationKernel {
 
     @Override
     protected void run() {
-        ApplicationKernel.MAIN_SCREEN.initialize();
+        new MainScreen().initialize();
     }
 }

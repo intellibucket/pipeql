@@ -61,7 +61,7 @@ public class HeaderControlPanel extends LinePanel {
 }
 
 class HeaderLeftPanel extends InnerPanel {
-    private final AbstractGButton simpleGButton = new SimpleIconGButton("SimpleGButton");
+    private final AbstractGButton simpleGButton = new SimpleIconGButton("red");
 
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
