@@ -6,7 +6,7 @@ import java.util.Locale;
 import java.util.Objects;
 
 public class ApplicationProfileInitializer extends AbstractApplicationProfileInitializer {
-    private static ApplicationProfile PROFILE;
+
 
     @Override
     public void initialize() {

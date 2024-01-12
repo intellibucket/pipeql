@@ -2,6 +2,8 @@ package com.intellibucket.pipeql.view.components.main.panel;
 
 import com.intellibucket.pipeql.lib.button.AbstractGButton;
 import com.intellibucket.pipeql.lib.button.SimpleGButton;
+import com.intellibucket.pipeql.lib.button.SimpleIconGButton;
+import com.intellibucket.pipeql.lib.file.IconProvider;
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
 import com.intellibucket.pipeql.lib.panel.InnerPanel;
 import com.intellibucket.pipeql.lib.panel.LinePanel;
@@ -59,7 +61,7 @@ public class HeaderControlPanel extends LinePanel {
 }
 
 class HeaderLeftPanel extends InnerPanel {
-    private final AbstractGButton simpleGButton = new SimpleGButton("SimpleGButton");
+    private final AbstractGButton simpleGButton = new SimpleIconGButton("SimpleGButton");
 
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
@@ -74,7 +76,7 @@ class HeaderLeftPanel extends InnerPanel {
 
 class HeaderRightPanel extends InnerPanel {
 
-    private final AbstractGButton simpleGButton = new SimpleGButton("SimpleGButton");
+    private final AbstractGButton simpleGButton = new SimpleIconGButton("csv");
 
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
