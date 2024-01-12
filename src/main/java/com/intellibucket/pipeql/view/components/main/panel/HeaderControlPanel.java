@@ -91,11 +91,11 @@ class HeaderRightPanel extends InnerPanel {
 
     @Override
     public void addComponents() {
-        this.add(profileButton);
         this.add(lockedButton);
         this.add(searchButton);
         this.add(updateButton);
         this.add(settingsButton);
+        this.add(profileButton);
     }
 
 }

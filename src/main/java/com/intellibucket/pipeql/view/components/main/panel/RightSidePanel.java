@@ -52,17 +52,19 @@ class TopRightSideInnerPanel extends InnerSideGPanel {
     private final AbstractVerticalGButton  notificationButton;
 
     TopRightSideInnerPanel() {
-        this.notificationButton = new SimpleVerticalGButton("", IconProvider.getIcon("notification"));
+        this.notificationButton = new SimpleVerticalGButton("", IconProvider.getIcon("notifications"));
     }
 
 
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
-        return List.of();
+        return List.of(
+                this.notificationButton
+        );
     }
 
     @Override
     public void addComponents() {
-
+        this.add(this.notificationButton);
     }
 }
