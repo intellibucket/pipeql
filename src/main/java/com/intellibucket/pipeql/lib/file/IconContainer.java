@@ -2,6 +2,7 @@ package com.intellibucket.pipeql.lib.file;
 
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.intellibucket.pipeql.application.profile.abstracts.AbstractApplicationProfileInitializer;
+import com.intellibucket.pipeql.lib.icon.GFlatSVGIcon;
 
 import javax.swing.*;
 import java.io.File;
@@ -67,7 +68,7 @@ public class IconContainer {
     }
 
     public static Icon fetch(File file){
-        return new FlatSVGIcon(file);
+        return new GFlatSVGIcon(file);
     }
 
 

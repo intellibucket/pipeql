@@ -1,9 +1,9 @@
 package com.intellibucket.pipeql.view.components.main.panel;
 
 import com.intellibucket.pipeql.lib.button.AbstractGButton;
-import com.intellibucket.pipeql.lib.button.SimpleGButton;
 import com.intellibucket.pipeql.lib.button.SimpleIconGButton;
-import com.intellibucket.pipeql.lib.file.IconProvider;
+import com.intellibucket.pipeql.lib.label.AbstractGLabel;
+import com.intellibucket.pipeql.lib.label.SimpleGLabel;
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
 import com.intellibucket.pipeql.lib.panel.InnerPanel;
 import com.intellibucket.pipeql.lib.panel.LinePanel;
@@ -61,31 +61,41 @@ public class HeaderControlPanel extends LinePanel {
 }
 
 class HeaderLeftPanel extends InnerPanel {
-    private final AbstractGButton simpleGButton = new SimpleIconGButton("red");
+    private final AbstractGLabel simpleGLabel = new SimpleGLabel("project_name");
 
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
-        return List.of(simpleGButton);
+        return List.of(simpleGLabel);
     }
 
     @Override
     public void addComponents() {
-        this.add(simpleGButton);
+        this.add(simpleGLabel);
     }
 }
 
 class HeaderRightPanel extends InnerPanel {
 
-    private final AbstractGButton simpleGButton = new SimpleIconGButton("csv");
+//    private final AbstractGButton greenButton = new SimpleIconGButton("task");
+//    private final AbstractGButton greenButton = new SimpleIconGButton("task");
+    private final AbstractGButton searchButton = new SimpleIconGButton("search@20x20");
+    private final AbstractGButton updateButton = new SimpleIconGButton("pluginUpdate");
+    private final AbstractGButton lockedButton = new SimpleIconGButton("locked");
+    private final AbstractGButton settingsButton = new SimpleIconGButton("task");
+    private final AbstractGButton profileButton = new SimpleIconGButton("user");
 
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
-        return List.of(simpleGButton);
+        return List.of(settingsButton, profileButton,lockedButton,searchButton,updateButton);
     }
 
     @Override
     public void addComponents() {
-        this.add(simpleGButton);
+        this.add(profileButton);
+        this.add(lockedButton);
+        this.add(searchButton);
+        this.add(updateButton);
+        this.add(settingsButton);
     }
 
 }
