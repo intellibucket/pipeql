@@ -1,6 +1,7 @@
 package com.intellibucket.pipeql.eventlink.model.event.abstracts;
 
 import com.intellibucket.pipeql.eventlink.model.event.EventType;
+import com.intellibucket.pipeql.eventlink.model.payload.Payload;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -8,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
-public abstract class AbstractEvent<T> {
+public abstract class AbstractEvent<T extends Payload> {
     private final UUID transactionId;
     private final String processName;
     private final LocalDateTime timestamp;

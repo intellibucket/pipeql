@@ -2,21 +2,23 @@ package com.intellibucket.pipeql.eventlink.model.event.concretes;
 
 import com.intellibucket.pipeql.eventlink.model.event.EventType;
 import com.intellibucket.pipeql.eventlink.model.event.abstracts.AbstractEvent;
+import com.intellibucket.pipeql.eventlink.model.payload.Payload;
+import com.intellibucket.pipeql.eventlink.model.payload.SuccessPayload;
 
 import java.util.List;
 import java.util.UUID;
 
-public class SuccessEvent<T> extends AbstractEvent<T> {
+public class SuccessEvent extends AbstractEvent<SuccessPayload> {
 
-    public SuccessEvent(UUID transactionId, String processName, List<String> messages, T payload) {
+    public SuccessEvent(UUID transactionId, String processName, List<String> messages, SuccessPayload payload) {
         super(transactionId,processName, EventType.SUCCESS, messages, payload);
     }
 
-    public SuccessEvent(UUID transactionId, String processName, String message, T payload) {
+    public SuccessEvent(UUID transactionId, String processName, String message, SuccessPayload payload) {
         this(transactionId, processName, List.of(message), payload);
     }
 
-    public SuccessEvent(UUID transactionId, String processName, T payload) {
+    public SuccessEvent(UUID transactionId, String processName, SuccessPayload payload) {
         this(transactionId,processName, List.of(), payload);
     }
 
@@ -28,15 +30,15 @@ public class SuccessEvent<T> extends AbstractEvent<T> {
         this(event.getTransactionId(),event.getProcessName(), List.of(), null);
     }
 
-    public SuccessEvent(AbstractEvent<?> event, List<String> messages, T payload) {
+    public SuccessEvent(AbstractEvent<?> event, List<String> messages, SuccessPayload payload) {
         this(event.getTransactionId(), event.getProcessName(), messages, payload);
     }
 
-    public SuccessEvent(AbstractEvent<?> event, String message, T payload) {
+    public SuccessEvent(AbstractEvent<?> event, String message, SuccessPayload payload) {
         this(event, List.of(message), payload);
     }
 
-    public SuccessEvent(AbstractEvent<?> event, T payload) {
+    public SuccessEvent(AbstractEvent<?> event, SuccessPayload payload) {
         this(event, List.of(), payload);
     }
 }

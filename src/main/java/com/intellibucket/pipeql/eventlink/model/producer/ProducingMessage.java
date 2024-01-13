@@ -1,14 +1,16 @@
 package com.intellibucket.pipeql.eventlink.model.producer;
 
+import com.intellibucket.pipeql.eventlink.model.common.Group;
+import com.intellibucket.pipeql.eventlink.model.common.Topic;
 import com.intellibucket.pipeql.eventlink.model.event.concretes.StartEvent;
 
-public class Message {
+public class ProducingMessage {
     private final Topic topic;
     private final Group group;
     private final Boolean isAsync;
     private final StartEvent<?> event;
 
-    private Message(Builder builder) {
+    private ProducingMessage(Builder builder) {
         topic = builder.topic;
         group = builder.group;
         isAsync = builder.isAsync;
@@ -49,8 +51,8 @@ public class Message {
             return this;
         }
 
-        public Message build() {
-            return new Message(this);
+        public ProducingMessage build() {
+            return new ProducingMessage(this);
         }
     }
 }
