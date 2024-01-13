@@ -26,5 +26,7 @@ public abstract class AbstractResizeablePanel extends AbstractGPanel {
         this.rightPanel = rightPanel;
         this.leftCenterSplitPanel = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, leftPanel, centerPanel);
         this.centerRightSplitPanel = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, this.leftCenterSplitPanel, rightPanel);
+        this.leftPanel.setVisible(false);
+        this.rightPanel.setVisible(false);
     }
 }
