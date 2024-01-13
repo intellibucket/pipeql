@@ -1,9 +1,9 @@
 package com.intellibucket.pipeql.eventlink.pipeline.abstracts;
 
-import com.intellibucket.pipeql.eventlink.rx.abstracts.Consumer;
-import com.intellibucket.pipeql.eventlink.model.event.abstracts.AbstractEvent;
+import com.intellibucket.pipeql.eventlink.model.consumer.ConsumerAggregate;
+import com.intellibucket.pipeql.eventlink.model.producer.ProducingMessage;
 
 public interface Pipeline {
-    void send(AbstractEvent<?> event);
-    void subscribe(Consumer consumer);
+    void send(ProducingMessage message);
+    void subscribe(ConsumerAggregate consumerAggregate);
 }

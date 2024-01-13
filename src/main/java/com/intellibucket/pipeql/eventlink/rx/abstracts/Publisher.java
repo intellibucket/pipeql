@@ -1,11 +1,9 @@
 package com.intellibucket.pipeql.eventlink.rx.abstracts;
 
-import com.intellibucket.pipeql.eventlink.model.event.concretes.FailureEvent;
-import com.intellibucket.pipeql.eventlink.model.event.concretes.SuccessEvent;
+
 import com.intellibucket.pipeql.eventlink.model.producer.ProducingMessage;
 
+@FunctionalInterface
 public interface Publisher {
     void publish(ProducingMessage message);
-    void onSuccess(SuccessEvent event);
-    void onFail(FailureEvent event);
 }

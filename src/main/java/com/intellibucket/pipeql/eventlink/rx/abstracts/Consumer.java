@@ -12,11 +12,12 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public abstract class Consumer<T extends Payload,S extends SuccessPayload>  {
 
-    void push(ConsumingMessage<T> message){
+    @SuppressWarnings("unchecked")
+    public void consume(ConsumingMessage message){
         log.info("Consuming message start pushing {}",message);
         var event = message.getEvent();
         try {
-            var result = this.consume(event.getPayload());
+            var result = this.proceed((T) event.getPayload());
             if (result instanceof WarningPayload)
                 this.onWarning(new WarningEvent(event.getTransactionId(),event.getProcessName(),(WarningPayload) result));
             else if (result instanceof InfoPayload)
@@ -33,7 +34,7 @@ public abstract class Consumer<T extends Payload,S extends SuccessPayload>  {
         }
     }
 
-    abstract S consume(T message) throws DomainException;
+    abstract S proceed(T message) throws DomainException;
 
     void onWarning(WarningEvent event){
         log.warn("Warning event {}",event);
@@ -47,12 +48,12 @@ public abstract class Consumer<T extends Payload,S extends SuccessPayload>  {
         log.error("Callback error event {}",event);
     }
 
-    public void onFail(ConsumingMessage<T> message, FailureEvent event) {
+    public void onFail(ConsumingMessage message, FailureEvent event) {
         log.error("Callback fail event {}",event);
         message.callback().onFail(event);
     }
 
-    public void onSuccess(ConsumingMessage<T> message, SuccessEvent event) {
+    public void onSuccess(ConsumingMessage message, SuccessEvent event) {
         log.info("Callback success event {}",event);
         message.callback().onSuccess(event);
     }
