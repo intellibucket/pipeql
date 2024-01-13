@@ -3,11 +3,9 @@ package com.intellibucket.pipeql.eventlink.broker.concretes;
 import com.intellibucket.pipeql.eventlink.broker.abstracts.AbstractEventLinkBroker;
 import com.intellibucket.pipeql.eventlink.model.common.Topic;
 import com.intellibucket.pipeql.eventlink.model.consumer.ConsumerAggregate;
-import com.intellibucket.pipeql.eventlink.model.event.concretes.StartEvent;
 import com.intellibucket.pipeql.eventlink.model.producer.ProducingMessage;
 import com.intellibucket.pipeql.eventlink.pipeline.abstracts.Pipeline;
 import com.intellibucket.pipeql.eventlink.pipeline.concretes.LinearEventSourcePipeline;
-import com.intellibucket.pipeql.eventlink.rx.abstracts.Consumer;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;

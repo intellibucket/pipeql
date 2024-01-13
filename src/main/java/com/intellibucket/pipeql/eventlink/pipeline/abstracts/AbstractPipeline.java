@@ -5,11 +5,12 @@ import com.intellibucket.pipeql.eventlink.model.common.Topic;
 import com.intellibucket.pipeql.eventlink.rx.abstracts.Consumer;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public abstract class AbstractPipeline implements Pipeline{
     private final Topic topic;
-    private final Map<GroupID, Consumer<?,?>> groupingConsumers = new HashMap<>();
+    private final Map<GroupID, List<Consumer<?,?>>> groupingConsumers = new HashMap<>();
 
     public AbstractPipeline(Topic topic) {
         this.topic = topic;
@@ -19,7 +20,7 @@ public abstract class AbstractPipeline implements Pipeline{
         return topic;
     }
 
-    public Map<GroupID, Consumer<?,?>> groupingConsumers() {
+    public Map<GroupID, List<Consumer<?,?>>> groupingConsumers() {
         return groupingConsumers;
     }
 }
