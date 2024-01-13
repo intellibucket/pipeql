@@ -1,7 +1,7 @@
 package com.intellibucket.pipeql.eventlink.model.consumer;
 
 import com.intellibucket.pipeql.eventlink.behavirol.abstracts.Callback;
-import com.intellibucket.pipeql.eventlink.model.event.concretes.FailEvent;
+import com.intellibucket.pipeql.eventlink.model.event.concretes.FailureEvent;
 import com.intellibucket.pipeql.eventlink.model.event.concretes.StartEvent;
 import com.intellibucket.pipeql.eventlink.model.event.concretes.SuccessEvent;
 import com.intellibucket.pipeql.eventlink.model.payload.FailPayload;
@@ -27,7 +27,7 @@ public class ConsumingMessage<T extends Payload,S extends SuccessPayload,F exten
     }
 
     @Override
-    public void onFail(FailEvent event) {
+    public void onFail(FailureEvent event) {
         callback.onFail(event);
     }
 }
