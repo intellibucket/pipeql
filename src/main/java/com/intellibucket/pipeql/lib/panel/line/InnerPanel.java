@@ -1,5 +1,7 @@
 package com.intellibucket.pipeql.lib.panel.line;
 
-public abstract class InnerPanel extends AbstractGPanel{
+import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
+
+public abstract class InnerPanel extends AbstractGPanel {
 
 }

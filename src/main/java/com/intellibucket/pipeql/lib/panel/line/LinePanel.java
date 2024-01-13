@@ -1,8 +1,10 @@
 package com.intellibucket.pipeql.lib.panel.line;
 
+import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
+
 import java.awt.*;
 
-public abstract class LinePanel extends AbstractGPanel{
+public abstract class LinePanel extends AbstractGPanel {
 
     public LinePanel(LayoutManager layout, boolean isDoubleBuffered) {
         super(layout, isDoubleBuffered);
