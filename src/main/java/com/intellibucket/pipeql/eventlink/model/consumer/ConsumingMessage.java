@@ -1,18 +1,14 @@
 package com.intellibucket.pipeql.eventlink.model.consumer;
 
-import com.intellibucket.pipeql.eventlink.rx.Callback;
-import com.intellibucket.pipeql.eventlink.model.event.concretes.FailureEvent;
 import com.intellibucket.pipeql.eventlink.model.event.concretes.StartEvent;
-import com.intellibucket.pipeql.eventlink.model.event.concretes.SuccessEvent;
-import com.intellibucket.pipeql.eventlink.model.payload.FailPayload;
 import com.intellibucket.pipeql.eventlink.model.payload.Payload;
-import com.intellibucket.pipeql.eventlink.model.payload.SuccessPayload;
+import com.intellibucket.pipeql.eventlink.rx.abstracts.Callback;
 
-public class ConsumingMessage<T extends Payload,S extends SuccessPayload,F extends FailPayload> implements Callback<S,F> {
+public final class ConsumingMessage<T extends Payload>  {
     private final StartEvent<T> event;
-    private final Callback<S,F> callback;
+    private final Callback callback;
 
-    public ConsumingMessage(StartEvent<T> event, Callback<S, F> callback) {
+    public ConsumingMessage(StartEvent<T> event, Callback callback) {
         this.event = event;
         this.callback = callback;
     }
@@ -22,12 +18,13 @@ public class ConsumingMessage<T extends Payload,S extends SuccessPayload,F exten
     }
 
     @Override
-    public void onSuccess(SuccessEvent event) {
-        callback.onSuccess(event);
+    public String toString() {
+        return "ConsumingMessage{" +
+                "event=" + event +
+                '}';
     }
 
-    @Override
-    public void onFail(FailureEvent event) {
-        callback.onFail(event);
+    public Callback callback() {
+        return callback;
     }
 }

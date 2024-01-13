@@ -4,10 +4,14 @@ import com.intellibucket.pipeql.eventlink.model.event.EventType;
 import com.intellibucket.pipeql.eventlink.model.event.abstracts.AbstractEvent;
 import com.intellibucket.pipeql.eventlink.model.payload.FailPayload;
 import com.intellibucket.pipeql.eventlink.model.payload.WarningPayload;
+import lombok.Getter;
+import lombok.ToString;
 
 import java.util.List;
 import java.util.UUID;
 
+@Getter
+@ToString(callSuper = true)
 public class WarningEvent extends AbstractEvent<WarningPayload> {
 
     public WarningEvent(UUID transactionId, String processName, List<String> messages, WarningPayload payload) {

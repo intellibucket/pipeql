@@ -4,10 +4,14 @@ import com.intellibucket.pipeql.eventlink.model.event.EventType;
 import com.intellibucket.pipeql.eventlink.model.event.abstracts.AbstractEvent;
 import com.intellibucket.pipeql.eventlink.model.payload.Payload;
 import com.intellibucket.pipeql.eventlink.model.payload.SuccessPayload;
+import lombok.Getter;
+import lombok.ToString;
 
 import java.util.List;
 import java.util.UUID;
 
+@Getter
+@ToString(callSuper = true)
 public class SuccessEvent extends AbstractEvent<SuccessPayload> {
 
     public SuccessEvent(UUID transactionId, String processName, List<String> messages, SuccessPayload payload) {

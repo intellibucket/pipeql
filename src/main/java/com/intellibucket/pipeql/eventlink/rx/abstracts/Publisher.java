@@ -1,4 +1,4 @@
-package com.intellibucket.pipeql.eventlink.rx;
+package com.intellibucket.pipeql.eventlink.rx.abstracts;
 
 import com.intellibucket.pipeql.eventlink.model.event.concretes.FailureEvent;
 import com.intellibucket.pipeql.eventlink.model.event.concretes.SuccessEvent;

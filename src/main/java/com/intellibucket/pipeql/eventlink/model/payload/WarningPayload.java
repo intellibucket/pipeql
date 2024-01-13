@@ -1,4 +1,4 @@
 package com.intellibucket.pipeql.eventlink.model.payload;
 
-public class WarningPayload implements Payload{
+public class WarningPayload extends SuccessPayload{
 }

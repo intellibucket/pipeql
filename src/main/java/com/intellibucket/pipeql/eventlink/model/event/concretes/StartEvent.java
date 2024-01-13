@@ -3,10 +3,14 @@ package com.intellibucket.pipeql.eventlink.model.event.concretes;
 import com.intellibucket.pipeql.eventlink.model.event.EventType;
 import com.intellibucket.pipeql.eventlink.model.event.abstracts.AbstractEvent;
 import com.intellibucket.pipeql.eventlink.model.payload.Payload;
+import lombok.Getter;
+import lombok.ToString;
 
 import java.util.List;
 import java.util.UUID;
 
+@Getter
+@ToString(callSuper = true)
 public class StartEvent <T extends Payload> extends AbstractEvent<T> {
 
     public StartEvent(UUID transactionId, String processName, List<String> messages, T payload) {

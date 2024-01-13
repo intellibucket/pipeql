@@ -2,13 +2,14 @@ package com.intellibucket.pipeql.eventlink.model.event.abstracts;
 
 import com.intellibucket.pipeql.eventlink.model.event.EventType;
 import com.intellibucket.pipeql.eventlink.model.payload.Payload;
+import lombok.Data;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
-@Getter
+@Data
 public abstract class AbstractEvent<T extends Payload> {
     private final UUID transactionId;
     private final String processName;
@@ -92,4 +93,15 @@ public abstract class AbstractEvent<T extends Payload> {
         return this.hasMessages() ? this.fetchFirstMessage() : elseMessage;
     }
 
+    @Override
+    public String toString() {
+        return "AbstractEvent{" +
+                "transactionId=" + transactionId +
+                ", processName='" + processName + '\'' +
+                ", timestamp=" + timestamp +
+                ", eventType=" + eventType +
+                ", messages=" + messages +
+                ", payload=" + payload +
+                "\n}";
+    }
 }
