@@ -1,6 +1,6 @@
 package com.intellibucket.pipeql.eventlink.model.consumer;
 
-import com.intellibucket.pipeql.eventlink.behavirol.abstracts.Callback;
+import com.intellibucket.pipeql.eventlink.rx.Callback;
 import com.intellibucket.pipeql.eventlink.model.event.concretes.FailureEvent;
 import com.intellibucket.pipeql.eventlink.model.event.concretes.StartEvent;
 import com.intellibucket.pipeql.eventlink.model.event.concretes.SuccessEvent;

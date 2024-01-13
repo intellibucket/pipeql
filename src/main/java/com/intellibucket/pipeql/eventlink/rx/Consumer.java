@@ -1,4 +1,4 @@
-package com.intellibucket.pipeql.eventlink.behavirol.abstracts;
+package com.intellibucket.pipeql.eventlink.rx;
 
 import com.intellibucket.pipeql.eventlink.exception.DomainException;
 import com.intellibucket.pipeql.eventlink.model.consumer.ConsumingMessage;
