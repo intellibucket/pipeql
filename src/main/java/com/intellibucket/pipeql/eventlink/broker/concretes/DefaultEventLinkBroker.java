@@ -49,6 +49,10 @@ public class DefaultEventLinkBroker implements AbstractEventLinkBroker {
             return BROKER;
         }
 
+        public static void start() {
+            log.info("Default Broker started");
+        }
+
         public static void registerConsumer(Topic topic, ConsumerAggregate consumer) {
             BROKER.registerConsumer(topic, consumer);
         }
@@ -57,7 +61,8 @@ public class DefaultEventLinkBroker implements AbstractEventLinkBroker {
             BROKER.registerPipeline(topic, pipeline);
         }
 
-        public static void send(Topic topic, ProducingMessage message) {
+        public static void send(ProducingMessage message) {
+            var topic = message.getTopic();
             log.info("Sending event {} to topic {}", message, topic);
             var pipeline = BROKER.pipelines.get(topic);
             if (Objects.nonNull(pipeline)) pipeline.send(message);
