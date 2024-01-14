@@ -1,11 +1,13 @@
 package com.intellibucket.pipeql.domain.model.json.draw.element;
 
-import lombok.Builder;
+import lombok.Getter;
+import lombok.experimental.SuperBuilder;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-@Builder
+@Getter
+@SuperBuilder
 public class TextElement extends SuperElement{
     private final String text;
     private final String fontFamily;

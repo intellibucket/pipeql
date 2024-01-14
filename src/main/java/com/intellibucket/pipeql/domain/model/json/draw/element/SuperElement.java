@@ -1,8 +1,10 @@
 package com.intellibucket.pipeql.domain.model.json.draw.element;
 
 import com.intellibucket.pipeql.domain.model.json.type.draw.FillStyle;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.experimental.SuperBuilder;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -10,7 +12,8 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
-@Builder
+@AllArgsConstructor
+@SuperBuilder
 public class SuperElement {
     private final UUID id;
     private final BigInteger createdStamp;
