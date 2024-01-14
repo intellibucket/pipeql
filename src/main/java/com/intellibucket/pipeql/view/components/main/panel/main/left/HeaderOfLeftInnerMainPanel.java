@@ -45,10 +45,6 @@ class LeftPanel extends LinePanel{
         this.label.setIcon(IconProvider.getIcon("generatedFolder"));
     }
 
-    public LeftPanel() {
-        //this.label.setFont(new Font("Arial", Font.PLAIN, 13));
-    }
-
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
         return List.of();
