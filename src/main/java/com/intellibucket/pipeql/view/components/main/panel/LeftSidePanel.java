@@ -50,9 +50,7 @@ public class LeftSidePanel extends SimpleSideGPanel {
 @Slf4j
 class TopLeftSideInnerPanel extends InnerSideGPanel{
 
-
-
-    private final EventLinkTemplate eventLinkTemplate = new LinearEventLinkTemplate();
+    private final EventLinkTemplate eventLinkTemplate = EventLinkTemplate.linear();
 
     private final AbstractVerticalGButton projectsButton;
     private final AbstractVerticalGButton environmentButton;

@@ -9,6 +9,8 @@ import com.intellibucket.pipeql.view.components.main.tabbedPane.panels.Structure
 import java.util.List;
 
 public class MainTabbedPane extends AbstractMaximizedGTabbedPane {
+
+
     private final DrawSimplePanel drawSimplePanel = new DrawSimplePanel();
     private final EnvironmentPanel environmentPanel = new EnvironmentPanel();
     private final StructurePanel structurePanel = new StructurePanel();
