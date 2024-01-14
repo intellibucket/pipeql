@@ -1,11 +1,12 @@
 package com.intellibucket.pipeql.lib.panel;
 
+import com.intellibucket.pipeql.view.components.ActionInitializer;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 
 import javax.swing.*;
 import java.awt.*;
 
-public abstract class AbstractGPanel extends JPanel implements ComponentInitializer {
+public abstract class AbstractGPanel extends JPanel implements ComponentInitializer, ActionInitializer {
 
     public AbstractGPanel(LayoutManager layout, boolean isDoubleBuffered) {
         super(layout, isDoubleBuffered);
@@ -20,5 +21,10 @@ public abstract class AbstractGPanel extends JPanel implements ComponentInitiali
     }
 
     public AbstractGPanel() {
+    }
+
+    @Override
+    public void postInitialize() {
+        this.setActions();
     }
 }

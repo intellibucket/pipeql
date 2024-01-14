@@ -1,11 +1,22 @@
 package com.intellibucket.pipeql.view.components.main.panel;
 
+import com.intellibucket.pipeql.eventlink.model.common.Topic;
+import com.intellibucket.pipeql.eventlink.model.event.abstracts.AbstractEvent;
+import com.intellibucket.pipeql.eventlink.model.event.concretes.FailureEvent;
+import com.intellibucket.pipeql.eventlink.model.event.concretes.StartEvent;
+import com.intellibucket.pipeql.eventlink.model.event.concretes.SuccessEvent;
+import com.intellibucket.pipeql.eventlink.model.payload.Payload;
+import com.intellibucket.pipeql.eventlink.model.producer.ProducingMessage;
+import com.intellibucket.pipeql.eventlink.rx.abstracts.Callback;
+import com.intellibucket.pipeql.eventlink.template.abstracts.EventLinkTemplate;
+import com.intellibucket.pipeql.eventlink.template.concretes.LinearEventLinkTemplate;
 import com.intellibucket.pipeql.lib.button.vertical.AbstractVerticalGButton;
 import com.intellibucket.pipeql.lib.button.vertical.SimpleVerticalGButton;
 import com.intellibucket.pipeql.lib.file.IconProvider;
 import com.intellibucket.pipeql.lib.panel.side.InnerSideGPanel;
 import com.intellibucket.pipeql.lib.panel.side.SimpleSideGPanel;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import lombok.extern.slf4j.Slf4j;
 
 import java.awt.*;
 import java.util.List;
@@ -34,7 +45,10 @@ public class LeftSidePanel extends SimpleSideGPanel {
 
 }
 
+@Slf4j
 class TopLeftSideInnerPanel extends InnerSideGPanel{
+
+    private final EventLinkTemplate eventLinkTemplate = new LinearEventLinkTemplate();
 
     private final AbstractVerticalGButton projectsButton;
     private final AbstractVerticalGButton environmentButton;
@@ -56,6 +70,35 @@ class TopLeftSideInnerPanel extends InnerSideGPanel{
         this.add(this.projectsButton);
         this.add(this.environmentButton);
         this.add(this.schemasButton);
+    }
+
+    @Override
+    public void setActions() {
+        this.projectsButton.addActionListener(e -> {
+            log.info("Clicked Side panel Projects Button");
+            var topic = new Topic("clicked.side-projects.button");
+            var callback = new Callback() {
+                @Override
+                public void onSuccess(SuccessEvent event) {
+                    log.info("Success Response with transaction id: {}", event.getTransactionId());
+                    var payload = (ResizeablePanel.ListenerProjectButton.ListenerProjectButtonSuccessPayload) event.getPayload();
+                    log.info("Payload: {}", payload);
+                }
+
+                @Override
+                public void onFail(FailureEvent event) {
+                    log.info("Failure Response with transaction id: {}", event.getTransactionId());
+                }
+            };
+            var message = ProducingMessage.Builder
+                    .builder()
+                    .topic(topic)
+                    .callback(callback)
+                    .event(new StartEvent<>("Start"))
+                    .build();
+            this.eventLinkTemplate.publish(message);
+        });
+
     }
 }
 

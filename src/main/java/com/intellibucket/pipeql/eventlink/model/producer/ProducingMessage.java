@@ -31,7 +31,6 @@ public class ProducingMessage {
                 "topic=" + topic +
                 ", isBackgroundTask=" + isBackgroundTask +
                 ", isAsync=" + isAsync +
-                ", callback=" + callback +
                 ", event=" + event +
                 "\n}";
     }

@@ -34,7 +34,7 @@ public abstract class Consumer<T extends Payload,S extends SuccessPayload>  {
         }
     }
 
-    abstract S proceed(T message) throws DomainException;
+    protected abstract S proceed(T message) throws DomainException;
 
     void onWarning(WarningEvent event){
         log.warn("Warning event {}",event);

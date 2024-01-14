@@ -1,18 +1,12 @@
 package com.intellibucket.pipeql.view.components.main.panel;
 
 import com.intellibucket.pipeql.lib.panel.main.AbstractInnerResizeablePanel;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
 
-import java.util.List;
+public abstract class InnerResizeablePanel extends AbstractInnerResizeablePanel {
 
-public class InnerResizeablePanel extends AbstractInnerResizeablePanel {
-    @Override
-    public List<ComponentInitializer> getComponentInitializers() {
-        return List.of();
+    public void open() {
+        this.setVisible(!this.isVisible());
+        this.getParent().revalidate();
     }
 
-    @Override
-    public void addComponents() {
-
-    }
 }
