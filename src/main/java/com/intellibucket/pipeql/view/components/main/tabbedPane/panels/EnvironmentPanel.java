@@ -4,14 +4,16 @@ import com.intellibucket.pipeql.lib.button.horizontal.SimpleGButton;
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-public class EnvironmentPanel extends AbstractGSimplePanel {
-    public EnvironmentPanel() {
-        super("Environment");
-    }
+import static javax.swing.BoxLayout.X_AXIS;
 
+public class EnvironmentPanel extends AbstractGSimplePanel {
+    {
+        setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+    }
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
         return List.of();

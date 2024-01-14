@@ -11,6 +11,7 @@ import java.util.List;
 
 public class CenterInnerMainPanel extends InnerResizeablePanel {
     private final MainTabbedPane mainTabbedPane = new MainTabbedPane();
+
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
         return List.of(this.mainTabbedPane);

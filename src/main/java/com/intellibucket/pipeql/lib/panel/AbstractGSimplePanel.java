@@ -15,10 +15,6 @@ public abstract class AbstractGSimplePanel extends AbstractGPanel{
         super(isDoubleBuffered);
     }
 
-    public AbstractGSimplePanel(String name) {
-        super.setName(name);
-    }
-
     public AbstractGSimplePanel() {
     }
 }
