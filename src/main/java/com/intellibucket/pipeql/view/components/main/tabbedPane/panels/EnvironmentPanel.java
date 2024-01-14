@@ -12,7 +12,7 @@ import static javax.swing.BoxLayout.X_AXIS;
 
 public class EnvironmentPanel extends AbstractGSimplePanel {
     {
-        setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+        setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
     }
     @Override
     public List<ComponentInitializer> getComponentInitializers() {

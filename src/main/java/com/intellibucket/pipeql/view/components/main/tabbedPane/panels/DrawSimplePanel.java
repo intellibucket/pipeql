@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DrawSimplePanel extends AbstractGSimplePanel {
     {
-        setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+        setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
     }
     @Override
     public List<ComponentInitializer> getComponentInitializers() {

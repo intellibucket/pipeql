@@ -16,6 +16,7 @@ public class MainTabbedPane extends AbstractMaximizedGTabbedPane {
     private final DrawSimplePanel drawSimplePanel = new DrawSimplePanel();
     private final EnvironmentPanel environmentPanel = new EnvironmentPanel();
     private final StructurePanel structurePanel = new StructurePanel();
+
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
         return List.of(this.drawSimplePanel, this.structurePanel, this.environmentPanel);
