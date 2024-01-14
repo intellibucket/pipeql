@@ -21,7 +21,6 @@ public class ResizeablePanel extends AbstractResizeablePanel {
     public ResizeablePanel() {
         super(new LeftInnerMainPanel(), new CenterInnerMainPanel(), new RightInnerMainPanel());
         this.getLeftPanel().setBackground(Color.BLUE);
-        this.getCenterPanel().setBackground(Color.GREEN);
         this.getRightPanel().setBackground(Color.RED);
     }
 
