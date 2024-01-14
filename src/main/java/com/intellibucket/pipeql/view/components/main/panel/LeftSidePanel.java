@@ -1,11 +1,9 @@
 package com.intellibucket.pipeql.view.components.main.panel;
 
 import com.intellibucket.pipeql.eventlink.model.common.Topic;
-import com.intellibucket.pipeql.eventlink.model.event.abstracts.AbstractEvent;
 import com.intellibucket.pipeql.eventlink.model.event.concretes.FailureEvent;
 import com.intellibucket.pipeql.eventlink.model.event.concretes.StartEvent;
 import com.intellibucket.pipeql.eventlink.model.event.concretes.SuccessEvent;
-import com.intellibucket.pipeql.eventlink.model.payload.Payload;
 import com.intellibucket.pipeql.eventlink.model.producer.ProducingMessage;
 import com.intellibucket.pipeql.eventlink.rx.abstracts.Callback;
 import com.intellibucket.pipeql.eventlink.template.abstracts.EventLinkTemplate;
@@ -22,6 +20,10 @@ import java.awt.*;
 import java.util.List;
 
 public class LeftSidePanel extends SimpleSideGPanel {
+
+    public static class Topics{
+        public static final Topic CLICKED_SIDE_PROJECTS_BUTTON = new Topic("clicked.side-projects.button");
+    }
 
     private final InnerSideGPanel topLeftSideInnerPanel;
 
@@ -47,6 +49,8 @@ public class LeftSidePanel extends SimpleSideGPanel {
 
 @Slf4j
 class TopLeftSideInnerPanel extends InnerSideGPanel{
+
+
 
     private final EventLinkTemplate eventLinkTemplate = new LinearEventLinkTemplate();
 
@@ -76,12 +80,11 @@ class TopLeftSideInnerPanel extends InnerSideGPanel{
     public void setActions() {
         this.projectsButton.addActionListener(e -> {
             log.info("Clicked Side panel Projects Button");
-            var topic = new Topic("clicked.side-projects.button");
             var callback = new Callback() {
                 @Override
                 public void onSuccess(SuccessEvent event) {
                     log.info("Success Response with transaction id: {}", event.getTransactionId());
-                    var payload = (ResizeablePanel.ListenerProjectButton.ListenerProjectButtonSuccessPayload) event.getPayload();
+                    var payload = (ResizeablePanel.ProjectButtonListener.ListenerProjectButtonSuccessPayload) event.getPayload();
                 }
 
                 @Override
@@ -91,13 +94,12 @@ class TopLeftSideInnerPanel extends InnerSideGPanel{
             };
             var message = ProducingMessage.Builder
                     .builder()
-                    .topic(topic)
+                    .topic(LeftSidePanel.Topics.CLICKED_SIDE_PROJECTS_BUTTON)
                     .callback(callback)
                     .event(new StartEvent<>("Start"))
                     .build();
             this.eventLinkTemplate.publish(message);
         });
-
     }
 }
 

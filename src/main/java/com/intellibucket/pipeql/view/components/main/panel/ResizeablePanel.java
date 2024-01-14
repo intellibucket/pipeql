@@ -2,9 +2,6 @@ package com.intellibucket.pipeql.view.components.main.panel;
 
 import com.intellibucket.pipeql.eventlink.broker.concretes.DefaultEventLinkBroker;
 import com.intellibucket.pipeql.eventlink.exception.DomainException;
-import com.intellibucket.pipeql.eventlink.model.common.GroupID;
-import com.intellibucket.pipeql.eventlink.model.common.Topic;
-import com.intellibucket.pipeql.eventlink.model.consumer.ConsumerAggregate;
 import com.intellibucket.pipeql.eventlink.model.payload.Payload;
 import com.intellibucket.pipeql.eventlink.model.payload.SuccessPayload;
 import com.intellibucket.pipeql.eventlink.rx.abstracts.Consumer;
@@ -19,7 +16,7 @@ import java.util.List;
 
 public class ResizeablePanel extends AbstractResizeablePanel {
 
-    private final ListenerProjectButton listenerProjectButton = new ListenerProjectButton();
+    private final ProjectButtonListener projectButtonListener = new ProjectButtonListener();
 
     public ResizeablePanel() {
         super(new LeftInnerCenterPanel(), new CenterInnerCenterPanel(), new RightInnerCenterPanel());
@@ -42,10 +39,10 @@ public class ResizeablePanel extends AbstractResizeablePanel {
         this.add(this.getCenterRightSplitPanel(), BorderLayout.CENTER);
     }
 
-    class ListenerProjectButton extends Consumer<Payload, ListenerProjectButton.ListenerProjectButtonSuccessPayload> {
+    class ProjectButtonListener extends Consumer<Payload, ProjectButtonListener.ListenerProjectButtonSuccessPayload> {
 
-        class ListenerProjectButtonSuccessPayload extends SuccessPayload {
-            private Boolean isClicked;
+        static class ListenerProjectButtonSuccessPayload extends SuccessPayload {
+            private final Boolean isClicked;
 
             ListenerProjectButtonSuccessPayload() {
                 this.isClicked = true;
@@ -57,15 +54,13 @@ public class ResizeablePanel extends AbstractResizeablePanel {
         }
 
         {
-            var consumerAggregate = new ConsumerAggregate(GroupID.DEFAULT, this);
-            DefaultEventLinkBroker.Mediator.registerConsumer(new Topic("clicked.side-projects.button"), consumerAggregate);
+            DefaultEventLinkBroker.Mediator.registerConsumer(LeftSidePanel.Topics.CLICKED_SIDE_PROJECTS_BUTTON, this);
         }
 
         @Override
-        protected ListenerProjectButtonSuccessPayload proceed(Payload message) throws DomainException {
-            //ResizeablePanel.this.openLeftBar();
-            throw new DomainException("Bir hata oluştu.");
-            //return new ListenerProjectButtonSuccessPayload();
+        protected ListenerProjectButtonSuccessPayload fire(Payload message) throws DomainException {
+            ResizeablePanel.this.openLeftBar();
+            return new ListenerProjectButtonSuccessPayload();
         }
     }
 }

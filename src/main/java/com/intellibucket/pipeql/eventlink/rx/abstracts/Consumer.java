@@ -17,7 +17,7 @@ public abstract class Consumer<T extends Payload,S extends SuccessPayload>  {
         log.info("Consuming message start pushing {}",message);
         var event = message.getEvent();
         try {
-            var result = this.proceed((T) event.getPayload());
+            var result = this.fire((T) event.getPayload());
             if (result instanceof WarningPayload)
                 this.onWarning(new WarningEvent(event.getTransactionId(),event.getProcessName(),(WarningPayload) result));
             else if (result instanceof InfoPayload)
@@ -34,7 +34,7 @@ public abstract class Consumer<T extends Payload,S extends SuccessPayload>  {
         }
     }
 
-    protected abstract S proceed(T message) throws DomainException;
+    protected abstract S fire(T message) throws DomainException;
 
     void onWarning(WarningEvent event){
         log.warn("Warning event {}",event);

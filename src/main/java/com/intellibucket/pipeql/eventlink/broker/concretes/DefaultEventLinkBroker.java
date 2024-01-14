@@ -1,11 +1,13 @@
 package com.intellibucket.pipeql.eventlink.broker.concretes;
 
 import com.intellibucket.pipeql.eventlink.broker.abstracts.AbstractEventLinkBroker;
+import com.intellibucket.pipeql.eventlink.model.common.GroupID;
 import com.intellibucket.pipeql.eventlink.model.common.Topic;
 import com.intellibucket.pipeql.eventlink.model.consumer.ConsumerAggregate;
 import com.intellibucket.pipeql.eventlink.model.producer.ProducingMessage;
 import com.intellibucket.pipeql.eventlink.pipeline.abstracts.Pipeline;
 import com.intellibucket.pipeql.eventlink.pipeline.concretes.LinearEventSourcePipeline;
+import com.intellibucket.pipeql.eventlink.rx.abstracts.Consumer;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
@@ -55,6 +57,10 @@ public class DefaultEventLinkBroker implements AbstractEventLinkBroker {
 
         public static void registerConsumer(Topic topic, ConsumerAggregate consumer) {
             BROKER.registerConsumer(topic, consumer);
+        }
+
+        public static void registerConsumer(Topic topic, Consumer<?,?> consumer) {
+            BROKER.registerConsumer(topic, new ConsumerAggregate(GroupID.DEFAULT, consumer));
         }
 
         public static void registerPipeline(Topic topic, Pipeline pipeline) {
