@@ -1,6 +1,6 @@
 package com.intellibucket.pipeql.domain.model.json.draw.element;
 
-import com.intellibucket.pipeql.domain.model.json.draw.type.FillStyle;
+import com.intellibucket.pipeql.domain.model.json.type.draw.FillStyle;
 import lombok.Builder;
 import lombok.Getter;
 

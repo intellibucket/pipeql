@@ -1,12 +1,10 @@
 package com.intellibucket.pipeql.domain.model.json.draw.element;
 
-import com.intellibucket.pipeql.domain.model.json.draw.type.Binding;
-import com.intellibucket.pipeql.domain.model.json.draw.type.FillStyle;
+import com.intellibucket.pipeql.domain.model.json.type.draw.Binding;
 import lombok.Builder;
 import lombok.Getter;
 
 import java.math.BigDecimal;
-import java.util.UUID;
 
 @Getter
 @Builder

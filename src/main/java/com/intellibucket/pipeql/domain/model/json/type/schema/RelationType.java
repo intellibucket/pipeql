@@ -1,4 +1,4 @@
-package com.intellibucket.pipeql.domain.model.json.type;
+package com.intellibucket.pipeql.domain.model.json.type.schema;
 
 public enum RelationType {
     ONE_TO_ONE,

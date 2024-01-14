@@ -1,6 +1,6 @@
-package com.intellibucket.pipeql.domain.model.json.type;
+package com.intellibucket.pipeql.domain.model.json.type.schema;
 
-import com.intellibucket.pipeql.domain.model.json.Schema;
+import com.intellibucket.pipeql.domain.model.json.type.Schema;
 import lombok.Builder;
 
 import java.util.UUID;

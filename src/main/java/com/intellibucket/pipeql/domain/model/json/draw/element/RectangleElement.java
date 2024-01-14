@@ -1,6 +1,6 @@
 package com.intellibucket.pipeql.domain.model.json.draw.element;
 
-import com.intellibucket.pipeql.domain.model.json.draw.type.Roundness;
+import com.intellibucket.pipeql.domain.model.json.type.draw.Roundness;
 import lombok.Builder;
 import lombok.Getter;
 
