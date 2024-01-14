@@ -21,7 +21,6 @@ public class ResizeablePanel extends AbstractResizeablePanel {
 
     private final ListenerProjectButton listenerProjectButton = new ListenerProjectButton();
 
-
     public ResizeablePanel() {
         super(new LeftInnerCenterPanel(), new CenterInnerCenterPanel(), new RightInnerCenterPanel());
         this.getLeftPanel().setBackground(Color.BLUE);
@@ -43,7 +42,7 @@ public class ResizeablePanel extends AbstractResizeablePanel {
         this.add(this.getCenterRightSplitPanel(), BorderLayout.CENTER);
     }
 
-    class ListenerProjectButton extends Consumer {
+    class ListenerProjectButton extends Consumer<Payload, ListenerProjectButton.ListenerProjectButtonSuccessPayload> {
 
         class ListenerProjectButtonSuccessPayload extends SuccessPayload {
             private Boolean isClicked;
@@ -63,9 +62,10 @@ public class ResizeablePanel extends AbstractResizeablePanel {
         }
 
         @Override
-        protected SuccessPayload proceed(Payload message) throws DomainException {
-            ResizeablePanel.this.openLeftBar();
-            return new ListenerProjectButtonSuccessPayload();
+        protected ListenerProjectButtonSuccessPayload proceed(Payload message) throws DomainException {
+            //ResizeablePanel.this.openLeftBar();
+            throw new DomainException("Bir hata oluştu.");
+            //return new ListenerProjectButtonSuccessPayload();
         }
     }
 }

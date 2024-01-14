@@ -82,12 +82,11 @@ class TopLeftSideInnerPanel extends InnerSideGPanel{
                 public void onSuccess(SuccessEvent event) {
                     log.info("Success Response with transaction id: {}", event.getTransactionId());
                     var payload = (ResizeablePanel.ListenerProjectButton.ListenerProjectButtonSuccessPayload) event.getPayload();
-                    log.info("Payload: {}", payload);
                 }
 
                 @Override
                 public void onFail(FailureEvent event) {
-                    log.info("Failure Response with transaction id: {}", event.getTransactionId());
+                    log.error("Failure Response with transaction id: {}", event.getTransactionId());
                 }
             };
             var message = ProducingMessage.Builder
