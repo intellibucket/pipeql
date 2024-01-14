@@ -2,6 +2,7 @@ package com.intellibucket.pipeql.lib.panel.main;
 
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
 import com.intellibucket.pipeql.view.components.main.panel.InnerResizeablePanel;
+import com.intellibucket.pipeql.view.components.main.panel.ResizeablePanel;
 import lombok.Getter;
 
 import javax.swing.*;
@@ -29,5 +30,15 @@ public abstract class AbstractResizeablePanel extends AbstractGPanel {
         this.centerRightSplitPanel = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, this.leftCenterSplitPanel, rightPanel);
         this.leftPanel.setVisible(false);
         this.rightPanel.setVisible(false);
+    }
+
+    public void openLeftBar(){
+        this.leftPanel.open();
+        this.leftCenterSplitPanel.setDividerLocation(0.2);
+    }
+
+    public void openRightBar(){
+        this.rightPanel.open();
+        this.centerRightSplitPanel.setDividerLocation(0.8);
     }
 }

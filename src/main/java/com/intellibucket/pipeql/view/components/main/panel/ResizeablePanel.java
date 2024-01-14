@@ -64,7 +64,7 @@ public class ResizeablePanel extends AbstractResizeablePanel {
 
         @Override
         protected SuccessPayload proceed(Payload message) throws DomainException {
-            ResizeablePanel.this.getLeftPanel().open();
+            ResizeablePanel.this.openLeftBar();
             return new ListenerProjectButtonSuccessPayload();
         }
     }

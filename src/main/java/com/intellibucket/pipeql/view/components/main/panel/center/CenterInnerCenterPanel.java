@@ -15,4 +15,7 @@ public class CenterInnerCenterPanel extends InnerResizeablePanel {
     public void addComponents() {
 
     }
+
+    @Override
+    public void open() {}
 }
