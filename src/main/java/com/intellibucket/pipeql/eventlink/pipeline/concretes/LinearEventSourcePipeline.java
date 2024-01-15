@@ -1,5 +1,6 @@
 package com.intellibucket.pipeql.eventlink.pipeline.concretes;
 
+import com.intellibucket.pipeql.eventlink.model.common.GroupID;
 import com.intellibucket.pipeql.eventlink.model.common.Topic;
 import com.intellibucket.pipeql.eventlink.model.consumer.ConsumerAggregate;
 import com.intellibucket.pipeql.eventlink.model.consumer.ConsumingMessage;
@@ -19,20 +20,18 @@ public class LinearEventSourcePipeline extends AbstractPipeline {
     @Override
     public void send(ProducingMessage message) {
         log.info("Sending message to consumers for topic: {} , message : {}",this.topic().name(),message);
-        this.groupingConsumers().values().parallelStream().forEach(consumers -> {
+        this.groupingConsumers().values().parallelStream().forEach(consumer -> {
             var consumingMessage = new ConsumingMessage(message.getEvent(),message.getCallback());
-            consumers.forEach(consumer -> consumer.consume(consumingMessage));
+            consumer.consume(consumingMessage);
         });
         log.info("Message sent to consumers for topic: {} , message : {}",this.topic().name(),message);
     }
 
     @Override
     public void subscribe(ConsumerAggregate consumerAggregate) {
-        log.info("Subscribing consumer for topic: {} , consumer : {}",this.topic().name(), consumerAggregate);
-        if(!this.groupingConsumers().containsKey(consumerAggregate.groupId()))
-            this.groupingConsumers().put(consumerAggregate.groupId(), List.of(consumerAggregate.consumer()));
-        else this.groupingConsumers().get(consumerAggregate.groupId()).add(consumerAggregate.consumer());
-        log.info("Consumer subscribed for topic: {} , consumer : {}",this.topic().name(), consumerAggregate);
+        log.info("Consumer subscribing for topic: {} , groupId : {}, consumer : {}",this.topic().name(),consumerAggregate.groupId(), consumerAggregate);
+        this.groupingConsumers().put(consumerAggregate.groupId(), consumerAggregate.consumer());
+        log.info("Consumer subscribed for topic: {} , groupId : {},  consumer : {}",this.topic().name(),consumerAggregate.groupId(), consumerAggregate);
     }
 
 }

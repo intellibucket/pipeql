@@ -26,7 +26,6 @@ public class DefaultEventLinkBroker implements AbstractEventLinkBroker {
         try {
             pipelines.get(topic).subscribe(consumer);
         }catch (NullPointerException e){
-            log.error("Error while registering consumer {} for topic {} because of {}", consumer, topic, e.getMessage());
             log.info("Creating new pipeline for topic {}", topic);
             pipelines.put(topic, new LinearEventSourcePipeline(topic));
             log.info("Created new pipeline for topic {}", topic);

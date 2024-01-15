@@ -33,5 +33,6 @@ public abstract class AbstractGPanel extends JPanel implements ComponentInitiali
         this.removeAll();
         this.addComponents();
         this.initialize();
+        this.updateUI();
     }
 }
