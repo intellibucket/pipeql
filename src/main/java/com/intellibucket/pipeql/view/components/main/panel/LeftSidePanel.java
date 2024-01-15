@@ -101,4 +101,11 @@ class BottomLeftSideInnerPanel extends InnerSideGPanel {
     public void addComponents() {
         this.add(this.dataSourcesButton);
     }
+
+    @Override
+    public void setActions() {
+        this.dataSourcesButton.addActionListener(e -> {
+            this.leftSidePanelClient.openDatabasesScreen(EmptyCallback.INSTANCE);
+        });
+    }
 }

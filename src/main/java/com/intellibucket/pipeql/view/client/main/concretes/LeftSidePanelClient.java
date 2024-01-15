@@ -5,9 +5,12 @@ import com.intellibucket.pipeql.eventlink.model.producer.ProducingMessage;
 import com.intellibucket.pipeql.eventlink.rx.abstracts.Callback;
 import com.intellibucket.pipeql.eventlink.template.abstracts.EventLinkTemplate;
 import com.intellibucket.pipeql.view.client.main.abstracts.AbstractLeftSidePanelClient;
+import com.intellibucket.pipeql.view.components.databases.screen.DatabasesScreen;
 import com.intellibucket.pipeql.view.components.main.panel.LeftSidePanel;
 import com.intellibucket.pipeql.view.topics.LeftMainPanelTopics;
 import lombok.extern.slf4j.Slf4j;
+
+import javax.swing.*;
 
 @Slf4j
 public class LeftSidePanelClient implements AbstractLeftSidePanelClient {
@@ -32,6 +35,12 @@ public class LeftSidePanelClient implements AbstractLeftSidePanelClient {
 
     @Override
     public void openDatabasesScreen(Callback callback) {
+        JFrame frame = new JFrame("Databases");
+        var databasesPanel = new DatabasesScreen();
+        frame.add(databasesPanel);
+        databasesPanel.initialize();
+        frame.pack();
+        frame.setVisible(true);
     }
 
     @Override
