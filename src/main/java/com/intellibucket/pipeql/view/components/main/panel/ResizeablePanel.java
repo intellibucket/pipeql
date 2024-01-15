@@ -7,9 +7,10 @@ import com.intellibucket.pipeql.eventlink.model.payload.SuccessPayload;
 import com.intellibucket.pipeql.eventlink.rx.abstracts.Consumer;
 import com.intellibucket.pipeql.lib.panel.main.AbstractResizeablePanel;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
-import com.intellibucket.pipeql.view.components.main.panel.main.CenterInnerMainPanel;
+import com.intellibucket.pipeql.view.components.main.panel.main.center.CenterInnerMainPanel;
+import com.intellibucket.pipeql.view.components.main.panel.main.center.EmptyInnerMainPanel;
 import com.intellibucket.pipeql.view.components.main.panel.main.left.LeftInnerMainPanel;
-import com.intellibucket.pipeql.view.components.main.panel.main.RightInnerMainPanel;
+import com.intellibucket.pipeql.view.components.main.panel.main.right.RightInnerMainPanel;
 
 import java.awt.*;
 import java.util.List;
@@ -19,7 +20,7 @@ public class ResizeablePanel extends AbstractResizeablePanel {
     private final ProjectButtonListener projectButtonListener = new ProjectButtonListener();
 
     public ResizeablePanel() {
-        super(new LeftInnerMainPanel(), new CenterInnerMainPanel(), new RightInnerMainPanel());
+        super(new LeftInnerMainPanel(), new EmptyInnerMainPanel(), new RightInnerMainPanel());
         this.getLeftPanel().setBackground(Color.BLUE);
         this.getRightPanel().setBackground(Color.RED);
     }

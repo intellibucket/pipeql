@@ -1,4 +1,4 @@
-package com.intellibucket.pipeql.view.components.main.panel.main;
+package com.intellibucket.pipeql.view.components.main.panel.main.center;
 
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.main.panel.InnerResizeablePanel;
