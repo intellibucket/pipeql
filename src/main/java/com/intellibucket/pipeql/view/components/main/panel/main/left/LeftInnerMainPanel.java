@@ -11,6 +11,7 @@ public class LeftInnerMainPanel extends InnerResizeablePanel {
 
     private final LinePanel header = new HeaderOfLeftInnerMainPanel();
 
+
     {
         this.setLayout(new BorderLayout());
     }
