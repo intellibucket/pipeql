@@ -18,7 +18,5 @@ public class TableSchema {
     private final List<ColumnSchema> columns;
     private final List<ConstraintSchema> constraints;
     private final List<IndexSchema> indexes;
-    private final List<TriggerSchema> triggers;
-    private final List<PrivilegeSchema> privileges;
     private final List<SynonymSchema> synonyms;
 }

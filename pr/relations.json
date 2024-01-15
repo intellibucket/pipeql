@@ -1,0 +1,39 @@
+{
+  "description": " Butun relationlar burada olacak",
+  "version": "234123523543",
+  "relations":
+  [
+    {
+      "id": "c8e41ed0-2bfb-4123-8414-a2b845edb0a5",
+      "tableId": "c8e41ed0-2bfb-4123-8414-a2b845dfesd",
+      "binding": [
+        {
+          "sourceId": "c8e41ed0-2bfb-4123-8414-a2b845dfesd",
+          "targetTableId": "c8e41ed0-2bfb-4123-8414-a2b845dfesd",
+          "targetTableColumnId": "c8e41ed0-2bfb-4123-8414-a2b845dfesd"
+        },
+        {
+          "sourceId": "c8e41ed0-2bfb-4123-8414-a2b845dfesd",
+          "targetTableId": "c8e41ed0-2bfb-4123-8414-a2b845dfesd",
+          "targetTableColumnId": "c8e41ed0-2bfb-4123-8414-a2b845dfesd"
+        }
+      ]
+    },
+    {
+      "id": "c8e41ed0-2bfb-4123-8414-a2b845edb0a5",
+      "tableId": "c8e41ed0-2bfb-4123-8414-a2b845dfesd",
+      "binding": [
+        {
+          "sourceId": "c8e41ed0-2bfb-4123-8414-a2b845dfesd",
+          "targetTableId": "c8e41ed0-2bfb-4123-8414-a2b845dfesd",
+          "targetTableColumnId": "c8e41ed0-2bfb-4123-8414-a2b845dfesd"
+        },
+        {
+          "sourceId": "c8e41ed0-2bfb-4123-8414-a2b845dfesd",
+          "targetTableId": "c8e41ed0-2bfb-4123-8414-a2b845dfesd",
+          "targetTableColumnId": "c8e41ed0-2bfb-4123-8414-a2b845dfesd"
+        }
+      ]
+    }
+  ]
+}
