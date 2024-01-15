@@ -6,6 +6,7 @@ import com.intellibucket.pipeql.eventlink.model.event.concretes.start.StartEvent
 import com.intellibucket.pipeql.eventlink.model.event.concretes.SuccessEvent;
 import com.intellibucket.pipeql.eventlink.model.producer.ProducingMessage;
 import com.intellibucket.pipeql.eventlink.rx.abstracts.Callback;
+import com.intellibucket.pipeql.eventlink.rx.concretes.EmptyCallback;
 import com.intellibucket.pipeql.eventlink.template.abstracts.EventLinkTemplate;
 import com.intellibucket.pipeql.lib.button.vertical.AbstractVerticalGButton;
 import com.intellibucket.pipeql.lib.button.vertical.SimpleVerticalGButton;
@@ -46,10 +47,10 @@ public class LeftSidePanel extends SimpleSideGPanel {
 }
 
 @Slf4j
-class TopLeftSideInnerPanel extends InnerSideGPanel{
+class TopLeftSideInnerPanel extends InnerSideGPanel {
 
 
-    private final AbstractLeftSidePanelClient leftSidePanelClient = new LeftSidePanelClient();
+    private final AbstractLeftSidePanelClient leftSidePanelClient = AbstractLeftSidePanelClient.INSTANCE;
 
     private final AbstractVerticalGButton projectsButton;
     private final AbstractVerticalGButton environmentButton;
@@ -63,7 +64,7 @@ class TopLeftSideInnerPanel extends InnerSideGPanel{
 
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
-        return List.of(this.projectsButton,this.environmentButton,this.schemasButton);
+        return List.of(this.projectsButton, this.environmentButton, this.schemasButton);
     }
 
     @Override
@@ -76,24 +77,14 @@ class TopLeftSideInnerPanel extends InnerSideGPanel{
     @Override
     public void setActions() {
         this.projectsButton.addActionListener(e -> {
-            var callback = new Callback() {
-                @Override
-                public void onSuccess(SuccessEvent event) {
-                    log.info("Success Response with transaction id: {}", event.getTransactionId());
-                    var payload = (MainResizeablePanel.ProjectButtonListener.ListenerProjectButtonSuccessPayload) event.getPayload();
-                }
-
-                @Override
-                public void onFail(FailureEvent event) {
-                    log.error("Failure Response with transaction id: {}", event.getTransactionId());
-                }
-            };
-            this.leftSidePanelClient.openDatabasesScreen(callback);
+            this.leftSidePanelClient.openProjectsLeftBarScreen(EmptyCallback.INSTANCE);
         });
     }
 }
 
-class BottomLeftSideInnerPanel extends InnerSideGPanel{
+class BottomLeftSideInnerPanel extends InnerSideGPanel {
+
+    private final AbstractLeftSidePanelClient leftSidePanelClient = AbstractLeftSidePanelClient.INSTANCE;
 
     private final AbstractVerticalGButton dataSourcesButton;
 

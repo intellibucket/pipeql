@@ -39,7 +39,7 @@ public class ProducingMessage {
         private Topic topic = Topic.SYSTEM;
         private Boolean isBackgroundTask = Boolean.FALSE;
         private Boolean isAsync = Boolean.FALSE;
-        private Callback callback = new EmptyCallback();
+        private Callback callback = EmptyCallback.INSTANCE;
         private StartEvent<?> event = new EmptyStartEvent("unknown_process");
 
         private Builder() {
@@ -67,7 +67,7 @@ public class ProducingMessage {
         }
 
         public Builder callback(Callback val) {
-            callback = Objects.requireNonNullElse(val, new EmptyCallback());
+            callback = Objects.requireNonNullElse(val, EmptyCallback.INSTANCE);
             return this;
         }
 
