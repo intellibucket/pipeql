@@ -11,7 +11,7 @@ import java.awt.*;
 public abstract class AbstractResizeablePanel extends AbstractGPanel {
 
     private final InnerResizeablePanel leftPanel;
-    private final InnerResizeablePanel centerPanel;
+    private  InnerResizeablePanel centerPanel;
     private final InnerResizeablePanel rightPanel;
     private final JSplitPane leftCenterSplitPanel;
     private final JSplitPane centerRightSplitPanel;
@@ -39,5 +39,11 @@ public abstract class AbstractResizeablePanel extends AbstractGPanel {
     public void openRightBar(){
         this.rightPanel.open();
         this.centerRightSplitPanel.setDividerLocation(0.8);
+    }
+
+    protected void setCenterPanel(InnerResizeablePanel centerPanel){
+        this.centerPanel = centerPanel;
+        this.leftCenterSplitPanel.setRightComponent(centerPanel);
+        this.refresh();
     }
 }

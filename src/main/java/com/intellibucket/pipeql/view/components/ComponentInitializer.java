@@ -15,5 +15,7 @@ public interface ComponentInitializer extends AbstractComponent {
         componentLoaders.forEach(ComponentInitializer::initialize);
     }
 
+    default void refresh(){}
+
     default void postInitialize(){}
 }

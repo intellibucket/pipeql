@@ -6,7 +6,9 @@ import com.intellibucket.pipeql.eventlink.model.payload.Payload;
 import com.intellibucket.pipeql.eventlink.model.payload.SuccessPayload;
 import com.intellibucket.pipeql.eventlink.rx.abstracts.Consumer;
 import com.intellibucket.pipeql.lib.panel.main.AbstractResizeablePanel;
+import com.intellibucket.pipeql.view.client.main.concretes.CenterPanelClient;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.view.components.main.panel.main.center.CenterInnerMainPanel;
 import com.intellibucket.pipeql.view.components.main.panel.main.center.EmptyInnerMainPanel;
 import com.intellibucket.pipeql.view.components.main.panel.main.left.LeftInnerMainPanel;
 import com.intellibucket.pipeql.view.components.main.panel.main.right.RightInnerMainPanel;
@@ -17,9 +19,10 @@ import java.util.List;
 public class MainResizeablePanel extends AbstractResizeablePanel {
 
     private final ProjectButtonListener projectButtonListener = new ProjectButtonListener();
+    private final CloseAllCenterPanelListener closeAllCenterPanelListener = new CloseAllCenterPanelListener();
 
     public MainResizeablePanel() {
-        super(new LeftInnerMainPanel(), new EmptyInnerMainPanel(), new RightInnerMainPanel());
+        super(new LeftInnerMainPanel(), new CenterInnerMainPanel(), new RightInnerMainPanel());
         this.getLeftPanel().setBackground(Color.BLUE);
         this.getRightPanel().setBackground(Color.RED);
     }
@@ -60,6 +63,21 @@ public class MainResizeablePanel extends AbstractResizeablePanel {
         protected ListenerProjectButtonSuccessPayload fire(Payload message) throws DomainException {
             MainResizeablePanel.this.openLeftBar();
             return new ListenerProjectButtonSuccessPayload();
+        }
+    }
+
+    class CloseAllCenterPanelListener extends Consumer<Payload, CloseAllCenterPanelListener.ListenerCloseAllCenterPanelSuccessPayload> {
+
+        static class ListenerCloseAllCenterPanelSuccessPayload extends SuccessPayload {}
+
+        {
+            DefaultEventLinkBroker.Mediator.registerConsumer(CenterPanelClient.Topics.CLOSE_ALL_SCHEMAS_TOPIC, this);
+        }
+
+        @Override
+        protected ListenerCloseAllCenterPanelSuccessPayload fire(Payload message) throws DomainException {
+            MainResizeablePanel.this.setCenterPanel(new EmptyInnerMainPanel());
+            return new ListenerCloseAllCenterPanelSuccessPayload();
         }
     }
 }
