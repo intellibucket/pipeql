@@ -7,6 +7,11 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class EmptyCallback implements Callback {
+    public static final EmptyCallback INSTANCE = new EmptyCallback();
+
+    private EmptyCallback() {
+    }
+
     @Override
     public void onSuccess(SuccessEvent event) {
         log.info("EmptyCallback.onSuccess");

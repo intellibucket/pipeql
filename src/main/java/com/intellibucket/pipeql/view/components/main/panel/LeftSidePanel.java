@@ -6,12 +6,15 @@ import com.intellibucket.pipeql.eventlink.model.event.concretes.start.StartEvent
 import com.intellibucket.pipeql.eventlink.model.event.concretes.SuccessEvent;
 import com.intellibucket.pipeql.eventlink.model.producer.ProducingMessage;
 import com.intellibucket.pipeql.eventlink.rx.abstracts.Callback;
+import com.intellibucket.pipeql.eventlink.rx.concretes.EmptyCallback;
 import com.intellibucket.pipeql.eventlink.template.abstracts.EventLinkTemplate;
 import com.intellibucket.pipeql.lib.button.vertical.AbstractVerticalGButton;
 import com.intellibucket.pipeql.lib.button.vertical.SimpleVerticalGButton;
 import com.intellibucket.pipeql.lib.file.IconProvider;
 import com.intellibucket.pipeql.lib.panel.side.InnerSideGPanel;
 import com.intellibucket.pipeql.lib.panel.side.SimpleSideGPanel;
+import com.intellibucket.pipeql.view.client.main.abstracts.AbstractLeftSidePanelClient;
+import com.intellibucket.pipeql.view.client.main.concretes.LeftSidePanelClient;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,9 +23,6 @@ import java.util.List;
 
 public class LeftSidePanel extends SimpleSideGPanel {
 
-    public static class Topics{
-        public static final Topic CLICKED_SIDE_PROJECTS_BUTTON = new Topic("clicked.side-projects.button");
-    }
 
     private final InnerSideGPanel topLeftSideInnerPanel;
 
@@ -47,9 +47,10 @@ public class LeftSidePanel extends SimpleSideGPanel {
 }
 
 @Slf4j
-class TopLeftSideInnerPanel extends InnerSideGPanel{
+class TopLeftSideInnerPanel extends InnerSideGPanel {
 
-    private final EventLinkTemplate eventLinkTemplate = EventLinkTemplate.linear();
+
+    private final AbstractLeftSidePanelClient leftSidePanelClient = AbstractLeftSidePanelClient.INSTANCE;
 
     private final AbstractVerticalGButton projectsButton;
     private final AbstractVerticalGButton environmentButton;
@@ -63,7 +64,7 @@ class TopLeftSideInnerPanel extends InnerSideGPanel{
 
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
-        return List.of(this.projectsButton,this.environmentButton,this.schemasButton);
+        return List.of(this.projectsButton, this.environmentButton, this.schemasButton);
     }
 
     @Override
@@ -76,31 +77,14 @@ class TopLeftSideInnerPanel extends InnerSideGPanel{
     @Override
     public void setActions() {
         this.projectsButton.addActionListener(e -> {
-            log.info("Clicked Side panel Projects Button");
-            var callback = new Callback() {
-                @Override
-                public void onSuccess(SuccessEvent event) {
-                    log.info("Success Response with transaction id: {}", event.getTransactionId());
-                    var payload = (MainResizeablePanel.ProjectButtonListener.ListenerProjectButtonSuccessPayload) event.getPayload();
-                }
-
-                @Override
-                public void onFail(FailureEvent event) {
-                    log.error("Failure Response with transaction id: {}", event.getTransactionId());
-                }
-            };
-            var message = ProducingMessage.Builder
-                    .builder()
-                    .topic(LeftSidePanel.Topics.CLICKED_SIDE_PROJECTS_BUTTON)
-                    .callback(callback)
-                    .event(new StartEvent<>("Start"))
-                    .build();
-            this.eventLinkTemplate.publish(message);
+            this.leftSidePanelClient.openProjectsLeftBarScreen(EmptyCallback.INSTANCE);
         });
     }
 }
 
-class BottomLeftSideInnerPanel extends InnerSideGPanel{
+class BottomLeftSideInnerPanel extends InnerSideGPanel {
+
+    private final AbstractLeftSidePanelClient leftSidePanelClient = AbstractLeftSidePanelClient.INSTANCE;
 
     private final AbstractVerticalGButton dataSourcesButton;
 
