@@ -1,6 +1,8 @@
 package com.intellibucket.pipeql.eventlink.rx.abstracts;
 
+import com.intellibucket.pipeql.eventlink.broker.concretes.DefaultEventLinkBroker;
 import com.intellibucket.pipeql.eventlink.exception.DomainException;
+import com.intellibucket.pipeql.eventlink.model.common.Topic;
 import com.intellibucket.pipeql.eventlink.model.consumer.ConsumingMessage;
 import com.intellibucket.pipeql.eventlink.model.event.concretes.FailureEvent;
 import com.intellibucket.pipeql.eventlink.model.event.concretes.InfoEvent;
@@ -9,8 +11,14 @@ import com.intellibucket.pipeql.eventlink.model.event.concretes.WarningEvent;
 import com.intellibucket.pipeql.eventlink.model.payload.*;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.List;
+
 @Slf4j
 public abstract class Consumer<T extends Payload,S extends SuccessPayload>  {
+
+    {
+        DefaultEventLinkBroker.Mediator.registerConsumer(this.mustBeRegistryTopics(), this);
+    }
 
     @SuppressWarnings("unchecked")
     public void consume(ConsumingMessage message){
@@ -57,4 +65,6 @@ public abstract class Consumer<T extends Payload,S extends SuccessPayload>  {
         log.info("Callback success event {}",event);
         message.callback().onSuccess(event);
     }
+
+    protected abstract List<Topic> mustBeRegistryTopics();
 }

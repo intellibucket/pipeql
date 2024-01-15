@@ -12,6 +12,8 @@ import com.intellibucket.pipeql.lib.button.vertical.SimpleVerticalGButton;
 import com.intellibucket.pipeql.lib.file.IconProvider;
 import com.intellibucket.pipeql.lib.panel.side.InnerSideGPanel;
 import com.intellibucket.pipeql.lib.panel.side.SimpleSideGPanel;
+import com.intellibucket.pipeql.view.client.main.abstracts.AbstractLeftSidePanelClient;
+import com.intellibucket.pipeql.view.client.main.concretes.LeftSidePanelClient;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,9 +22,6 @@ import java.util.List;
 
 public class LeftSidePanel extends SimpleSideGPanel {
 
-    public static class Topics{
-        public static final Topic CLICKED_SIDE_PROJECTS_BUTTON = new Topic("clicked.side-projects.button");
-    }
 
     private final InnerSideGPanel topLeftSideInnerPanel;
 
@@ -49,7 +48,8 @@ public class LeftSidePanel extends SimpleSideGPanel {
 @Slf4j
 class TopLeftSideInnerPanel extends InnerSideGPanel{
 
-    private final EventLinkTemplate eventLinkTemplate = EventLinkTemplate.linear();
+
+    private final AbstractLeftSidePanelClient leftSidePanelClient = new LeftSidePanelClient();
 
     private final AbstractVerticalGButton projectsButton;
     private final AbstractVerticalGButton environmentButton;
@@ -76,7 +76,6 @@ class TopLeftSideInnerPanel extends InnerSideGPanel{
     @Override
     public void setActions() {
         this.projectsButton.addActionListener(e -> {
-            log.info("Clicked Side panel Projects Button");
             var callback = new Callback() {
                 @Override
                 public void onSuccess(SuccessEvent event) {
@@ -89,13 +88,7 @@ class TopLeftSideInnerPanel extends InnerSideGPanel{
                     log.error("Failure Response with transaction id: {}", event.getTransactionId());
                 }
             };
-            var message = ProducingMessage.Builder
-                    .builder()
-                    .topic(LeftSidePanel.Topics.CLICKED_SIDE_PROJECTS_BUTTON)
-                    .callback(callback)
-                    .event(new StartEvent<>("Start"))
-                    .build();
-            this.eventLinkTemplate.publish(message);
+            this.leftSidePanelClient.openDatabasesScreen(callback);
         });
     }
 }

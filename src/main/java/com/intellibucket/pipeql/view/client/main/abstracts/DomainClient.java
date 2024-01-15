@@ -4,7 +4,7 @@ import com.intellibucket.pipeql.eventlink.model.producer.ProducingMessage;
 import com.intellibucket.pipeql.eventlink.template.abstracts.EventLinkTemplate;
 
 public abstract class DomainClient {
-    protected final EventLinkTemplate eventLinkTemplate = EventLinkTemplate.linear();
+    protected final EventLinkTemplate eventLinkTemplate = EventLinkTemplate.INSTANCE;
 
     public void publish(ProducingMessage request){
         this.eventLinkTemplate.publish(request);

@@ -11,6 +11,7 @@ import com.intellibucket.pipeql.eventlink.rx.abstracts.Consumer;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -60,6 +61,10 @@ public class DefaultEventLinkBroker implements AbstractEventLinkBroker {
 
         public static void registerConsumer(Topic topic, Consumer<?,?> consumer) {
             BROKER.registerConsumer(topic, new ConsumerAggregate(GroupID.DEFAULT, consumer));
+        }
+
+        public static void registerConsumer(List<Topic> topics, Consumer<?,?> consumer) {
+            topics.forEach(topic -> BROKER.registerConsumer(topic, new ConsumerAggregate(GroupID.DEFAULT, consumer)));
         }
 
         public static void registerPipeline(Topic topic, Pipeline pipeline) {

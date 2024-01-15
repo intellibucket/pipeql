@@ -6,9 +6,7 @@ import com.intellibucket.pipeql.eventlink.model.producer.ProducingMessage;
 import com.intellibucket.pipeql.eventlink.template.concretes.LinearEventLinkTemplate;
 
 public interface EventLinkTemplate {
+    public static final EventLinkTemplate INSTANCE = new LinearEventLinkTemplate();
     void publish(ProducingMessage message);
 
-    static LinearEventLinkTemplate linear() {
-        return LinearEventLinkTemplate.INSTANCE;
-    }
 }
