@@ -38,7 +38,6 @@ public class HeaderOfLeftInnerMainPanel extends LinePanel {
 class LeftPanel extends LinePanel{
 
 
-    private final FileTreePanel fileTreePanel = new FileTreePanel();
     private JLabel label = new JLabel(" Projects");
 
     {
@@ -48,12 +47,12 @@ class LeftPanel extends LinePanel{
 
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
-        return List.of(this.fileTreePanel);
+        return List.of();
     }
 
     @Override
     public void addComponents() {
-        this.add(this.label,0);this.add(this.fileTreePanel);
+        this.add(this.label,0);
     }
 }
 
