@@ -28,7 +28,7 @@ public class MainScreen extends MaximizedGFrame  {
         this.bottomPanel = new BottomInfoPanel();
         this.leftSidePanel = new LeftSidePanel();
         this.rightSidePanel = new RightSidePanel();
-        this.centerPanel = new ResizeablePanel();
+        this.centerPanel = new MainResizeablePanel();
     }
 
     @Override

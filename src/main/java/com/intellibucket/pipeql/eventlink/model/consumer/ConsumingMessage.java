@@ -1,7 +1,6 @@
 package com.intellibucket.pipeql.eventlink.model.consumer;
 
-import com.intellibucket.pipeql.eventlink.model.event.concretes.StartEvent;
-import com.intellibucket.pipeql.eventlink.model.payload.Payload;
+import com.intellibucket.pipeql.eventlink.model.event.concretes.start.StartEvent;
 import com.intellibucket.pipeql.eventlink.rx.abstracts.Callback;
 
 public final class ConsumingMessage  {

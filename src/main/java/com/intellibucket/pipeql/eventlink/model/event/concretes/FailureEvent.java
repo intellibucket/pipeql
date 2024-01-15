@@ -2,6 +2,7 @@ package com.intellibucket.pipeql.eventlink.model.event.concretes;
 
 import com.intellibucket.pipeql.eventlink.model.event.EventType;
 import com.intellibucket.pipeql.eventlink.model.event.abstracts.AbstractEvent;
+import com.intellibucket.pipeql.eventlink.model.event.concretes.start.StartEvent;
 import com.intellibucket.pipeql.eventlink.model.payload.FailPayload;
 import lombok.Getter;
 import lombok.ToString;
@@ -28,7 +29,7 @@ public class FailureEvent extends AbstractEvent<FailPayload> {
         this(transactionId,processName, List.of(), new FailPayload(),exception);
     }
 
-    public FailureEvent(StartEvent<?> event,Exception exception) {
+    public FailureEvent(StartEvent<?> event, Exception exception) {
         this(event.getTransactionId(), event.getProcessName(), List.of(), new FailPayload(),exception);
     }
 

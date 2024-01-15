@@ -39,7 +39,7 @@ class LabelBox extends AbstractGPanel {
     private final AbstractGPanel secondLine = new LabelPairPanel(new BigInfoGLabel("Go to File"),new BlueGLabel("Ctrl+Shift+N"));
     private final AbstractGPanel thirdLine = new LabelPairPanel(new BigInfoGLabel("Recent Files"),new BlueGLabel("Ctrl+E"));
     private final AbstractGPanel fourthLine = new LabelPairPanel(new BigInfoGLabel("Navigation Bar"),new BlueGLabel("Alt+Home"));
-    private final AbstractGPanel fifthLine = new LabelPairPanel(new BigInfoGLabel("Drop files here to open thme"),new BlueGLabel(""));
+    private final AbstractGPanel fifthLine = new LabelPairPanel(new BigInfoGLabel("Drop files here to open them"),new BlueGLabel(""));
 
     {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));

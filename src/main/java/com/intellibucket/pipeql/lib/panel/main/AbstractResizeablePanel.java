@@ -2,7 +2,6 @@ package com.intellibucket.pipeql.lib.panel.main;
 
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
 import com.intellibucket.pipeql.view.components.main.panel.InnerResizeablePanel;
-import com.intellibucket.pipeql.view.components.main.panel.ResizeablePanel;
 import lombok.Getter;
 
 import javax.swing.*;

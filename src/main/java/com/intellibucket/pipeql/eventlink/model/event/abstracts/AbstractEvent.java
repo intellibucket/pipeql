@@ -102,6 +102,6 @@ public abstract class AbstractEvent<T extends Payload> {
                 ", eventType=" + eventType +
                 ", messages=" + messages +
                 ", payload=" + payload +
-                "\n}";
+                "}";
     }
 }

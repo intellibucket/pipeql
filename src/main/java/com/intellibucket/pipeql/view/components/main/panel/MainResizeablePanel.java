@@ -7,7 +7,6 @@ import com.intellibucket.pipeql.eventlink.model.payload.SuccessPayload;
 import com.intellibucket.pipeql.eventlink.rx.abstracts.Consumer;
 import com.intellibucket.pipeql.lib.panel.main.AbstractResizeablePanel;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
-import com.intellibucket.pipeql.view.components.main.panel.main.center.CenterInnerMainPanel;
 import com.intellibucket.pipeql.view.components.main.panel.main.center.EmptyInnerMainPanel;
 import com.intellibucket.pipeql.view.components.main.panel.main.left.LeftInnerMainPanel;
 import com.intellibucket.pipeql.view.components.main.panel.main.right.RightInnerMainPanel;
@@ -15,11 +14,11 @@ import com.intellibucket.pipeql.view.components.main.panel.main.right.RightInner
 import java.awt.*;
 import java.util.List;
 
-public class ResizeablePanel extends AbstractResizeablePanel {
+public class MainResizeablePanel extends AbstractResizeablePanel {
 
     private final ProjectButtonListener projectButtonListener = new ProjectButtonListener();
 
-    public ResizeablePanel() {
+    public MainResizeablePanel() {
         super(new LeftInnerMainPanel(), new EmptyInnerMainPanel(), new RightInnerMainPanel());
         this.getLeftPanel().setBackground(Color.BLUE);
         this.getRightPanel().setBackground(Color.RED);
@@ -59,7 +58,7 @@ public class ResizeablePanel extends AbstractResizeablePanel {
 
         @Override
         protected ListenerProjectButtonSuccessPayload fire(Payload message) throws DomainException {
-            ResizeablePanel.this.openLeftBar();
+            MainResizeablePanel.this.openLeftBar();
             return new ListenerProjectButtonSuccessPayload();
         }
     }

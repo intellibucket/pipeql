@@ -1,8 +1,8 @@
 package com.intellibucket.pipeql.eventlink.model.producer;
 
-import com.intellibucket.pipeql.eventlink.model.common.GroupID;
 import com.intellibucket.pipeql.eventlink.model.common.Topic;
-import com.intellibucket.pipeql.eventlink.model.event.concretes.StartEvent;
+import com.intellibucket.pipeql.eventlink.model.event.concretes.start.EmptyStartEvent;
+import com.intellibucket.pipeql.eventlink.model.event.concretes.start.StartEvent;
 import com.intellibucket.pipeql.eventlink.rx.abstracts.Callback;
 import com.intellibucket.pipeql.eventlink.rx.concretes.EmptyCallback;
 import lombok.Getter;
@@ -22,7 +22,7 @@ public class ProducingMessage {
         isBackgroundTask = builder.isBackgroundTask;
         isAsync = builder.isAsync;
         callback = builder.callback;
-        event = builder.event;
+        event = Objects.requireNonNullElse(builder.event, new EmptyStartEvent("unknown_process"));
     }
 
     @Override
@@ -32,7 +32,7 @@ public class ProducingMessage {
                 ", isBackgroundTask=" + isBackgroundTask +
                 ", isAsync=" + isAsync +
                 ", event=" + event +
-                "\n}";
+                "}";
     }
 
     public static final class Builder {
@@ -40,7 +40,7 @@ public class ProducingMessage {
         private Boolean isBackgroundTask = Boolean.FALSE;
         private Boolean isAsync = Boolean.FALSE;
         private Callback callback = new EmptyCallback();
-        private StartEvent<?> event;
+        private StartEvent<?> event = new EmptyStartEvent("unknown_process");
 
         private Builder() {
         }

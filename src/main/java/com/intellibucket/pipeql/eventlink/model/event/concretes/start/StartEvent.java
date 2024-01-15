@@ -1,4 +1,4 @@
-package com.intellibucket.pipeql.eventlink.model.event.concretes;
+package com.intellibucket.pipeql.eventlink.model.event.concretes.start;
 
 import com.intellibucket.pipeql.eventlink.model.event.EventType;
 import com.intellibucket.pipeql.eventlink.model.event.abstracts.AbstractEvent;
