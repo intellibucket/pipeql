@@ -38,7 +38,7 @@ public abstract class AbstractResizeablePanel extends AbstractGPanel {
 
     public void openRightBar(){
         this.rightPanel.open();
-        this.centerRightSplitPanel.setDividerLocation(0.8);
+        this.centerRightSplitPanel.setDividerLocation(0.85);
     }
 
     protected void setCenterPanel(InnerResizeablePanel centerPanel){

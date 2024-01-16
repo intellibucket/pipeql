@@ -1,10 +1,13 @@
 package com.intellibucket.pipeql.view.components.main.panel;
 
+import com.intellibucket.pipeql.eventlink.rx.concretes.EmptyCallback;
 import com.intellibucket.pipeql.lib.button.vertical.AbstractVerticalGButton;
 import com.intellibucket.pipeql.lib.button.vertical.SimpleVerticalGButton;
 import com.intellibucket.pipeql.lib.file.IconProvider;
 import com.intellibucket.pipeql.lib.panel.side.InnerSideGPanel;
 import com.intellibucket.pipeql.lib.panel.side.SimpleSideGPanel;
+import com.intellibucket.pipeql.view.client.main.abstracts.AbstractRightSidePanelClient;
+import com.intellibucket.pipeql.view.client.main.concretes.RightSidePanelClient;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 
 import java.awt.*;
@@ -49,6 +52,7 @@ class BottomRightSideInnerPanel extends InnerSideGPanel {
 
 class TopRightSideInnerPanel extends InnerSideGPanel {
 
+    private final AbstractRightSidePanelClient rightSidePanelClient = new RightSidePanelClient();
     private final AbstractVerticalGButton  notificationButton;
 
     TopRightSideInnerPanel() {
@@ -66,5 +70,13 @@ class TopRightSideInnerPanel extends InnerSideGPanel {
     @Override
     public void addComponents() {
         this.add(this.notificationButton);
+    }
+
+
+    @Override
+    public void setActions() {
+        this.notificationButton.addActionListener(e -> {
+            this.rightSidePanelClient.openNotificationSideBar(EmptyCallback.INSTANCE);
+        });
     }
 }
