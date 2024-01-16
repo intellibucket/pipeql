@@ -13,6 +13,8 @@ import org.apache.log4j.BasicConfigurator;
 public class ApplicationKernel extends AbstractApplicationKernel {
     private static final AbstractApplicationProfileInitializer PROFILE_INITIALIZER = new ApplicationProfileInitializer();
 
+    public static MainScreen CURRENT_MAIN_SCREEN = null;
+
     @Override
     protected void initSettings() {
         log.info("Application is initializing settings...");
@@ -28,6 +30,7 @@ public class ApplicationKernel extends AbstractApplicationKernel {
 
     @Override
     protected void run() {
-        new MainScreen().initialize();
+        CURRENT_MAIN_SCREEN = new MainScreen();
+        CURRENT_MAIN_SCREEN.initialize();
     }
 }

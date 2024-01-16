@@ -35,12 +35,8 @@ public class LeftSidePanelClient implements AbstractLeftSidePanelClient {
 
     @Override
     public void openDatabasesScreen(Callback callback) {
-        JFrame frame = new JFrame("Databases");
         var databasesPanel = new DatabasesScreen();
-        frame.add(databasesPanel);
         databasesPanel.initialize();
-        frame.pack();
-        frame.setVisible(true);
     }
 
     @Override
