@@ -7,9 +7,7 @@ import java.awt.*;
 import java.util.List;
 
 public class RightInnerMainPanel extends InnerResizeablePanel {
-    {
-        this.setBackground(new Color(30,36,40));
-    }
+
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
         return List.of();
