@@ -38,7 +38,7 @@ public class HeaderOfLeftInnerMainPanel extends LinePanel {
 class LeftPanel extends LinePanel{
 
 
-    private JLabel label = new JLabel(" Projects");
+    private JLabel label = new JLabel(" Project Structure");
 
     {
         this.setLayout(new FlowLayout(FlowLayout.LEFT));
