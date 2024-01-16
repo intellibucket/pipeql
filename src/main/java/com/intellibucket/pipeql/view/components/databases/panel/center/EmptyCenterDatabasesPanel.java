@@ -35,8 +35,8 @@ public class EmptyCenterDatabasesPanel extends ChangeablePanel {
 
 class LabelPanel extends AbstractGSimplePanel {
     private final AbstractGPanel firstLine = new LabelPairPanel(new BigInfoGLabel("Search Everywhere"),new BlueGLabel("Ctrl+Shift+F"));
-    private final AbstractGPanel secondLine = new LabelPairPanel(new BigInfoGLabel("Ok for saving changes and closing"),new BlueGLabel("Ctrl+Shift+O"));
-    private final AbstractGPanel fourthLine = new LabelPairPanel(new BigInfoGLabel("Close for closing"),new BlueGLabel("Ctrl+Shift+C"));
+    private final AbstractGPanel secondLine = new LabelPairPanel(new BigInfoGLabel("OK for saving changes and closing"),new BlueGLabel("Ctrl+Shift+O"));
+    private final AbstractGPanel fourthLine = new LabelPairPanel(new BigInfoGLabel("Cancel for closing"),new BlueGLabel("Ctrl+Shift+C"));
     private final AbstractGPanel fifthLine = new LabelPairPanel(new BigInfoGLabel("Apply for saving changes"),new BlueGLabel("Ctrl+Shift+S"));
 
     {
