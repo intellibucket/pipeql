@@ -13,12 +13,12 @@ import java.util.List;
 
 public class DatabasesScreen extends MidGFrame {
 
-
     private final SimpleSideGPanel sidePanel;
     private final ChangeablePanel centerPanel;
     private final BottomDatabasePanel bottomPanel;
 
     public DatabasesScreen() {
+        super("Databases and Drivers");
         this.sidePanel = new LeftSideDatabasesPanel();
         this.centerPanel = new EmptyCenterDatabasesPanel();
         this.bottomPanel = new BottomDatabasePanel();

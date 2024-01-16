@@ -1,7 +1,9 @@
 package com.intellibucket.pipeql.view.components.databases.panel;
 
 import com.intellibucket.pipeql.lib.button.horizontal.AbstractGButton;
+import com.intellibucket.pipeql.lib.button.horizontal.SimpleGButton;
 import com.intellibucket.pipeql.lib.button.horizontal.SimpleIconGButton;
+import com.intellibucket.pipeql.lib.button.horizontal.SimpleOkGButton;
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 
@@ -59,13 +61,27 @@ class LeftBottomDatabasePanel extends AbstractGSimplePanel {
 
 class RightBottomDatabasePanel extends AbstractGSimplePanel {
 
+    private AbstractGButton okButton = new SimpleOkGButton("OK");
+    private AbstractGButton cancelButton = new SimpleGButton("Cancel");
+    private AbstractGButton applyButton = new SimpleGButton("Apply");
+
+    {
+        this.setLayout(new FlowLayout(FlowLayout.RIGHT));
+    }
+
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
-        return List.of();
+        return List.of(
+                this.okButton,
+                this.cancelButton,
+                this.applyButton
+        );
     }
 
     @Override
     public void addComponents() {
-
+        this.add(this.okButton);
+        this.add(this.cancelButton);
+        this.add(this.applyButton);
     }
 }

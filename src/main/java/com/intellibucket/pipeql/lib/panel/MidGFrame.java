@@ -13,4 +13,12 @@ public abstract class MidGFrame extends AbstractGFrame {
         this.setLocationRelativeTo(ApplicationKernel.CURRENT_MAIN_SCREEN);
     }
 
+
+    public MidGFrame() {
+        super();
+    }
+
+    public MidGFrame(String title) {
+        super(title);
+    }
 }
