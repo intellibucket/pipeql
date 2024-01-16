@@ -7,6 +7,7 @@ import com.intellibucket.pipeql.view.components.databases.panel.tabbedpane.panel
 import com.intellibucket.pipeql.view.components.databases.panel.tabbedpane.panels.DataSourcesSettingsTabbedPanePanel;
 import com.intellibucket.pipeql.view.components.databases.panel.tabbedpane.panels.DriversSettingsTabbedPanePanel;
 
+import java.awt.*;
 import java.util.List;
 
 public class SettingsLeftTabbedPane extends AbstractMaximizedGTabbedPane {
@@ -15,6 +16,9 @@ public class SettingsLeftTabbedPane extends AbstractMaximizedGTabbedPane {
 
     private final AbstractGPanel ddlMappingsPanel = new DDLMappingsSettingsTabbedPanePanel();
 
+    {
+        this.setMinimumSize(new Dimension(200,this.getPreferredSize().height));
+    }
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
         return List.of(
