@@ -18,6 +18,7 @@ public class SimpleValueLabelPanel extends AbstractGPanel {
 
     public SimpleValueLabelPanel(String label, String value) {
         this.label = new SimpleGLabel(label);
+        this.label.setFont(new Font("Helvetica", Font.PLAIN, 13));
         this.value = new SimpleGLabel(value);
     }
 

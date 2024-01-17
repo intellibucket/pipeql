@@ -52,7 +52,7 @@ class InfoBoxPanel extends AbstractGPanel{
     }
 
     public InfoBoxPanel() {
-         this.projectNameLabel = new SimpleValueLabelPanel("Project Name", "UNKNOWN");
+         this.projectNameLabel = new SimpleValueLabelPanel("Project Name", "Test Project");
          this.createdDateLabel = new SimpleValueLabelPanel("Created Date", LocalDateTime.now().toString());
     }
 
@@ -72,6 +72,7 @@ class InfoBoxPanel extends AbstractGPanel{
         this.add(Box.createRigidArea(new Dimension(0, 5)));
         this.add(this.createdDateLabel);
         this.createdDateLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        this.add(Box.createRigidArea(new Dimension(0, 10)));
     }
 }
 

@@ -3,6 +3,7 @@ package com.intellibucket.pipeql.lib.label;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.List;
 
 public class SimpleGLabel extends AbstractGLabel{
@@ -23,6 +24,11 @@ public class SimpleGLabel extends AbstractGLabel{
 
     public SimpleGLabel(String text, int horizontalAlignment) {
         super(text, horizontalAlignment);
+    }
+
+    public SimpleGLabel(String text, Font font) {
+        this(text);
+        this.setFont(font);
     }
 
     public SimpleGLabel(String text) {
