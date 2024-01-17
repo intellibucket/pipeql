@@ -13,6 +13,8 @@ public class StructurePanel extends AbstractGSimplePanel {
     private AbstractGSimplePanel rightSideStructurePanel = new RightSideStructurePanel();
     private AbstractGSimplePanel bottomStructurePanel = new BottomStructurePanel();
 
+    private AbstractGSimplePanel centerStructurePanel = new CenterStructurePanel();
+
     {
         this.setLayout(new BorderLayout());
     }
@@ -24,7 +26,8 @@ public class StructurePanel extends AbstractGSimplePanel {
                 this.headerStructurePanel,
                 this.leftSideStructurePanel,
                 this.rightSideStructurePanel,
-                this.bottomStructurePanel
+                this.bottomStructurePanel,
+                this.centerStructurePanel
         );
     }
 
@@ -34,5 +37,6 @@ public class StructurePanel extends AbstractGSimplePanel {
         this.add(this.leftSideStructurePanel, BorderLayout.WEST);
         this.add(this.rightSideStructurePanel, BorderLayout.EAST);
         this.add(this.bottomStructurePanel, BorderLayout.SOUTH);
+        this.add(this.centerStructurePanel, BorderLayout.CENTER);
     }
 }

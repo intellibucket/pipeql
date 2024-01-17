@@ -11,20 +11,19 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-public class RightSideStructurePanel extends AbstractGSimplePanel {
+public class CenterStructurePanel extends AbstractGSimplePanel {
 
     private final AbstractGSimplePanel mainPanel;
 
     {
         this.setLayout(new BorderLayout());
     }
-
-    public RightSideStructurePanel() {
-        this.mainPanel = new EmptyRightSideStructurePanel();
+    public CenterStructurePanel() {
+        this.mainPanel = new EmptyCenterStructurePanel();
     }
 
-    public RightSideStructurePanel(AbstractGSimplePanel panel) {
-        this.mainPanel = panel;
+    public CenterStructurePanel(AbstractGSimplePanel mainPanel) {
+        this.mainPanel = mainPanel;
     }
 
     @Override
@@ -38,10 +37,10 @@ public class RightSideStructurePanel extends AbstractGSimplePanel {
     public void addComponents() {
         this.add(this.mainPanel, BorderLayout.CENTER);
     }
-
 }
 
-class EmptyRightSideStructurePanel extends AbstractGSimplePanel {
+
+class EmptyCenterStructurePanel extends AbstractGSimplePanel {
 
     private final AbstractGPanel labelBox = new LabelBox();
 
@@ -62,7 +61,9 @@ class EmptyRightSideStructurePanel extends AbstractGSimplePanel {
     }
 
     static class LabelBox extends AbstractGPanel {
-        private final AbstractGPanel secondLine = new LabelPairPanel(new BigInfoGLabel("Double click colum for open panel"),new BlueGLabel(""));
+
+        private final AbstractGPanel firstLine = new LabelPairPanel(new BigInfoGLabel("Search Table"),new BlueGLabel("Ctrl+Shift+T"));
+        private final AbstractGPanel secondLine = new LabelPairPanel(new BigInfoGLabel("Chose and open table"),new BlueGLabel(""));
 
         {
             this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -70,16 +71,18 @@ class EmptyRightSideStructurePanel extends AbstractGSimplePanel {
 
         @Override
         public List<ComponentInitializer> getComponentInitializers() {
-            return List.of(this.secondLine);
+            return List.of(this.firstLine,this.secondLine);
         }
 
         @Override
         public void addComponents() {
+            this.add(this.firstLine);
             this.add(this.secondLine);
         }
     }
 }
-class ColumnSettingsPanel extends AbstractGSimplePanel {
+
+class TableCenterStructurePanel extends AbstractGSimplePanel {
 
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
@@ -90,6 +93,4 @@ class ColumnSettingsPanel extends AbstractGSimplePanel {
     public void addComponents() {
 
     }
-
 }
-
