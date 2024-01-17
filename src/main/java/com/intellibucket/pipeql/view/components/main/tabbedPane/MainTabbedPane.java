@@ -4,7 +4,7 @@ import com.intellibucket.pipeql.lib.tabbed.AbstractMaximizedGTabbedPane;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.main.tabbedPane.panels.DrawSimplePanel;
 import com.intellibucket.pipeql.view.components.main.tabbedPane.panels.EnvironmentPanel;
-import com.intellibucket.pipeql.view.components.main.tabbedPane.panels.StructurePanel;
+import com.intellibucket.pipeql.view.components.main.tabbedPane.panels.structure.StructurePanel;
 
 import java.util.List;
 
@@ -25,5 +25,10 @@ public class MainTabbedPane extends AbstractMaximizedGTabbedPane {
         this.add("Draw", drawSimplePanel);
         this.add("Structure", structurePanel);
         this.add("Environment", environmentPanel);
+    }
+
+    @Override
+    public void postInitialize() {
+        this.setSelectedIndex(1);
     }
 }

@@ -1,5 +1,6 @@
 package com.intellibucket.pipeql.view.components.main.panel.main.right;
 
+import com.intellibucket.pipeql.lib.panel.ChangeablePanel;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.main.panel.InnerResizeablePanel;
 
@@ -8,13 +9,22 @@ import java.util.List;
 
 public class RightInnerMainPanel extends InnerResizeablePanel {
 
+    private final ChangeablePanel panel;
+
+    public RightInnerMainPanel() {
+        this.panel = new EmptyChangeableSideBarPanel();
+    }
+
+
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
-        return List.of();
+        return List.of(
+                panel
+        );
     }
 
     @Override
     public void addComponents() {
-
+        add(panel, BorderLayout.CENTER);
     }
 }
