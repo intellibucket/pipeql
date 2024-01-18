@@ -3,7 +3,11 @@ package com.intellibucket.pipeql.view.components.intro.panel;
 import com.intellibucket.pipeql.lib.button.horizontal.AbstractGButton;
 import com.intellibucket.pipeql.lib.button.horizontal.BorderlessGButton;
 import com.intellibucket.pipeql.lib.button.horizontal.SimpleGButton;
+import com.intellibucket.pipeql.lib.label.AbstractGLabel;
+import com.intellibucket.pipeql.lib.label.SimpleGLabel;
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
+import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
+import com.intellibucket.pipeql.lib.panel.SimplePanel;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 
 import javax.swing.*;
@@ -17,6 +21,7 @@ public class LeftSideIntroductionPanel extends AbstractGPanel {
 
     {
         this.setLayout(new BorderLayout());
+        this.setBackground(new Color(59,63,65));
     }
 
 
@@ -46,14 +51,46 @@ public class LeftSideIntroductionPanel extends AbstractGPanel {
 
 class ApplicationLogoHeaderPanel extends AbstractGPanel {
 
+    private final AbstractGPanel panel = new NameVersionPanel();
+
+    {
+        this.setBackground(new Color(59,63,65));
+        this.setLayout(new BorderLayout());
+    }
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
-        return List.of();
+        return List.of(
+                this.panel
+        );
     }
 
     @Override
     public void addComponents() {
+        this.add(this.panel, BorderLayout.EAST);
+    }
 
+    class NameVersionPanel extends AbstractGSimplePanel{
+        private AbstractGLabel nameApp = new SimpleGLabel("PipeQL");
+        private AbstractGLabel versionApp = new SimpleGLabel("2024.1.1");
+
+        {
+            this.nameApp.setFont(new Font("Helvetica", Font.BOLD, 23));
+            this.setBackground(new Color(59,63,65));
+            this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+        }
+        @Override
+        public List<ComponentInitializer> getComponentInitializers() {
+            return List.of(
+                    this.nameApp,
+                    this.versionApp
+            );
+        }
+
+        @Override
+        public void addComponents() {
+            this.add(this.nameApp);
+            this.add(this.versionApp);
+        }
     }
 }
 
@@ -63,8 +100,9 @@ class ButtonsListPanel extends AbstractGPanel {
     private final AbstractGButton learnAbout = new BorderlessGButton("Learn About");
 
     {
-        this.setBackground(Color.BLUE);
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+        this.setOpaque(true);
+        this.setBackground(new Color(59,63,65));
     }
 
     @Override
@@ -84,6 +122,9 @@ class ButtonsListPanel extends AbstractGPanel {
 
 class BottomPanel extends AbstractGPanel {
 
+    {
+        this.setBackground(new Color(59,63,65));
+    }
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
         return List.of();
