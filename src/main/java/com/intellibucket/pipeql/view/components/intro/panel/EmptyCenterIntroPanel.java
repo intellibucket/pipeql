@@ -1,11 +1,13 @@
 package com.intellibucket.pipeql.view.components.intro.panel;
 
+import com.intellibucket.pipeql.eventlink.rx.concretes.EmptyCallback;
 import com.intellibucket.pipeql.lib.button.horizontal.AbstractGButton;
 import com.intellibucket.pipeql.lib.button.horizontal.BigIconGButton;
 import com.intellibucket.pipeql.lib.button.horizontal.SimpleIconGButton;
 import com.intellibucket.pipeql.lib.label.BigInfoGLabel;
 import com.intellibucket.pipeql.lib.label.BlueGLabel;
 import com.intellibucket.pipeql.lib.panel.*;
+import com.intellibucket.pipeql.view.client.main.concretes.IntroductionPanelClient;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 
 import javax.swing.*;
@@ -14,6 +16,7 @@ import java.util.List;
 
 public class EmptyCenterIntroPanel extends ChangeablePanel {
     private final AbstractGSimplePanel mainPanel = new LabelPanel();
+
 
     {
         this.setLayout(new GridBagLayout());
@@ -71,6 +74,7 @@ class LabelPanel extends AbstractGSimplePanel {
         private final AbstractGButton newProjectButton = new BigIconGButton("addFolder");
         private final AbstractGButton openProjectButton = new BigIconGButton("menu-open");
         private final AbstractGButton gitButton = new BigIconGButton("vcs@20x20");
+        private final IntroductionPanelClient introductionPanelClient = new IntroductionPanelClient();
 
         {
             this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
@@ -92,6 +96,15 @@ class LabelPanel extends AbstractGSimplePanel {
             this.add(Box.createHorizontalStrut(20));
             this.add(this.gitButton);
         }
+        @Override
+        public void setActions() {
+
+            this.newProjectButton.addActionListener(e -> {
+                this.introductionPanelClient.newProject(EmptyCallback.INSTANCE);
+            });
+        }
     }
+
+
 }
 
