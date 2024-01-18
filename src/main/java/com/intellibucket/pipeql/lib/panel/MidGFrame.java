@@ -10,8 +10,6 @@ public abstract class MidGFrame extends AbstractGFrame {
     {
         this.setMinimumSize(new Dimension(1200, 800));
         this.setLayout(new BorderLayout());
-        this.setLocationRelativeTo(ApplicationKernel.CURRENT_MAIN_SCREEN);
-        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE );
     }
 
 

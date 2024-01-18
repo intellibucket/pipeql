@@ -5,6 +5,8 @@ import com.intellibucket.pipeql.application.profile.abstracts.AbstractApplicatio
 import com.intellibucket.pipeql.application.profile.concretes.ApplicationProfileInitializer;
 import com.intellibucket.pipeql.eventlink.broker.concretes.DefaultEventLinkBroker;
 import com.intellibucket.pipeql.lib.file.IconContainer;
+import com.intellibucket.pipeql.lib.frame.abstracts.AbstractGFrame;
+import com.intellibucket.pipeql.view.components.intro.screens.IntroductionScreen;
 import com.intellibucket.pipeql.view.components.main.screens.MainScreen;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.log4j.BasicConfigurator;
@@ -13,7 +15,7 @@ import org.apache.log4j.BasicConfigurator;
 public class ApplicationKernel extends AbstractApplicationKernel {
     private static final AbstractApplicationProfileInitializer PROFILE_INITIALIZER = new ApplicationProfileInitializer();
 
-    public static MainScreen CURRENT_MAIN_SCREEN = null;
+    public static AbstractGFrame CURRENT_MAIN_SCREEN = null;
 
     @Override
     protected void initSettings() {
@@ -30,7 +32,7 @@ public class ApplicationKernel extends AbstractApplicationKernel {
 
     @Override
     protected void run() {
-        CURRENT_MAIN_SCREEN = new MainScreen();
+        CURRENT_MAIN_SCREEN = new IntroductionScreen();
         CURRENT_MAIN_SCREEN.initialize();
     }
 }

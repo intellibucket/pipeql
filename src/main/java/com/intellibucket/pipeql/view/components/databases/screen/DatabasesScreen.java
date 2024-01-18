@@ -1,5 +1,6 @@
 package com.intellibucket.pipeql.view.components.databases.screen;
 
+import com.intellibucket.pipeql.application.kernel.concretes.ApplicationKernel;
 import com.intellibucket.pipeql.lib.panel.ChangeablePanel;
 import com.intellibucket.pipeql.lib.panel.MidGFrame;
 import com.intellibucket.pipeql.lib.panel.side.SimpleSideGPanel;
@@ -17,6 +18,10 @@ public class DatabasesScreen extends MidGFrame {
     private final ChangeablePanel centerPanel;
     private final BottomDatabasePanel bottomPanel;
 
+    {
+        this.setLocationRelativeTo(ApplicationKernel.CURRENT_MAIN_SCREEN);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE );
+    }
 
     public DatabasesScreen() {
         super("Databases and Drivers");
