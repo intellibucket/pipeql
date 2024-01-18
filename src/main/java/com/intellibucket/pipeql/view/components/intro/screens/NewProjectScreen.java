@@ -12,9 +12,12 @@ import java.util.List;
 public class NewProjectScreen extends MidGFrame {
     private final LeftSideNewProjectPanel leftSideIntroductionPanel = new LeftSideNewProjectPanel();
     private final NewProjectCenterPanel newProjectCenterPanel = new NewProjectCenterPanel();
+
     {
+        this.setLayout(new BorderLayout());
         leftSideIntroductionPanel.setBackground(Color.BLUE);
     }
+
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
         return List.of(this.leftSideIntroductionPanel, this.newProjectCenterPanel);
