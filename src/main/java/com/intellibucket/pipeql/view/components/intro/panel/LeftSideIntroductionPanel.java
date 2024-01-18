@@ -3,6 +3,7 @@ package com.intellibucket.pipeql.view.components.intro.panel;
 import com.intellibucket.pipeql.lib.button.horizontal.AbstractGButton;
 import com.intellibucket.pipeql.lib.button.horizontal.BorderlessGButton;
 import com.intellibucket.pipeql.lib.button.horizontal.SimpleGButton;
+import com.intellibucket.pipeql.lib.file.IconProvider;
 import com.intellibucket.pipeql.lib.label.AbstractGLabel;
 import com.intellibucket.pipeql.lib.label.SimpleGLabel;
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
@@ -52,21 +53,27 @@ public class LeftSideIntroductionPanel extends AbstractGPanel {
 class ApplicationLogoHeaderPanel extends AbstractGPanel {
 
     private final AbstractGPanel panel = new NameVersionPanel();
+    private final AbstractGLabel logo = new SimpleGLabel(IconProvider.getLogo());
 
     {
         this.setBackground(new Color(59,63,65));
-        this.setLayout(new BorderLayout());
+        this.setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
     }
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
         return List.of(
+                this.logo,
                 this.panel
         );
     }
 
     @Override
     public void addComponents() {
-        this.add(this.panel, BorderLayout.EAST);
+        this.add(Box.createRigidArea(new Dimension(5, 0)));
+        this.add(this.logo);
+        this.add(Box.createRigidArea(new Dimension(10, 0)));
+        this.add(this.panel);
+        this.add(Box.createRigidArea(new Dimension(30, 0)));
     }
 
     class NameVersionPanel extends AbstractGSimplePanel{
