@@ -63,7 +63,8 @@ class ButtonsListPanel extends AbstractGPanel {
     private final AbstractGButton learnAbout = new BorderlessGButton("Learn About");
 
     {
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setBackground(Color.BLUE);
+        this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
     }
 
     @Override

@@ -14,7 +14,7 @@ public class BigIconGButton extends AbstractGButton{
     }
 
     public BigIconGButton(String iconName) {
-        super(IconProvider.getIcon(iconName));
+        super(IconProvider.getIconWithSize(iconName, new Dimension(25, 25)));
     }
 
     @Override

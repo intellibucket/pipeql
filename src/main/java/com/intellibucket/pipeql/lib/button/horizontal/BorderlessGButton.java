@@ -9,10 +9,9 @@ import java.util.List;
 public class BorderlessGButton extends SimpleGButton{
 
     {
-        this.setSize(new Dimension(100,30));
         this.setFont(new Font("Arial", Font.PLAIN, 15));
         this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        this.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.setAlignmentX(Component.LEFT_ALIGNMENT);
     }
 
     public BorderlessGButton(String text) {
