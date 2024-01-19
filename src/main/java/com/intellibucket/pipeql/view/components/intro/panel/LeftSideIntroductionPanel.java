@@ -2,6 +2,7 @@ package com.intellibucket.pipeql.view.components.intro.panel;
 
 import com.intellibucket.pipeql.lib.button.horizontal.AbstractGButton;
 import com.intellibucket.pipeql.lib.button.horizontal.BorderlessGButton;
+import com.intellibucket.pipeql.lib.button.horizontal.SimpleIconGButton;
 import com.intellibucket.pipeql.lib.file.IconProvider;
 import com.intellibucket.pipeql.lib.label.AbstractGLabel;
 import com.intellibucket.pipeql.lib.label.SimpleGLabel;
@@ -101,7 +102,7 @@ class ApplicationLogoHeaderPanel extends AbstractGPanel {
         private AbstractGLabel versionApp = new SimpleGLabel("2024.1.1");
 
         {
-            this.nameApp.setFont(new Font("Helvetica", Font.BOLD, 23));
+            this.nameApp.setFont(new Font("Raleway", Font.BOLD, 23));
             //this.setBackground(new Color(59,63,65));
             this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         }
@@ -152,17 +153,23 @@ class ButtonsListPanel extends AbstractGPanel {
 }
 
 class BottomPanel extends AbstractGPanel {
+    private final AbstractGButton settingsButton = new SimpleIconGButton("inlaySettings");
+    private final AbstractGButton infoButton = new SimpleIconGButton("infoOutline");
 
     {
-        //this.setBackground(new Color(59,63,65));
+        this.setLayout(new FlowLayout(FlowLayout.LEFT));
     }
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
-        return List.of();
+        return List.of(
+                this.settingsButton,
+                this.infoButton
+        );
     }
 
     @Override
     public void addComponents() {
-
+        this.add(this.infoButton);
+        this.add(this.settingsButton);
     }
 }

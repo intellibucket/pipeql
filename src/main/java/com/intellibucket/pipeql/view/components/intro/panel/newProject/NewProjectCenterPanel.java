@@ -41,6 +41,10 @@ public class NewProjectCenterPanel extends ChangeablePanel {
 
     }
 
+    public NewProjectCenterPanel( ) {
+        this("undefined");
+    }
+
     public NewProjectCenterPanel(String defaultPath) {
         this.projectPathFieldPanel.getTextField().setText(defaultPath);
         setPath();
@@ -59,6 +63,7 @@ public class NewProjectCenterPanel extends ChangeablePanel {
 
     @Override
     public void addComponents() {
+        this.add(Box.createRigidArea(new Dimension(0, 30)));
         this.add(projectNameValidationLabel);
         this.add(projectPathValidationLabel);
         this.add(this.projectNamePanel);
