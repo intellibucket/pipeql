@@ -6,6 +6,9 @@ import javax.swing.*;
 import javax.swing.text.Document;
 
 public abstract class AbstractGTextField  extends JTextField implements ComponentInitializer {
+    {
+        //this.setFocu(false);
+    }
     public AbstractGTextField() {
     }
 

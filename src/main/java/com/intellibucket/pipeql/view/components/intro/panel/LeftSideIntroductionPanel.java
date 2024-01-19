@@ -2,13 +2,11 @@ package com.intellibucket.pipeql.view.components.intro.panel;
 
 import com.intellibucket.pipeql.lib.button.horizontal.AbstractGButton;
 import com.intellibucket.pipeql.lib.button.horizontal.BorderlessGButton;
-import com.intellibucket.pipeql.lib.button.horizontal.SimpleGButton;
 import com.intellibucket.pipeql.lib.file.IconProvider;
 import com.intellibucket.pipeql.lib.label.AbstractGLabel;
 import com.intellibucket.pipeql.lib.label.SimpleGLabel;
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
-import com.intellibucket.pipeql.lib.panel.SimplePanel;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 
 import javax.swing.*;
@@ -22,12 +20,12 @@ public class LeftSideIntroductionPanel extends AbstractGPanel {
 
     {
         this.setLayout(new BorderLayout());
-        this.setBackground(new Color(59,63,65));
+        //this.setBackground(new Color(59,63,65));
     }
 
 
     public LeftSideIntroductionPanel() {
-        this.logoHeaderPanel = new ApplicationLogoHeaderPanel();
+        this.logoHeaderPanel = new LagApplicationLogoHeaderPanel();
         this.buttonsListPanel = new ButtonsListPanel();
         this.bottomPanel = new BottomPanel();
     }
@@ -50,13 +48,35 @@ public class LeftSideIntroductionPanel extends AbstractGPanel {
     }
 }
 
+class LagApplicationLogoHeaderPanel extends AbstractGPanel{
+
+    private final ApplicationLogoHeaderPanel panel = new ApplicationLogoHeaderPanel();
+
+    {
+        this.setLayout(new BorderLayout());
+    }
+    @Override
+    public List<ComponentInitializer> getComponentInitializers() {
+        return List.of(
+                this.panel
+        );
+    }
+
+    @Override
+    public void addComponents() {
+        this.add(Box.createRigidArea(new Dimension(15, 0)), BorderLayout.WEST);
+        this.add(Box.createRigidArea(new Dimension(0, 20)), BorderLayout.NORTH);
+        this.add(this.panel, BorderLayout.CENTER);
+        this.add(Box.createRigidArea(new Dimension(0, 20)), BorderLayout.SOUTH);
+    }
+}
+
 class ApplicationLogoHeaderPanel extends AbstractGPanel {
 
     private final AbstractGPanel panel = new NameVersionPanel();
     private final AbstractGLabel logo = new SimpleGLabel(IconProvider.getLogo());
 
     {
-        this.setBackground(new Color(59,63,65));
         this.setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
     }
     @Override
@@ -82,7 +102,7 @@ class ApplicationLogoHeaderPanel extends AbstractGPanel {
 
         {
             this.nameApp.setFont(new Font("Helvetica", Font.BOLD, 23));
-            this.setBackground(new Color(59,63,65));
+            //this.setBackground(new Color(59,63,65));
             this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         }
         @Override
@@ -107,9 +127,8 @@ class ButtonsListPanel extends AbstractGPanel {
     private final AbstractGButton learnAbout = new BorderlessGButton("Learn About");
 
     {
-        this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        this.setOpaque(true);
-        this.setBackground(new Color(59,63,65));
+        this.setLayout(new GridLayout(16, 1, 0, 0));
+        //this.setBackground(new Color(59,63,65));
     }
 
     @Override
@@ -125,12 +144,17 @@ class ButtonsListPanel extends AbstractGPanel {
         this.add(this.projectsButton);
         this.add(this.learnAbout);
     }
+
+    @Override
+    public void postInitialize() {
+        this.setAlignmentX(Component.LEFT_ALIGNMENT);
+    }
 }
 
 class BottomPanel extends AbstractGPanel {
 
     {
-        this.setBackground(new Color(59,63,65));
+        //this.setBackground(new Color(59,63,65));
     }
     @Override
     public List<ComponentInitializer> getComponentInitializers() {

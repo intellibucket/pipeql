@@ -6,6 +6,9 @@ import javax.swing.*;
 
 public abstract class AbstractGButton extends JButton implements ComponentInitializer {
 
+    {
+        this.setFocusPainted(false);
+    }
     public AbstractGButton() {
     }
 
