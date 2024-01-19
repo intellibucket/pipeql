@@ -12,10 +12,11 @@ import java.awt.*;
 import java.util.List;
 
 public class LeftUpSideSearchPanel extends ChangeablePanel {
-    private final AbstractGTextField projectNameTextField = new SimpleGTextField(20);
+    private final AbstractGTextField projectNameTextField = new SimpleGTextField("Search anything..",20);
     private final AbstractGLabel iconPanel = new SimpleGLabel(IconProvider.getIcon("search@20x20"));
     {
         this.setLayout(new BorderLayout());
+        this.projectNameTextField.setForeground(Color.GRAY);
     }
 
     @Override
