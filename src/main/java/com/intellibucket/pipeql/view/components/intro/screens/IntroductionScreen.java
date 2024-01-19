@@ -6,11 +6,13 @@ import com.intellibucket.pipeql.view.components.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.intro.panel.EmptyCenterIntroPanel;
 import com.intellibucket.pipeql.view.components.intro.panel.LeftSideIntroductionPanel;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
 public class IntroductionScreen extends MidGFrame {
 
+    private final JSplitPane splitPane;
     private final LeftSideIntroductionPanel leftSideIntroductionPanel;
     private final ChangeablePanel changeablePanel;
 
@@ -24,6 +26,8 @@ public class IntroductionScreen extends MidGFrame {
         super("Welcome to PipeQL");
         this.leftSideIntroductionPanel = new LeftSideIntroductionPanel();
         this.changeablePanel = new EmptyCenterIntroPanel();
+        this.splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, this.leftSideIntroductionPanel, this.changeablePanel);
+        this.splitPane.setDividerLocation(300);
     }
 
     @Override
@@ -36,7 +40,6 @@ public class IntroductionScreen extends MidGFrame {
 
     @Override
     public void addComponents() {
-        this.add(this.leftSideIntroductionPanel, BorderLayout.WEST);
-        this.add(this.changeablePanel, BorderLayout.CENTER);
+        this.add(this.splitPane);
     }
 }
