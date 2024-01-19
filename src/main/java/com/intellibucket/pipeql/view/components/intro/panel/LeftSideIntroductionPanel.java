@@ -5,6 +5,7 @@ import com.intellibucket.pipeql.lib.button.horizontal.BorderlessGButton;
 import com.intellibucket.pipeql.lib.button.horizontal.SimpleIconGButton;
 import com.intellibucket.pipeql.lib.file.IconProvider;
 import com.intellibucket.pipeql.lib.label.AbstractGLabel;
+import com.intellibucket.pipeql.lib.label.BlueGLabel;
 import com.intellibucket.pipeql.lib.label.SimpleGLabel;
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
@@ -21,13 +22,12 @@ public class LeftSideIntroductionPanel extends AbstractGPanel {
 
     {
         this.setLayout(new BorderLayout());
-        //this.setBackground(new Color(59,63,65));
     }
 
 
     public LeftSideIntroductionPanel() {
         this.logoHeaderPanel = new LagApplicationLogoHeaderPanel();
-        this.buttonsListPanel = new ButtonsListPanel();
+        this.buttonsListPanel = new CenterLeftPanel();
         this.bottomPanel = new BottomPanel();
     }
 
@@ -122,20 +122,66 @@ class ApplicationLogoHeaderPanel extends AbstractGPanel {
     }
 }
 
+class CenterLeftPanel extends AbstractGPanel {
+    private final AbstractGPanel buttonsPanel  = new ButtonsListPanel();
+    private final AbstractGPanel problemsPanel = new ProblemsPanel();
+
+
+    {
+        this.setLayout(new BorderLayout());
+    }
+
+    @Override
+    public List<ComponentInitializer> getComponentInitializers() {
+        return List.of(
+                this.buttonsPanel,
+                this.problemsPanel
+        );
+    }
+
+    @Override
+    public void addComponents() {
+        this.add(this.buttonsPanel, BorderLayout.NORTH);
+        this.add(this.problemsPanel, BorderLayout.SOUTH);
+    }
+}
+
+class ProblemsPanel extends AbstractGPanel{
+    private final AbstractGLabel problemsLabel =
+            new BlueGLabel("Problems",new Font("Arial", Font.PLAIN, 14));
+
+    {
+        this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+        this.problemsLabel.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
+    }
+
+    @Override
+    public List<ComponentInitializer> getComponentInitializers() {
+        return List.of(
+                this.problemsLabel
+        );
+    }
+
+    @Override
+    public void addComponents() {
+        this.add(this.problemsLabel);
+    }
+}
 
 class ButtonsListPanel extends AbstractGPanel {
     private final AbstractGButton projectsButton = new BorderlessGButton("Projects");
+    private final AbstractGButton customizeButton = new BorderlessGButton("Customize");
     private final AbstractGButton learnAbout = new BorderlessGButton("Learn About");
 
     {
         this.setLayout(new GridLayout(16, 1, 0, 0));
-        //this.setBackground(new Color(59,63,65));
     }
 
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
         return List.of(
                 this.projectsButton,
+                this.customizeButton,
                 this.learnAbout
         );
     }
@@ -143,12 +189,17 @@ class ButtonsListPanel extends AbstractGPanel {
     @Override
     public void addComponents() {
         this.add(this.projectsButton);
+        this.add(this.customizeButton);
         this.add(this.learnAbout);
     }
 
+
+
     @Override
     public void postInitialize() {
-        this.setAlignmentX(Component.LEFT_ALIGNMENT);
+        this.getComponentInitializers().forEach(
+                item-> ((JButton) item).setHorizontalAlignment(SwingConstants.LEFT)
+        );
     }
 }
 

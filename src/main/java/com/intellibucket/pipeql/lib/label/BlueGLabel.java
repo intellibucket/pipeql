@@ -10,7 +10,6 @@ public class BlueGLabel extends AbstractGLabel{
 
     {
         this.setForeground(new Color(67, 187, 255));
-        this.setFont(new Font("Arial", Font.PLAIN, 17));
     }
 
     public BlueGLabel() {
@@ -33,6 +32,11 @@ public class BlueGLabel extends AbstractGLabel{
     }
 
     public BlueGLabel(String text) {
+        super(text);
+        this.setFont(new Font("Arial", Font.PLAIN, 17));
+    }
+
+    public BlueGLabel(String text,Font font) {
         super(text);
     }
 

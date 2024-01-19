@@ -18,6 +18,7 @@ public class IntroductionScreen extends MidGFrame {
 
 
     {
+        this.setPreferredSize(new Dimension(800, 600));
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE );
         this.setLocationRelativeTo(null);
     }
