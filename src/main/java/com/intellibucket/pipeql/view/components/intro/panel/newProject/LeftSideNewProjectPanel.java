@@ -11,7 +11,6 @@ public class LeftSideNewProjectPanel  extends ChangeablePanel {
     private LeftDownNewProjectPanel leftDownNewProjectPanel = new LeftDownNewProjectPanel();
 
     {
-setBackground(Color.BLUE);
         this.setLayout(new BorderLayout());
     }
     @Override
@@ -21,7 +20,7 @@ setBackground(Color.BLUE);
 
     @Override
     public void addComponents() {
-        this.add(this.leftUpSideSearchPanel, BorderLayout.SOUTH);
+        this.add(this.leftUpSideSearchPanel, BorderLayout.NORTH);
         this.add(this.leftDownNewProjectPanel, BorderLayout.CENTER);
     }
 }
