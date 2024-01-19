@@ -29,6 +29,10 @@ public class StartEvent <T extends Payload> extends AbstractEvent<T> {
         this(UUID.randomUUID(), processName, List.of(), payload);
     }
 
+    public StartEvent(  T payload) {
+        this(UUID.randomUUID(), "", List.of(), payload);
+    }
+
     public StartEvent(UUID transactionId, String processName) {
         this(transactionId, processName,  List.of(), null);
     }

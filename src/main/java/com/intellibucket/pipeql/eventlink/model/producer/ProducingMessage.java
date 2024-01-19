@@ -54,6 +54,10 @@ public class ProducingMessage {
             return this;
         }
 
+        public Builder topic(String val) {
+            return this.topic(new Topic(val));
+        }
+
 
         public Builder event(StartEvent<?> val) {
             if (val == null) throw new NullPointerException("Event cannot be null");

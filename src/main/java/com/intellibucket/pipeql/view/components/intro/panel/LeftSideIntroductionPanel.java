@@ -9,6 +9,8 @@ import com.intellibucket.pipeql.lib.label.BlueGLabel;
 import com.intellibucket.pipeql.lib.label.SimpleGLabel;
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
+import com.intellibucket.pipeql.view.client.intro.abstracts.AbstractIntroChangeableCenterPanelClient;
+import com.intellibucket.pipeql.view.client.intro.concretes.IntroChangeableCenterPanelClient;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 
 import javax.swing.*;
@@ -169,6 +171,7 @@ class ProblemsPanel extends AbstractGPanel{
 }
 
 class ButtonsListPanel extends AbstractGPanel {
+    private final AbstractIntroChangeableCenterPanelClient introChangeableCenterPanelClient = new IntroChangeableCenterPanelClient();
     private final AbstractGButton projectsButton = new BorderlessGButton("Projects");
     private final AbstractGButton customizeButton = new BorderlessGButton("Customize");
     private final AbstractGButton learnAbout = new BorderlessGButton("Learn About");
@@ -193,10 +196,16 @@ class ButtonsListPanel extends AbstractGPanel {
         this.add(this.learnAbout);
     }
 
-
+    @Override
+    public void setActions() {
+        this.projectsButton.addActionListener(e -> {
+            this.introChangeableCenterPanelClient.changePanel(new ProjectsCenterIntroPanel());
+        });
+    }
 
     @Override
     public void postInitialize() {
+        this.setActions();
         this.getComponentInitializers().forEach(
                 item-> ((JButton) item).setHorizontalAlignment(SwingConstants.LEFT)
         );
