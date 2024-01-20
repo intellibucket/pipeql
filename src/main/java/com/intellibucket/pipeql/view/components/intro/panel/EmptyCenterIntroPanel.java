@@ -99,9 +99,9 @@ class LabelPanel extends AbstractGSimplePanel {
         @Override
         public void setActions() {
 
-            this.newProjectButton.addActionListener(e -> {
-                this.introductionPanelClient.newProject(LabelPanel.this);
-            });
+            this.newProjectButton.addActionListener(e -> this.introductionPanelClient.newProject(LabelPanel.this));
+
+            this.openProjectButton.addActionListener(e -> this.introductionPanelClient.openProject(LabelPanel.this));
         }
     }
 

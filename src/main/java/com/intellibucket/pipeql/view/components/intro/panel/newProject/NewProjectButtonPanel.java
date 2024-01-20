@@ -10,7 +10,6 @@ public class NewProjectButtonPanel extends AbstractGSimplePanel {
     private final NewProjectCreateAndCancelButtonPanel projectCreateAndCancelButtonPanel;
 
     {
-        setForeground(Color.WHITE);
         this.projectCreateAndCancelButtonPanel = new NewProjectCreateAndCancelButtonPanel();
     }
     @Override
@@ -22,4 +21,5 @@ public class NewProjectButtonPanel extends AbstractGSimplePanel {
     public void addComponents() {
         this.add(this.projectCreateAndCancelButtonPanel);
     }
+
 }
