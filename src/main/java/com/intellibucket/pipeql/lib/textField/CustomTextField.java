@@ -48,12 +48,12 @@ public class CustomTextField extends AbstractGTextField {
         button.setBorderPainted(false);
         button.setContentAreaFilled(false);
         setLayout(new BorderLayout());
-        add(button, BorderLayout.EAST);
+
 
         button.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                setCursor(new Cursor(Cursor.HAND_CURSOR));
             }
 
             @Override
@@ -69,12 +69,12 @@ public class CustomTextField extends AbstractGTextField {
 
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
-        return List.of();
+        return List.of(this.button);
     }
 
     @Override
     public void addComponents() {
-
+        add(this.button, BorderLayout.EAST);
     }
 
 }
