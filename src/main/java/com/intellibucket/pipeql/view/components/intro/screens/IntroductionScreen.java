@@ -10,6 +10,7 @@ import com.intellibucket.pipeql.lib.frame.concretes.MidGFrame;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.intro.panel.EmptyCenterIntroPanel;
 import com.intellibucket.pipeql.view.components.intro.panel.LeftSideIntroductionPanel;
+import com.intellibucket.pipeql.view.components.intro.panel.ProjectsCenterIntroPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,7 +22,7 @@ public class IntroductionScreen extends MidGFrame {
 
     private final JSplitPane splitPane;
     private final LeftSideIntroductionPanel leftSideIntroductionPanel;
-    private ChangeablePanel changeablePanel;
+    private ChangeablePanel centerChangeablePanel;
 
 
     {
@@ -34,14 +35,14 @@ public class IntroductionScreen extends MidGFrame {
     public IntroductionScreen() {
         super("Welcome to PipeQL");
         this.leftSideIntroductionPanel = new LeftSideIntroductionPanel();
-        this.changeablePanel = new EmptyCenterIntroPanel();
-        this.splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, this.leftSideIntroductionPanel, this.changeablePanel);
+        this.centerChangeablePanel = new ProjectsCenterIntroPanel();
+        this.splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, this.leftSideIntroductionPanel, this.centerChangeablePanel);
         this.splitPane.setDividerLocation(300);
     }
 
     private void changeCenterPanel(ChangeablePanel changeablePanel){
-        this.changeablePanel = changeablePanel;
-        this.splitPane.setRightComponent(this.changeablePanel);
+        this.centerChangeablePanel = changeablePanel;
+        this.splitPane.setRightComponent(this.centerChangeablePanel);
         this.splitPane.setDividerLocation(300);
     }
 
@@ -49,7 +50,7 @@ public class IntroductionScreen extends MidGFrame {
     public List<ComponentInitializer> getComponentInitializers() {
         return List.of(
                 this.leftSideIntroductionPanel,
-                this.changeablePanel
+                this.centerChangeablePanel
         );
     }
 
