@@ -15,7 +15,7 @@ public class LoadFrameInterceptor {
         new Thread(()->{
             while (flag) {
                 try {
-                    Thread.sleep(1);
+                    Thread.sleep(10);
                     this.loadGFrame.incrementProgress();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
