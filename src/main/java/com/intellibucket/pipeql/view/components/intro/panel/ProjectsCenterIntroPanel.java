@@ -3,12 +3,15 @@ package com.intellibucket.pipeql.view.components.intro.panel;
 import com.intellibucket.pipeql.lib.button.horizontal.AbstractGButton;
 import com.intellibucket.pipeql.lib.button.horizontal.SimpleGButton;
 import com.intellibucket.pipeql.lib.file.ImageToolKit;
+import com.intellibucket.pipeql.lib.list.GPanelList;
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
 import com.intellibucket.pipeql.lib.panel.ChangeablePanel;
+import com.intellibucket.pipeql.lib.seperator.GSeparator;
 import com.intellibucket.pipeql.lib.textField.AbstractGTextField;
 import com.intellibucket.pipeql.lib.textField.CustomTextField;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
@@ -42,15 +45,19 @@ class HeaderProjectsCenterIntroPanel extends AbstractGPanel{
     private final AbstractGPanel leftHeaderProjectsCenterIntroPanel = new LeftHeaderProjectsCenterIntroPanel();
     private final AbstractGPanel rightHeaderProjectsCenterIntroPanel = new RightHeaderProjectsCenterIntroPanel();
 
+    private final GSeparator seperator = new GSeparator();
+
     {
         this.setLayout(new BorderLayout());
+        this.setBorder(BorderFactory.createEmptyBorder(15, 10, 15, 10));
     }
 
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
         return List.of(
                 leftHeaderProjectsCenterIntroPanel,
-                rightHeaderProjectsCenterIntroPanel
+                rightHeaderProjectsCenterIntroPanel,
+                seperator
         );
     }
 
@@ -58,6 +65,7 @@ class HeaderProjectsCenterIntroPanel extends AbstractGPanel{
     public void addComponents() {
         this.add(leftHeaderProjectsCenterIntroPanel, BorderLayout.WEST);
         this.add(rightHeaderProjectsCenterIntroPanel, BorderLayout.EAST);
+        this.add(seperator, BorderLayout.SOUTH);
     }
 }
 
@@ -110,9 +118,25 @@ class RightHeaderProjectsCenterIntroPanel extends AbstractGPanel{
 
 class BodyProjectsCenterIntroPanel extends AbstractGPanel{
 
+    private GPanelList bodyProjectsCenterIntroPanel = new GPanelList(List.of(new ProjectItem()));
+
     {
         this.setLayout(new BorderLayout());
     }
+
+    @Override
+    public List<ComponentInitializer> getComponentInitializers() {
+        return List.of();
+    }
+
+    @Override
+    public void addComponents() {
+
+    }
+}
+
+
+class ProjectItem extends AbstractGPanel{
 
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
