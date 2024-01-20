@@ -26,7 +26,6 @@ public class IntroductionScreen extends MidGFrame {
 
 
     {
-
         this.setPreferredSize(new Dimension(800, 600));
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE );
         this.setLocationRelativeTo(null);
@@ -35,13 +34,14 @@ public class IntroductionScreen extends MidGFrame {
     public IntroductionScreen() {
         super("Welcome to PipeQL");
         this.leftSideIntroductionPanel = new LeftSideIntroductionPanel();
-        this.centerChangeablePanel = new ProjectsCenterIntroPanel();
+        this.centerChangeablePanel = new EmptyCenterIntroPanel();
         this.splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, this.leftSideIntroductionPanel, this.centerChangeablePanel);
         this.splitPane.setDividerLocation(300);
     }
 
     private void changeCenterPanel(ChangeablePanel changeablePanel){
         this.centerChangeablePanel = changeablePanel;
+        this.centerChangeablePanel.initialize();
         this.splitPane.setRightComponent(this.centerChangeablePanel);
         this.splitPane.setDividerLocation(300);
     }

@@ -147,7 +147,7 @@ class ButtonsListPanel extends AbstractGPanel {
     @Override
     public void setActions() {
         this.projectsButton.addActionListener(e -> {
-            this.introChangeableCenterPanelClient.changePanel(new ProjectsCenterIntroPanel());
+            this.introChangeableCenterPanelClient.openProjects();
         });
     }
 

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class GPanelList extends AbstractGPanel implements ComponentInitializer {
     {
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setLayout(new GridLayout(0, 1));
     }
     private List<ComponentInitializer> components = List.of();
     public GPanelList(List<ComponentInitializer> components) {
