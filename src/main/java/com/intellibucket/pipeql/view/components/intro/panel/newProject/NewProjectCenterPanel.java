@@ -3,16 +3,25 @@ package com.intellibucket.pipeql.view.components.intro.panel.newProject;
 import com.intellibucket.pipeql.lib.panel.ChangeablePanel;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 
+import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.util.List;
 
 public class NewProjectCenterPanel extends ChangeablePanel {
     private final NewProjectDirectoryInfoPanel newProjectDirectoryInfoPanel = new NewProjectDirectoryInfoPanel();
     private final NewProjectButtonPanel newProjectButtonPanel = new NewProjectButtonPanel();
+    private final static ImageIcon BACKGROUND_IMAGE = new ImageIcon("pngs" + File.separator + "newProjectFileDirectoryBacground.png");
 
     {
-        setMinimumSize(new Dimension(430,1));
+        setOpaque(false);
+        setMinimumSize(new Dimension(430, 1));
         setLayout(new GridBagLayout());
+
+    }
+
+    public NewProjectCenterPanel() {
+
     }
 
     @Override

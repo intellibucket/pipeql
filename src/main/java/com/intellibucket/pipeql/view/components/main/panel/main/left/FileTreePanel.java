@@ -3,7 +3,7 @@ package com.intellibucket.pipeql.view.components.main.panel.main.left;
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.view.client.main.concretes.IntroductionPanelClient;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
-import com.intellibucket.pipeql.view.components.main.panel.main.CustomTreeModel;
+
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -26,7 +26,7 @@ public class FileTreePanel extends AbstractGSimplePanel {
         setLayout(new BorderLayout());
         var root = new DefaultMutableTreeNode("Project");
 
-        treeModel = new CustomTreeModel(root);
+        treeModel = new DefaultTreeModel(root);
         fileTree = new FileTree(treeModel);
 
         // Set a custom cell renderer to display custom icons
