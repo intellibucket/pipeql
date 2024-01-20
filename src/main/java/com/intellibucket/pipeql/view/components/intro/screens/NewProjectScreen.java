@@ -1,7 +1,7 @@
 package com.intellibucket.pipeql.view.components.intro.screens;
 
-import com.intellibucket.pipeql.lib.borders.CustomBorderProvider;
-import com.intellibucket.pipeql.lib.button.custom.BeautifulSplitPane;
+import com.intellibucket.pipeql.view.components.enums.CustomBorderProvider;
+import com.intellibucket.pipeql.splitPane.CustomSplitPane;
 import com.intellibucket.pipeql.lib.file.IconProvider;
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
 import com.intellibucket.pipeql.lib.panel.SmallGFrame;
@@ -27,7 +27,7 @@ public class NewProjectScreen extends SmallGFrame {
 
     public NewProjectScreen(AbstractGPanel abstractGPanel) {
         this.setLocationRelativeTo(abstractGPanel);
-        this.splitPane = new BeautifulSplitPane(JSplitPane.HORIZONTAL_SPLIT,
+        this.splitPane = new CustomSplitPane(JSplitPane.HORIZONTAL_SPLIT,
                 leftSideIntroductionPanel,
                 newProjectCenterPanel,
                 CustomBorderProvider.ONE_LINE_RIGHT_BORDER.getBorder(Color.BLACK));
