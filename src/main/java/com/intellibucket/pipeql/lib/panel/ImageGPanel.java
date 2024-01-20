@@ -2,7 +2,7 @@ package com.intellibucket.pipeql.lib.panel;
 
 import java.awt.*;
 
-public abstract class ImageGPanel extends AbstractGPanel{
+public abstract class ImageGPanel extends TransparentGPanel{
     private Image image;
 
     public ImageGPanel(String imagePath) {
@@ -12,7 +12,6 @@ public abstract class ImageGPanel extends AbstractGPanel{
 
     @Override
     protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
         g.drawImage(this.image, 0, 0, this.getWidth(), this.getHeight(), this);
     }
 
