@@ -30,6 +30,7 @@ public class ApplicationKernel extends AbstractApplicationKernel {
         DefaultEventLinkBroker.Mediator.start();
     }
 
+
     @Override
     protected void run() {
         FRAME_INTERCEPTOR.run();
