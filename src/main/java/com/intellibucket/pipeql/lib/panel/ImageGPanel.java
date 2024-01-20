@@ -3,10 +3,11 @@ package com.intellibucket.pipeql.lib.panel;
 import java.awt.*;
 
 public abstract class ImageGPanel extends TransparentGPanel{
-    private Image image;
+    private final Image image;
 
-    public ImageGPanel(String imagePath) {
-        loadImage(imagePath);
+    public ImageGPanel(Image image) {
+        this.image = image;
+        loadImage();
     }
 
 
@@ -15,16 +16,14 @@ public abstract class ImageGPanel extends TransparentGPanel{
         g.drawImage(this.image, 0, 0, this.getWidth(), this.getHeight(), this);
     }
 
-    private void loadImage(String imagePath) {
+    private void loadImage() {
         try {
-            Toolkit toolkit = Toolkit.getDefaultToolkit();
-            image = toolkit.getImage(getClass().getClassLoader().getResource(imagePath));
 
-            MediaTracker mediaTracker = new MediaTracker(this);
+            var mediaTracker = new MediaTracker(this);
             mediaTracker.addImage(image, 0);
             mediaTracker.waitForID(0);
             if (mediaTracker.isErrorID(0)) {
-                System.err.println("Error loading image: " + imagePath);
+                System.err.println("Error loading image");
             } else {
                 setPreferredSize(new Dimension(image.getWidth(this), image.getHeight(this)));
             }
