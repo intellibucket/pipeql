@@ -6,12 +6,10 @@ import com.intellibucket.pipeql.eventlink.model.payload.EmptySuccessPayload;
 import com.intellibucket.pipeql.eventlink.model.payload.Payload;
 import com.intellibucket.pipeql.eventlink.rx.abstracts.Consumer;
 import com.intellibucket.pipeql.lib.panel.ChangeablePanel;
-import com.intellibucket.pipeql.lib.panel.MidGFrame;
+import com.intellibucket.pipeql.lib.frame.concretes.MidGFrame;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.intro.panel.EmptyCenterIntroPanel;
 import com.intellibucket.pipeql.view.components.intro.panel.LeftSideIntroductionPanel;
-import com.intellibucket.pipeql.view.topics.NewProjectPanelTopics;
-import lombok.extern.slf4j.Slf4j;
 
 import javax.swing.*;
 import java.awt.*;

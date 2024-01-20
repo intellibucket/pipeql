@@ -2,7 +2,7 @@ package com.intellibucket.pipeql.view.components.main.panel.main.left;
 
 import com.intellibucket.pipeql.lib.button.horizontal.AbstractGButton;
 import com.intellibucket.pipeql.lib.button.horizontal.SimpleIconGButton;
-import com.intellibucket.pipeql.lib.file.IconProvider;
+import com.intellibucket.pipeql.lib.file.ImageToolKit;
 import com.intellibucket.pipeql.lib.panel.line.LinePanel;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 
@@ -42,7 +42,7 @@ class LeftPanel extends LinePanel{
 
     {
         this.setLayout(new FlowLayout(FlowLayout.LEFT));
-        this.label.setIcon(IconProvider.getIcon("generatedFolder"));
+        this.label.setIcon(ImageToolKit.getIcon("generatedFolder"));
     }
 
     @Override

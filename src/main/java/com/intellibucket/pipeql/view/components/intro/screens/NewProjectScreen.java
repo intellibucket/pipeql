@@ -7,9 +7,9 @@ import com.intellibucket.pipeql.eventlink.model.payload.Payload;
 import com.intellibucket.pipeql.eventlink.rx.abstracts.Consumer;
 import com.intellibucket.pipeql.view.components.enums.CustomBorderProvider;
 import com.intellibucket.pipeql.splitPane.CustomSplitPane;
-import com.intellibucket.pipeql.lib.file.IconProvider;
+import com.intellibucket.pipeql.lib.file.ImageToolKit;
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
-import com.intellibucket.pipeql.lib.panel.SmallGFrame;
+import com.intellibucket.pipeql.lib.frame.concretes.SmallGFrame;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.intro.panel.newProject.NewProjectLeftSidePanel;
 import com.intellibucket.pipeql.view.components.intro.panel.newProject.NewProjectCenterPanel;
@@ -26,7 +26,7 @@ public class NewProjectScreen extends SmallGFrame {
     private final JSplitPane splitPane;
 
     {
-        this.setIconImage(IconProvider.getLogo().getImage());
+        this.setIconImage(ImageToolKit.getLogo().getImage());
         this.setTitle("New Project");
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setLayout(new BorderLayout());

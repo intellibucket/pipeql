@@ -1,6 +1,6 @@
 package com.intellibucket.pipeql.lib.button.horizontal;
 
-import com.intellibucket.pipeql.lib.file.IconProvider;
+import com.intellibucket.pipeql.lib.file.ImageToolKit;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 public class SimpleIconGButton extends AbstractGButton{
 
     public SimpleIconGButton(String iconName) {
-        super(IconProvider.getIcon(iconName));
+        super(ImageToolKit.getIcon(iconName));
     }
 
     @Override

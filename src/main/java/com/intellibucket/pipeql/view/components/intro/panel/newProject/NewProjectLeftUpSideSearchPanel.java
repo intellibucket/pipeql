@@ -2,7 +2,7 @@ package com.intellibucket.pipeql.view.components.intro.panel.newProject;
 
 import com.intellibucket.pipeql.view.components.enums.CustomBorderProvider;
 import com.intellibucket.pipeql.lib.customAdapters.MouseAdapterForTextField;
-import com.intellibucket.pipeql.lib.file.IconProvider;
+import com.intellibucket.pipeql.lib.file.ImageToolKit;
 import com.intellibucket.pipeql.lib.label.AbstractGLabel;
 import com.intellibucket.pipeql.lib.label.SimpleGLabel;
 import com.intellibucket.pipeql.lib.panel.ChangeablePanel;
@@ -19,7 +19,7 @@ import static com.intellibucket.pipeql.view.components.enums.Colors.NEW_PROJECT_
 
 public class NewProjectLeftUpSideSearchPanel extends ChangeablePanel {
 
-    private final AbstractGTextField textField = new CustomTextField(IconProvider.getIcon("search@20x20"), 20);
+    private final AbstractGTextField textField = new CustomTextField(ImageToolKit.getIcon("search@20x20"), 20);
     private final AbstractGLabel iconPanel = new SimpleGLabel();
 
     {

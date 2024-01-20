@@ -1,21 +1,22 @@
 package com.intellibucket.pipeql.application.kernel.concretes;
 
 import com.intellibucket.pipeql.application.kernel.abstracts.AbstractApplicationKernel;
-import com.intellibucket.pipeql.application.profile.abstracts.AbstractApplicationProfileInitializer;
-import com.intellibucket.pipeql.application.profile.concretes.ApplicationProfileInitializer;
 import com.intellibucket.pipeql.eventlink.broker.concretes.DefaultEventLinkBroker;
-import com.intellibucket.pipeql.lib.file.IconContainer;
+import com.intellibucket.pipeql.lib.file.ImageContainer;
 import com.intellibucket.pipeql.lib.frame.abstracts.AbstractGFrame;
 import com.intellibucket.pipeql.view.components.intro.screens.IntroductionScreen;
-import com.intellibucket.pipeql.view.components.main.screens.MainScreen;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.log4j.BasicConfigurator;
 
 @Slf4j
 public class ApplicationKernel extends AbstractApplicationKernel {
-    private static final AbstractApplicationProfileInitializer PROFILE_INITIALIZER = new ApplicationProfileInitializer();
+    private final LoadFrameInterceptor FRAME_INTERCEPTOR;
 
     public static AbstractGFrame CURRENT_MAIN_SCREEN = null;
+
+    public ApplicationKernel() {
+        super();
+        FRAME_INTERCEPTOR = new LoadFrameInterceptor();
+    }
 
     @Override
     protected void initSettings() {
@@ -25,14 +26,20 @@ public class ApplicationKernel extends AbstractApplicationKernel {
     @Override
     protected void preInit() {
         log.info("Application is pre-initializing...");
-        PROFILE_INITIALIZER.initialize();
-        IconContainer.initialize();
+        ImageContainer.initialize();
         DefaultEventLinkBroker.Mediator.start();
     }
 
     @Override
     protected void run() {
-        CURRENT_MAIN_SCREEN = new IntroductionScreen();
+        FRAME_INTERCEPTOR.run();
+        try {
+            CURRENT_MAIN_SCREEN = new IntroductionScreen();
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         CURRENT_MAIN_SCREEN.initialize();
+        FRAME_INTERCEPTOR.stop();
     }
 }

@@ -2,8 +2,6 @@ package com.intellibucket.pipeql.view.client.main.concretes;
 
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
-import com.intellibucket.pipeql.lib.panel.MidGFrame;
-import com.intellibucket.pipeql.lib.panel.SimplePanel;
 import com.intellibucket.pipeql.lib.textField.AbstractGTextField;
 import com.intellibucket.pipeql.view.client.main.abstracts.AbstractIntroductionPanelClient;
 import com.intellibucket.pipeql.view.components.intro.screens.NewProjectScreen;

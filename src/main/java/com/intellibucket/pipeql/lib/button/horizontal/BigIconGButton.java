@@ -1,6 +1,6 @@
 package com.intellibucket.pipeql.lib.button.horizontal;
 
-import com.intellibucket.pipeql.lib.file.IconProvider;
+import com.intellibucket.pipeql.lib.file.ImageToolKit;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 
 import java.awt.*;
@@ -14,7 +14,7 @@ public class BigIconGButton extends AbstractGButton{
     }
 
     public BigIconGButton(String iconName) {
-        super(IconProvider.getIconWithSize(iconName, new Dimension(25, 25)));
+        super(ImageToolKit.getIconWithSize(iconName, new Dimension(25, 25)));
     }
 
     @Override

@@ -2,7 +2,7 @@ package com.intellibucket.pipeql.view.components.databases.screen;
 
 import com.intellibucket.pipeql.application.kernel.concretes.ApplicationKernel;
 import com.intellibucket.pipeql.lib.panel.ChangeablePanel;
-import com.intellibucket.pipeql.lib.panel.MidGFrame;
+import com.intellibucket.pipeql.lib.frame.concretes.MidGFrame;
 import com.intellibucket.pipeql.lib.panel.side.SimpleSideGPanel;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.databases.panel.BottomDatabasePanel;

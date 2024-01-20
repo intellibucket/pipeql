@@ -1,20 +1,12 @@
 package com.intellibucket.pipeql.view.components.main.panel;
 
-import com.intellibucket.pipeql.eventlink.model.common.Topic;
-import com.intellibucket.pipeql.eventlink.model.event.concretes.FailureEvent;
-import com.intellibucket.pipeql.eventlink.model.event.concretes.start.StartEvent;
-import com.intellibucket.pipeql.eventlink.model.event.concretes.SuccessEvent;
-import com.intellibucket.pipeql.eventlink.model.producer.ProducingMessage;
-import com.intellibucket.pipeql.eventlink.rx.abstracts.Callback;
 import com.intellibucket.pipeql.eventlink.rx.concretes.EmptyCallback;
-import com.intellibucket.pipeql.eventlink.template.abstracts.EventLinkTemplate;
 import com.intellibucket.pipeql.lib.button.vertical.AbstractVerticalGButton;
 import com.intellibucket.pipeql.lib.button.vertical.SimpleVerticalGButton;
-import com.intellibucket.pipeql.lib.file.IconProvider;
+import com.intellibucket.pipeql.lib.file.ImageToolKit;
 import com.intellibucket.pipeql.lib.panel.side.InnerSideGPanel;
 import com.intellibucket.pipeql.lib.panel.side.SimpleSideGPanel;
 import com.intellibucket.pipeql.view.client.main.abstracts.AbstractLeftSidePanelClient;
-import com.intellibucket.pipeql.view.client.main.concretes.LeftSidePanelClient;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 import lombok.extern.slf4j.Slf4j;
 
@@ -57,9 +49,9 @@ class TopLeftSideInnerPanel extends InnerSideGPanel {
     private final AbstractVerticalGButton schemasButton;
 
     TopLeftSideInnerPanel() {
-        this.projectsButton = new SimpleVerticalGButton("", IconProvider.getIcon("projectStructure"));
-        this.environmentButton = new SimpleVerticalGButton("", IconProvider.getIcon("value"));
-        this.schemasButton = new SimpleVerticalGButton("", IconProvider.getIcon("json"));
+        this.projectsButton = new SimpleVerticalGButton("", ImageToolKit.getIcon("projectStructure"));
+        this.environmentButton = new SimpleVerticalGButton("", ImageToolKit.getIcon("value"));
+        this.schemasButton = new SimpleVerticalGButton("", ImageToolKit.getIcon("json"));
     }
 
     @Override
@@ -89,7 +81,7 @@ class BottomLeftSideInnerPanel extends InnerSideGPanel {
     private final AbstractVerticalGButton dataSourcesButton;
 
     BottomLeftSideInnerPanel() {
-        this.dataSourcesButton = new SimpleVerticalGButton("", IconProvider.getIcon("sql"));
+        this.dataSourcesButton = new SimpleVerticalGButton("", ImageToolKit.getIcon("sql"));
     }
 
     @Override
