@@ -14,6 +14,9 @@ import com.intellibucket.pipeql.view.components.ComponentInitializer;
 import java.awt.*;
 import java.util.List;
 
+import static com.intellibucket.pipeql.view.components.enums.Colors.NEW_PROJECT_TEXT_FIELD_MOUSE_ENTERED_COLOR;
+import static com.intellibucket.pipeql.view.components.enums.Colors.NEW_PROJECT_TEXT_FIELD_MOUSE_EXITED_COLOR;
+
 public class NewProjectLeftUpSideSearchPanel extends ChangeablePanel {
 
     private final AbstractGTextField textField = new CustomTextField(IconProvider.getIcon("search@20x20"), 20);
@@ -24,9 +27,9 @@ public class NewProjectLeftUpSideSearchPanel extends ChangeablePanel {
 
         this.textField.addMouseListener(new MouseAdapterForTextField(this.textField,
                 CustomBorderProvider.BOLD_BORDER.getBorder(
-                        Colors.NEW_PROJECT_TEXT_FIELD_MOUSE_ENTERED_COLOR.getColor()),
+                        Colors.getColor(NEW_PROJECT_TEXT_FIELD_MOUSE_ENTERED_COLOR)),
                 CustomBorderProvider.BOLD_BORDER.getBorder(
-                        Colors.NEW_PROJECT_TEXT_FIELD_MOUSE_EXITED_COLOR.getColor())));
+                        Colors.getColor(NEW_PROJECT_TEXT_FIELD_MOUSE_EXITED_COLOR))));
         this.textField.setOpaque(false);
 
         this.setLayout(new BorderLayout());

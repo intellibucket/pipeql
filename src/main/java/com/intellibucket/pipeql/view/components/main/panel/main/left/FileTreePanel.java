@@ -1,42 +1,73 @@
 package com.intellibucket.pipeql.view.components.main.panel.main.left;
 
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
+import com.intellibucket.pipeql.view.client.main.concretes.IntroductionPanelClient;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.view.components.main.panel.main.CustomTreeModel;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeCellRenderer;
+import javax.swing.tree.DefaultTreeModel;
 import java.awt.*;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Paths;
+import java.nio.file.StandardWatchEventKinds;
+import java.nio.file.WatchEvent;
 import java.util.List;
 
 public class FileTreePanel extends AbstractGSimplePanel {
     private final FileTree fileTree;
+    private final DefaultTreeModel treeModel;
 
     {
-
         setLayout(new BorderLayout());
-        DefaultMutableTreeNode root = new DefaultMutableTreeNode("Project");
+        var root = new DefaultMutableTreeNode("Project");
 
-        fileTree = new FileTree(root);
+        treeModel = new CustomTreeModel(root);
+        fileTree = new FileTree(treeModel);
 
+        // Set a custom cell renderer to display custom icons
+        fileTree.setCellRenderer(new CustomFileTreeCellRenderer());
 
-        JScrollPane scrollPane = new JScrollPane(fileTree);
+        var scrollPane = new JScrollPane(fileTree);
         add(scrollPane, BorderLayout.CENTER);
-
-
-        File projectRoot = new File("C:/Users/Emil/Desktop/project");
-        buildFileTree(root, projectRoot);
-
-
+        var projectPath = IntroductionPanelClient.PROJECT_PATH;
+        buildFileTree(root, new File(projectPath));
         expandAllNodes(fileTree, 0, fileTree.getRowCount());
+
+        try {
+            var watchService = FileSystems.getDefault().newWatchService();
+            var path = Paths.get(projectPath);
+            path.register(watchService, StandardWatchEventKinds.ENTRY_CREATE,
+                    StandardWatchEventKinds.ENTRY_DELETE,
+                    StandardWatchEventKinds.ENTRY_MODIFY);
+            new Thread(() -> {
+                try {
+                    while (true) {
+                        var key = watchService.take();
+                        for (WatchEvent<?> ignored : key.pollEvents()) {
+                            updateFileTree(root, new File(projectPath));
+                        }
+                        key.reset();
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }).start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void buildFileTree(DefaultMutableTreeNode parentNode, File parentFile) {
         if (parentFile.isDirectory()) {
-            DefaultMutableTreeNode directoryNode = new DefaultMutableTreeNode(parentFile.getName());
+            var directoryNode = new DefaultMutableTreeNode(parentFile.getName());
             parentNode.add(directoryNode);
 
-            File[] files = parentFile.listFiles();
+            var files = parentFile.listFiles();
             if (files != null) {
                 for (File file : files) {
                     buildFileTree(directoryNode, file);
@@ -45,6 +76,13 @@ public class FileTreePanel extends AbstractGSimplePanel {
         } else {
             parentNode.add(new DefaultMutableTreeNode(parentFile.getName()));
         }
+    }
+
+    private void updateFileTree(DefaultMutableTreeNode parentNode, File parentFile) {
+        parentNode.removeAllChildren();
+        buildFileTree(parentNode, parentFile);
+        treeModel.reload();
+        expandAllNodes(fileTree, 0, fileTree.getRowCount());
     }
 
     private void expandAllNodes(JTree tree, int startingIndex, int rowCount) {
@@ -57,7 +95,6 @@ public class FileTreePanel extends AbstractGSimplePanel {
         }
     }
 
-
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
         return null;
@@ -66,5 +103,22 @@ public class FileTreePanel extends AbstractGSimplePanel {
     @Override
     public void addComponents() {
 
+    }
+
+    private static class CustomFileTreeCellRenderer extends DefaultTreeCellRenderer {
+        @Override
+        public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocus) {
+            super.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
+
+            if (value instanceof DefaultMutableTreeNode) {
+                Object userObject = ((DefaultMutableTreeNode) value).getUserObject();
+                if (userObject instanceof String) {
+
+                    setIcon(UIManager.getIcon("FileView.directoryIcon"));
+                }
+            }
+
+            return this;
+        }
     }
 }

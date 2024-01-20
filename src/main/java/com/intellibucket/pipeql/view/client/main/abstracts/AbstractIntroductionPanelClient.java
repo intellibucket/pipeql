@@ -10,6 +10,11 @@ public interface AbstractIntroductionPanelClient {
     void newProject(AbstractGPanel abstractGPanel);
     void selectDirectory(AbstractGSimplePanel changeablePanel, AbstractGTextField textField);
 
+    void createNewProject(String path);
+
     Optional<String> checkPath(String newProjectName, String newProjectPath);
 
+    void openMainScreen(String path);
+
+    void openProject(AbstractGPanel abstractGPanel);
 }

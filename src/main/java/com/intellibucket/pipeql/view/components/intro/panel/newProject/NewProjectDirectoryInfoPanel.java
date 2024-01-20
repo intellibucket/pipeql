@@ -1,5 +1,10 @@
 package com.intellibucket.pipeql.view.components.intro.panel.newProject;
 
+import com.intellibucket.pipeql.eventlink.exception.DomainException;
+import com.intellibucket.pipeql.eventlink.model.common.Topic;
+import com.intellibucket.pipeql.eventlink.model.payload.EmptySuccessPayload;
+import com.intellibucket.pipeql.eventlink.model.payload.Payload;
+import com.intellibucket.pipeql.eventlink.rx.abstracts.Consumer;
 import com.intellibucket.pipeql.lib.compundComponents.LabelTextFieldCompoundComponent;
 import com.intellibucket.pipeql.lib.customAdapters.MouseAdapterForTextField;
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
@@ -8,17 +13,24 @@ import com.intellibucket.pipeql.view.client.main.concretes.IntroductionPanelClie
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.enums.Colors;
 import com.intellibucket.pipeql.view.components.enums.CustomBorderProvider;
+import com.intellibucket.pipeql.view.topics.NewProjectPanelTopics;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
+
+import static com.intellibucket.pipeql.view.components.enums.Colors.NEW_PROJECT_TEXT_FIELD_MOUSE_ENTERED_COLOR;
+import static com.intellibucket.pipeql.view.components.enums.Colors.NEW_PROJECT_TEXT_FIELD_MOUSE_EXITED_COLOR;
 
 public class NewProjectDirectoryInfoPanel extends AbstractGSimplePanel {
 
     private final ExceptionPanel exceptionPanel = new ExceptionPanel();
+    private final CreatButtonListener creatButtonListener = new NewProjectDirectoryInfoPanel.CreatButtonListener();
     private final LabelTextFieldCompoundComponent projectNamePanel = new LabelTextFieldCompoundComponent("Name: ", "untitled");
     private final LabelTextFieldCompoundComponent projectPathDirectoryPanel = new LabelTextFieldCompoundComponent("Project will be created in:", "undifined");
     private final LabelTextFieldCompoundComponent projectPathPanel = new LabelTextFieldCompoundComponent(
@@ -26,15 +38,16 @@ public class NewProjectDirectoryInfoPanel extends AbstractGSimplePanel {
             UIManager.getIcon("FileView.directoryIcon"));
 
     private final IntroductionPanelClient introductionPanelClient = new IntroductionPanelClient();
+    private boolean isValidFields;
 
 
     {
         setLayout(new GridBagLayout());
         configProjectPathDirectoryPanel();
         projectNamePanel.getTextField().setBorder(CustomBorderProvider.BOLD_BORDER.getBorder(
-                Colors.NEW_PROJECT_TEXT_FIELD_MOUSE_EXITED_COLOR.getColor()));
+                Colors.getColor(NEW_PROJECT_TEXT_FIELD_MOUSE_EXITED_COLOR)));
         projectPathPanel.getTextField().setBorder(CustomBorderProvider.BOLD_BORDER.getBorder(
-                Colors.NEW_PROJECT_TEXT_FIELD_MOUSE_EXITED_COLOR.getColor()));
+                Colors.getColor(NEW_PROJECT_TEXT_FIELD_MOUSE_EXITED_COLOR)));
 
         addListeners(projectNamePanel.getTextField());
         addListeners(projectPathPanel.getTextField());
@@ -76,7 +89,7 @@ public class NewProjectDirectoryInfoPanel extends AbstractGSimplePanel {
         var gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5);
         gbc.anchor = GridBagConstraints.NORTH;
-        addComponentWithLabel(exceptionPanel,gbc,0,0);
+        addComponentWithLabel(exceptionPanel, gbc, 0, 0);
         addComponentWithLabel(projectNamePanel, gbc, 0, 1);
         addComponentWithLabel(projectPathPanel, gbc, 0, 2);
         addComponentWithLabel(projectPathDirectoryPanel, gbc, 1, 3);
@@ -109,9 +122,9 @@ public class NewProjectDirectoryInfoPanel extends AbstractGSimplePanel {
         textField.getDocument().addDocumentListener(new ChangePathListener());
         textField.addMouseListener(new MouseAdapterForTextField(textField,
                 CustomBorderProvider.BOLD_BORDER.getBorder(
-                        Colors.NEW_PROJECT_TEXT_FIELD_MOUSE_ENTERED_COLOR.getColor()),
+                        Colors.getColor(NEW_PROJECT_TEXT_FIELD_MOUSE_ENTERED_COLOR)),
                 CustomBorderProvider.BOLD_BORDER.getBorder(
-                        Colors.NEW_PROJECT_TEXT_FIELD_MOUSE_EXITED_COLOR.getColor())
+                        Colors.getColor(NEW_PROJECT_TEXT_FIELD_MOUSE_EXITED_COLOR))
         ));
     }
 
@@ -119,11 +132,28 @@ public class NewProjectDirectoryInfoPanel extends AbstractGSimplePanel {
         var valid = introductionPanelClient.checkPath(
                 this.projectPathPanel.getTextField().getText(),
                 this.projectNamePanel.getTextField().getText());
-        if (valid.isPresent())
+        if (valid.isPresent()){
             this.exceptionPanel.message(valid.get());
-        else
-            this.exceptionPanel.close();
+            this.isValidFields = false;
+        }
 
+        else{
+            this.exceptionPanel.close();
+            this.isValidFields = true;
+        }
+
+
+
+    }
+
+    private void createProject(){
+        if(Files.isDirectory(Paths.get(getPath())) || !this.isValidFields){
+            this.exceptionPanel.message("Invalid path entered");
+        }else {
+            var path = getPath();
+            introductionPanelClient.createNewProject(path);
+            introductionPanelClient.openMainScreen(path);
+        }
 
     }
 
@@ -150,6 +180,23 @@ public class NewProjectDirectoryInfoPanel extends AbstractGSimplePanel {
         @Override
         public void changedUpdate(DocumentEvent e) {
             setPath();
+        }
+    }
+
+
+    class CreatButtonListener extends Consumer<Payload, EmptySuccessPayload> {
+
+        @Override
+        protected EmptySuccessPayload listen(Payload message) throws DomainException {
+            createProject();
+
+
+            return EmptySuccessPayload.INSTANCE;
+        }
+
+        @Override
+        protected List<Topic> mustBeRegistryTopics() {
+            return List.of(NewProjectPanelTopics.CLICKED_CREATE_NEW_PROJECT);
         }
     }
 

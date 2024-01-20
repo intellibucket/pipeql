@@ -4,8 +4,6 @@ import com.intellibucket.pipeql.lib.button.horizontal.SimpleGButton;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -14,7 +12,7 @@ public class BeautifulButton extends SimpleGButton {
     public BeautifulButton(String text, Color foregroundColor, Color backGroundColor, Color mouseEnteredColor) {
         super(text);
         setContentAreaFilled(true);
-        setFocusPainted(true);
+        setFocusPainted(false); // Disable focus painting
         setBorderPainted(false);
         setOpaque(true);
         setBorder(BorderFactory.createEmptyBorder(3, 15, 3, 15));
@@ -35,17 +33,11 @@ public class BeautifulButton extends SimpleGButton {
                 setBackground(backGroundColor);
                 setForeground(foregroundColor);
             }
-        });
-
-        addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                setBorder(BorderFactory.createLineBorder(Color.BLUE, 2));
-            }
 
             @Override
-            public void focusLost(FocusEvent e) {
-                setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+            public void mouseClicked(MouseEvent e) {
+                // Reset the border immediately when clicked
+                setBorder(BorderFactory.createEmptyBorder(3, 15, 3, 15));
             }
         });
     }
