@@ -1,4 +1,6 @@
-package com.intellibucket.pipeql.lib.borders;
+package com.intellibucket.pipeql.view.components.enums;
+
+import com.intellibucket.pipeql.lib.borders.custom.CustomRoundBorder;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -19,6 +21,12 @@ public enum CustomBorderProvider {
         @Override
         public Border getBorder(Color color) {
             return BorderFactory.createMatteBorder(0, 0, 0, 1, color);
+        }
+    },
+    ROUND_BORDER{
+        @Override
+        public Border getBorder(Color color) {
+            return CustomRoundBorder.getInstance(color);
         }
     };
 

@@ -11,6 +11,7 @@ public class NewProjectCenterPanel extends ChangeablePanel {
     private final NewProjectButtonPanel newProjectButtonPanel = new NewProjectButtonPanel();
 
     {
+        setMinimumSize(new Dimension(430,1));
         setLayout(new GridBagLayout());
     }
 
@@ -26,13 +27,13 @@ public class NewProjectCenterPanel extends ChangeablePanel {
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.NORTHWEST;
-        gbc.insets = new Insets(0, 0, 150, 200);
+        gbc.insets = new Insets(0, 0, 150, 10);
         add(newProjectDirectoryInfoPanel, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.anchor = GridBagConstraints.SOUTHEAST;
-        gbc.insets = new Insets(150, 200, 0, 0);
+        gbc.insets = new Insets(150, 10, 0, 0);
         add(newProjectButtonPanel, gbc);
     }
 }

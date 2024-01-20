@@ -1,15 +1,13 @@
 package com.intellibucket.pipeql.view.components.intro.panel.newProject;
 
-import com.intellibucket.pipeql.lib.borders.CustomBorderProvider;
 import com.intellibucket.pipeql.lib.compundComponents.LabelTextFieldCompoundComponent;
 import com.intellibucket.pipeql.lib.customAdapters.MouseAdapterForTextField;
-import com.intellibucket.pipeql.lib.label.AbstractGLabel;
-import com.intellibucket.pipeql.lib.label.SimpleGLabel;
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.lib.textField.AbstractGTextField;
 import com.intellibucket.pipeql.view.client.main.concretes.IntroductionPanelClient;
-import com.intellibucket.pipeql.view.components.Colors;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.view.components.enums.Colors;
+import com.intellibucket.pipeql.view.components.enums.CustomBorderProvider;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -20,24 +18,26 @@ import java.util.List;
 
 public class NewProjectDirectoryInfoPanel extends AbstractGSimplePanel {
 
+    private final ExceptionPanel exceptionPanel = new ExceptionPanel();
     private final LabelTextFieldCompoundComponent projectNamePanel = new LabelTextFieldCompoundComponent("Name: ", "untitled");
-    private final LabelTextFieldCompoundComponent projectPathFieldPanel = new LabelTextFieldCompoundComponent(
+    private final LabelTextFieldCompoundComponent projectPathDirectoryPanel = new LabelTextFieldCompoundComponent("Project will be created in:", "undifined");
+    private final LabelTextFieldCompoundComponent projectPathPanel = new LabelTextFieldCompoundComponent(
             "Path: ",
             UIManager.getIcon("FileView.directoryIcon"));
 
     private final IntroductionPanelClient introductionPanelClient = new IntroductionPanelClient();
-    private final AbstractGLabel createdDirectory = new SimpleGLabel();
+
 
     {
-        setMinimumSize(new Dimension(360, 1));
         setLayout(new GridBagLayout());
-        createdDirectory.setForeground(Color.DARK_GRAY);
+        configProjectPathDirectoryPanel();
         projectNamePanel.getTextField().setBorder(CustomBorderProvider.BOLD_BORDER.getBorder(
                 Colors.NEW_PROJECT_TEXT_FIELD_MOUSE_EXITED_COLOR.getColor()));
-        projectPathFieldPanel.getTextField().setBorder(CustomBorderProvider.BOLD_BORDER.getBorder(
+        projectPathPanel.getTextField().setBorder(CustomBorderProvider.BOLD_BORDER.getBorder(
                 Colors.NEW_PROJECT_TEXT_FIELD_MOUSE_EXITED_COLOR.getColor()));
+
         addListeners(projectNamePanel.getTextField());
-        addListeners(projectPathFieldPanel.getTextField());
+        addListeners(projectPathPanel.getTextField());
     }
 
     public NewProjectDirectoryInfoPanel() {
@@ -45,46 +45,63 @@ public class NewProjectDirectoryInfoPanel extends AbstractGSimplePanel {
     }
 
     public NewProjectDirectoryInfoPanel(String defaultPath) {
-        this.projectPathFieldPanel.getTextField().setText(defaultPath);
+        this.projectPathPanel.getTextField().setText(defaultPath);
         setPath();
+    }
+
+    public void configProjectPathDirectoryPanel() {
+        projectPathDirectoryPanel.setBorder(null);
+        projectPathDirectoryPanel.getTextField().setEnabled(false);
+        projectPathDirectoryPanel.getTextField().setBackground(this.getBackground());
+        projectPathDirectoryPanel.getTextField().setBorder(BorderFactory.createEmptyBorder());
+        projectPathDirectoryPanel.getTextField().setForeground(Color.DARK_GRAY);
+        projectPathDirectoryPanel.getLabel().setForeground(Color.DARK_GRAY);
+        projectPathDirectoryPanel.setBackground(this.getBackground());
+
     }
 
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
         return List.of(
+                exceptionPanel,
                 projectNamePanel,
-                projectPathFieldPanel,
-                createdDirectory
+                projectPathPanel,
+                projectPathDirectoryPanel
         );
     }
 
     @Override
     public void addComponents() {
+
         var gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5);
         gbc.anchor = GridBagConstraints.NORTH;
-        addComponentWithLabel(projectNamePanel, gbc, 0, 1, 2);
-        addComponentWithLabel(projectPathFieldPanel, gbc, 0, 2, 2);
-        addComponentWithLabel(createdDirectory, gbc, 1, 3, 2);
+        addComponentWithLabel(exceptionPanel,gbc,0,0);
+        addComponentWithLabel(projectNamePanel, gbc, 0, 1);
+        addComponentWithLabel(projectPathPanel, gbc, 0, 2);
+        addComponentWithLabel(projectPathDirectoryPanel, gbc, 1, 3);
+
+
     }
 
     @Override
     public void setActions() {
-        projectPathFieldPanel.getTextField().getButton().addActionListener(
+        projectPathPanel.getTextField().getButton().addActionListener(
                 e -> introductionPanelClient.selectDirectory(
-                        this, projectPathFieldPanel.getTextField()));
+                        this, projectPathPanel.getTextField()));
     }
 
     private String getPath() {
         var projectName = projectNamePanel.getTextField().getText();
-        var projectPath = projectPathFieldPanel.getTextField().getText();
+        var projectPath = projectPathPanel.getTextField().getText();
 
         return projectPath.concat(File.separator).concat(projectName);
 
     }
 
     private void setPath() {
-        this.createdDirectory.setText("Project will be created in: " + getPath());
+        checkInvalidFields();
+        this.projectPathDirectoryPanel.getTextField().setText(getPath());
     }
 
 
@@ -98,11 +115,23 @@ public class NewProjectDirectoryInfoPanel extends AbstractGSimplePanel {
         ));
     }
 
+    private void checkInvalidFields() {
+        var valid = introductionPanelClient.checkPath(
+                this.projectPathPanel.getTextField().getText(),
+                this.projectNamePanel.getTextField().getText());
+        if (valid.isPresent())
+            this.exceptionPanel.message(valid.get());
+        else
+            this.exceptionPanel.close();
 
-    private void addComponentWithLabel(Component component, GridBagConstraints gbc, int x, int y, int gridWidth) {
+
+    }
+
+
+    private void addComponentWithLabel(Component component, GridBagConstraints gbc, int x, int y) {
         gbc.gridx = x;
         gbc.gridy = y;
-        gbc.gridwidth = gridWidth;
+        gbc.gridwidth = 2;
         add(component, gbc);
     }
 

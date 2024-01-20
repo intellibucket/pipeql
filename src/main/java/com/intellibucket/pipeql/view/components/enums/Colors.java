@@ -1,4 +1,4 @@
-package com.intellibucket.pipeql.view.components;
+package com.intellibucket.pipeql.view.components.enums;
 
 import java.awt.*;
 

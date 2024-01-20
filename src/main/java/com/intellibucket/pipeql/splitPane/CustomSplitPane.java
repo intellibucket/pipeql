@@ -1,4 +1,4 @@
-package com.intellibucket.pipeql.lib.button.custom;
+package com.intellibucket.pipeql.splitPane;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -6,29 +6,29 @@ import javax.swing.plaf.basic.BasicSplitPaneDivider;
 import javax.swing.plaf.basic.BasicSplitPaneUI;
 import java.awt.*;
 
-public class BeautifulSplitPane extends JSplitPane {
+public class CustomSplitPane extends JSplitPane {
     private  Border border;
-    public BeautifulSplitPane() {
+    public CustomSplitPane() {
     }
 
 
 
-    public BeautifulSplitPane(int newOrientation) {
+    public CustomSplitPane(int newOrientation) {
         super(newOrientation);
     }
 
-    public BeautifulSplitPane(int newOrientation, boolean newContinuousLayout) {
+    public CustomSplitPane(int newOrientation, boolean newContinuousLayout) {
         super(newOrientation, newContinuousLayout);
     }
 
-    public BeautifulSplitPane(int newOrientation, Component newLeftComponent, Component newRightComponent, Border border) {
+    public CustomSplitPane(int newOrientation, Component newLeftComponent, Component newRightComponent, Border border) {
         super(newOrientation, newLeftComponent, newRightComponent);
         this.border = border;
         setUi();
 
     }
 
-    public BeautifulSplitPane(int newOrientation, boolean newContinuousLayout, Component newLeftComponent, Component newRightComponent) {
+    public CustomSplitPane(int newOrientation, boolean newContinuousLayout, Component newLeftComponent, Component newRightComponent) {
         super(newOrientation, newContinuousLayout, newLeftComponent, newRightComponent);
     }
 
@@ -39,7 +39,7 @@ public class BeautifulSplitPane extends JSplitPane {
             return new BasicSplitPaneDivider(this) {
                 @Override
                 public void setBorder(Border b) {
-                    super.setBorder(BeautifulSplitPane.this.border);
+                    super.setBorder(CustomSplitPane.this.border);
                 }
 
                 @Override
