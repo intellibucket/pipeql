@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 
 public class ImageContainer {
     public static final Image LOAD_IMAGE = Toolkit.getDefaultToolkit().getImage(AbstractApplicationProfileInitializer.PROFILE.resourcePath() + "pics/load.jpg");
+    public static final Image WALL_IMAGE = Toolkit.getDefaultToolkit().getImage(AbstractApplicationProfileInitializer.PROFILE.resourcePath() + "pics/black.jpg");
 
     private static final Map<String, Icon> ICON_CONTAINER  = new HashMap<>();
 
