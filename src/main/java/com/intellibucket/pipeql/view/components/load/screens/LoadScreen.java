@@ -1,6 +1,5 @@
 package com.intellibucket.pipeql.view.components.load.screens;
 
-import com.intellibucket.pipeql.lib.file.ImageContainer;
 import com.intellibucket.pipeql.lib.frame.concretes.LoadGFrame;
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
 import com.intellibucket.pipeql.lib.panel.ImageGPanel;
@@ -46,7 +45,7 @@ class MainImagePanel extends ImageGPanel{
         this.setLayout(new BorderLayout());
     }
     public MainImagePanel() {
-        super(ImageContainer.LOAD_IMAGE);
+        super("pics/load.jpg");
     }
 
     @Override
