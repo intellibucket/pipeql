@@ -10,6 +10,16 @@ public class SimpleGButton extends AbstractGButton{
         super(text);
     }
 
+    public SimpleGButton() {
+        super("Untitled");
+    }
+
+
+
+    public SimpleGButton(Icon icon) {
+        super(icon);
+    }
+
     public SimpleGButton(String text, Icon icon) {
         super(text, icon);
     }

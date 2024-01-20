@@ -1,7 +1,7 @@
 package com.intellibucket.pipeql.view.client.main.concretes;
 
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
-import com.intellibucket.pipeql.lib.panel.ChangeablePanel;
+import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.lib.textField.AbstractGTextField;
 import com.intellibucket.pipeql.view.client.main.abstracts.AbstractIntroductionPanelClient;
 import com.intellibucket.pipeql.view.components.intro.screens.NewProjectScreen;
@@ -20,7 +20,7 @@ public class IntroductionPanelClient implements AbstractIntroductionPanelClient 
     }
 
     @Override
-    public void selectDirectory(ChangeablePanel changeablePanel, AbstractGTextField textField) {
+    public void selectDirectory(AbstractGSimplePanel changeablePanel, AbstractGTextField textField) {
         var fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 

@@ -5,7 +5,7 @@ import com.intellibucket.pipeql.view.components.ComponentInitializer;
 
 import java.util.List;
 
-public class LeftDownNewProjectPanel extends ChangeablePanel {
+public class NewProjectLeftDownPanel extends ChangeablePanel {
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
         return List.of();
