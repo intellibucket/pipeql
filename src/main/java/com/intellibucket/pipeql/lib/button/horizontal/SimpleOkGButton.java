@@ -9,7 +9,7 @@ import java.util.List;
 public class SimpleOkGButton extends SimpleGButton{
 
     {
-        this.setBackground(ColorsUtil.BLUE_BUTTON_BACKGROUND);
+        this.setBackground(ColorsUtil.COLORFUL_BUTTON_HOVER_BACKGROUND);
         this.setForeground(ColorsUtil.COLORFUL_BUTTON_TEXT_COLOR);
     }
     public SimpleOkGButton(String text) {

@@ -70,6 +70,9 @@ public class ColorsUtil {
     public static final Color COLORFUL_BUTTON_TEXT_COLOR = new Color(234, 233, 233);
     public static final Color TEXT_COLOR = new Color(206, 201, 201);
     public static final Color GREY_TEXT_COLOR = new Color(152, 152, 152);
+    public static final Color COLORFUL_BUTTON_BACKGROUND = new Color(65, 65, 65);
+    public static final Color BLUE_BUTTON_TEXT_COLOR = new Color(57, 167, 255);
+    public static final Color COLORFUL_BUTTON_HOVER_BACKGROUND = new Color(55, 115, 182);
 
     public static Color randomColor() {
         return new Color((int) (Math.random() * 0x1000000));

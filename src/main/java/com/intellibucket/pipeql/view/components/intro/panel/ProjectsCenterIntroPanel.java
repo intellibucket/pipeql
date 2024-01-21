@@ -9,6 +9,7 @@ import com.intellibucket.pipeql.lib.label.AbstractGLabel;
 import com.intellibucket.pipeql.lib.label.SimpleGLabel;
 import com.intellibucket.pipeql.lib.list.GPanelList;
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
+import com.intellibucket.pipeql.lib.panel.ButtonGPanel;
 import com.intellibucket.pipeql.lib.panel.ChangeablePanel;
 import com.intellibucket.pipeql.lib.panel.TransparentGPanel;
 import com.intellibucket.pipeql.lib.seperator.GSeparator;
@@ -16,6 +17,7 @@ import com.intellibucket.pipeql.lib.textField.AbstractGTextField;
 import com.intellibucket.pipeql.lib.textField.CustomTextField;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.intro.models.ProjectItemModel;
+import com.intellibucket.pipeql.view.util.BordersUtil;
 import com.intellibucket.pipeql.view.util.ColorsUtil;
 import com.intellibucket.pipeql.view.util.FontsUtil;
 
@@ -138,7 +140,7 @@ class BodyProjectsCenterIntroPanel extends AbstractGPanel{
 
     {
         this.setLayout(new BorderLayout());
-        this.setBorder(BorderFactory.createEmptyBorder(5, 10, 10, 5));
+        this.setBorder(BordersUtil.EMPTY_BORDER_5_10_10_5);
     }
 
     public BodyProjectsCenterIntroPanel(List<ProjectItemModel> projectItemModels) {
@@ -149,7 +151,7 @@ class BodyProjectsCenterIntroPanel extends AbstractGPanel{
                 .toList();
         bodyProjectsCenterIntroPanel = new GPanelList(projectItems);
         scrollPane = new JScrollPane(bodyProjectsCenterIntroPanel);
-        scrollPane.setBorder(BorderFactory.createEmptyBorder(5, 10, 10, 5));
+        scrollPane.setBorder(BordersUtil.EMPTY_BORDER_5_10_10_5);
     }
 
     @Override
@@ -166,14 +168,14 @@ class BodyProjectsCenterIntroPanel extends AbstractGPanel{
 }
 
 
-class ProjectItem extends AbstractGPanel{
+class ProjectItem extends AbstractGPanel {
     private final AbstractGPanel picProjectItem;
     private final AbstractGPanel infoProjectItem;
     private final AbstractGPanel settingsButton;
 
     {
         this.setLayout(new BorderLayout());
-        this.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        this.setBorder(BordersUtil.EMPTY_BORDER_5_10_5_10);
     }
 
     public ProjectItem(ProjectItemModel model) {
@@ -231,7 +233,7 @@ class ProjectItem extends AbstractGPanel{
             this.label = new SimpleGLabel(path.substring(0, 1), FontsUtil.HELVETICA_PLAIN_30);
             this.label.setBackground(ColorsUtil.TRANSPARENT);
             this.setLayout(new GridBagLayout());
-            this.label.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+            this.label.setBorder(BordersUtil.EMPTY_BORDER);
         }
 
         @Override
@@ -256,13 +258,13 @@ class ProjectItem extends AbstractGPanel{
         }
     }
 
-    class InfoProjectItem extends AbstractGPanel{
+    class InfoProjectItem extends ButtonGPanel{
         private final AbstractGLabel projectName;
         private final AbstractGLabel projectPath;
 
         {
             this.setLayout(new GridLayout(2, 1));
-            this.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
+            this.setBorder(BordersUtil.EMPTY_BORDER_0_10_0_0);
         }
 
         public InfoProjectItem(String projectName,String projectPath) {
