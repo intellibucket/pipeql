@@ -20,6 +20,7 @@ import com.intellibucket.pipeql.view.components.intro.models.ProjectItemModel;
 import com.intellibucket.pipeql.view.util.BordersUtil;
 import com.intellibucket.pipeql.view.util.ColorsUtil;
 import com.intellibucket.pipeql.view.util.FontsUtil;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -108,7 +109,7 @@ public class ProjectsCenterIntroPanel extends ChangeablePanel {
                         String text = textField.getText();
                         if (text != null && !text.isEmpty()) {
                             List<ProjectItemModel> filteredProjectModels = projectModels.stream()
-                                    .filter(projectItemModel -> projectItemModel.getProjectName().contains(text))
+                                    .filter(projectItemModel -> StringUtils.containsIgnoreCase(projectItemModel.getProjectName(),text))
                                     .collect(Collectors.toList());
                             ProjectsCenterIntroPanel.this.remove(bodyProjectsCenterIntroPanel);
                             bodyProjectsCenterIntroPanel = new TransportBodyProjectsCenterIntroPanel(filteredProjectModels);
@@ -250,7 +251,7 @@ class ProjectItem extends AbstractGPanel {
     }
 
     public ProjectItem(ProjectItemModel model) {
-        picProjectItem = new PicProjectItem(model.getProjectName());
+        picProjectItem = new PicProjectItem(model);
         infoProjectItem = new InfoProjectItem(model.getProjectName(),model.getProjectPath());
         settingsButton = new SettingsButtonOfProjectItem();
     }
@@ -297,14 +298,15 @@ class ProjectItem extends AbstractGPanel {
     }
 
     class PicProjectItem extends TransparentGPanel {
-        private final Color color = ColorsUtil.randomColor();
+        private final Color color;
         private final AbstractGLabel label;
-        public PicProjectItem(String path) {
+        public PicProjectItem(ProjectItemModel model) {
             this.setPreferredSize(new Dimension(55, 50));
-            this.label = new SimpleGLabel(path.substring(0, 1), FontsUtil.HELVETICA_PLAIN_30);
+            this.label = new SimpleGLabel(model.getProjectName().substring(0, 1), FontsUtil.HELVETICA_PLAIN_30);
             this.label.setBackground(ColorsUtil.TRANSPARENT);
             this.setLayout(new GridBagLayout());
             this.label.setBorder(BordersUtil.EMPTY_BORDER);
+            this.color = model.getColor();
         }
 
         @Override
