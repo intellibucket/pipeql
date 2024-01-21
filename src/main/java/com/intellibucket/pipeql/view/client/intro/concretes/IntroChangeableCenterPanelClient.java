@@ -16,16 +16,16 @@ public class IntroChangeableCenterPanelClient extends AbstractIntroChangeableCen
     @Override
     public void openProjects() {
         var models = List.of(
-                new ProjectItemModel("Project 1", "/Users/abhishek/Desktop/Projects/Project1"),
-                new ProjectItemModel("Project 2", "/Users/abhishek/Desktop/Projects/Project2"),
-                new ProjectItemModel("Project 2", "/Users/abhishek/Desktop/Projects/Project2"),
-                new ProjectItemModel("Project 2", "/Users/abhishek/Desktop/Projects/Project2"),
-                new ProjectItemModel("Project 2", "/Users/abhishek/Desktop/Projects/Project2"),
-                new ProjectItemModel("Project 2", "/Users/abhishek/Desktop/Projects/Project2"),
-                new ProjectItemModel("Project 2", "/Users/abhishek/Desktop/Projects/Project2"),
-                new ProjectItemModel("Project 2", "/Users/abhishek/Desktop/Projects/Project2"),
-                new ProjectItemModel("Project 2", "/Users/abhishek/Desktop/Projects/Project2"),
-                new ProjectItemModel("Project 3", "/Users/abhishek/Desktop/Projects/Project3")
+                new ProjectItemModel("PipeQl 1", "/Users/abhishek/Desktop/Projects/Project1"),
+                new ProjectItemModel("Jobber 2", "/Users/abhishek/Desktop/Projects/Project2"),
+                new ProjectItemModel("OnNetwork 2", "/Users/abhishek/Desktop/Projects/Project2"),
+                new ProjectItemModel("Google 2", "/Users/abhishek/Desktop/Projects/Project2"),
+                new ProjectItemModel("Microsoft 2", "/Users/abhishek/Desktop/Projects/Project2"),
+                new ProjectItemModel("AVIS 2", "/Users/abhishek/Desktop/Projects/Project2"),
+                new ProjectItemModel("Office 2", "/Users/abhishek/Desktop/Projects/Project2"),
+                new ProjectItemModel("Word 2", "/Users/abhishek/Desktop/Projects/Project2"),
+                new ProjectItemModel("Excel 2", "/Users/abhishek/Desktop/Projects/Project2"),
+                new ProjectItemModel("Powerpoint 3", "/Users/abhishek/Desktop/Projects/Project3")
         );
         var changeablePanel = new ProjectsCenterIntroPanel(models);
         var event = new StartEvent<>(new IntroductionScreen.ChangeablePanelListener.ChangeablePanelPayload(changeablePanel));

@@ -14,6 +14,8 @@ import com.intellibucket.pipeql.lib.textField.AbstractGTextField;
 import com.intellibucket.pipeql.lib.textField.CustomTextField;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.intro.models.ProjectItemModel;
+import com.intellibucket.pipeql.view.util.ColorsUtil;
+import com.intellibucket.pipeql.view.util.FontsUtil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -162,17 +164,17 @@ class BodyProjectsCenterIntroPanel extends AbstractGPanel{
 class ProjectItem extends AbstractGPanel{
     private final AbstractGPanel picProjectItem;
     private final AbstractGPanel infoProjectItem;
-    private final AbstractGButton settingsButton;
+    private final AbstractGPanel settingsButton;
 
     {
         this.setLayout(new BorderLayout());
-        this.setPreferredSize(new Dimension(100, 100));
+        this.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
     }
 
     public ProjectItem(ProjectItemModel model) {
         picProjectItem = new PicProjectItem(model.getProjectName());
         infoProjectItem = new InfoProjectItem(model.getProjectPath());
-        settingsButton = new SimpleIconGButton("inlaySettings");
+        settingsButton = new SettingsButtonOfProjectItem();
     }
 
     @Override
@@ -191,13 +193,39 @@ class ProjectItem extends AbstractGPanel{
         this.add(settingsButton, BorderLayout.EAST);
     }
 
+    class SettingsButtonOfProjectItem extends AbstractGPanel{
+
+        private final AbstractGButton settingsButton;
+
+        {
+            this.setLayout(new GridBagLayout());
+        }
+
+        public SettingsButtonOfProjectItem() {
+            this.settingsButton = new SimpleIconGButton("inlaySettings");
+        }
+
+        @Override
+        public List<ComponentInitializer> getComponentInitializers() {
+            return List.of(
+                    settingsButton
+            );
+        }
+
+        @Override
+        public void addComponents() {
+            this.add(settingsButton);
+        }
+    }
+
     class PicProjectItem extends AbstractGPanel{
         private final AbstractGLabel label;
         public PicProjectItem(String path) {
             this.setPreferredSize(new Dimension(100, 100));
-            this.label = new SimpleGLabel(path.substring(0, 1));
-            this.setBackground(Color.GRAY);
+            this.label = new SimpleGLabel(path.substring(0, 1), FontsUtil.ARIAL_PLAIN_34);
+            this.setBackground(ColorsUtil.random());
             this.label.setBackground(new Color(0, 0, 0, 0));
+            this.setLayout(new GridBagLayout());
         }
 
         @Override
