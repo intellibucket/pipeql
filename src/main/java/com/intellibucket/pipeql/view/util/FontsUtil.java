@@ -72,15 +72,6 @@ public class FontsUtil {
     public static final Font RALEWAY_PLAIN_36 = new Font("Raleway", Font.PLAIN, 36);
 
 
-
-
-
-
-
-
-
-
-
-
-
+    public static final Font HELVETICA_BOLD_14 = new Font("Helvetica", Font.BOLD, 14);
+    public static final Font HELVETICA_BOLD_16 = new Font("Helvetica", Font.BOLD, 16);
 }

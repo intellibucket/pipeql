@@ -3,6 +3,7 @@ package com.intellibucket.pipeql.view.util;
 import java.awt.*;
 
 public class ColorsUtil {
+    public static final Color TRANSPARENT = new Color(0, 0, 0, 0);
     public static final Color LIGHT_BLUE = new Color(0, 166, 255);
     public static final Color DARK_BLUE = new Color(0, 122, 255);
     public static final Color LIGHT_GRAY = new Color(238, 238, 238);
@@ -65,7 +66,16 @@ public class ColorsUtil {
     public static final Color DARK_DEEP_DEEP_TEAL = new Color(0, 121, 107);
     public static final Color LIGHT_DEEP_DEEP_INDIGO = new Color(63, 81, 181);
 
-    public static Color random() {
+    public static final Color BLUE_BUTTON_BACKGROUND = new java.awt.Color(57, 167, 255);
+    public static final Color COLORFUL_BUTTON_TEXT_COLOR = new Color(234, 233, 233);
+    public static final Color TEXT_COLOR = new Color(206, 201, 201);
+    public static final Color GREY_TEXT_COLOR = new Color(152, 152, 152);
+
+    public static Color randomColor() {
         return new Color((int) (Math.random() * 0x1000000));
+    }
+
+    public static Color getBackground() {
+        return new Color(0x212121);
     }
 }

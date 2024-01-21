@@ -1,16 +1,16 @@
 package com.intellibucket.pipeql.lib.button.horizontal;
 
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.view.util.ColorsUtil;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.List;
 
 public class SimpleOkGButton extends SimpleGButton{
 
     {
-        this.setBackground(new java.awt.Color(57, 167, 255));
-        this.setForeground(Color.WHITE);
+        this.setBackground(ColorsUtil.BLUE_BUTTON_BACKGROUND);
+        this.setForeground(ColorsUtil.COLORFUL_BUTTON_TEXT_COLOR);
     }
     public SimpleOkGButton(String text) {
         super(text);
