@@ -103,7 +103,6 @@ public class ProjectsCenterIntroPanel extends ChangeablePanel {
             private final AbstractGTextField textField = new CustomTextField(ImageToolKit.getIcon("search@20x20"),40);
             {
                 this.textField.getDocument().addDocumentListener(new DocumentListener() {
-
                     private void update(DocumentEvent event){
                         System.out.println("action" + event.getType());
                         String text = textField.getText();
@@ -119,6 +118,8 @@ public class ProjectsCenterIntroPanel extends ChangeablePanel {
                         }
                         bodyProjectsCenterIntroPanel.initialize();
                         ProjectsCenterIntroPanel.this.add(bodyProjectsCenterIntroPanel, BorderLayout.CENTER);
+                        ProjectsCenterIntroPanel.this.refresh();
+                        SwingUtilities.invokeLater(textField::requestFocusInWindow);
                     }
 
                     @Override
