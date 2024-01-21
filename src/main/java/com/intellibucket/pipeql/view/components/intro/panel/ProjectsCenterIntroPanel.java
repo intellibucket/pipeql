@@ -22,14 +22,19 @@ import com.intellibucket.pipeql.view.util.ColorsUtil;
 import com.intellibucket.pipeql.view.util.FontsUtil;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ProjectsCenterIntroPanel extends ChangeablePanel {
 
+    private List<ProjectItemModel> projectModels;
+
     private final AbstractGPanel headerProjectsCenterIntroPanel;
-    private final AbstractGPanel bodyProjectsCenterIntroPanel;
+    private AbstractGPanel bodyProjectsCenterIntroPanel;
 
     {
         this.setLayout(new BorderLayout());
@@ -37,8 +42,13 @@ public class ProjectsCenterIntroPanel extends ChangeablePanel {
 
     public ProjectsCenterIntroPanel(List<ProjectItemModel> projectModels) {
         super();
+        this.projectModels = projectModels;
         this.headerProjectsCenterIntroPanel = new HeaderProjectsCenterIntroPanel();
-        this.bodyProjectsCenterIntroPanel = new BodyProjectsCenterIntroPanel(projectModels);
+        this.bodyProjectsCenterIntroPanel = new TransportBodyProjectsCenterIntroPanel(projectModels);
+    }
+
+    public List<ProjectItemModel> getProjectModels() {
+        return projectModels;
     }
 
     @Override
@@ -54,55 +64,93 @@ public class ProjectsCenterIntroPanel extends ChangeablePanel {
         this.add(headerProjectsCenterIntroPanel, BorderLayout.NORTH);
         this.add(bodyProjectsCenterIntroPanel, BorderLayout.CENTER);
     }
-}
 
+    class HeaderProjectsCenterIntroPanel extends AbstractGPanel{
 
-class HeaderProjectsCenterIntroPanel extends AbstractGPanel{
+        private final AbstractGPanel leftHeaderProjectsCenterIntroPanel = new LeftHeaderProjectsCenterIntroPanel();
+        private final AbstractGPanel rightHeaderProjectsCenterIntroPanel = new RightHeaderProjectsCenterIntroPanel();
 
-    private final AbstractGPanel leftHeaderProjectsCenterIntroPanel = new LeftHeaderProjectsCenterIntroPanel();
-    private final AbstractGPanel rightHeaderProjectsCenterIntroPanel = new RightHeaderProjectsCenterIntroPanel();
+        private final GSeparator seperator = new GSeparator();
 
-    private final GSeparator seperator = new GSeparator();
+        {
+            this.setLayout(new BorderLayout());
+            this.setBorder(BorderFactory.createEmptyBorder(15, 10, 15, 10));
+        }
 
-    {
-        this.setLayout(new BorderLayout());
-        this.setBorder(BorderFactory.createEmptyBorder(15, 10, 15, 10));
-    }
+        @Override
+        public List<ComponentInitializer> getComponentInitializers() {
+            return List.of(
+                    leftHeaderProjectsCenterIntroPanel,
+                    rightHeaderProjectsCenterIntroPanel,
+                    seperator
+            );
+        }
 
-    @Override
-    public List<ComponentInitializer> getComponentInitializers() {
-        return List.of(
-                leftHeaderProjectsCenterIntroPanel,
-                rightHeaderProjectsCenterIntroPanel,
-                seperator
-        );
-    }
+        @Override
+        public void addComponents() {
+            this.add(leftHeaderProjectsCenterIntroPanel, BorderLayout.WEST);
+            this.add(rightHeaderProjectsCenterIntroPanel, BorderLayout.EAST);
+            this.add(seperator, BorderLayout.SOUTH);
+        }
 
-    @Override
-    public void addComponents() {
-        this.add(leftHeaderProjectsCenterIntroPanel, BorderLayout.WEST);
-        this.add(rightHeaderProjectsCenterIntroPanel, BorderLayout.EAST);
-        this.add(seperator, BorderLayout.SOUTH);
-    }
-}
+        @Override
+        public void setActions() {
 
-class LeftHeaderProjectsCenterIntroPanel extends AbstractGPanel{
+        }
 
-    private final AbstractGTextField textField = new CustomTextField(ImageToolKit.getIcon("search@20x20"),40);
-    {
-        this.setLayout(new FlowLayout(FlowLayout.LEFT));
-    }
+        class LeftHeaderProjectsCenterIntroPanel extends AbstractGPanel{
 
-    @Override
-    public List<ComponentInitializer> getComponentInitializers() {
-        return List.of(
-                textField
-        );
-    }
+            private final AbstractGTextField textField = new CustomTextField(ImageToolKit.getIcon("search@20x20"),40);
+            {
+                this.textField.getDocument().addDocumentListener(new DocumentListener() {
 
-    @Override
-    public void addComponents() {
-        this.add(textField);
+                    private void update(DocumentEvent event){
+                        System.out.println("action" + event.getType());
+                        String text = textField.getText();
+                        if (text != null && !text.isEmpty()) {
+                            List<ProjectItemModel> filteredProjectModels = projectModels.stream()
+                                    .filter(projectItemModel -> projectItemModel.getProjectName().contains(text))
+                                    .collect(Collectors.toList());
+                            ProjectsCenterIntroPanel.this.remove(bodyProjectsCenterIntroPanel);
+                            bodyProjectsCenterIntroPanel = new TransportBodyProjectsCenterIntroPanel(filteredProjectModels);
+                        } else {
+                            ProjectsCenterIntroPanel.this.remove(bodyProjectsCenterIntroPanel);
+                            bodyProjectsCenterIntroPanel = new TransportBodyProjectsCenterIntroPanel(projectModels);
+                        }
+                        bodyProjectsCenterIntroPanel.initialize();
+                        ProjectsCenterIntroPanel.this.add(bodyProjectsCenterIntroPanel, BorderLayout.CENTER);
+                    }
+
+                    @Override
+                    public void insertUpdate(DocumentEvent e) {
+                        update(e);
+                    }
+
+                    @Override
+                    public void removeUpdate(DocumentEvent e) {
+                        update(e);
+                    }
+
+                    @Override
+                    public void changedUpdate(DocumentEvent e) {
+                        update(e);
+                    }
+                });
+            }
+
+            @Override
+            public List<ComponentInitializer> getComponentInitializers() {
+                return List.of(
+                        textField
+                );
+            }
+
+            @Override
+            public void addComponents() {
+                this.add(textField);
+            }
+        }
+
     }
 }
 
@@ -132,7 +180,29 @@ class RightHeaderProjectsCenterIntroPanel extends AbstractGPanel{
         this.add(vcsButton);
     }
 }
+class TransportBodyProjectsCenterIntroPanel extends AbstractGPanel{
 
+    private BodyProjectsCenterIntroPanel bodyProjectsCenterIntroPanel;
+
+    {
+        this.setLayout(new BorderLayout());
+    }
+
+    public TransportBodyProjectsCenterIntroPanel(List<ProjectItemModel> projectItemModels) {
+        bodyProjectsCenterIntroPanel = new BodyProjectsCenterIntroPanel(projectItemModels);
+    }
+    @Override
+    public List<ComponentInitializer> getComponentInitializers() {
+        return List.of(
+                bodyProjectsCenterIntroPanel
+        );
+    }
+
+    @Override
+    public void addComponents() {
+        this.add(bodyProjectsCenterIntroPanel, BorderLayout.CENTER);
+    }
+}
 class BodyProjectsCenterIntroPanel extends AbstractGPanel{
 
     private GPanelList bodyProjectsCenterIntroPanel;
