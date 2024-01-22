@@ -301,8 +301,8 @@ class ProjectItem extends AbstractGPanel {
         private final Color color;
         private final AbstractGLabel label;
         public PicProjectItem(ProjectItemModel model) {
-            this.setPreferredSize(new Dimension(55, 50));
-            this.label = new SimpleGLabel(model.getProjectName().substring(0, 1), FontsUtil.HELVETICA_PLAIN_30);
+            this.setPreferredSize(new Dimension(40, 25));
+            this.label = new SimpleGLabel(model.getProjectName().substring(0, 1), FontsUtil.HELVETICA_PLAIN_20);
             this.label.setBackground(ColorsUtil.TRANSPARENT);
             this.setLayout(new GridBagLayout());
             this.label.setBorder(BordersUtil.EMPTY_BORDER);
