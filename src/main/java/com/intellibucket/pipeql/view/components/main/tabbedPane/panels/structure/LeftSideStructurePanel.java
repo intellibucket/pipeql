@@ -49,7 +49,7 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
         this.add(this.listTablesOfLeftSideStructurePanel, BorderLayout.CENTER);
     }
 
-    class ListTablesOfLeftSideStructurePanelLine extends AbstractGSimplePanel{
+    class ListTablesOfLeftSideStructurePanelLine extends AbstractGSimplePanel {
 
         private final CustomGList list;
 
@@ -57,7 +57,7 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
             this.setLayout(new BorderLayout());
         }
 
-        public ListTablesOfLeftSideStructurePanelLine(List<TableItemModel> items){
+        public ListTablesOfLeftSideStructurePanelLine(List<TableItemModel> items) {
             super();
             var itemsPanel = items.stream().map(GListItemPanel::new).toList();
             this.list = new CustomGList(itemsPanel);
@@ -76,24 +76,24 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
         }
 
 
-        class CustomGList extends GList{
-            public CustomGList(List<GListItemPanel > items){
+        class CustomGList extends GList {
+            public CustomGList(List<GListItemPanel> items) {
                 super(items);
             }
         }
     }
 
-    class HeaderOfLeftSideStructurePanelLine extends AbstractGSimplePanel{
+    class HeaderOfLeftSideStructurePanelLine extends AbstractGSimplePanel {
         private final AbstractGLabel headerLabel = new SimpleGLabel("Schemas and Tables", FontsUtil.HELVETICA_BOLD_16);
 
-        private final SchemasOfLeftSideStructurePanel schemasOfLeftSideStructurePanel ;
+        private final SchemasOfLeftSideStructurePanel schemasOfLeftSideStructurePanel;
         private final HeaderOfLeftSideStructurePanel headerOfLeftSideStructurePanelLineLeft;
 
         {
             this.setLayout(new BorderLayout());
         }
 
-        public HeaderOfLeftSideStructurePanelLine(List<SchemaItemModel> schemas){
+        public HeaderOfLeftSideStructurePanelLine(List<SchemaItemModel> schemas) {
             this.schemasOfLeftSideStructurePanel = new SchemasOfLeftSideStructurePanel(schemas);
             this.headerOfLeftSideStructurePanelLineLeft = new HeaderOfLeftSideStructurePanel();
         }
@@ -122,6 +122,7 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
 
         class SchemasOfLeftSideStructurePanel extends AbstractGSimplePanel {
 
+            private ButtonsPanelOfSchemasOfLeftSideStructurePanel buttonsPanelOfSchemasOfLeftSideStructurePanel = new ButtonsPanelOfSchemasOfLeftSideStructurePanel();
             private final SchemaComboBox schemaComboBox;
 
             {
@@ -137,21 +138,46 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
             @Override
             public List<ComponentInitializer> getComponentInitializers() {
                 return List.of(
-                        this.schemaComboBox
+                        this.schemaComboBox,
+                        this.buttonsPanelOfSchemasOfLeftSideStructurePanel
                 );
             }
 
             @Override
             public void addComponents() {
+                this.add(this.buttonsPanelOfSchemasOfLeftSideStructurePanel, BorderLayout.WEST);
                 this.add(this.schemaComboBox, BorderLayout.CENTER);
             }
 
-            static class SchemaComboBox extends GComboBox{
+            class ButtonsPanelOfSchemasOfLeftSideStructurePanel extends AbstractGSimplePanel {
+                private final AbstractGButton addSchemaButton = new SimpleIconGButton("addBlankLine");
+                private final AbstractGButton editSchemaButton = new SimpleIconGButton("editorPreview");
+
+                {
+                    this.setLayout(new FlowLayout(FlowLayout.LEFT));
+                }
+
+                @Override
+                public List<ComponentInitializer> getComponentInitializers() {
+                    return List.of(
+                            this.addSchemaButton,
+                            this.editSchemaButton
+                    );
+                }
+
+                @Override
+                public void addComponents() {
+                    this.add(this.addSchemaButton);
+                    this.add(this.editSchemaButton);
+                }
+            }
+
+            static class SchemaComboBox extends GComboBox {
                 private SchemaComboBox(DefaultComboBoxModel<GComboBoxItem> model) {
                     super(model);
                 }
 
-                public static SchemaComboBox of(List<SchemaComboItem> items){
+                public static SchemaComboBox of(List<SchemaComboItem> items) {
                     DefaultComboBoxModel<GComboBoxItem> model = new DefaultComboBoxModel<>();
                     items.forEach(model::addElement);
                     return new SchemaComboBox(model);
@@ -190,6 +216,7 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
             }
 
         }
+
         class HeaderOfLeftSideStructurePanel extends AbstractGSimplePanel {
             private final LeftPaneHeaderOfLeftSideStructurePanel leftPaneHeaderOfLeftSideStructurePanel = new LeftPaneHeaderOfLeftSideStructurePanel();
             private final RightPaneHeaderOfLeftSideStructurePanel rightPaneHeaderOfLeftSideStructurePanel = new RightPaneHeaderOfLeftSideStructurePanel();

@@ -2,6 +2,7 @@ package com.intellibucket.pipeql.view.components.main.tabbedPane.panels.structur
 
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.view.util.BordersUtil;
 
 import java.awt.*;
 import java.util.List;
@@ -17,6 +18,7 @@ public class StructurePanel extends AbstractGSimplePanel {
 
     {
         this.setLayout(new BorderLayout());
+        this.setBorder(BordersUtil.EMPTY_BORDER_5_5_5_5);
     }
 
 
