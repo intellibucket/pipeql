@@ -1,5 +1,10 @@
 package com.intellibucket.pipeql.view.components.main.tabbedPane.panels.structure;
 
+import com.intellibucket.pipeql.eventlink.exception.DomainException;
+import com.intellibucket.pipeql.eventlink.model.common.Topic;
+import com.intellibucket.pipeql.eventlink.model.payload.EmptySuccessPayload;
+import com.intellibucket.pipeql.eventlink.model.payload.Payload;
+import com.intellibucket.pipeql.eventlink.rx.abstracts.Consumer;
 import com.intellibucket.pipeql.lib.button.horizontal.AbstractGButton;
 import com.intellibucket.pipeql.lib.button.horizontal.SimpleIconGButton;
 import com.intellibucket.pipeql.lib.combo.GComboBox;
@@ -7,21 +12,28 @@ import com.intellibucket.pipeql.lib.combo.GComboBoxItem;
 import com.intellibucket.pipeql.lib.label.AbstractGLabel;
 import com.intellibucket.pipeql.lib.label.SimpleGLabel;
 import com.intellibucket.pipeql.lib.list.GList;
-import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.lib.panel.GListItemPanel;
+import com.intellibucket.pipeql.view.client.main.abstracts.AbstractSchemaComboBoxClient;
 import com.intellibucket.pipeql.view.client.main.concretes.MockSchemaItemClient;
+import com.intellibucket.pipeql.view.client.main.concretes.SchemaComboBoxClient;
+import com.intellibucket.pipeql.view.client.payloads.SchemaItemModelPayload;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.main.model.SchemaItemModel;
 import com.intellibucket.pipeql.view.components.main.model.TableItemModel;
+import com.intellibucket.pipeql.view.topics.SchemaComboBoxTopics;
 import com.intellibucket.pipeql.view.util.FontsUtil;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
+import java.util.Objects;
 
+@Slf4j
 public class LeftSideStructurePanel extends AbstractGSimplePanel {
 
+    private SchemaChangedListener schemaChangedListener = new SchemaChangedListener();
     private HeaderOfLeftSideStructurePanelLine headerOfLeftSideStructurePanel;
     private ListTablesOfLeftSideStructurePanelLine listTablesOfLeftSideStructurePanel;
 
@@ -32,7 +44,18 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
     public LeftSideStructurePanel() {
         var schemas = MockSchemaItemClient.getSchemas();
         headerOfLeftSideStructurePanel = new HeaderOfLeftSideStructurePanelLine(schemas);
-        listTablesOfLeftSideStructurePanel = new ListTablesOfLeftSideStructurePanelLine(schemas.stream().flatMap(schemaItemModel -> schemaItemModel.tables().stream()).toList());
+        listTablesOfLeftSideStructurePanel = new ListTablesOfLeftSideStructurePanelLine(this.getCurrentSchema().tables());
+    }
+
+    protected void changeListTablesOfLeftSideStructurePanelLine(List<TableItemModel> tables) {
+        var newListTablesOfLeftSideStructurePanel = new ListTablesOfLeftSideStructurePanelLine(tables);
+        this.remove(listTablesOfLeftSideStructurePanel);
+        this.add(newListTablesOfLeftSideStructurePanel, BorderLayout.CENTER);
+        this.listTablesOfLeftSideStructurePanel = newListTablesOfLeftSideStructurePanel;
+        this.listTablesOfLeftSideStructurePanel.initialize();
+        this.revalidate();
+        this.repaint();
+        log.info("Schema changed..");
     }
 
     @Override
@@ -47,6 +70,26 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
     public void addComponents() {
         this.add(this.headerOfLeftSideStructurePanel, BorderLayout.NORTH);
         this.add(this.listTablesOfLeftSideStructurePanel, BorderLayout.CENTER);
+    }
+
+    public SchemaItemModel getCurrentSchema() {
+        return this.headerOfLeftSideStructurePanel.getSelectedSchema();
+    }
+
+    class SchemaChangedListener extends Consumer<SchemaItemModelPayload, EmptySuccessPayload>{
+
+        @Override
+        protected EmptySuccessPayload listen(SchemaItemModelPayload message) throws DomainException {
+            var tables = message.getSchema().tables();
+            var newListTablesOfLeftSideStructurePanel = new ListTablesOfLeftSideStructurePanelLine(tables);
+            LeftSideStructurePanel.this.changeListTablesOfLeftSideStructurePanelLine(tables);
+            return EmptySuccessPayload.INSTANCE;
+        }
+
+        @Override
+        protected List<Topic> mustBeRegistryTopics() {
+            return List.of(SchemaComboBoxTopics.CHANGED_SELECTED_SCHEMA_ON_COMBOBOX);
+        }
     }
 
     class ListTablesOfLeftSideStructurePanelLine extends AbstractGSimplePanel {
@@ -114,6 +157,10 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
             this.add(headerOfLeftSideStructurePanelLineLeft, BorderLayout.SOUTH);
         }
 
+        public SchemaItemModel getSelectedSchema() {
+            return this.schemasOfLeftSideStructurePanel.getSelectedSchema();
+        }
+
         @Override
         public void postInitialize() {
             this.headerLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -134,6 +181,10 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
                 this.schemaComboBox = SchemaComboBox.of(schemaItems);
             }
 
+            public SchemaItemModel getSelectedSchema() {
+                return ((SchemaComboItem) Objects.requireNonNull(this.schemaComboBox.getSelectedItem())).schema;
+            }
+
 
             @Override
             public List<ComponentInitializer> getComponentInitializers() {
@@ -150,8 +201,8 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
             }
 
             class ButtonsPanelOfSchemasOfLeftSideStructurePanel extends AbstractGSimplePanel {
-                private final AbstractGButton addSchemaButton = new SimpleIconGButton("addBlankLine");
-                private final AbstractGButton editSchemaButton = new SimpleIconGButton("editorPreview");
+                private final AbstractGButton addSchemaButton = new SimpleIconGButton("dataSchema");
+                private final AbstractGButton editSchemaButton = new SimpleIconGButton("external_schema_object");
 
                 {
                     this.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -173,8 +224,16 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
             }
 
             static class SchemaComboBox extends GComboBox {
+                private AbstractSchemaComboBoxClient client = new SchemaComboBoxClient();
                 private SchemaComboBox(DefaultComboBoxModel<GComboBoxItem> model) {
                     super(model);
+                }
+
+                {
+                    this.addActionListener(e -> {
+                        var selectedItem = (SchemaComboItem) this.getSelectedItem();
+                        this.client.changeSchema(selectedItem.schema);
+                    });
                 }
 
                 public static SchemaComboBox of(List<SchemaComboItem> items) {
@@ -187,12 +246,12 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
 
             class SchemaComboItem extends GComboBoxItem {
 
-                private SchemaItemModel model;
+                private SchemaItemModel schema;
                 private final AbstractGLabel nameLabel;
 
-                SchemaComboItem(SchemaItemModel model) {
-                    this.nameLabel = new SimpleGLabel(model.name());
-                    this.model = model;
+                SchemaComboItem(SchemaItemModel schema) {
+                    this.nameLabel = new SimpleGLabel(schema.name());
+                    this.schema = schema;
                 }
 
 
@@ -211,7 +270,7 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
 
                 @Override
                 public String toString() {
-                    return this.model.name();
+                    return this.schema.name();
                 }
             }
 
