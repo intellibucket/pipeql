@@ -1,16 +1,15 @@
-package com.intellibucket.pipeql.view.components.intro.panel.newProject;
+package com.intellibucket.pipeql.view.components.intro.panel.newProject.centerPanel;
 
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 
-import java.awt.*;
 import java.util.List;
 
-public class NewProjectButtonPanel extends AbstractGSimplePanel {
-    private final NewProjectCreateAndCancelButtonPanel projectCreateAndCancelButtonPanel;
+public class NewProjectCenterDownRightPanel extends AbstractGSimplePanel {
+    private final NewProjectButtonPanel projectCreateAndCancelButtonPanel;
 
     {
-        this.projectCreateAndCancelButtonPanel = new NewProjectCreateAndCancelButtonPanel();
+        this.projectCreateAndCancelButtonPanel = new NewProjectButtonPanel();
     }
     @Override
     public List<ComponentInitializer> getComponentInitializers() {

@@ -1,5 +1,6 @@
 package com.intellibucket.pipeql.view.components.main.panel.main.left;
 
+import com.intellibucket.pipeql.application.profile.abstracts.AbstractApplicationProfileInitializer;
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.view.client.main.concretes.IntroductionPanelClient;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
@@ -16,6 +17,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardWatchEventKinds;
 import java.nio.file.WatchEvent;
 import java.util.List;
+import java.util.Objects;
 
 public class FileTreePanel extends AbstractGSimplePanel {
     private final FileTree fileTree;
@@ -33,7 +35,7 @@ public class FileTreePanel extends AbstractGSimplePanel {
 
         var scrollPane = new JScrollPane(fileTree);
         add(scrollPane, BorderLayout.CENTER);
-        var projectPath = IntroductionPanelClient.PROJECT_PATH;
+        var projectPath = Objects.requireNonNullElse(IntroductionPanelClient.PROJECT_PATH, AbstractApplicationProfileInitializer.PROFILE.resourcePath().concat("defaultProject"));
         buildFileTree(root, new File(projectPath));
         expandAllNodes(fileTree, 0, fileTree.getRowCount());
 

@@ -1,4 +1,4 @@
-package com.intellibucket.pipeql.view.components.intro.panel.newProject;
+package com.intellibucket.pipeql.view.components.intro.panel.newProject.centerPanel;
 
 import com.intellibucket.pipeql.eventlink.model.event.concretes.start.StartEvent;
 import com.intellibucket.pipeql.eventlink.model.producer.ProducingMessage;
@@ -9,7 +9,6 @@ import com.intellibucket.pipeql.view.client.main.abstracts.AbstractIntroductionP
 import com.intellibucket.pipeql.view.client.main.concretes.IntroductionPanelClient;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.enums.Colors;
-import com.intellibucket.pipeql.view.topics.LeftMainPanelTopics;
 import com.intellibucket.pipeql.view.topics.NewProjectPanelTopics;
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,12 +19,15 @@ import static com.intellibucket.pipeql.view.components.enums.Colors.NEW_PROJECT_
 import static com.intellibucket.pipeql.view.components.enums.Colors.NEW_PROJECT_CREATE_BUTTON_MOUSE_ENTERED_COLOR;
 
 @Slf4j
-public class NewProjectCreateAndCancelButtonPanel extends AbstractGSimplePanel {
+public class NewProjectButtonPanel extends AbstractGSimplePanel {
+    private final EventLinkTemplate eventLinkTemplate = EventLinkTemplate.INSTANCE;
     private final AbstractIntroductionPanelClient client;
+
+
     private final BeautifulButton createButton;
     private final BeautifulButton cancelButton;
 
-    private final EventLinkTemplate eventLinkTemplate = EventLinkTemplate.INSTANCE;
+
 
 
     {
@@ -50,7 +52,6 @@ public class NewProjectCreateAndCancelButtonPanel extends AbstractGSimplePanel {
 
     @Override
     public void addComponents() {
-
         var gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;

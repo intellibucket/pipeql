@@ -11,8 +11,8 @@ import com.intellibucket.pipeql.lib.file.ImageToolKit;
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
 import com.intellibucket.pipeql.lib.frame.concretes.SmallGFrame;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
-import com.intellibucket.pipeql.view.components.intro.panel.newProject.NewProjectLeftSidePanel;
-import com.intellibucket.pipeql.view.components.intro.panel.newProject.NewProjectCenterPanel;
+import com.intellibucket.pipeql.view.components.intro.panel.newProject.leftPanel.NewProjectLeftSideMainPanel;
+import com.intellibucket.pipeql.view.components.intro.panel.newProject.centerPanel.NewProjectCenterMainPanel;
 import com.intellibucket.pipeql.view.topics.NewProjectPanelTopics;
 
 import javax.swing.*;
@@ -21,8 +21,8 @@ import java.util.List;
 
 public class NewProjectScreen extends SmallGFrame {
     CancelButtonListener cancelButtonListener = new CancelButtonListener();
-    private final NewProjectLeftSidePanel leftSideIntroductionPanel = new NewProjectLeftSidePanel();
-    private final NewProjectCenterPanel newProjectCenterPanel = new NewProjectCenterPanel();
+    private final NewProjectLeftSideMainPanel leftSideIntroductionPanel = new NewProjectLeftSideMainPanel();
+    private final NewProjectCenterMainPanel newProjectCenterMainPanel = new NewProjectCenterMainPanel();
     private final JSplitPane splitPane;
 
     {
@@ -36,7 +36,7 @@ public class NewProjectScreen extends SmallGFrame {
         this.setLocationRelativeTo(abstractGPanel);
         this.splitPane = new CustomSplitPane(JSplitPane.HORIZONTAL_SPLIT,
                 leftSideIntroductionPanel,
-                newProjectCenterPanel,
+                newProjectCenterMainPanel,
                 CustomBorderProvider.ONE_LINE_RIGHT_BORDER.getBorder(Color.BLACK));
         splitPane.setResizeWeight(0.25);
 
@@ -46,7 +46,7 @@ public class NewProjectScreen extends SmallGFrame {
 
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
-        return List.of(this.leftSideIntroductionPanel, this.newProjectCenterPanel);
+        return List.of(this.leftSideIntroductionPanel, this.newProjectCenterMainPanel);
     }
 
     @Override

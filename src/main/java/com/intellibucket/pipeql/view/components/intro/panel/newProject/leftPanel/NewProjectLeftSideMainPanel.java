@@ -1,4 +1,4 @@
-package com.intellibucket.pipeql.view.components.intro.panel.newProject;
+package com.intellibucket.pipeql.view.components.intro.panel.newProject.leftPanel;
 
 import com.intellibucket.pipeql.lib.panel.ChangeablePanel;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
@@ -6,8 +6,8 @@ import com.intellibucket.pipeql.view.components.ComponentInitializer;
 import java.awt.*;
 import java.util.List;
 
-public class NewProjectLeftSidePanel extends ChangeablePanel {
-    private final NewProjectLeftUpSideSearchPanel newProjectLeftUpSideSearchPanel = new NewProjectLeftUpSideSearchPanel();
+public class NewProjectLeftSideMainPanel extends ChangeablePanel {
+    private final NewProjectLeftUpSearchPanel newProjectLeftUpSearchPanel = new NewProjectLeftUpSearchPanel();
     private final NewProjectLeftDownPanel newProjectLeftDownPanel = new NewProjectLeftDownPanel();
 
     {
@@ -18,12 +18,12 @@ public class NewProjectLeftSidePanel extends ChangeablePanel {
     }
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
-        return List.of(this.newProjectLeftUpSideSearchPanel, this.newProjectLeftDownPanel);
+        return List.of(this.newProjectLeftUpSearchPanel, this.newProjectLeftDownPanel);
     }
 
     @Override
     public void addComponents() {
-        this.add(this.newProjectLeftUpSideSearchPanel, BorderLayout.NORTH);
+        this.add(this.newProjectLeftUpSearchPanel, BorderLayout.NORTH);
         this.add(this.newProjectLeftDownPanel, BorderLayout.CENTER);
     }
 }

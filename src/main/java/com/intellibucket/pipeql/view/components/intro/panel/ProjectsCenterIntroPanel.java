@@ -15,6 +15,7 @@ import com.intellibucket.pipeql.lib.panel.TransparentGPanel;
 import com.intellibucket.pipeql.lib.seperator.GSeparator;
 import com.intellibucket.pipeql.lib.textField.AbstractGTextField;
 import com.intellibucket.pipeql.lib.textField.CustomTextField;
+import com.intellibucket.pipeql.view.client.main.concretes.IntroductionPanelClient;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.intro.models.ProjectItemModel;
 import com.intellibucket.pipeql.view.util.BordersUtil;
@@ -158,10 +159,12 @@ public class ProjectsCenterIntroPanel extends ChangeablePanel {
 }
 
 class RightHeaderProjectsCenterIntroPanel extends AbstractGPanel{
+    private IntroductionPanelClient introductionPanelClient = new IntroductionPanelClient();
 
     private AbstractGButton newButton = new SimpleOkGButton("New");
     private AbstractGButton openButton = new SimpleGButton("Open");
     private AbstractGButton vcsButton = new SimpleGButton("Get VCS");
+
 
     {
         this.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -181,6 +184,12 @@ class RightHeaderProjectsCenterIntroPanel extends AbstractGPanel{
         this.add(newButton);
         this.add(openButton);
         this.add(vcsButton);
+    }
+
+    @Override
+    public void setActions(){
+        this.newButton.addActionListener(e -> this.introductionPanelClient.newProject(this));
+        this.openButton.addActionListener(e -> this.introductionPanelClient.openProject(this));
     }
 }
 class TransportBodyProjectsCenterIntroPanel extends AbstractGPanel{

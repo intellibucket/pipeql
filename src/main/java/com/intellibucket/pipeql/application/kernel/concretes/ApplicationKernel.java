@@ -5,6 +5,7 @@ import com.intellibucket.pipeql.eventlink.broker.concretes.DefaultEventLinkBroke
 import com.intellibucket.pipeql.lib.file.ImageContainer;
 import com.intellibucket.pipeql.lib.frame.abstracts.AbstractGFrame;
 import com.intellibucket.pipeql.view.components.intro.screens.IntroductionScreen;
+import com.intellibucket.pipeql.view.components.main.screens.MainScreen;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -35,7 +36,7 @@ public class ApplicationKernel extends AbstractApplicationKernel {
     protected void run() {
         FRAME_INTERCEPTOR.run();
         try {
-            CURRENT_MAIN_SCREEN = new IntroductionScreen();
+            CURRENT_MAIN_SCREEN = new MainScreen();
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
