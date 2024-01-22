@@ -31,6 +31,12 @@ public class SimpleGLabel extends AbstractGLabel{
         this.setFont(font);
     }
 
+    public SimpleGLabel(String text, Font font, Color color) {
+        this(text);
+        this.setFont(font);
+        this.setForeground(color);
+    }
+
     public SimpleGLabel(String text) {
         super(text);
     }

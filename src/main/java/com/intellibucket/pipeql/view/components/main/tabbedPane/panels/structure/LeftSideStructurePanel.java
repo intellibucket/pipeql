@@ -4,15 +4,20 @@ import com.intellibucket.pipeql.lib.button.horizontal.AbstractGButton;
 import com.intellibucket.pipeql.lib.button.horizontal.SimpleIconGButton;
 import com.intellibucket.pipeql.lib.label.AbstractGLabel;
 import com.intellibucket.pipeql.lib.label.SimpleGLabel;
+import com.intellibucket.pipeql.lib.list.GList;
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
+import com.intellibucket.pipeql.lib.panel.GListItemPanel;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.view.components.main.model.TableItemModel;
 
 import java.awt.*;
 import java.util.List;
+import java.util.UUID;
 
 public class LeftSideStructurePanel extends AbstractGSimplePanel {
 
     private HeaderOfLeftSideStructurePanelLine headerOfLeftSideStructurePanel;
+    private ListTablesOfLeftSideStructurePanelLine listTablesOfLeftSideStructurePanel;
 
     {
         this.setLayout(new BorderLayout());
@@ -20,20 +25,67 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
 
     public LeftSideStructurePanel() {
         headerOfLeftSideStructurePanel = new HeaderOfLeftSideStructurePanelLine();
+        var table1 = new TableItemModel(UUID.randomUUID(), "user","users");
+        var table2 = new TableItemModel(UUID.randomUUID(), "user","accounts");
+        var table3 = new TableItemModel(UUID.randomUUID(), "user","profiles");
+        var table4 = new TableItemModel(UUID.randomUUID(), "user","addresses");
+        var table5 = new TableItemModel(UUID.randomUUID(), "user","phones");
+        var table6 = new TableItemModel(UUID.randomUUID(), "user","contacts");
+        var table7 = new TableItemModel(UUID.randomUUID(), "user","images");
+        var table8 = new TableItemModel(UUID.randomUUID(), "user","posts");
+        var table9 = new TableItemModel(UUID.randomUUID(), "user","comments");
+        var table10 = new TableItemModel(UUID.randomUUID(), "user","likes");
+        var list = List.of(table1, table2, table3, table4, table5, table6, table7, table8, table9, table10);
+        listTablesOfLeftSideStructurePanel = new ListTablesOfLeftSideStructurePanelLine(list);
     }
 
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
         return List.of(
-                this.headerOfLeftSideStructurePanel
+                this.headerOfLeftSideStructurePanel,
+                this.listTablesOfLeftSideStructurePanel
         );
     }
 
     @Override
     public void addComponents() {
         this.add(this.headerOfLeftSideStructurePanel, BorderLayout.NORTH);
+        this.add(this.listTablesOfLeftSideStructurePanel, BorderLayout.CENTER);
     }
 
+    class ListTablesOfLeftSideStructurePanelLine extends AbstractGSimplePanel{
+
+        private final CustomGList list;
+
+        {
+            this.setLayout(new BorderLayout());
+        }
+
+        public ListTablesOfLeftSideStructurePanelLine(List<TableItemModel> items){
+            super();
+            var itemsPanel = items.stream().map(GListItemPanel::new).toList();
+            this.list = new CustomGList(itemsPanel);
+        }
+
+        @Override
+        public List<ComponentInitializer> getComponentInitializers() {
+            return List.of(
+                    this.list
+            );
+        }
+
+        @Override
+        public void addComponents() {
+            this.add(this.list.getScroll(), BorderLayout.CENTER);
+        }
+
+        class CustomGList extends GList{
+            public CustomGList(List<GListItemPanel > items){
+                super(items);
+            }
+
+        }
+    }
 
     class HeaderOfLeftSideStructurePanelLine extends AbstractGSimplePanel{
         private final AbstractGLabel headerLabel = new SimpleGLabel("Schemas and Tables",new Font("Helvetica", Font.PLAIN, 15));

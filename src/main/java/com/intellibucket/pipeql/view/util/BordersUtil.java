@@ -17,5 +17,6 @@ public class BordersUtil {
     public static final Border EMPTY_BORDER_10_10_10_10 = BorderFactory.createEmptyBorder(10, 10, 10, 10);
 
     public static final Border EMPTY_BORDER_0_10_0_0 = BorderFactory.createEmptyBorder(0, 10, 0, 0);
+    public static final Border EMPTY_BORDER_0_5_0_0 = BorderFactory.createEmptyBorder(0, 5, 0, 0);
 
 }
