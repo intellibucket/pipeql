@@ -20,6 +20,7 @@ import com.intellibucket.pipeql.view.components.intro.models.ProjectItemModel;
 import com.intellibucket.pipeql.view.util.BordersUtil;
 import com.intellibucket.pipeql.view.util.ColorsUtil;
 import com.intellibucket.pipeql.view.util.FontsUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.swing.*;
@@ -30,6 +31,7 @@ import java.awt.geom.RoundRectangle2D;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 public class ProjectsCenterIntroPanel extends ChangeablePanel {
 
     private List<ProjectItemModel> projectModels;
@@ -99,24 +101,23 @@ public class ProjectsCenterIntroPanel extends ChangeablePanel {
 
         }
 
+
         class LeftHeaderProjectsCenterIntroPanel extends AbstractGPanel{
 
             private final AbstractGTextField textField = new CustomTextField(ImageToolKit.getIcon("search@20x20"),40);
             {
                 this.textField.getDocument().addDocumentListener(new DocumentListener() {
                     private void update(DocumentEvent event){
-                        System.out.println("action" + event.getType());
+                        log.info("Clicked on search button with text: {}",textField.getText());
                         String text = textField.getText();
-                        if (text != null && !text.isEmpty()) {
-                            List<ProjectItemModel> filteredProjectModels = projectModels.stream()
+                        List<ProjectItemModel> filteredProjectModels = projectModels;
+                        if (!StringUtils.isBlank(text)) {
+                            filteredProjectModels = projectModels.stream()
                                     .filter(projectItemModel -> StringUtils.containsIgnoreCase(projectItemModel.getProjectName(),text))
                                     .collect(Collectors.toList());
-                            ProjectsCenterIntroPanel.this.remove(bodyProjectsCenterIntroPanel);
-                            bodyProjectsCenterIntroPanel = new TransportBodyProjectsCenterIntroPanel(filteredProjectModels);
-                        } else {
-                            ProjectsCenterIntroPanel.this.remove(bodyProjectsCenterIntroPanel);
-                            bodyProjectsCenterIntroPanel = new TransportBodyProjectsCenterIntroPanel(projectModels);
                         }
+                        ProjectsCenterIntroPanel.this.remove(bodyProjectsCenterIntroPanel);
+                        bodyProjectsCenterIntroPanel = new TransportBodyProjectsCenterIntroPanel(filteredProjectModels);
                         bodyProjectsCenterIntroPanel.initialize();
                         ProjectsCenterIntroPanel.this.add(bodyProjectsCenterIntroPanel, BorderLayout.CENTER);
                         ProjectsCenterIntroPanel.this.refresh();
