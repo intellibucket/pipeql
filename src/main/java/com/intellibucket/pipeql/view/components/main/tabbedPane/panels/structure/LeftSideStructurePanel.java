@@ -22,6 +22,7 @@ import com.intellibucket.pipeql.view.components.main.model.ProjectModel;
 import com.intellibucket.pipeql.view.components.main.model.SchemaItemModel;
 import com.intellibucket.pipeql.view.components.main.model.TableItemModel;
 import com.intellibucket.pipeql.view.topics.SchemaComboBoxTopics;
+import com.intellibucket.pipeql.view.util.BordersUtil;
 import com.intellibucket.pipeql.view.util.FontsUtil;
 import lombok.extern.slf4j.Slf4j;
 
@@ -39,6 +40,7 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
 
     {
         this.setLayout(new BorderLayout());
+        this.setBorder(BordersUtil.EMPTY_BORDER_5_0_5_0);
     }
 
     public LeftSideStructurePanel(ProjectModel projectModel) {

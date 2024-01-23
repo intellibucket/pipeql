@@ -19,7 +19,7 @@ import com.intellibucket.pipeql.view.client.main.concretes.IntroductionPanelClie
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.intro.models.ProjectItemModel;
 import com.intellibucket.pipeql.view.util.BordersUtil;
-import com.intellibucket.pipeql.view.util.ColorsUtil;
+import com.intellibucket.pipeql.view.util.ColorUtils;
 import com.intellibucket.pipeql.view.util.FontsUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -313,7 +313,7 @@ class ProjectItem extends AbstractGPanel {
         public PicProjectItem(ProjectItemModel model) {
             this.setPreferredSize(new Dimension(40, 25));
             this.label = new SimpleGLabel(model.getProjectName().substring(0, 1), FontsUtil.HELVETICA_PLAIN_20);
-            this.label.setBackground(ColorsUtil.TRANSPARENT);
+            this.label.setBackground(ColorUtils.TRANSPARENT);
             this.setLayout(new GridBagLayout());
             this.label.setBorder(BordersUtil.EMPTY_BORDER);
             this.color = model.getColor();
@@ -371,8 +371,8 @@ class ProjectItem extends AbstractGPanel {
 
         @Override
         public void postInitialize() {
-            this.projectName.setForeground(ColorsUtil.TEXT_COLOR);
-            this.projectPath.setForeground(ColorsUtil.GREY_TEXT_COLOR);
+            this.projectName.setForeground(ColorUtils.TEXT_COLOR);
+            this.projectPath.setForeground(ColorUtils.GREY_TEXT_COLOR);
             this.projectName.setAlignmentX(Component.LEFT_ALIGNMENT);
             this.projectPath.setAlignmentX(Component.LEFT_ALIGNMENT);
         }

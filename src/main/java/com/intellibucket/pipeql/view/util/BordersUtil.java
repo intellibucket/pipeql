@@ -9,6 +9,7 @@ public class BordersUtil {
     public static final Border EMPTY_BORDER_5_10_5_10 = BorderFactory.createEmptyBorder(5, 10, 5, 10);
     public static final Border EMPTY_BORDER_5_10_5_5 = BorderFactory.createEmptyBorder(5, 10, 5, 5);
     public static final Border EMPTY_BORDER_5_5_5_5 = BorderFactory.createEmptyBorder(5, 5, 5, 5);
+    public static final Border EMPTY_BORDER_5_0_5_0 = BorderFactory.createEmptyBorder(5, 0, 5, 0);
     public static final Border EMPTY_BORDER_5_5_5_10 = BorderFactory.createEmptyBorder(5, 5, 5, 10);
     public static final Border EMPTY_BORDER_5_5_10_5 = BorderFactory.createEmptyBorder(5, 5, 10, 5);
     public static final Border EMPTY_BORDER_5_5_10_10 = BorderFactory.createEmptyBorder(5, 5, 10, 10);

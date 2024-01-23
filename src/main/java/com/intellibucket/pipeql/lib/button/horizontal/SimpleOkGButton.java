@@ -1,7 +1,7 @@
 package com.intellibucket.pipeql.lib.button.horizontal;
 
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
-import com.intellibucket.pipeql.view.util.ColorsUtil;
+import com.intellibucket.pipeql.view.util.ColorUtils;
 
 import javax.swing.*;
 import java.util.List;
@@ -9,8 +9,8 @@ import java.util.List;
 public class SimpleOkGButton extends SimpleGButton{
 
     {
-        this.setBackground(ColorsUtil.COLORFUL_BUTTON_HOVER_BACKGROUND);
-        this.setForeground(ColorsUtil.COLORFUL_BUTTON_TEXT_COLOR);
+        this.setBackground(ColorUtils.COLORFUL_BUTTON_HOVER_BACKGROUND);
+        this.setForeground(ColorUtils.COLORFUL_BUTTON_TEXT_COLOR);
     }
     public SimpleOkGButton(String text) {
         super(text);

@@ -3,7 +3,7 @@ package com.intellibucket.pipeql.lib.button;
 import com.intellibucket.pipeql.lib.button.horizontal.SimpleGButton;
 import com.intellibucket.pipeql.lib.file.ImageToolKit;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
-import com.intellibucket.pipeql.view.util.ColorsUtil;
+import com.intellibucket.pipeql.view.util.ColorUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +14,7 @@ public class BorderlessIconGButton extends SimpleGButton {
     {
         this.setFont(new Font("Arial", Font.PLAIN, 15));
         this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        this.setBackground(ColorsUtil.TRANSPARENT);
+        this.setBackground(ColorUtils.TRANSPARENT);
     }
 
     public BorderlessIconGButton(String iconName) {

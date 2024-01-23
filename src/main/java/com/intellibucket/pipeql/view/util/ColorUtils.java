@@ -2,12 +2,23 @@ package com.intellibucket.pipeql.view.util;
 
 import java.awt.*;
 
-public class ColorsUtil {
+public class ColorUtils {
     public static final Color TRANSPARENT = new Color(0, 0, 0, 0);
     public static final Color LIGHT_BLUE = new Color(0, 166, 255);
     public static final Color DARK_BLUE = new Color(0, 122, 255);
     public static final Color LIGHT_GRAY = new Color(238, 238, 238);
+    public static final Color LIGHT_GRAY_2X = new Color(224, 224, 224);
+    public static final Color LIGHT_GRAY_3X = new Color(204, 204, 204);
+    public static final Color LIGHT_GRAY_4X = new Color(189, 189, 189);
+    public static final Color LIGHT_GRAY_5X = new Color(158, 158, 158);
+    public static final Color LIGHT_GRAY_6X = new Color(117, 117, 117);
+    public static final Color LIGHT_GRAY_7X = new Color(97, 97, 97);
+    public static final Color LIGHT_GRAY_8X = new Color(66, 66, 66);
     public static final Color DARK_GRAY = new Color(102, 102, 102);
+    public static final Color LIGHT_BLACK = new Color(33, 33, 33);
+    public static final Color DARK_BLACK = new Color(0, 0, 0);
+    public static final Color LIGHT_WHITE = new Color(255, 255, 255);
+    public static final Color DARK_WHITE = new Color(224, 224, 224);
     public static final Color LIGHT_GREEN = new Color(0, 230, 118);
     public static final Color DARK_GREEN = new Color(0, 200, 83);
     public static final Color LIGHT_RED = new Color(255, 82, 82);

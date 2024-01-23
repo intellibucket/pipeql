@@ -1,6 +1,6 @@
 package com.intellibucket.pipeql.lib.panel;
 
-import com.intellibucket.pipeql.view.util.ColorsUtil;
+import com.intellibucket.pipeql.view.util.ColorUtils;
 
 import java.awt.*;
 
@@ -14,8 +14,8 @@ public abstract class ButtonGPanel extends AbstractGPanel{
         this.addMouseListener(new java.awt.event.MouseAdapter() {
                 @Override
                 public void mouseEntered(java.awt.event.MouseEvent evt) {
-                    setBackground(ColorsUtil.COLORFUL_BUTTON_BACKGROUND);
-                    setForeground(ColorsUtil.COLORFUL_BUTTON_TEXT_COLOR);
+                    setBackground(ColorUtils.COLORFUL_BUTTON_BACKGROUND);
+                    setForeground(ColorUtils.COLORFUL_BUTTON_TEXT_COLOR);
                 }
 
                 @Override
