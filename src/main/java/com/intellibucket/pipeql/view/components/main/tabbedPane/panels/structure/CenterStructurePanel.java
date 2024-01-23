@@ -5,7 +5,9 @@ import com.intellibucket.pipeql.lib.label.BlueGLabel;
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.lib.panel.LabelPairPanel;
+import com.intellibucket.pipeql.lib.panel.TransparentGPanel;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.view.components.main.model.TableItemModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -83,14 +85,59 @@ class EmptyCenterStructurePanel extends AbstractGSimplePanel {
 }
 
 class TableCenterStructurePanel extends AbstractGSimplePanel {
+    {
+        this.setLayout(new BorderLayout());
+    }
+
+    private final TableItemModel tableItemModel;
+    private final HeaderOfTableCenterStructurePanel headerOfTableCenterStructurePanel;
+    private final CenterOfTableCenterStructurePanel centerOfTableCenterStructurePanel;
+
+    public TableCenterStructurePanel(TableItemModel tableItemModel) {
+        this.tableItemModel = tableItemModel;
+        this.headerOfTableCenterStructurePanel = new HeaderOfTableCenterStructurePanel();
+        this.centerOfTableCenterStructurePanel = new CenterOfTableCenterStructurePanel();
+    }
 
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
-        return List.of();
+        return List.of(
+                this.headerOfTableCenterStructurePanel
+        );
     }
 
     @Override
     public void addComponents() {
-
+        this.add(this.headerOfTableCenterStructurePanel, BorderLayout.NORTH);
     }
+
+    class HeaderOfTableCenterStructurePanel extends TransparentGPanel{
+
+        @Override
+        public List<ComponentInitializer> getComponentInitializers() {
+            return List.of();
+        }
+
+        @Override
+        public void addComponents() {
+
+        }
+    }
+
+    class CenterOfTableCenterStructurePanel extends TransparentGPanel{
+
+        @Override
+        public List<ComponentInitializer> getComponentInitializers() {
+            return List.of();
+        }
+
+        @Override
+        public void addComponents() {
+
+        }
+    }
+
+
+
+
 }

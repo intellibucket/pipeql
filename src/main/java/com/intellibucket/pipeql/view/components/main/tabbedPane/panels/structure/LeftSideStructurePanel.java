@@ -81,7 +81,6 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
         @Override
         protected EmptySuccessPayload listen(SchemaItemModelPayload message) throws DomainException {
             var tables = message.getSchema().tables();
-            var newListTablesOfLeftSideStructurePanel = new ListTablesOfLeftSideStructurePanelLine(tables);
             LeftSideStructurePanel.this.changeListTablesOfLeftSideStructurePanelLine(tables);
             return EmptySuccessPayload.INSTANCE;
         }
