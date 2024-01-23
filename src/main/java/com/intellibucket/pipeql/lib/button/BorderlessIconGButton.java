@@ -1,27 +1,24 @@
-package com.intellibucket.pipeql.lib.button.horizontal;
+package com.intellibucket.pipeql.lib.button;
 
+import com.intellibucket.pipeql.lib.button.horizontal.SimpleGButton;
+import com.intellibucket.pipeql.lib.file.ImageToolKit;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.view.util.ColorsUtil;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-public class BorderlessGButton extends SimpleGButton{
+public class BorderlessIconGButton extends SimpleGButton {
 
     {
         this.setFont(new Font("Arial", Font.PLAIN, 15));
         this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        this.setBackground(ColorsUtil.TRANSPARENT);
     }
 
-    public BorderlessGButton(String text) {
-        super(text);
-    }
-
-    public BorderlessGButton(String text, Icon icon) {
-        super(text, icon);
-    }
-    public BorderlessGButton( Icon icon) {
-        super("", icon);
+    public BorderlessIconGButton(String iconName) {
+        super("", ImageToolKit.getIcon(iconName));
     }
 
     @Override

@@ -9,6 +9,7 @@ import com.intellibucket.pipeql.view.components.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.main.model.TableItemModel;
 import com.intellibucket.pipeql.view.util.BordersUtil;
 import com.intellibucket.pipeql.view.util.FontsUtil;
+import com.intellibucket.pipeql.view.util.IconUtils;
 
 import java.awt.*;
 import java.util.List;
@@ -17,7 +18,7 @@ public class GListItemPanel extends AbstractGPanel{
     private final TableItemModel item;
     private final AbstractGLabel picLabel;
     private final AbstractGLabel label;
-    private final AbstractGButton dropButton = new SimpleIconGButton("inspectionsOK");
+    private final AbstractGButton dropButton;
 
     {
         this.setLayout(new BorderLayout());
@@ -26,6 +27,7 @@ public class GListItemPanel extends AbstractGPanel{
         this.item = item;
         this.picLabel = new SimpleGLabel(ImageToolKit.getIcon("DataTables"));
         this.label = new SimpleGLabel(item.name(), FontsUtil.HELVETICA_PLAIN_12);
+        this.dropButton = item.isValid() ? IconUtils.success() : IconUtils.fail();
         this.label.setBorder(BordersUtil.EMPTY_BORDER_0_5_0_0);
     }
 

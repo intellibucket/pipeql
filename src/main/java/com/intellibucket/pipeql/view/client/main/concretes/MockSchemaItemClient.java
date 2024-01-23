@@ -14,48 +14,58 @@ public class MockSchemaItemClient {
                         new TableItemModel(
                                 java.util.UUID.randomUUID(),
                                 "public",
-                                "users"),
+                                "users",
+                                true),
                         new TableItemModel(
                                 java.util.UUID.randomUUID(),
                                 "public",
-                                "roles"),
+                                "roles",
+                                false),
                         new TableItemModel(
                                 java.util.UUID.randomUUID(),
                                 "public",
-                                "permissions"),
+                                "permissions",
+                                true),
                         new TableItemModel(
                                 java.util.UUID.randomUUID(),
                                 "public",
-                                "user_roles"),
+                                "user_roles",
+                                true),
                         new TableItemModel(
                                 java.util.UUID.randomUUID(),
                                 "public",
-                                "role_permissions")
+                                "role_permissions",
+                                true)
                 ));
          var testSchema = new SchemaItemModel(
                 java.util.UUID.randomUUID(),
-                "test",
+                "replica",
                 List.of(
                         new TableItemModel(
                                 java.util.UUID.randomUUID(),
-                                "test",
-                                "users_2"),
+                                "replica",
+                                "countries",
+                                false),
                         new TableItemModel(
                                 java.util.UUID.randomUUID(),
-                                "test",
-                                "roles_2"),
+                                "replica",
+                                "cities",
+                                true),
                         new TableItemModel(
                                 java.util.UUID.randomUUID(),
-                                "test",
-                                "permissions_2"),
+                                "replica",
+                                "locations",
+                                false),
                         new TableItemModel(
                                 java.util.UUID.randomUUID(),
-                                "test",
-                                "user_roles_2"),
+                                "replica",
+                                "addresses",
+                                true),
                         new TableItemModel(
                                 java.util.UUID.randomUUID(),
-                                "test",
-                                "role_permissions_2")
+                                "replica",
+                                "coordinates",
+                                false)
                 ));
         return List.of(publicSchema, testSchema);
 

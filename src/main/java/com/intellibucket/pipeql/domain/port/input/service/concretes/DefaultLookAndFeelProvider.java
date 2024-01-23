@@ -11,7 +11,8 @@ public class DefaultLookAndFeelProvider extends AbstractLookAndFeelProvider {
     @Override
     public void initLookAndFeel() {
         try {
-            UIManager.setLookAndFeel(GTheme.GITHUB_DARK_CONTRAST.get());
+            //UIManager.setLookAndFeel(GTheme.GITHUB_DARK_CONTRAST.get());
+            UIManager.setLookAndFeel(GTheme.ATOM_DARK_CONTRAST.get());
         } catch (UnsupportedLookAndFeelException e) {
             JOptionPane.showMessageDialog(new JFrame("Error")," There was exception while initialize windows");
         }
