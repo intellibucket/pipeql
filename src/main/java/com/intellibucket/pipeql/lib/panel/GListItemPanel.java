@@ -17,7 +17,7 @@ public class GListItemPanel extends AbstractGPanel{
     private final TableItemModel item;
     private final AbstractGLabel picLabel;
     private final AbstractGLabel label;
-    private final AbstractGButton dropButton = new SimpleIconGButton("green");
+    private final AbstractGButton dropButton = new SimpleIconGButton("inspectionsOK");
 
     {
         this.setLayout(new BorderLayout());
