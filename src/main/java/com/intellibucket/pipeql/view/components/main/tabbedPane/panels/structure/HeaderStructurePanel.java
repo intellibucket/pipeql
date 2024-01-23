@@ -4,22 +4,28 @@ import com.intellibucket.pipeql.lib.label.SimpleValueLabelPanel;
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.view.components.main.model.ProjectModel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class HeaderStructurePanel extends AbstractGSimplePanel {
 
-    private final AbstractGPanel projectNamePanel= new InfoBoxPanel();
-    private final AbstractGPanel importPanel = new ImportBoxPanel();
-
-    private final AbstractGPanel syncPanel = new SyncBoxPanel();
+    private final AbstractGPanel projectNamePanel;
+    private final AbstractGPanel importPanel;
+    private final AbstractGPanel syncPanel;
 
     {
         this.setLayout(new GridLayout(1, 2));
+    }
+
+    public HeaderStructurePanel(ProjectModel projectModel) {
+        this.projectNamePanel = new InfoBoxPanel(projectModel);
+        this.importPanel = new ImportBoxPanel(projectModel);
+        this.syncPanel = new SyncBoxPanel(projectModel);
     }
 
 
@@ -45,23 +51,32 @@ class InfoBoxPanel extends AbstractGPanel{
 
     private AbstractGPanel projectNameLabel;
     private AbstractGPanel createdDateLabel;
+    private AbstractGPanel modifiedDateLabel;
+    private AbstractGPanel versionLabel;
+    private AbstractGPanel createdByLabel;
 
 
     {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     }
 
-    public InfoBoxPanel() {
-         this.projectNameLabel = new SimpleValueLabelPanel("Project Name", "Test Project");
-         this.createdDateLabel = new SimpleValueLabelPanel("Created Date", LocalDateTime.now().toString());
+    public InfoBoxPanel(ProjectModel projectModel) {
+         this.projectNameLabel = new SimpleValueLabelPanel("Project Name", projectModel.getNameOfProject());
+         this.createdDateLabel = new SimpleValueLabelPanel("Created Date", projectModel.getCreatedDate().format(DateTimeFormatter.ISO_DATE));
+         this.modifiedDateLabel = new SimpleValueLabelPanel("Modified Date", projectModel.getLastModifiedDate().format(DateTimeFormatter.ISO_DATE));
+         this.versionLabel = new SimpleValueLabelPanel("Version", projectModel.getVersion());
+         this.createdByLabel = new SimpleValueLabelPanel("Created By", projectModel.getCreatedBy());
     }
 
 
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
         return List.of(
-                this.projectNameLabel
-                ,this.createdDateLabel
+                this.projectNameLabel,
+                this.createdDateLabel,
+                this.modifiedDateLabel,
+                this.versionLabel,
+                this.createdByLabel
         );
     }
 
@@ -70,9 +85,22 @@ class InfoBoxPanel extends AbstractGPanel{
         this.add(this.projectNameLabel);
         this.projectNameLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
         this.add(Box.createRigidArea(new Dimension(0, 5)));
+
         this.add(this.createdDateLabel);
         this.createdDateLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
-        this.add(Box.createRigidArea(new Dimension(0, 10)));
+        this.add(Box.createRigidArea(new Dimension(0, 5)));
+
+        this.add(this.modifiedDateLabel);
+        this.modifiedDateLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        this.add(Box.createRigidArea(new Dimension(0, 5)));
+
+        this.add(this.versionLabel);
+        this.versionLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        this.add(Box.createRigidArea(new Dimension(0, 5)));
+
+        this.add(this.createdByLabel);
+        this.createdByLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        this.add(Box.createRigidArea(new Dimension(0, 5)));
     }
 }
 
@@ -85,7 +113,7 @@ class ImportBoxPanel extends AbstractGPanel{
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     }
 
-    public ImportBoxPanel() {
+    public ImportBoxPanel(ProjectModel projectModel) {
         this.projectNameLabel = new SimpleValueLabelPanel("Dataset Import", "____");
     }
 
@@ -112,7 +140,7 @@ class SyncBoxPanel extends AbstractGPanel{
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     }
 
-    public SyncBoxPanel() {
+    public SyncBoxPanel(ProjectModel projectModel) {
         this.projectNameLabel = new SimpleValueLabelPanel("Synchronization", "____");
     }
 

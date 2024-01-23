@@ -20,8 +20,8 @@ public class CenterStructurePanel extends AbstractGSimplePanel {
     {
         this.setLayout(new BorderLayout());
     }
-    public CenterStructurePanel() {
-        this.mainPanel = new EmptyCenterStructurePanel();
+    public CenterStructurePanel(TableItemModel tableItemModel) {
+        this.mainPanel = new TableCenterStructurePanel(tableItemModel);
     }
 
     public CenterStructurePanel(AbstractGSimplePanel mainPanel) {

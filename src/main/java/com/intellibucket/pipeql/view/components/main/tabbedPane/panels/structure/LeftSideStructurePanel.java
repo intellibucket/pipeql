@@ -3,7 +3,6 @@ package com.intellibucket.pipeql.view.components.main.tabbedPane.panels.structur
 import com.intellibucket.pipeql.eventlink.exception.DomainException;
 import com.intellibucket.pipeql.eventlink.model.common.Topic;
 import com.intellibucket.pipeql.eventlink.model.payload.EmptySuccessPayload;
-import com.intellibucket.pipeql.eventlink.model.payload.Payload;
 import com.intellibucket.pipeql.eventlink.rx.abstracts.Consumer;
 import com.intellibucket.pipeql.lib.button.horizontal.AbstractGButton;
 import com.intellibucket.pipeql.lib.button.horizontal.SimpleIconGButton;
@@ -19,6 +18,7 @@ import com.intellibucket.pipeql.view.client.main.concretes.MockSchemaItemClient;
 import com.intellibucket.pipeql.view.client.main.concretes.SchemaComboBoxClient;
 import com.intellibucket.pipeql.view.client.payloads.SchemaItemModelPayload;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.view.components.main.model.ProjectModel;
 import com.intellibucket.pipeql.view.components.main.model.SchemaItemModel;
 import com.intellibucket.pipeql.view.components.main.model.TableItemModel;
 import com.intellibucket.pipeql.view.topics.SchemaComboBoxTopics;
@@ -41,7 +41,7 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
         this.setLayout(new BorderLayout());
     }
 
-    public LeftSideStructurePanel() {
+    public LeftSideStructurePanel(ProjectModel projectModel) {
         var schemas = MockSchemaItemClient.getSchemas();
         headerOfLeftSideStructurePanel = new HeaderOfLeftSideStructurePanelLine(schemas);
         listTablesOfLeftSideStructurePanel = new ListTablesOfLeftSideStructurePanelLine(this.getCurrentSchema().tables());

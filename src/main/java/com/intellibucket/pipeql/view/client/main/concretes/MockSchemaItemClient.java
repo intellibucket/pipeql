@@ -1,11 +1,25 @@
 package com.intellibucket.pipeql.view.client.main.concretes;
 
+import com.intellibucket.pipeql.view.components.main.model.ProjectModel;
 import com.intellibucket.pipeql.view.components.main.model.SchemaItemModel;
 import com.intellibucket.pipeql.view.components.main.model.TableItemModel;
 
 import java.util.List;
 
 public class MockSchemaItemClient {
+
+    public static ProjectModel getProject(){
+        return ProjectModel.builder()
+                .nameOfProject("Declaration")
+                .createdBy("Vugar Mammadli")
+                .description("This is a project for declaration")
+                .version("1.0.0")
+                .lastModifiedDate(java.time.LocalDateTime.now())
+                .createdDate(java.time.LocalDateTime.now())
+                .schemas(getSchemas())
+                .build();
+    }
+
     public static List<SchemaItemModel> getSchemas(){
         var publicSchema = new SchemaItemModel(
                 java.util.UUID.randomUUID(),
