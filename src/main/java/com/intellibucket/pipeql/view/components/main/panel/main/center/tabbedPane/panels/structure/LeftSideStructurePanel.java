@@ -1,7 +1,6 @@
-package com.intellibucket.pipeql.view.components.main.tabbedPane.panels.structure;
+package com.intellibucket.pipeql.view.components.main.panel.main.center.tabbedPane.panels.structure;
 
 import com.intellibucket.pipeql.eventlink.exception.DomainException;
-import com.intellibucket.pipeql.eventlink.model.common.Topic;
 import com.intellibucket.pipeql.eventlink.model.payload.EmptySuccessPayload;
 import com.intellibucket.pipeql.eventlink.rx.abstracts.EventListener;
 import com.intellibucket.pipeql.lib.button.horizontal.AbstractGButton;
@@ -74,8 +73,8 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
     }
 
     @Override
-    public void setActions() {
-        super.setActions();
+    public void setEventPublisher() {
+        super.setEventPublisher();
         this.addEventListener(new EventListener<SchemaItemModelPayload, EmptySuccessPayload>(List.of(SchemaComboBoxTopics.CHANGED_SELECTED_SCHEMA_ON_COMBOBOX)) {
             @Override
             protected EmptySuccessPayload listen(SchemaItemModelPayload message) throws DomainException {

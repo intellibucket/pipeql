@@ -8,7 +8,7 @@ public interface ComponentInitializer extends AbstractComponent ,ActionInitializ
     default void initialize(){
         this.setComponents();
         this.initializeComponents(this.getComponentInitializers());
-        this.setActions();
+        this.setEventPublisher();
         this.setEventListener();
         this.postInitialize();
     }

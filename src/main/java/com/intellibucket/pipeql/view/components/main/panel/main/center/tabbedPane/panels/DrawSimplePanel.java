@@ -1,4 +1,4 @@
-package com.intellibucket.pipeql.view.components.main.tabbedPane.panels;
+package com.intellibucket.pipeql.view.components.main.panel.main.center.tabbedPane.panels;
 
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.lib.ComponentInitializer;

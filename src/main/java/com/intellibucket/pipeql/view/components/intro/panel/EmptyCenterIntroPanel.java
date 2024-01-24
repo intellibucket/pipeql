@@ -95,7 +95,7 @@ class LabelPanel extends AbstractGSimplePanel {
             this.add(this.gitButton);
         }
         @Override
-        public void setActions() {
+        public void setEventPublisher() {
 
             this.newProjectButton.addActionListener(e -> this.introductionPanelClient.newProject(LabelPanel.this));
 

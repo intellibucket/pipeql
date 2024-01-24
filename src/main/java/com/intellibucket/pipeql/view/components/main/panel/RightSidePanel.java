@@ -74,7 +74,7 @@ class TopRightSideInnerPanel extends InnerSideGPanel {
 
 
     @Override
-    public void setActions() {
+    public void setEventPublisher() {
         this.notificationButton.addActionListener(e -> {
             this.rightSidePanelClient.openNotificationSideBar(EmptyCallback.INSTANCE);
         });

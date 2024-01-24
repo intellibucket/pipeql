@@ -71,7 +71,7 @@ class BottomRightInfoPanel extends InnerPanel {
     }
 
     @Override
-    public void setActions() {
+    public void setEventPublisher() {
         this.closeAllProjectButton.addActionListener(e -> {
             this.centerPanelClient.closeAllSchemas();
         });

@@ -46,4 +46,17 @@ public class GListItemPanel extends AbstractGPanel{
     public String toString() {
         return item.schema() + "." + item.name();
     }
+
+
+    @Override
+    public void setEventPublisher() {
+
+    }
+
+    @Override
+    public void setEventListener() {
+
+    }
+
+
 }

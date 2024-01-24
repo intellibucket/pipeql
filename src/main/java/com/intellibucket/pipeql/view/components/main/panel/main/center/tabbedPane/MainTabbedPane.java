@@ -1,11 +1,11 @@
-package com.intellibucket.pipeql.view.components.main.tabbedPane;
+package com.intellibucket.pipeql.view.components.main.panel.main.center.tabbedPane;
 
 import com.intellibucket.pipeql.lib.tabbed.AbstractMaximizedGTabbedPane;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.main.model.ProjectModel;
-import com.intellibucket.pipeql.view.components.main.tabbedPane.panels.DrawSimplePanel;
-import com.intellibucket.pipeql.view.components.main.tabbedPane.panels.EnvironmentPanel;
-import com.intellibucket.pipeql.view.components.main.tabbedPane.panels.structure.StructurePanel;
+import com.intellibucket.pipeql.view.components.main.panel.main.center.tabbedPane.panels.DrawSimplePanel;
+import com.intellibucket.pipeql.view.components.main.panel.main.center.tabbedPane.panels.EnvironmentPanel;
+import com.intellibucket.pipeql.view.components.main.panel.main.center.tabbedPane.panels.structure.StructurePanel;
 
 import java.util.List;
 

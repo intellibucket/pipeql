@@ -90,7 +90,7 @@ class HeaderLeftDataSourcesSettingsTabbedPanePanel extends  AbstractGSimplePanel
     }
 
     @Override
-    public void setActions() {
+    public void setEventPublisher() {
         //must be implemented
     }
 }
@@ -117,7 +117,7 @@ class HeaderRightDataSourcesSettingsTabbedPanePanel extends  AbstractGSimplePane
     }
 
     @Override
-    public void setActions() {
+    public void setEventPublisher() {
         //must be implemented
     }
 }

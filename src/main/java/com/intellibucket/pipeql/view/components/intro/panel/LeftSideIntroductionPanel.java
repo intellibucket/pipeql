@@ -145,7 +145,7 @@ class ButtonsListPanel extends AbstractGPanel {
     }
 
     @Override
-    public void setActions() {
+    public void setEventPublisher() {
         this.projectsButton.addActionListener(e -> {
             this.introChangeableCenterPanelClient.openProjects();
         });
@@ -153,7 +153,7 @@ class ButtonsListPanel extends AbstractGPanel {
 
     @Override
     public void postInitialize() {
-        this.setActions();
+        this.setEventPublisher();
         this.getComponentInitializers().forEach(
                 item-> ((JButton) item).setHorizontalAlignment(SwingConstants.LEFT)
         );

@@ -98,7 +98,7 @@ public class ProjectsCenterIntroPanel extends ChangeablePanel {
         }
 
         @Override
-        public void setActions() {
+        public void setEventPublisher() {
 
         }
 
@@ -187,7 +187,7 @@ class RightHeaderProjectsCenterIntroPanel extends AbstractGPanel{
     }
 
     @Override
-    public void setActions(){
+    public void setEventPublisher(){
         this.newButton.addActionListener(e -> this.introductionPanelClient.newProject(this));
         this.openButton.addActionListener(e -> this.introductionPanelClient.openProject(this));
     }

@@ -67,7 +67,7 @@ class TopLeftSideInnerPanel extends InnerSideGPanel {
     }
 
     @Override
-    public void setActions() {
+    public void setEventPublisher() {
         this.projectsButton.addActionListener(e -> {
             this.leftSidePanelClient.openProjectsLeftBarScreen(EmptyCallback.INSTANCE);
         });
@@ -95,7 +95,7 @@ class BottomLeftSideInnerPanel extends InnerSideGPanel {
     }
 
     @Override
-    public void setActions() {
+    public void setEventPublisher() {
         this.dataSourcesButton.addActionListener(e -> {
             this.leftSidePanelClient.openDatabasesScreen(EmptyCallback.INSTANCE);
         });

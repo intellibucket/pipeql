@@ -155,7 +155,7 @@ public class NewProjectCenterUpDirectoryInfoPanel extends AbstractGSimplePanel {
     }
 
     @Override
-    public void setActions() {
+    public void setEventPublisher() {
         projectPathPanel.getTextField().getButton().addActionListener(
                 e -> introductionPanelClient.selectDirectory(
                         this, projectPathPanel.getTextField()));

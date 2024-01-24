@@ -65,7 +65,7 @@ public class NewProjectButtonPanel extends AbstractGSimplePanel {
     }
 
     @Override
-    public void setActions() {
+    public void setEventPublisher() {
         this.createButton.addActionListener(e -> {
                     log.info("NewProjectCreateAndCancelButtonPanel.createNewProject");
                     var message = ProducingMessage.Builder
