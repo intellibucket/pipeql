@@ -3,7 +3,9 @@ package com.intellibucket.pipeql.view.components.main.tabbedPane.panels.structur
 import com.intellibucket.pipeql.eventlink.exception.DomainException;
 import com.intellibucket.pipeql.eventlink.model.common.Topic;
 import com.intellibucket.pipeql.eventlink.model.payload.EmptySuccessPayload;
-import com.intellibucket.pipeql.eventlink.rx.abstracts.Consumer;
+import com.intellibucket.pipeql.eventlink.model.payload.Payload;
+import com.intellibucket.pipeql.eventlink.model.payload.SuccessPayload;
+import com.intellibucket.pipeql.eventlink.rx.abstracts.EventListener;
 import com.intellibucket.pipeql.lib.button.horizontal.AbstractGButton;
 import com.intellibucket.pipeql.lib.button.horizontal.SimpleIconGButton;
 import com.intellibucket.pipeql.lib.combo.GComboBox;
@@ -34,7 +36,6 @@ import java.util.Objects;
 @Slf4j
 public class LeftSideStructurePanel extends AbstractGSimplePanel {
 
-    private SchemaChangedListener schemaChangedListener = new SchemaChangedListener();
     private HeaderOfLeftSideStructurePanelLine headerOfLeftSideStructurePanel;
     private ListTablesOfLeftSideStructurePanelLine listTablesOfLeftSideStructurePanel;
 
@@ -74,23 +75,26 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
         this.add(this.listTablesOfLeftSideStructurePanel, BorderLayout.CENTER);
     }
 
-    public SchemaItemModel getCurrentSchema() {
-        return this.headerOfLeftSideStructurePanel.getSelectedSchema();
+    @Override
+    public void setActions() {
+        super.setActions();
+        this.addEventListener(new EventListener<SchemaItemModelPayload, EmptySuccessPayload>() {
+            @Override
+            protected EmptySuccessPayload listen(SchemaItemModelPayload message) throws DomainException {
+                var tables = message.getSchema().tables();
+                LeftSideStructurePanel.this.changeListTablesOfLeftSideStructurePanelLine(tables);
+                return EmptySuccessPayload.INSTANCE;
+            }
+
+            @Override
+            protected List<Topic> mustBeRegistryTopics() {
+                return List.of(SchemaComboBoxTopics.CHANGED_SELECTED_SCHEMA_ON_COMBOBOX);
+            }
+        });
     }
 
-    class SchemaChangedListener extends Consumer<SchemaItemModelPayload, EmptySuccessPayload>{
-
-        @Override
-        protected EmptySuccessPayload listen(SchemaItemModelPayload message) throws DomainException {
-            var tables = message.getSchema().tables();
-            LeftSideStructurePanel.this.changeListTablesOfLeftSideStructurePanelLine(tables);
-            return EmptySuccessPayload.INSTANCE;
-        }
-
-        @Override
-        protected List<Topic> mustBeRegistryTopics() {
-            return List.of(SchemaComboBoxTopics.CHANGED_SELECTED_SCHEMA_ON_COMBOBOX);
-        }
+    public SchemaItemModel getCurrentSchema() {
+        return this.headerOfLeftSideStructurePanel.getSelectedSchema();
     }
 
     class ListTablesOfLeftSideStructurePanelLine extends AbstractGSimplePanel {

@@ -1,9 +1,8 @@
 package com.intellibucket.pipeql.eventlink.model.consumer;
 
 import com.intellibucket.pipeql.eventlink.model.common.GroupID;
-import com.intellibucket.pipeql.eventlink.rx.abstracts.Consumer;
-import lombok.Getter;
+import com.intellibucket.pipeql.eventlink.rx.abstracts.EventListener;
 
-public record ConsumerAggregate(GroupID groupId, Consumer<?, ?> consumer) {
+public record ConsumerAggregate(GroupID groupId, EventListener<?, ?> eventListener) {
 
 }

@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.List;
 
 @Slf4j
-public abstract class Consumer<T extends Payload,S extends SuccessPayload>  {
+public abstract class EventListener<T extends Payload,S extends SuccessPayload>  {
 
     {
         DefaultEventLinkBroker.Mediator.registerConsumer(this.mustBeRegistryTopics(), this);

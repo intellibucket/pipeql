@@ -4,7 +4,7 @@ import com.intellibucket.pipeql.eventlink.exception.DomainException;
 import com.intellibucket.pipeql.eventlink.model.common.Topic;
 import com.intellibucket.pipeql.eventlink.model.payload.EmptySuccessPayload;
 import com.intellibucket.pipeql.eventlink.model.payload.Payload;
-import com.intellibucket.pipeql.eventlink.rx.abstracts.Consumer;
+import com.intellibucket.pipeql.eventlink.rx.abstracts.EventListener;
 import com.intellibucket.pipeql.lib.compundComponents.LabelTextFieldCompoundComponent;
 import com.intellibucket.pipeql.lib.customAdapters.MouseAdapterForTextField;
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
@@ -182,7 +182,7 @@ public class NewProjectCenterUpDirectoryInfoPanel extends AbstractGSimplePanel {
     }
 
 
-    class CreatButtonListener extends Consumer<Payload, EmptySuccessPayload> {
+    class CreatButtonListener extends EventListener<Payload, EmptySuccessPayload> {
 
         @Override
         protected EmptySuccessPayload listen(Payload message) throws DomainException {

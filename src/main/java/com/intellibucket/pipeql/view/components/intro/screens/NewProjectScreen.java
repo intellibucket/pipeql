@@ -4,7 +4,7 @@ import com.intellibucket.pipeql.eventlink.exception.DomainException;
 import com.intellibucket.pipeql.eventlink.model.common.Topic;
 import com.intellibucket.pipeql.eventlink.model.payload.EmptySuccessPayload;
 import com.intellibucket.pipeql.eventlink.model.payload.Payload;
-import com.intellibucket.pipeql.eventlink.rx.abstracts.Consumer;
+import com.intellibucket.pipeql.eventlink.rx.abstracts.EventListener;
 import com.intellibucket.pipeql.view.components.enums.CustomBorderProvider;
 import com.intellibucket.pipeql.splitPane.CustomSplitPane;
 import com.intellibucket.pipeql.lib.file.ImageToolKit;
@@ -54,7 +54,7 @@ public class NewProjectScreen extends SmallGFrame {
         this.add(this.splitPane, BorderLayout.CENTER);
     }
 
-    class CancelButtonListener extends Consumer<Payload, EmptySuccessPayload> {
+    class CancelButtonListener extends EventListener<Payload, EmptySuccessPayload> {
 
         @Override
         protected EmptySuccessPayload listen(Payload message) throws DomainException {

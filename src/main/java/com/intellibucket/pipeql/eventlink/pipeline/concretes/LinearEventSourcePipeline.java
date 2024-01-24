@@ -1,14 +1,11 @@
 package com.intellibucket.pipeql.eventlink.pipeline.concretes;
 
-import com.intellibucket.pipeql.eventlink.model.common.GroupID;
 import com.intellibucket.pipeql.eventlink.model.common.Topic;
 import com.intellibucket.pipeql.eventlink.model.consumer.ConsumerAggregate;
 import com.intellibucket.pipeql.eventlink.model.consumer.ConsumingMessage;
 import com.intellibucket.pipeql.eventlink.model.producer.ProducingMessage;
 import com.intellibucket.pipeql.eventlink.pipeline.abstracts.AbstractPipeline;
 import lombok.extern.slf4j.Slf4j;
-
-import java.util.List;
 
 @Slf4j
 public class LinearEventSourcePipeline extends AbstractPipeline {
@@ -30,7 +27,7 @@ public class LinearEventSourcePipeline extends AbstractPipeline {
     @Override
     public void subscribe(ConsumerAggregate consumerAggregate) {
         log.info("Consumer subscribing for topic: {} , groupId : {}, consumer : {}",this.topic().name(),consumerAggregate.groupId(), consumerAggregate);
-        this.groupingConsumers().put(consumerAggregate.groupId(), consumerAggregate.consumer());
+        this.groupingConsumers().put(consumerAggregate.groupId(), consumerAggregate.eventListener());
         log.info("Consumer subscribed for topic: {} , groupId : {},  consumer : {}",this.topic().name(),consumerAggregate.groupId(), consumerAggregate);
     }
 

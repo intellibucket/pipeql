@@ -1,12 +1,20 @@
 package com.intellibucket.pipeql.lib.panel;
 
+import com.intellibucket.pipeql.eventlink.model.payload.Payload;
+import com.intellibucket.pipeql.eventlink.model.payload.SuccessPayload;
+import com.intellibucket.pipeql.eventlink.rx.abstracts.EventListener;
+import com.intellibucket.pipeql.view.Refreshable;
 import com.intellibucket.pipeql.view.components.ActionInitializer;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.view.components.Listener;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
-public abstract class AbstractGPanel extends JPanel implements ComponentInitializer, ActionInitializer {
+public abstract class AbstractGPanel extends JPanel implements ComponentInitializer, ActionInitializer, Refreshable, Listener {
+
+    private List<EventListener<?,?>> eventListeners;
 
     public AbstractGPanel(LayoutManager layout, boolean isDoubleBuffered) {
         super(layout, isDoubleBuffered);
@@ -35,4 +43,19 @@ public abstract class AbstractGPanel extends JPanel implements ComponentInitiali
         this.initialize();
         this.updateUI();
     }
+
+    @Override
+    public void addEventListener(EventListener<? extends Payload,? extends SuccessPayload> eventListener) {
+        if (this.eventListeners == null) {
+            this.eventListeners = List.of(eventListener);
+        } else {
+            this.eventListeners.add(eventListener);
+        }
+    }
+
+    public List<EventListener<?, ?>> getEventListeners() {
+        return eventListeners;
+    }
+
+    public  void setEventListeners() {}
 }

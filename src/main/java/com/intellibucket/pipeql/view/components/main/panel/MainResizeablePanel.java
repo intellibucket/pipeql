@@ -1,15 +1,13 @@
 package com.intellibucket.pipeql.view.components.main.panel;
 
-import com.intellibucket.pipeql.eventlink.broker.concretes.DefaultEventLinkBroker;
 import com.intellibucket.pipeql.eventlink.exception.DomainException;
 import com.intellibucket.pipeql.eventlink.model.common.Topic;
 import com.intellibucket.pipeql.eventlink.model.payload.EmptySuccessPayload;
 import com.intellibucket.pipeql.eventlink.model.payload.Payload;
 import com.intellibucket.pipeql.eventlink.model.payload.SuccessPayload;
-import com.intellibucket.pipeql.eventlink.rx.abstracts.Consumer;
+import com.intellibucket.pipeql.eventlink.rx.abstracts.EventListener;
 import com.intellibucket.pipeql.lib.panel.main.AbstractResizeablePanel;
 import com.intellibucket.pipeql.view.client.main.concretes.CenterPanelClient;
-import com.intellibucket.pipeql.view.client.main.concretes.RightSidePanelClient;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.main.panel.main.center.CenterInnerMainPanel;
 import com.intellibucket.pipeql.view.components.main.panel.main.center.EmptyInnerMainPanel;
@@ -45,7 +43,7 @@ public class MainResizeablePanel extends AbstractResizeablePanel {
         this.add(this.getCenterRightSplitPanel(), BorderLayout.CENTER);
     }
 
-    class NotificationButtonListener extends Consumer<Payload, EmptySuccessPayload> {
+    class NotificationButtonListener extends EventListener<Payload, EmptySuccessPayload> {
 
         @Override
         protected EmptySuccessPayload listen(Payload message) throws DomainException {
@@ -59,7 +57,7 @@ public class MainResizeablePanel extends AbstractResizeablePanel {
         }
     }
 
-    class ProjectButtonListener extends Consumer<Payload, ProjectButtonListener.ListenerProjectButtonSuccessPayload> {
+    class ProjectButtonListener extends EventListener<Payload, ProjectButtonListener.ListenerProjectButtonSuccessPayload> {
 
         static class ListenerProjectButtonSuccessPayload extends SuccessPayload {
             private final Boolean isClicked;
@@ -85,7 +83,7 @@ public class MainResizeablePanel extends AbstractResizeablePanel {
         }
     }
 
-    class CloseAllCenterPanelListener extends Consumer<Payload, CloseAllCenterPanelListener.ListenerCloseAllCenterPanelSuccessPayload> {
+    class CloseAllCenterPanelListener extends EventListener<Payload, CloseAllCenterPanelListener.ListenerCloseAllCenterPanelSuccessPayload> {
 
         static class ListenerCloseAllCenterPanelSuccessPayload extends SuccessPayload {}
 

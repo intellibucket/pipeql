@@ -4,13 +4,12 @@ import com.intellibucket.pipeql.eventlink.exception.DomainException;
 import com.intellibucket.pipeql.eventlink.model.common.Topic;
 import com.intellibucket.pipeql.eventlink.model.payload.EmptySuccessPayload;
 import com.intellibucket.pipeql.eventlink.model.payload.Payload;
-import com.intellibucket.pipeql.eventlink.rx.abstracts.Consumer;
+import com.intellibucket.pipeql.eventlink.rx.abstracts.EventListener;
 import com.intellibucket.pipeql.lib.panel.ChangeablePanel;
 import com.intellibucket.pipeql.lib.frame.concretes.MidGFrame;
 import com.intellibucket.pipeql.view.components.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.intro.panel.EmptyCenterIntroPanel;
 import com.intellibucket.pipeql.view.components.intro.panel.LeftSideIntroductionPanel;
-import com.intellibucket.pipeql.view.components.intro.panel.ProjectsCenterIntroPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -59,7 +58,7 @@ public class IntroductionScreen extends MidGFrame {
         this.add(this.splitPane);
     }
 
-    public class ChangeablePanelListener extends Consumer<ChangeablePanelListener.ChangeablePanelPayload, EmptySuccessPayload>{
+    public class ChangeablePanelListener extends EventListener<ChangeablePanelListener.ChangeablePanelPayload, EmptySuccessPayload> {
 
         public static class ChangeablePanelPayload implements Payload {
             private final ChangeablePanel changeablePanel;

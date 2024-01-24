@@ -7,7 +7,7 @@ import com.intellibucket.pipeql.eventlink.model.consumer.ConsumerAggregate;
 import com.intellibucket.pipeql.eventlink.model.producer.ProducingMessage;
 import com.intellibucket.pipeql.eventlink.pipeline.abstracts.Pipeline;
 import com.intellibucket.pipeql.eventlink.pipeline.concretes.LinearEventSourcePipeline;
-import com.intellibucket.pipeql.eventlink.rx.abstracts.Consumer;
+import com.intellibucket.pipeql.eventlink.rx.abstracts.EventListener;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
@@ -59,12 +59,12 @@ public class DefaultEventLinkBroker implements AbstractEventLinkBroker {
             BROKER.registerConsumer(topic, consumer);
         }
 
-        public static void registerConsumer(Topic topic, Consumer<?,?> consumer) {
-            BROKER.registerConsumer(topic, new ConsumerAggregate(GroupID.DEFAULT, consumer));
+        public static void registerConsumer(Topic topic, EventListener<?,?> eventListener) {
+            BROKER.registerConsumer(topic, new ConsumerAggregate(GroupID.DEFAULT, eventListener));
         }
 
-        public static void registerConsumer(List<Topic> topics, Consumer<?,?> consumer) {
-            topics.forEach(topic -> BROKER.registerConsumer(topic, new ConsumerAggregate(GroupID.DEFAULT, consumer)));
+        public static void registerConsumer(List<Topic> topics, EventListener<?,?> eventListener) {
+            topics.forEach(topic -> BROKER.registerConsumer(topic, new ConsumerAggregate(GroupID.DEFAULT, eventListener)));
         }
 
         public static void registerPipeline(Topic topic, Pipeline pipeline) {
