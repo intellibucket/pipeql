@@ -7,7 +7,7 @@ import com.intellibucket.pipeql.lib.panel.ImageGPanel;
 import com.intellibucket.pipeql.lib.panel.TransparentGPanel;
 import com.intellibucket.pipeql.lib.progressbar.GProgressBar;
 import com.intellibucket.pipeql.view.components.ApplicationLogoHeaderPanel;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 
 import java.awt.*;
 import java.util.List;

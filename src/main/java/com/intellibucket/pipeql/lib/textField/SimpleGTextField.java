@@ -1,6 +1,6 @@
 package com.intellibucket.pipeql.lib.textField;
 
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 
 import javax.swing.text.Document;
 import java.util.List;

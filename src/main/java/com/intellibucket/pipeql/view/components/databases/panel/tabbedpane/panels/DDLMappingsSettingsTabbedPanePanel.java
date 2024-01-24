@@ -1,7 +1,7 @@
 package com.intellibucket.pipeql.view.components.databases.panel.tabbedpane.panels;
 
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 
 import java.util.List;
 

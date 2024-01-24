@@ -4,7 +4,7 @@ import com.intellibucket.pipeql.lib.button.horizontal.AbstractGButton;
 import com.intellibucket.pipeql.lib.button.horizontal.SimpleIconGButton;
 import com.intellibucket.pipeql.lib.file.ImageToolKit;
 import com.intellibucket.pipeql.lib.panel.line.LinePanel;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 
 import javax.swing.*;
 import java.awt.*;

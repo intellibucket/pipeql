@@ -4,15 +4,15 @@ import com.intellibucket.pipeql.eventlink.model.payload.Payload;
 import com.intellibucket.pipeql.eventlink.model.payload.SuccessPayload;
 import com.intellibucket.pipeql.eventlink.rx.abstracts.EventListener;
 import com.intellibucket.pipeql.view.Refreshable;
-import com.intellibucket.pipeql.view.components.ActionInitializer;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
-import com.intellibucket.pipeql.view.components.Listener;
+import com.intellibucket.pipeql.lib.ActionInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
+import com.intellibucket.pipeql.lib.Listener;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-public abstract class AbstractGPanel extends JPanel implements ComponentInitializer, ActionInitializer, Refreshable, Listener {
+public abstract class AbstractGPanel extends JPanel implements ComponentInitializer, Refreshable, Listener {
 
     private List<EventListener<?,?>> eventListeners;
 
@@ -29,11 +29,6 @@ public abstract class AbstractGPanel extends JPanel implements ComponentInitiali
     }
 
     public AbstractGPanel() {
-    }
-
-    @Override
-    public void postInitialize() {
-        this.setActions();
     }
 
     @Override
@@ -56,6 +51,4 @@ public abstract class AbstractGPanel extends JPanel implements ComponentInitiali
     public List<EventListener<?, ?>> getEventListeners() {
         return eventListeners;
     }
-
-    public  void setEventListeners() {}
 }

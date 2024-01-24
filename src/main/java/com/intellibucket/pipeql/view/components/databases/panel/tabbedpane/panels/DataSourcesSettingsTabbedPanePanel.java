@@ -3,7 +3,7 @@ package com.intellibucket.pipeql.view.components.databases.panel.tabbedpane.pane
 import com.intellibucket.pipeql.lib.button.horizontal.AbstractGButton;
 import com.intellibucket.pipeql.lib.button.horizontal.SimpleIconGButton;
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 
 import javax.swing.*;
 import java.awt.*;

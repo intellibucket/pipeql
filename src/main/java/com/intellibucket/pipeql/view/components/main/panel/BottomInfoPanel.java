@@ -1,6 +1,5 @@
 package com.intellibucket.pipeql.view.components.main.panel;
 
-import com.intellibucket.pipeql.eventlink.template.abstracts.EventLinkTemplate;
 import com.intellibucket.pipeql.lib.button.horizontal.AbstractGButton;
 import com.intellibucket.pipeql.lib.button.horizontal.SimpleIconGButton;
 import com.intellibucket.pipeql.lib.label.AbstractGLabel;
@@ -9,7 +8,7 @@ import com.intellibucket.pipeql.lib.panel.line.InnerPanel;
 import com.intellibucket.pipeql.lib.panel.line.LinePanel;
 import com.intellibucket.pipeql.view.client.main.abstracts.AbstractCenterPanelClient;
 import com.intellibucket.pipeql.view.client.main.concretes.CenterPanelClient;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 
 import java.awt.*;
 import java.util.List;

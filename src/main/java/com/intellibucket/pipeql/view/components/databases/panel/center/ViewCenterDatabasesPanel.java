@@ -1,7 +1,7 @@
 package com.intellibucket.pipeql.view.components.databases.panel.center;
 
 import com.intellibucket.pipeql.lib.panel.ChangeablePanel;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 
 import java.util.List;
 

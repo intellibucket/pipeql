@@ -1,12 +1,10 @@
 package com.intellibucket.pipeql.view.components.main.panel.main.center;
 
-import com.intellibucket.pipeql.lib.label.AbstractGLabel;
 import com.intellibucket.pipeql.lib.label.BigInfoGLabel;
 import com.intellibucket.pipeql.lib.label.BlueGLabel;
-import com.intellibucket.pipeql.lib.label.SimpleGLabel;
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
 import com.intellibucket.pipeql.lib.panel.LabelPairPanel;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.main.panel.InnerResizeablePanel;
 
 import javax.swing.*;

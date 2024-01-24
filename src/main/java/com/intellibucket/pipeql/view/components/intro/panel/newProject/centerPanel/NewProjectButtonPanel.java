@@ -7,7 +7,7 @@ import com.intellibucket.pipeql.lib.button.custom.BeautifulButton;
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.view.client.main.abstracts.AbstractIntroductionPanelClient;
 import com.intellibucket.pipeql.view.client.main.concretes.IntroductionPanelClient;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.enums.Colors;
 import com.intellibucket.pipeql.view.topics.NewProjectPanelTopics;
 import lombok.extern.slf4j.Slf4j;

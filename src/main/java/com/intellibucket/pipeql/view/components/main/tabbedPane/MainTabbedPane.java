@@ -1,7 +1,7 @@
 package com.intellibucket.pipeql.view.components.main.tabbedPane;
 
 import com.intellibucket.pipeql.lib.tabbed.AbstractMaximizedGTabbedPane;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.main.model.ProjectModel;
 import com.intellibucket.pipeql.view.components.main.tabbedPane.panels.DrawSimplePanel;
 import com.intellibucket.pipeql.view.components.main.tabbedPane.panels.EnvironmentPanel;

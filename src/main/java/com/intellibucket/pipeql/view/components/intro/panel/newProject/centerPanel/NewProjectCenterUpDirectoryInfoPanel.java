@@ -10,7 +10,7 @@ import com.intellibucket.pipeql.lib.customAdapters.MouseAdapterForTextField;
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.lib.textField.AbstractGTextField;
 import com.intellibucket.pipeql.view.client.main.concretes.IntroductionPanelClient;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.enums.Colors;
 import com.intellibucket.pipeql.view.components.enums.CustomBorderProvider;
 import com.intellibucket.pipeql.view.components.intro.panel.newProject.ExceptionPanel;

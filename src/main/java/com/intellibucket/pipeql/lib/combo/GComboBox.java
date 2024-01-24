@@ -1,7 +1,7 @@
 package com.intellibucket.pipeql.lib.combo;
 
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.view.util.ColorUtils;
 import lombok.extern.slf4j.Slf4j;
 

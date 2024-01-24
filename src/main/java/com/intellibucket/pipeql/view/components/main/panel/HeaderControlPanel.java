@@ -7,7 +7,7 @@ import com.intellibucket.pipeql.lib.label.SimpleGLabel;
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
 import com.intellibucket.pipeql.lib.panel.line.InnerPanel;
 import com.intellibucket.pipeql.lib.panel.line.LinePanel;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 
 import java.awt.*;
 import java.util.List;

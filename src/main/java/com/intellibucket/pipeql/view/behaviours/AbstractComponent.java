@@ -1,6 +1,6 @@
 package com.intellibucket.pipeql.view.behaviours;
 
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 
 import java.util.List;
 

@@ -1,14 +1,12 @@
 package com.intellibucket.pipeql.view.components.intro.panel;
 
-import com.intellibucket.pipeql.eventlink.rx.concretes.EmptyCallback;
 import com.intellibucket.pipeql.lib.button.horizontal.AbstractGButton;
 import com.intellibucket.pipeql.lib.button.horizontal.BigIconGButton;
-import com.intellibucket.pipeql.lib.button.horizontal.SimpleIconGButton;
 import com.intellibucket.pipeql.lib.label.BigInfoGLabel;
 import com.intellibucket.pipeql.lib.label.BlueGLabel;
 import com.intellibucket.pipeql.lib.panel.*;
 import com.intellibucket.pipeql.view.client.main.concretes.IntroductionPanelClient;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 
 import javax.swing.*;
 import java.awt.*;

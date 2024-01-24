@@ -3,13 +3,12 @@ package com.intellibucket.pipeql.view.components.main.tabbedPane.panels.structur
 import com.intellibucket.pipeql.lib.label.SimpleValueLabelPanel;
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.main.model.ProjectModel;
 import com.intellibucket.pipeql.view.util.JSeperatorUtils;
 
 import javax.swing.*;
 import java.awt.*;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 

@@ -7,7 +7,7 @@ import com.intellibucket.pipeql.eventlink.model.payload.Payload;
 import com.intellibucket.pipeql.eventlink.rx.abstracts.EventListener;
 import com.intellibucket.pipeql.lib.panel.ChangeablePanel;
 import com.intellibucket.pipeql.lib.frame.concretes.MidGFrame;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.intro.panel.EmptyCenterIntroPanel;
 import com.intellibucket.pipeql.view.components.intro.panel.LeftSideIntroductionPanel;
 

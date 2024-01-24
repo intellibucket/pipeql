@@ -3,7 +3,7 @@ package com.intellibucket.pipeql.view.components.main.panel.main.left;
 import com.intellibucket.pipeql.application.profile.abstracts.AbstractApplicationProfileInitializer;
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.view.client.main.concretes.IntroductionPanelClient;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;

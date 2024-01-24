@@ -1,7 +1,6 @@
 package com.intellibucket.pipeql.lib.bar.items;
 
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
-import com.intellibucket.pipeql.view.components.ComponentLoader;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 
 import javax.swing.*;
 

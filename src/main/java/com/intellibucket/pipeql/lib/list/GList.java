@@ -1,7 +1,7 @@
 package com.intellibucket.pipeql.lib.list;
 
 import com.intellibucket.pipeql.lib.panel.GListItemPanel;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.view.util.ColorUtils;
 
 import javax.swing.*;

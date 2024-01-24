@@ -1,4 +1,4 @@
-package com.intellibucket.pipeql.view.components;
+package com.intellibucket.pipeql.lib;
 
 import com.intellibucket.pipeql.eventlink.model.payload.Payload;
 import com.intellibucket.pipeql.eventlink.model.payload.SuccessPayload;

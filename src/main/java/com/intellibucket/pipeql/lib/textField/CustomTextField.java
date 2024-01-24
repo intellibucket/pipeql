@@ -2,7 +2,7 @@ package com.intellibucket.pipeql.lib.textField;
 
 import com.intellibucket.pipeql.lib.button.horizontal.AbstractGButton;
 import com.intellibucket.pipeql.lib.button.horizontal.SimpleGButton;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 import lombok.Getter;
 
 import javax.swing.*;

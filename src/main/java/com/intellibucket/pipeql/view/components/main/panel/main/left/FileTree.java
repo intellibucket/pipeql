@@ -1,9 +1,8 @@
 package com.intellibucket.pipeql.view.components.main.panel.main.left;
 
 import com.intellibucket.pipeql.lib.tree.AbstractGTree;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 
-import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreeNode;
 import java.util.Hashtable;

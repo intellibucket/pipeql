@@ -2,7 +2,7 @@ package com.intellibucket.pipeql.view.components.databases.panel.tabbedpane;
 
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
 import com.intellibucket.pipeql.lib.tabbed.AbstractMaximizedGTabbedPane;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.databases.panel.tabbedpane.panels.DDLMappingsSettingsTabbedPanePanel;
 import com.intellibucket.pipeql.view.components.databases.panel.tabbedpane.panels.DataSourcesSettingsTabbedPanePanel;
 import com.intellibucket.pipeql.view.components.databases.panel.tabbedpane.panels.DriversSettingsTabbedPanePanel;

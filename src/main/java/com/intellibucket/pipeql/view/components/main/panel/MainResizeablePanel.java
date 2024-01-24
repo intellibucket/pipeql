@@ -8,7 +8,7 @@ import com.intellibucket.pipeql.eventlink.model.payload.SuccessPayload;
 import com.intellibucket.pipeql.eventlink.rx.abstracts.EventListener;
 import com.intellibucket.pipeql.lib.panel.main.AbstractResizeablePanel;
 import com.intellibucket.pipeql.view.client.main.concretes.CenterPanelClient;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.main.panel.main.center.CenterInnerMainPanel;
 import com.intellibucket.pipeql.view.components.main.panel.main.center.EmptyInnerMainPanel;
 import com.intellibucket.pipeql.view.components.main.panel.main.left.LeftInnerMainPanel;

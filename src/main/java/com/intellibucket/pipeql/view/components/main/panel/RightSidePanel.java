@@ -8,7 +8,7 @@ import com.intellibucket.pipeql.lib.panel.side.InnerSideGPanel;
 import com.intellibucket.pipeql.lib.panel.side.SimpleSideGPanel;
 import com.intellibucket.pipeql.view.client.main.abstracts.AbstractRightSidePanelClient;
 import com.intellibucket.pipeql.view.client.main.concretes.RightSidePanelClient;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 
 import java.awt.*;
 import java.util.List;

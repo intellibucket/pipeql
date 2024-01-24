@@ -2,7 +2,7 @@ package com.intellibucket.pipeql.lib.button;
 
 import com.intellibucket.pipeql.lib.button.horizontal.SimpleGButton;
 import com.intellibucket.pipeql.lib.file.ImageToolKit;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.view.util.ColorUtils;
 
 import javax.swing.*;

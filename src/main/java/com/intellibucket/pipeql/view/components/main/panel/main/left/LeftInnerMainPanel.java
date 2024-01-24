@@ -2,7 +2,7 @@ package com.intellibucket.pipeql.view.components.main.panel.main.left;
 
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.lib.panel.line.LinePanel;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.main.panel.InnerResizeablePanel;
 
 import java.awt.*;

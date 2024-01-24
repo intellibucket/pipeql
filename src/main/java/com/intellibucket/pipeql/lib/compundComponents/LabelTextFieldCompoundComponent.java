@@ -3,7 +3,7 @@ package com.intellibucket.pipeql.lib.compundComponents;
 import com.intellibucket.pipeql.lib.label.AbstractGLabel;
 import com.intellibucket.pipeql.lib.label.SimpleGLabel;
 import com.intellibucket.pipeql.lib.textField.CustomTextField;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 import lombok.Getter;
 
 import javax.swing.*;

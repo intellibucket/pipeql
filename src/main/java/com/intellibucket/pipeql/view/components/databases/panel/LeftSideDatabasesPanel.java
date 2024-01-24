@@ -2,7 +2,7 @@ package com.intellibucket.pipeql.view.components.databases.panel;
 
 import com.intellibucket.pipeql.lib.panel.side.SimpleSideGPanel;
 import com.intellibucket.pipeql.lib.tabbed.AbstractMaximizedGTabbedPane;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.databases.panel.tabbedpane.SettingsLeftTabbedPane;
 
 import java.awt.*;

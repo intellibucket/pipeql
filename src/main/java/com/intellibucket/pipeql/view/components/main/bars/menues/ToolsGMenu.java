@@ -1,7 +1,7 @@
 package com.intellibucket.pipeql.view.components.main.bars.menues;
 
 import com.intellibucket.pipeql.lib.bar.GMenu;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 
 import java.util.List;
 

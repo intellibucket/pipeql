@@ -3,7 +3,7 @@ package com.intellibucket.pipeql.view.components.intro.panel.newProject;
 import com.intellibucket.pipeql.lib.label.ErrorGTextField;
 import com.intellibucket.pipeql.lib.panel.side.SimpleSideGPanel;
 import com.intellibucket.pipeql.lib.textField.AbstractGTextField;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 
 import java.util.List;
 

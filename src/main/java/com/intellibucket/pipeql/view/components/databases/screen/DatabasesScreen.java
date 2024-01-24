@@ -4,7 +4,7 @@ import com.intellibucket.pipeql.application.kernel.concretes.ApplicationKernel;
 import com.intellibucket.pipeql.lib.panel.ChangeablePanel;
 import com.intellibucket.pipeql.lib.frame.concretes.MidGFrame;
 import com.intellibucket.pipeql.lib.panel.side.SimpleSideGPanel;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.databases.panel.BottomDatabasePanel;
 import com.intellibucket.pipeql.view.components.databases.panel.LeftSideDatabasesPanel;
 import com.intellibucket.pipeql.view.components.databases.panel.center.EmptyCenterDatabasesPanel;

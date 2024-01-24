@@ -1,7 +1,7 @@
 package com.intellibucket.pipeql.lib.panel;
 
 import com.intellibucket.pipeql.lib.label.AbstractGLabel;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 
 import javax.swing.*;
 import java.awt.*;

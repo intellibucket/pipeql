@@ -9,7 +9,7 @@ import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
 import com.intellibucket.pipeql.view.client.intro.abstracts.AbstractIntroChangeableCenterPanelClient;
 import com.intellibucket.pipeql.view.client.intro.concretes.IntroChangeableCenterPanelClient;
 import com.intellibucket.pipeql.view.components.ApplicationLogoHeaderPanel;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 
 import javax.swing.*;
 import java.awt.*;

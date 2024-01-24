@@ -1,7 +1,7 @@
 package com.intellibucket.pipeql.view.components.intro.panel.newProject.leftPanel;
 
 import com.intellibucket.pipeql.lib.panel.ChangeablePanel;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 
 import java.awt.*;
 import java.util.List;

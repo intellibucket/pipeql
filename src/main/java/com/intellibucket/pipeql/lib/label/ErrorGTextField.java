@@ -1,7 +1,7 @@
 package com.intellibucket.pipeql.lib.label;
 
 import com.intellibucket.pipeql.lib.textField.CustomTextField;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.enums.CustomBorderProvider;
 
 import java.awt.*;

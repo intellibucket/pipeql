@@ -5,7 +5,7 @@ import com.intellibucket.pipeql.lib.frame.abstracts.MaximizedGFrame;
 import com.intellibucket.pipeql.lib.panel.line.LinePanel;
 import com.intellibucket.pipeql.lib.panel.main.AbstractResizeablePanel;
 import com.intellibucket.pipeql.lib.panel.side.AbstractSideGPanel;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.main.bars.MainGMenuBar;
 import com.intellibucket.pipeql.view.components.main.panel.*;
 

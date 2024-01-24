@@ -1,12 +1,10 @@
 package com.intellibucket.pipeql.lib.list;
 
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.List;
-import java.util.Objects;
 
 public class GPanelList extends AbstractGPanel implements ComponentInitializer {
 

@@ -10,7 +10,7 @@ import com.intellibucket.pipeql.splitPane.CustomSplitPane;
 import com.intellibucket.pipeql.lib.file.ImageToolKit;
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
 import com.intellibucket.pipeql.lib.frame.concretes.SmallGFrame;
-import com.intellibucket.pipeql.view.components.ComponentInitializer;
+import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.intro.panel.newProject.leftPanel.NewProjectLeftSideMainPanel;
 import com.intellibucket.pipeql.view.components.intro.panel.newProject.centerPanel.NewProjectCenterMainPanel;
 import com.intellibucket.pipeql.view.topics.NewProjectPanelTopics;

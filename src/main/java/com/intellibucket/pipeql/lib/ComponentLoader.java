@@ -1,4 +1,4 @@
-package com.intellibucket.pipeql.view.components;
+package com.intellibucket.pipeql.lib;
 
 import java.util.List;
 
