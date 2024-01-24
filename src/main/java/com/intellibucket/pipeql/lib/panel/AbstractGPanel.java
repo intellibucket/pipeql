@@ -34,7 +34,6 @@ public abstract class AbstractGPanel extends JPanel implements ComponentInitiali
     @Override
     public void refresh() {
         this.removeAll();
-        this.addComponents();
         this.initialize();
         this.updateUI();
     }
