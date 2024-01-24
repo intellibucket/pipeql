@@ -1,0 +1,93 @@
+{
+  "id": "92dd802d-ca6d-417e-9f67-0e0fb7c9f12d",
+  "isActive": false,
+  "version": 47,
+  "name": "declaration",
+  "description": "test_78805e2a051f",
+  "owner": "e_mammadov",
+  "ownerEmail": "e_mammadov@mail.ru",
+  "schemas": [
+    {
+      "id": "cd0f82d9-c99a-45b4-89df-6f41eba2a094",
+      "isActive": true,
+      "version": 91,
+      "projectId": "92dd802d-ca6d-417e-9f67-0e0fb7c9f12d",
+      "name": "ebeyanname",
+      "description": "test_d0ad975b9699",
+      "tables": [
+        {
+          "id": "5b65e93f-7cef-49f1-9b8c-71f146756d98",
+          "isActive": false,
+          "version": 61,
+          "schemaId": "cd0f82d9-c99a-45b4-89df-6f41eba2a094",
+          "name": "beyanname",
+          "description": "test_9786c49d1e9b",
+          "columns": [
+            {
+              "id": "f30b3c7c-4873-4935-b87d-739b9cd426b6",
+              "isActive": false,
+              "version": 95,
+              "tableId": "5b65e93f-7cef-49f1-9b8c-71f146756d98",
+              "name": "oid",
+              "description": "test_178bc8cda85a",
+              "dataType": "varchar2",
+              "length": 16,
+              "precision": 18,
+              "scale": 89,
+              "isNullable": false,
+              "isPrimaryKey": true,
+              "isForeignKey": true,
+              "isUnique": true,
+              "isAutoIncrement": true,
+              "isIndexed": true,
+              "isGenerated": true,
+              "isGeneratedAlways": true,
+              "isGeneratedByDefault": false,
+              "isVirtual": false,
+              "isStored": false,
+              "isHidden": true,
+              "isReadOnly": false,
+              "isUpdatable": true,
+              "isInsertable": false,
+              "isDeletable": true,
+              "isSelectable": true,
+              "isSearchable": true,
+              "isCaseSensitive": false
+            },
+            {
+              "id": "f30b3c7c-4873-5152-b87d-739b9cd426b6",
+              "isActive": false,
+              "version": 95,
+              "tableId": "5b65e93f-7cef-49f1-9b8c-71f146756d98",
+              "name": "beyannametanimoid",
+              "description": "test_178bc8cda85a",
+              "dataType": "varchar2",
+              "length": 16,
+              "precision": 18,
+              "scale": 89,
+              "isNullable": false,
+              "isPrimaryKey": false,
+              "isForeignKey": true,
+              "isUnique": true,
+              "isAutoIncrement": true,
+              "isIndexed": true,
+              "isGenerated": true,
+              "isGeneratedAlways": true,
+              "isGeneratedByDefault": false,
+              "isVirtual": false,
+              "isStored": false,
+              "isHidden": true,
+              "isReadOnly": false,
+              "isUpdatable": true,
+              "isInsertable": false,
+              "isDeletable": true,
+              "isSelectable": true,
+              "isSearchable": true,
+              "isCaseSensitive": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -5,18 +5,22 @@ import com.intellibucket.pipeql.lib.file.ImageToolKit;
 import com.intellibucket.pipeql.lib.label.AbstractGLabel;
 import com.intellibucket.pipeql.lib.label.SimpleGLabel;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
+import com.intellibucket.pipeql.lib.list.GList;
 import com.intellibucket.pipeql.view.components.main.model.TableItemModel;
 import com.intellibucket.pipeql.view.util.BordersUtil;
 import com.intellibucket.pipeql.view.util.FontsUtil;
 import com.intellibucket.pipeql.view.util.IconUtils;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.awt.*;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
 
 @Slf4j
+@Getter
 public class GListItemPanel extends AbstractGPanel{
     private final TableItemModel item;
     private final AbstractGLabel picLabel;
@@ -47,46 +51,20 @@ public class GListItemPanel extends AbstractGPanel{
     }
 
     @Override
-    public String toString() {
-        return item.schema() + "." + item.name();
-    }
-
-
-    @Override
     public void setEventPublisher() {
-        log.info("Setting event publisher for: {}", this);
-        this.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                log.info("Clicked: {}", GListItemPanel.this);
-            }
 
-            @Override
-            public void mousePressed(MouseEvent e) {
-                log.info("Pressed: {}", GListItemPanel.this);
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                log.info("Released: {}", GListItemPanel.this);
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                log.info("Entered: {}", GListItemPanel.this);
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                log.info("Exited: {}", GListItemPanel.this);
-            }
-        });
     }
 
     @Override
     public void setEventListener() {
 
     }
+
+    @Override
+    public String toString() {
+        return item.schema() + "." + item.name();
+    }
+
 
 
 }

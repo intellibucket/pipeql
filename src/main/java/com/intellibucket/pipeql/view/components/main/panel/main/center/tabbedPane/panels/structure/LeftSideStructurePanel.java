@@ -13,7 +13,9 @@ import com.intellibucket.pipeql.lib.list.GList;
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.lib.panel.GListItemPanel;
 import com.intellibucket.pipeql.lib.scrollpane.GScrollPane;
+import com.intellibucket.pipeql.view.client.main.abstracts.AbstractMainCenterTablePanelClient;
 import com.intellibucket.pipeql.view.client.main.abstracts.AbstractSchemaComboBoxClient;
+import com.intellibucket.pipeql.view.client.main.concretes.MainCenterTablePanelClient;
 import com.intellibucket.pipeql.view.client.main.concretes.MockSchemaItemClient;
 import com.intellibucket.pipeql.view.client.main.concretes.SchemaComboBoxClient;
 import com.intellibucket.pipeql.view.client.payloads.SchemaItemModelPayload;
@@ -120,8 +122,23 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
 
 
         class CustomGList extends GList {
+            private final AbstractMainCenterTablePanelClient mainCenterTablePanelClient = new MainCenterTablePanelClient();
             public CustomGList(List<GListItemPanel> items) {
                 super(items);
+            }
+
+            @Override
+            public void setEventPublisher() {
+                this.addListSelectionListener(e -> {
+                    if (!e.getValueIsAdjusting()) {
+                        var selectedValue = this.getSelectedValue();
+                        if (Objects.nonNull(selectedValue)) {
+                            var tableItemModel = selectedValue.getItem();
+                            log.info("Selected table: {}", tableItemModel);
+                            mainCenterTablePanelClient.openTable(tableItemModel.id());
+                        }
+                    }
+                });
             }
         }
     }

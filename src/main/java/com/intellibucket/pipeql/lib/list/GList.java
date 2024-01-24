@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.List;
 
 @Slf4j
@@ -35,6 +37,15 @@ public abstract class GList extends JList<GListItemPanel> implements ComponentIn
         return items.stream().map(item -> (ComponentInitializer) item).toList();
     }
 
+    @Override
+    public void setEventListener() {
+        this.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                GList.this.setSelectedIndex(GList.this.locationToIndex(e.getPoint()));
+            }
+        });
+    }
 
     static class PanelRenderer implements ListCellRenderer<GListItemPanel> {
 
