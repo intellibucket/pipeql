@@ -12,6 +12,7 @@ import com.intellibucket.pipeql.lib.label.SimpleGLabel;
 import com.intellibucket.pipeql.lib.list.GList;
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.lib.panel.GListItemPanel;
+import com.intellibucket.pipeql.lib.scrollpane.GScrollPane;
 import com.intellibucket.pipeql.view.client.main.abstracts.AbstractSchemaComboBoxClient;
 import com.intellibucket.pipeql.view.client.main.concretes.MockSchemaItemClient;
 import com.intellibucket.pipeql.view.client.main.concretes.SchemaComboBoxClient;
@@ -92,6 +93,7 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
     class ListTablesOfLeftSideStructurePanelLine extends AbstractGSimplePanel {
 
         private final CustomGList list;
+        private final GScrollPane scrollPane;
 
         {
             this.setLayout(new BorderLayout());
@@ -101,18 +103,19 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
             super();
             var itemsPanel = items.stream().map(GListItemPanel::new).toList();
             this.list = new CustomGList(itemsPanel);
+            this.scrollPane = new GScrollPane(this.list);
         }
 
         @Override
         public List<ComponentInitializer> getComponentInitializers() {
             return List.of(
-                    this.list
+                    this.scrollPane
             );
         }
 
         @Override
         public void setComponents() {
-            this.add(this.list.getScroll(), BorderLayout.CENTER);
+            this.add(this.scrollPane, BorderLayout.CENTER);
         }
 
 

@@ -2,15 +2,17 @@ package com.intellibucket.pipeql.lib.list;
 
 import com.intellibucket.pipeql.lib.panel.GListItemPanel;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
+import com.intellibucket.pipeql.lib.scrollpane.GScrollPane;
 import com.intellibucket.pipeql.view.util.ColorUtils;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
+@Slf4j
 public abstract class GList extends JList<GListItemPanel> implements ComponentInitializer {
     protected final List<GListItemPanel > items;
-    private final  JScrollPane scroll ;
 
     {
         this.setFixedCellHeight(20);
@@ -20,13 +22,8 @@ public abstract class GList extends JList<GListItemPanel> implements ComponentIn
         super(new DefaultListModel<>());
         this.items = items;
         this.setCellRenderer(new PanelRenderer());
-        this.scroll = new JScrollPane(this);
-        final JScrollBar scrollBar = scroll.getVerticalScrollBar();
     }
 
-    public JScrollPane getScroll() {
-        return scroll;
-    }
 
     @Override
     public void setComponents() {
@@ -46,5 +43,7 @@ public abstract class GList extends JList<GListItemPanel> implements ComponentIn
             value.setBackground(isSelected ? ColorUtils.COLORFUL_BUTTON_BACKGROUND : list.getBackground());
             return value;
         }
+
+
     }
 }
