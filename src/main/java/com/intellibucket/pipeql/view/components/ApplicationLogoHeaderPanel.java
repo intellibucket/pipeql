@@ -31,7 +31,7 @@ public class ApplicationLogoHeaderPanel extends TransparentGPanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(Box.createRigidArea(new Dimension(5, 0)));
         this.add(this.logo);
         this.add(Box.createRigidArea(new Dimension(10, 0)));
@@ -73,7 +73,7 @@ public class ApplicationLogoHeaderPanel extends TransparentGPanel {
         }
 
         @Override
-        public void addComponents() {
+        public void setComponents() {
             this.add(this.applicationNameLabel);
             this.add(this.applicationVersionLabel);
         }

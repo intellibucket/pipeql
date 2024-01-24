@@ -42,7 +42,7 @@ public class LeftSideIntroductionPanel extends AbstractGPanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.logoHeaderPanel, BorderLayout.NORTH);
         this.add(this.buttonsListPanel, BorderLayout.CENTER);
         this.add(this.bottomPanel, BorderLayout.SOUTH);
@@ -64,7 +64,7 @@ class LagApplicationLogoHeaderPanel extends AbstractGPanel{
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(Box.createRigidArea(new Dimension(15, 0)), BorderLayout.WEST);
         this.add(Box.createRigidArea(new Dimension(0, 20)), BorderLayout.NORTH);
         this.add(this.panel, BorderLayout.CENTER);
@@ -90,7 +90,7 @@ class CenterLeftPanel extends AbstractGPanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.buttonsPanel, BorderLayout.NORTH);
         this.add(this.problemsPanel, BorderLayout.SOUTH);
     }
@@ -113,7 +113,7 @@ class ProblemsPanel extends AbstractGPanel{
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.problemsLabel);
     }
 }
@@ -138,7 +138,7 @@ class ButtonsListPanel extends AbstractGPanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.projectsButton);
         this.add(this.customizeButton);
         this.add(this.learnAbout);
@@ -176,7 +176,7 @@ class BottomPanel extends AbstractGPanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.infoButton);
         this.add(this.settingsButton);
     }

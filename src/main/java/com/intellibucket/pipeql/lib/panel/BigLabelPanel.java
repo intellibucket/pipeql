@@ -27,7 +27,7 @@ public class BigLabelPanel extends AbstractGPanel{
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.firstLabel);
     }
 

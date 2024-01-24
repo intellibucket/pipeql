@@ -31,7 +31,7 @@ public class LeftSidePanel extends SimpleSideGPanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.topLeftSideInnerPanel, BorderLayout.NORTH);
         this.add(this.bottomLeftSideInnerPanel, BorderLayout.SOUTH);
     }
@@ -60,7 +60,7 @@ class TopLeftSideInnerPanel extends InnerSideGPanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.projectsButton);
         this.add(this.environmentButton);
         this.add(this.schemasButton);
@@ -90,7 +90,7 @@ class BottomLeftSideInnerPanel extends InnerSideGPanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.dataSourcesButton);
     }
 

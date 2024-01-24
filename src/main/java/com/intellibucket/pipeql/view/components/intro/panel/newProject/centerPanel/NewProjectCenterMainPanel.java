@@ -30,7 +30,7 @@ public class NewProjectCenterMainPanel extends ChangeablePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
 
         var gbc = new GridBagConstraints();
         gbc.gridx = 0;

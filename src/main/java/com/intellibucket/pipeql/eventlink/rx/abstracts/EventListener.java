@@ -11,13 +11,17 @@ import com.intellibucket.pipeql.eventlink.model.event.concretes.WarningEvent;
 import com.intellibucket.pipeql.eventlink.model.payload.*;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
 public abstract class EventListener<T extends Payload,S extends SuccessPayload>  {
 
-    {
-        DefaultEventLinkBroker.Mediator.registerConsumer(this.mustBeRegistryTopics(), this);
+    private final List<Topic> topics;
+
+    protected EventListener(List<Topic> topics) {
+        this.topics = topics;
+        DefaultEventLinkBroker.Mediator.registerConsumer(new ArrayList<>(this.topics), this);
     }
 
     @SuppressWarnings("unchecked")
@@ -66,5 +70,5 @@ public abstract class EventListener<T extends Payload,S extends SuccessPayload> 
         message.callback().onSuccess(event);
     }
 
-    protected abstract List<Topic> mustBeRegistryTopics();
+    protected List<Topic> mustBeRegistryTopics(){return List.of();}
 }

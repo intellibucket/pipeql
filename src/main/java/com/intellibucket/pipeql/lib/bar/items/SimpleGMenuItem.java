@@ -17,5 +17,5 @@ public class SimpleGMenuItem extends GMenuItem{
     }
 
     @Override
-    public void addComponents() {}
+    public void setComponents() {}
 }

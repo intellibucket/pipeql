@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ComponentInitializer extends AbstractComponent ,ActionInitializer, ListenerInitializer, PostInitializer {
     default void initialize(){
-        this.addComponents();
+        this.setComponents();
         this.initializeComponents(this.getComponentInitializers());
         this.setActions();
         this.setEventListener();

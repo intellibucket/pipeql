@@ -31,7 +31,6 @@ import static com.intellibucket.pipeql.view.components.enums.Colors.NEW_PROJECT_
 public class NewProjectCenterUpDirectoryInfoPanel extends AbstractGSimplePanel {
 
     private final ExceptionPanel exceptionPanel = new ExceptionPanel();
-    private final CreatButtonListener creatButtonListener = new NewProjectCenterUpDirectoryInfoPanel.CreatButtonListener();
     private final IntroductionPanelClient introductionPanelClient = new IntroductionPanelClient();
     private boolean isValidFields;
     private final LabelTextFieldCompoundComponent projectNamePanel = new LabelTextFieldCompoundComponent("Name: ", "untitled");
@@ -142,7 +141,7 @@ public class NewProjectCenterUpDirectoryInfoPanel extends AbstractGSimplePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
 
         var gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5);
@@ -162,6 +161,16 @@ public class NewProjectCenterUpDirectoryInfoPanel extends AbstractGSimplePanel {
                         this, projectPathPanel.getTextField()));
     }
 
+    @Override
+    public void setEventListener() {
+        this.addEventListener(new EventListener<Payload, EmptySuccessPayload>(List.of(NewProjectPanelTopics.CLICKED_CREATE_NEW_PROJECT)) {
+            @Override
+            protected EmptySuccessPayload listen(Payload message) throws DomainException {
+                NewProjectCenterUpDirectoryInfoPanel.this.createProject();
+                return EmptySuccessPayload.INSTANCE;
+            }
+        });
+    }
 
     class ChangePathListener implements DocumentListener {
 
@@ -180,23 +189,4 @@ public class NewProjectCenterUpDirectoryInfoPanel extends AbstractGSimplePanel {
             setPath();
         }
     }
-
-
-    class CreatButtonListener extends EventListener<Payload, EmptySuccessPayload> {
-
-        @Override
-        protected EmptySuccessPayload listen(Payload message) throws DomainException {
-            createProject();
-
-
-            return EmptySuccessPayload.INSTANCE;
-        }
-
-        @Override
-        protected List<Topic> mustBeRegistryTopics() {
-            return List.of(NewProjectPanelTopics.CLICKED_CREATE_NEW_PROJECT);
-        }
-    }
-
-
 }

@@ -12,7 +12,7 @@ public class DDLMappingsSettingsTabbedPanePanel extends AbstractGSimplePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
 
     }
 }

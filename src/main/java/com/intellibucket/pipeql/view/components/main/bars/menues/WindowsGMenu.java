@@ -17,7 +17,7 @@ public class WindowsGMenu extends GMenu {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
 
     }
 }

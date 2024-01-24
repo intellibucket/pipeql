@@ -42,7 +42,7 @@ public class StructurePanel extends AbstractGSimplePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.headerStructurePanel, BorderLayout.NORTH);
         this.add(this.leftSideStructurePanel, BorderLayout.WEST);
         this.add(this.rightSideStructurePanel, BorderLayout.EAST);

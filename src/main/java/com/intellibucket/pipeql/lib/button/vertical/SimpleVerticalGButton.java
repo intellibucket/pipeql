@@ -21,7 +21,7 @@ public class SimpleVerticalGButton extends AbstractVerticalGButton implements Co
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
 
     }
 }

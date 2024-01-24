@@ -73,7 +73,7 @@ public class CustomTextField extends AbstractGTextField {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
 
     }
 

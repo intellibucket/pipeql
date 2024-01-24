@@ -31,7 +31,7 @@ public class ErrorGTextField extends CustomTextField {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
 
     }
 }

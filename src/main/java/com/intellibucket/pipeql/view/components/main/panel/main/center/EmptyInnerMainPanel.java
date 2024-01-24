@@ -25,7 +25,7 @@ public class EmptyInnerMainPanel extends InnerResizeablePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.emptyLabel);
     }
 }
@@ -49,7 +49,7 @@ class LabelBox extends AbstractGPanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.firstLine);
         this.add(this.secondLine);
         this.add(this.thirdLine);

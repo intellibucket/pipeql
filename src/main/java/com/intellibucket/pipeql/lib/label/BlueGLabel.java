@@ -46,7 +46,7 @@ public class BlueGLabel extends AbstractGLabel{
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
 
     }
 }

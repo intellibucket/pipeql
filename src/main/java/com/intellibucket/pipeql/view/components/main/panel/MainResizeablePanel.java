@@ -21,10 +21,6 @@ import java.util.List;
 
 public class MainResizeablePanel extends AbstractResizeablePanel {
 
-    private final NotificationButtonListener notificationButtonListener = new NotificationButtonListener();
-    private final ProjectButtonListener projectButtonListener = new ProjectButtonListener();
-    private final CloseAllCenterPanelListener closeAllCenterPanelListener = new CloseAllCenterPanelListener();
-
     public MainResizeablePanel() {
         super(new LeftInnerMainPanel(), new CenterInnerMainPanel(), new RightInnerMainPanel());
     }
@@ -39,63 +35,36 @@ public class MainResizeablePanel extends AbstractResizeablePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.getCenterRightSplitPanel(), BorderLayout.CENTER);
     }
 
-    class NotificationButtonListener extends EventListener<Payload, EmptySuccessPayload> {
+    @Override
+    public void setEventListener() {
+        this.addEventListener(new EventListener<Payload, EmptySuccessPayload>(List.of(RightMainPanelTopics.CLICKED_OPEN_NOTIFICATION_SIDE_BAR)) {
+            @Override
+            protected EmptySuccessPayload listen(Payload message) throws DomainException {
+                MainResizeablePanel.this.openRightBar();
+                return EmptySuccessPayload.INSTANCE;
+            }
+        });
 
-        @Override
-        protected EmptySuccessPayload listen(Payload message) throws DomainException {
-            MainResizeablePanel.this.openRightBar();
-            return EmptySuccessPayload.INSTANCE;
-        }
-
-        @Override
-        protected List<Topic> mustBeRegistryTopics() {
-            return List.of(RightMainPanelTopics.CLICKED_OPEN_NOTIFICATION_SIDE_BAR);
-        }
-    }
-
-    class ProjectButtonListener extends EventListener<Payload, ProjectButtonListener.ListenerProjectButtonSuccessPayload> {
-
-        static class ListenerProjectButtonSuccessPayload extends SuccessPayload {
-            private final Boolean isClicked;
-
-            ListenerProjectButtonSuccessPayload() {
-                this.isClicked = true;
+        this.addEventListener(new EventListener<Payload, EmptySuccessPayload>(List.of(LeftMainPanelTopics.CLICKED_SIDE_PROJECTS_BUTTON)) {
+            @Override
+            protected EmptySuccessPayload listen(Payload message) throws DomainException {
+                MainResizeablePanel.this.openLeftBar();
+                return EmptySuccessPayload.INSTANCE;
             }
 
-            public Boolean getClicked() {
-                return this.isClicked;
+        });
+
+        this.addEventListener(new EventListener<>(List.of(CenterPanelClient.Topics.CLOSE_ALL_SCHEMAS_TOPIC)) {
+            @Override
+            protected SuccessPayload listen(Payload message) throws DomainException {
+                MainResizeablePanel.this.setCenterPanel(new EmptyInnerMainPanel());
+                return EmptySuccessPayload.INSTANCE;
             }
-        }
-
-        @Override
-        protected ListenerProjectButtonSuccessPayload listen(Payload message) throws DomainException {
-            MainResizeablePanel.this.openLeftBar();
-            return new ListenerProjectButtonSuccessPayload();
-        }
-
-        @Override
-        protected List<Topic> mustBeRegistryTopics() {
-            return List.of((LeftMainPanelTopics.CLICKED_SIDE_PROJECTS_BUTTON));
-        }
+        });
     }
 
-    class CloseAllCenterPanelListener extends EventListener<Payload, CloseAllCenterPanelListener.ListenerCloseAllCenterPanelSuccessPayload> {
-
-        static class ListenerCloseAllCenterPanelSuccessPayload extends SuccessPayload {}
-
-        @Override
-        protected ListenerCloseAllCenterPanelSuccessPayload listen(Payload message) throws DomainException {
-            MainResizeablePanel.this.setCenterPanel(new EmptyInnerMainPanel());
-            return new ListenerCloseAllCenterPanelSuccessPayload();
-        }
-
-        @Override
-        protected List<Topic> mustBeRegistryTopics() {
-            return List.of(CenterPanelClient.Topics.CLOSE_ALL_SCHEMAS_TOPIC);
-        }
-    }
 }

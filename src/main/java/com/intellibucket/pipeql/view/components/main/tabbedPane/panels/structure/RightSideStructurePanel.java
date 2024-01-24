@@ -41,7 +41,7 @@ public class RightSideStructurePanel extends AbstractGSimplePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.mainPanel, BorderLayout.CENTER);
     }
 
@@ -63,7 +63,7 @@ class EmptyRightSideStructurePanel extends AbstractGSimplePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.labelBox);
     }
 
@@ -80,7 +80,7 @@ class EmptyRightSideStructurePanel extends AbstractGSimplePanel {
         }
 
         @Override
-        public void addComponents() {
+        public void setComponents() {
             this.add(this.secondLine);
         }
     }
@@ -93,7 +93,7 @@ class ColumnSettingsPanel extends AbstractGSimplePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
 
     }
 

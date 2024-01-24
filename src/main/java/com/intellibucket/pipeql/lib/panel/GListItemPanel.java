@@ -36,7 +36,7 @@ public class GListItemPanel extends AbstractGPanel{
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.picLabel, BorderLayout.WEST);
         this.add(this.label, BorderLayout.CENTER);
         this.add(this.dropButton, BorderLayout.EAST);

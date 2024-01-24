@@ -15,7 +15,7 @@ public class GSeparator extends JSeparator implements ComponentInitializer {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
 
     }
 }

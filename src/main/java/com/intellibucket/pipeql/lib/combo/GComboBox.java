@@ -30,7 +30,7 @@ public abstract class GComboBox extends JComboBox<GComboBoxItem> implements Comp
 
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
 
     }
 

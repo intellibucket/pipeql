@@ -28,7 +28,7 @@ public class EmptyCenterIntroPanel extends ChangeablePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.mainPanel);
     }
 }
@@ -51,7 +51,7 @@ class LabelPanel extends AbstractGSimplePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.firstLine);
         this.add(this.secondLine);
         this.add(this.thirdLine);
@@ -87,7 +87,7 @@ class LabelPanel extends AbstractGSimplePanel {
         }
 
         @Override
-        public void addComponents() {
+        public void setComponents() {
             this.add(this.newProjectButton);
             this.add(Box.createHorizontalStrut(20));
             this.add(this.openProjectButton);

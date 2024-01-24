@@ -31,7 +31,7 @@ public class LabelPairPanel extends AbstractGPanel{
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.firstLabel);
         this.add(Box.createRigidArea(new Dimension(5,0)));
         this.add(this.secondLabel);

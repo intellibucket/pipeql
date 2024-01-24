@@ -20,7 +20,6 @@ import java.awt.*;
 import java.util.List;
 
 public class NewProjectScreen extends SmallGFrame {
-    CancelButtonListener cancelButtonListener = new CancelButtonListener();
     private final NewProjectLeftSideMainPanel leftSideIntroductionPanel = new NewProjectLeftSideMainPanel();
     private final NewProjectCenterMainPanel newProjectCenterMainPanel = new NewProjectCenterMainPanel();
     private final JSplitPane splitPane;
@@ -39,8 +38,6 @@ public class NewProjectScreen extends SmallGFrame {
                 newProjectCenterMainPanel,
                 CustomBorderProvider.ONE_LINE_RIGHT_BORDER.getBorder(Color.BLACK));
         splitPane.setResizeWeight(0.25);
-
-
     }
 
 
@@ -50,22 +47,19 @@ public class NewProjectScreen extends SmallGFrame {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.splitPane, BorderLayout.CENTER);
     }
 
-    class CancelButtonListener extends EventListener<Payload, EmptySuccessPayload> {
-
-        @Override
-        protected EmptySuccessPayload listen(Payload message) throws DomainException {
-
-            NewProjectScreen.this.dispose();
-            return EmptySuccessPayload.INSTANCE;
-        }
-
-        @Override
-        protected List<Topic> mustBeRegistryTopics() {
-            return List.of(NewProjectPanelTopics.CLICKED_CANCEL_NEW_PROJECT);
-        }
+    @Override
+    public void setEventListener() {
+        this.addEventListener(new EventListener<Payload, EmptySuccessPayload>(List.of(NewProjectPanelTopics.CLICKED_CANCEL_NEW_PROJECT)) {
+            @Override
+            protected EmptySuccessPayload listen(Payload message) throws DomainException {
+                NewProjectScreen.this.dispose();
+                return EmptySuccessPayload.INSTANCE;
+            }
+        });
     }
+
 }

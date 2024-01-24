@@ -32,7 +32,7 @@ public class FileGMenu extends GMenu {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.newGMenuItem);
         this.add(this.openGMenuItem);
         this.add(this.saveGMenuItem);

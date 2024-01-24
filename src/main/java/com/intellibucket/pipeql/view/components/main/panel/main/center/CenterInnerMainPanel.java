@@ -25,7 +25,7 @@ public class CenterInnerMainPanel extends InnerResizeablePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         add(mainTabbedPane, BorderLayout.CENTER);
     }
 

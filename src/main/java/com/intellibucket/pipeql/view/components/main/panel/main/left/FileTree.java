@@ -43,7 +43,7 @@ public class FileTree extends AbstractGTree {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
 
     }
 }

@@ -24,7 +24,7 @@ public class RightInnerMainPanel extends InnerResizeablePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         add(panel, BorderLayout.CENTER);
     }
 }

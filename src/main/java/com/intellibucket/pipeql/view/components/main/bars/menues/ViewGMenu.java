@@ -17,7 +17,7 @@ public class ViewGMenu extends GMenu {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
 
     }
 }

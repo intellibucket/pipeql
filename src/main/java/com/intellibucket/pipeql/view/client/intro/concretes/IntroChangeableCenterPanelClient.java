@@ -1,6 +1,7 @@
 package com.intellibucket.pipeql.view.client.intro.concretes;
 
 import com.intellibucket.pipeql.eventlink.model.event.concretes.start.StartEvent;
+import com.intellibucket.pipeql.eventlink.model.payload.ChangeablePanelPayload;
 import com.intellibucket.pipeql.eventlink.model.producer.ProducingMessage;
 import com.intellibucket.pipeql.eventlink.template.abstracts.EventLinkTemplate;
 import com.intellibucket.pipeql.view.client.intro.abstracts.AbstractIntroChangeableCenterPanelClient;
@@ -33,7 +34,7 @@ public class IntroChangeableCenterPanelClient extends AbstractIntroChangeableCen
                 new ProjectItemModel("Apache Kafka", "/Users/abhishek/Desktop/Projects/apache-kafka")
         );
         var changeablePanel = new ProjectsCenterIntroPanel(models);
-        var event = new StartEvent<>(new IntroductionScreen.ChangeablePanelListener.ChangeablePanelPayload(changeablePanel));
+        var event = new StartEvent<>(new ChangeablePanelPayload(changeablePanel));
         var message = ProducingMessage.Builder
                 .builder()
                 .event(event)

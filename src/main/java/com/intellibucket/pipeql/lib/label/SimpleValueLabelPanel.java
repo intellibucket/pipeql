@@ -32,7 +32,7 @@ public class SimpleValueLabelPanel extends AbstractGPanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.label);
         this.add(Box.createRigidArea(new Dimension(10, 0)));
         this.add(this.value);

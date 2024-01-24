@@ -44,7 +44,7 @@ public class NewProjectLeftUpSearchPanel extends ChangeablePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.iconPanel, BorderLayout.WEST);
         this.add(this.textField, BorderLayout.CENTER);
 

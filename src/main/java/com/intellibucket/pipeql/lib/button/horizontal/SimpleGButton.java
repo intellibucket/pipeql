@@ -30,7 +30,7 @@ public class SimpleGButton extends AbstractGButton{
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
 
     }
 }

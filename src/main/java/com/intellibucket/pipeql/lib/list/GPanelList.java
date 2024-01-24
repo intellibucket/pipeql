@@ -21,7 +21,7 @@ public class GPanelList extends AbstractGPanel implements ComponentInitializer {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         for (ComponentInitializer component : components) {
             this.add((Component) component);
         }

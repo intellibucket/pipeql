@@ -26,7 +26,7 @@ public class SimpleOkGButton extends SimpleGButton{
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
 
     }
 }

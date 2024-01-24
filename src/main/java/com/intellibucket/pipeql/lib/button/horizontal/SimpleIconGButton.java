@@ -17,7 +17,7 @@ public class SimpleIconGButton extends AbstractGButton{
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
 
     }
 }

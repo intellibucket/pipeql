@@ -36,7 +36,7 @@ public class CenterStructurePanel extends AbstractGSimplePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.mainPanel, BorderLayout.CENTER);
     }
 }
@@ -58,7 +58,7 @@ class EmptyCenterStructurePanel extends AbstractGSimplePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.labelBox);
     }
 
@@ -77,7 +77,7 @@ class EmptyCenterStructurePanel extends AbstractGSimplePanel {
         }
 
         @Override
-        public void addComponents() {
+        public void setComponents() {
             this.add(this.firstLine);
             this.add(this.secondLine);
         }
@@ -107,7 +107,7 @@ class TableCenterStructurePanel extends AbstractGSimplePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.headerOfTableCenterStructurePanel, BorderLayout.NORTH);
     }
 
@@ -119,7 +119,7 @@ class TableCenterStructurePanel extends AbstractGSimplePanel {
         }
 
         @Override
-        public void addComponents() {
+        public void setComponents() {
 
         }
     }
@@ -132,7 +132,7 @@ class TableCenterStructurePanel extends AbstractGSimplePanel {
         }
 
         @Override
-        public void addComponents() {
+        public void setComponents() {
 
         }
     }

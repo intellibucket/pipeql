@@ -30,7 +30,7 @@ public class BorderlessGButton extends SimpleGButton{
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
 
     }
 }

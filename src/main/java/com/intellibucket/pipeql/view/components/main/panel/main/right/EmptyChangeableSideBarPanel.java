@@ -28,7 +28,7 @@ public class EmptyChangeableSideBarPanel extends ChangeablePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(labelBox);
     }
 }
@@ -50,7 +50,7 @@ class LabelBox extends AbstractGSimplePanel{
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(firstLine);
     }
 }

@@ -47,5 +47,5 @@ public class SimpleGLabel extends AbstractGLabel{
     }
 
     @Override
-    public void addComponents() {}
+    public void setComponents() {}
 }

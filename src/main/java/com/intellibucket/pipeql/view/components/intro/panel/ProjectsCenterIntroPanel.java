@@ -64,7 +64,7 @@ public class ProjectsCenterIntroPanel extends ChangeablePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(headerProjectsCenterIntroPanel, BorderLayout.NORTH);
         this.add(bodyProjectsCenterIntroPanel, BorderLayout.CENTER);
     }
@@ -91,7 +91,7 @@ public class ProjectsCenterIntroPanel extends ChangeablePanel {
         }
 
         @Override
-        public void addComponents() {
+        public void setComponents() {
             this.add(leftHeaderProjectsCenterIntroPanel, BorderLayout.WEST);
             this.add(rightHeaderProjectsCenterIntroPanel, BorderLayout.EAST);
             this.add(seperator, BorderLayout.SOUTH);
@@ -150,7 +150,7 @@ public class ProjectsCenterIntroPanel extends ChangeablePanel {
             }
 
             @Override
-            public void addComponents() {
+            public void setComponents() {
                 this.add(textField);
             }
         }
@@ -180,7 +180,7 @@ class RightHeaderProjectsCenterIntroPanel extends AbstractGPanel{
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(newButton);
         this.add(openButton);
         this.add(vcsButton);
@@ -211,7 +211,7 @@ class TransportBodyProjectsCenterIntroPanel extends AbstractGPanel{
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(bodyProjectsCenterIntroPanel, BorderLayout.CENTER);
     }
 }
@@ -244,7 +244,7 @@ class BodyProjectsCenterIntroPanel extends AbstractGPanel{
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(scrollPane, BorderLayout.CENTER);
     }
 }
@@ -276,7 +276,7 @@ class ProjectItem extends AbstractGPanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(picProjectItem, BorderLayout.WEST);
         this.add(infoProjectItem, BorderLayout.CENTER);
         this.add(settingsButton, BorderLayout.EAST);
@@ -302,7 +302,7 @@ class ProjectItem extends AbstractGPanel {
         }
 
         @Override
-        public void addComponents() {
+        public void setComponents() {
             this.add(settingsButton);
         }
     }
@@ -336,7 +336,7 @@ class ProjectItem extends AbstractGPanel {
         }
 
         @Override
-        public void addComponents() {
+        public void setComponents() {
             this.add(label);
         }
     }
@@ -364,7 +364,7 @@ class ProjectItem extends AbstractGPanel {
         }
 
         @Override
-        public void addComponents() {
+        public void setComponents() {
             this.add(projectName);
             this.add(projectPath);
         }

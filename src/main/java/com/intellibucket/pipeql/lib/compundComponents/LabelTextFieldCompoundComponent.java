@@ -45,7 +45,7 @@ public class LabelTextFieldCompoundComponent extends AbstractCompoundComponent {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         textField.setColumns(25);
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();

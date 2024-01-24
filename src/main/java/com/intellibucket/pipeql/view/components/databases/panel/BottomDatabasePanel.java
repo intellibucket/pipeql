@@ -29,7 +29,7 @@ public class BottomDatabasePanel extends AbstractGSimplePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.leftPanel, BorderLayout.WEST);
         this.add(this.rightPanel, BorderLayout.EAST);
     }
@@ -53,7 +53,7 @@ class LeftBottomDatabasePanel extends AbstractGSimplePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.infoButton);
     }
 }
@@ -79,7 +79,7 @@ class RightBottomDatabasePanel extends AbstractGSimplePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.okButton);
         this.add(this.cancelButton);
         this.add(this.applyButton);

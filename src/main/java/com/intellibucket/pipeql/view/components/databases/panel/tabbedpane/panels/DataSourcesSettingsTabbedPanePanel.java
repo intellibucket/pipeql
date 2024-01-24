@@ -27,7 +27,7 @@ public class DataSourcesSettingsTabbedPanePanel extends AbstractGSimplePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.headerDataSourcesSettingsTabbedPanePanel, BorderLayout.NORTH);
     }
 }
@@ -50,7 +50,7 @@ class HeaderDataSourcesSettingsTabbedPanePanel extends AbstractGSimplePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.headerLeftDataSourcesSettingsTabbedPanePanel, BorderLayout.WEST);
         this.add(Box.createRigidArea(new Dimension(50,0)), BorderLayout.CENTER);
         this.add(this.headerRightDataSourcesSettingsTabbedPanePanel, BorderLayout.EAST);
@@ -81,7 +81,7 @@ class HeaderLeftDataSourcesSettingsTabbedPanePanel extends  AbstractGSimplePanel
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.addButton);
         this.add(this.deleteButton);
         this.add(this.duplicateButton);
@@ -111,7 +111,7 @@ class HeaderRightDataSourcesSettingsTabbedPanePanel extends  AbstractGSimplePane
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.undoButton);
         this.add(this.redoButton);
     }

@@ -12,7 +12,7 @@ public class NewProjectLeftDownPanel extends ChangeablePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
 
     }
 }

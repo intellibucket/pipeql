@@ -28,7 +28,7 @@ public class LeftInnerMainPanel extends InnerResizeablePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.header,BorderLayout.NORTH);
         this.add(this.fileTreePanel,BorderLayout.CENTER);
     }

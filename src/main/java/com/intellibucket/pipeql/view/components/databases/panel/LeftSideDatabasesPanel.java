@@ -23,7 +23,7 @@ public class LeftSideDatabasesPanel extends SimpleSideGPanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         add(settingsLeftTabbedPane, BorderLayout.CENTER);
     }
 }

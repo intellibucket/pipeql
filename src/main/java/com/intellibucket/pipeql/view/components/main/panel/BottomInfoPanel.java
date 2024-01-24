@@ -26,7 +26,7 @@ public class BottomInfoPanel extends LinePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.bottomLeftInfoPanel, BorderLayout.WEST);
         this.add(this.bottomRightInfoPanel, BorderLayout.EAST);
     }
@@ -45,7 +45,7 @@ class BottomLeftInfoPanel extends InnerPanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.closePanes);
         this.add(this.processLabel);
     }
@@ -65,7 +65,7 @@ class BottomRightInfoPanel extends InnerPanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.closeAllProjectButton);
         this.add(this.lockButton);
     }

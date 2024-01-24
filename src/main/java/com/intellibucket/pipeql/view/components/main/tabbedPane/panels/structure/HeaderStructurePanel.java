@@ -34,7 +34,7 @@ public class HeaderStructurePanel extends AbstractGSimplePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.mainHeaderPanel, BorderLayout.CENTER);
         this.add(JSeperatorUtils.getHorizontalSeparator(), BorderLayout.SOUTH);
     }
@@ -68,7 +68,7 @@ class MainOfHeaderStructurePanel extends  AbstractGSimplePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.projectNamePanel);
         this.add(this.importPanel);
         this.add(this.syncPanel);
@@ -100,7 +100,7 @@ class InfoBoxPanel extends AbstractGPanel{
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.leftOfInfoBoxPanel, BorderLayout.WEST);
         this.add(this.rightOfInfoBoxPanel, BorderLayout.EAST);
     }
@@ -127,7 +127,7 @@ class InfoBoxPanel extends AbstractGPanel{
         }
 
         @Override
-        public void addComponents() {
+        public void setComponents() {
             this.add(this.projectNameLabel);
             this.projectNameLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
             this.add(Box.createRigidArea(new Dimension(0, 5)));
@@ -160,7 +160,7 @@ class InfoBoxPanel extends AbstractGPanel{
         }
 
         @Override
-        public void addComponents() {
+        public void setComponents() {
             this.add(this.versionLabel);
             this.versionLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
             this.add(Box.createRigidArea(new Dimension(0, 5)));
@@ -194,7 +194,7 @@ class ImportBoxPanel extends AbstractGPanel{
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.projectNameLabel);
     }
 }
@@ -221,7 +221,7 @@ class SyncBoxPanel extends AbstractGPanel{
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.projectNameLabel);
     }
 }

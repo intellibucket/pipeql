@@ -22,7 +22,7 @@ public class NewProjectLeftSideMainPanel extends ChangeablePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.newProjectLeftUpSearchPanel, BorderLayout.NORTH);
         this.add(this.newProjectLeftDownPanel, BorderLayout.CENTER);
     }

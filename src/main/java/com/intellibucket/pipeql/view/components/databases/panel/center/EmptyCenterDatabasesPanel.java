@@ -27,7 +27,7 @@ public class EmptyCenterDatabasesPanel extends ChangeablePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.mainPanel);
     }
 }
@@ -49,7 +49,7 @@ class LabelPanel extends AbstractGSimplePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.firstLine);
         this.add(this.secondLine);
         this.add(this.fourthLine);

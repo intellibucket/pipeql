@@ -17,7 +17,7 @@ public class EditGMenu extends GMenu {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
 
     }
 }

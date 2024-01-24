@@ -28,7 +28,7 @@ public class HeaderOfLeftInnerMainPanel extends LinePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.leftPanel, BorderLayout.WEST);
         this.add(this.rightPanel, BorderLayout.EAST);
     }
@@ -51,7 +51,7 @@ class LeftPanel extends LinePanel{
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.label,0);
     }
 }
@@ -80,7 +80,7 @@ class RightPanel extends LinePanel{
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.focusOpenedButton);
         this.add(this.collapseAllButton);
         this.add(this.expandAllButton);

@@ -17,7 +17,7 @@ public class ToolsGMenu extends GMenu {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
 
     }
 }

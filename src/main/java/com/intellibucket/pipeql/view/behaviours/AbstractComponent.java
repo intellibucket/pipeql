@@ -7,6 +7,6 @@ import java.util.List;
 public interface AbstractComponent {
 
     List<ComponentInitializer> getComponentInitializers();
-    void addComponents();
+    void setComponents();
 
 }

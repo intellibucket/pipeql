@@ -23,7 +23,7 @@ public class BigIconGButton extends AbstractGButton{
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
 
     }
 }

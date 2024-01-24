@@ -40,7 +40,7 @@ public class DatabasesScreen extends MidGFrame {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(sidePanel, BorderLayout.WEST);
         this.add(centerPanel, BorderLayout.CENTER);
         this.add(bottomPanel, BorderLayout.SOUTH);

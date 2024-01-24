@@ -27,7 +27,7 @@ public class LoadScreen extends LoadGFrame {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.panel, BorderLayout.CENTER);
         this.add(this.progressBar, BorderLayout.SOUTH);
     }
@@ -57,7 +57,7 @@ class MainImagePanel extends ImageGPanel{
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.textPanelOfLoadScreen, BorderLayout.WEST);
     }
 }
@@ -77,7 +77,7 @@ class TransportLoadApplicationLogoHeaderPanel extends TransparentGPanel{
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.textPanelOfLoadScreen, BorderLayout.NORTH);
     }
 }

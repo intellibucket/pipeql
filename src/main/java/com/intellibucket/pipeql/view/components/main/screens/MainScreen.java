@@ -44,7 +44,7 @@ public class MainScreen extends MaximizedGFrame  {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.setJMenuBar(this.mainGMenuBar);
         this.add(this.headerPanel, BorderLayout.NORTH);
         this.add(this.bottomPanel, BorderLayout.SOUTH);

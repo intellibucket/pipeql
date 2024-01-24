@@ -19,7 +19,7 @@ public class GProgressBar extends JProgressBar implements ComponentInitializer {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
 
     }
 }

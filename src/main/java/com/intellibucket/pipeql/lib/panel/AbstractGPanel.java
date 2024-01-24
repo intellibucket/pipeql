@@ -9,6 +9,7 @@ import com.intellibucket.pipeql.view.Refreshable;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.LinkedList;
 import java.util.List;
 
 public abstract class AbstractGPanel extends JPanel implements ComponentInitializer, Refreshable, Listener {
@@ -40,7 +41,11 @@ public abstract class AbstractGPanel extends JPanel implements ComponentInitiali
     @Override
     public void addEventListener(EventListener<? extends Payload,? extends SuccessPayload> eventListener) {
         if (this.eventListeners == null) {
-            this.eventListeners = List.of(eventListener);
+            this.eventListeners = new LinkedList<>(){
+                {
+                    this.add(eventListener);
+                }
+            };
         } else {
             this.eventListeners.add(eventListener);
         }

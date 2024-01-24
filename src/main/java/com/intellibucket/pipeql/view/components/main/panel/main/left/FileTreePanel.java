@@ -102,7 +102,7 @@ public class FileTreePanel extends AbstractGSimplePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
 
     }
 

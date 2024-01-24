@@ -51,7 +51,7 @@ public class NewProjectButtonPanel extends AbstractGSimplePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         var gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;

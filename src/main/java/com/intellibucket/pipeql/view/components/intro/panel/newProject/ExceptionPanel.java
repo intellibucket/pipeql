@@ -28,7 +28,7 @@ public class ExceptionPanel extends SimpleSideGPanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.infoGTextField);
 
     }

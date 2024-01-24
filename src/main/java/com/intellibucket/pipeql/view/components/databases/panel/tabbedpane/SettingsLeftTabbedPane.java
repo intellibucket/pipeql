@@ -29,7 +29,7 @@ public class SettingsLeftTabbedPane extends AbstractMaximizedGTabbedPane {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add("Data Sources", this.dataSourcesPanel);
         this.add("Drivers", this.driversPanel);
         this.add("DDL Mappings", this.ddlMappingsPanel);

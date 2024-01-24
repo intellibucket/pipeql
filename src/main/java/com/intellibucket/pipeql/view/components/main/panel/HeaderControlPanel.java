@@ -54,7 +54,7 @@ public class HeaderControlPanel extends LinePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.getLeftPanel(), BorderLayout.WEST);
         this.add(this.getRightPanel(), BorderLayout.EAST);
     }
@@ -69,7 +69,7 @@ class HeaderLeftPanel extends InnerPanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(simpleGLabel);
     }
 }
@@ -90,7 +90,7 @@ class HeaderRightPanel extends InnerPanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(lockedButton);
         this.add(searchButton);
         this.add(updateButton);

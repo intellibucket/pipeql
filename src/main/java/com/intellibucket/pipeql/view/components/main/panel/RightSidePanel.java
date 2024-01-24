@@ -31,7 +31,7 @@ public class RightSidePanel extends SimpleSideGPanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.topRightSideInnerPanel, BorderLayout.NORTH);
         this.add(this.bottomRightSideInnerPanel, BorderLayout.SOUTH);
     }
@@ -45,7 +45,7 @@ class BottomRightSideInnerPanel extends InnerSideGPanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
 
     }
 }
@@ -68,7 +68,7 @@ class TopRightSideInnerPanel extends InnerSideGPanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.notificationButton);
     }
 

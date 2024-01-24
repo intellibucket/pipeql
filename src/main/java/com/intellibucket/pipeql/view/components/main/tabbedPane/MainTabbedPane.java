@@ -29,7 +29,7 @@ public class MainTabbedPane extends AbstractMaximizedGTabbedPane {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add("Draw", drawSimplePanel);
         this.add("Structure", structurePanel);
         this.add("Environment", environmentPanel);

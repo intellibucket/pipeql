@@ -45,7 +45,7 @@ public class MainGMenuBar extends GMenuBar {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.fileGMenu);
         this.add(this.editGMenu);
         this.add(this.viewGMenu);

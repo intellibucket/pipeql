@@ -29,7 +29,7 @@ public abstract class GList extends JList<GListItemPanel> implements ComponentIn
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.setListData(items.toArray(new GListItemPanel[this.items.size()]));
     }
 

@@ -68,7 +68,7 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
         this.add(this.headerOfLeftSideStructurePanel, BorderLayout.NORTH);
         this.add(this.listTablesOfLeftSideStructurePanel, BorderLayout.CENTER);
     }
@@ -76,17 +76,12 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
     @Override
     public void setActions() {
         super.setActions();
-        this.addEventListener(new EventListener<SchemaItemModelPayload, EmptySuccessPayload>() {
+        this.addEventListener(new EventListener<SchemaItemModelPayload, EmptySuccessPayload>(List.of(SchemaComboBoxTopics.CHANGED_SELECTED_SCHEMA_ON_COMBOBOX)) {
             @Override
             protected EmptySuccessPayload listen(SchemaItemModelPayload message) throws DomainException {
                 var tables = message.getSchema().tables();
                 LeftSideStructurePanel.this.changeListTablesOfLeftSideStructurePanelLine(tables);
                 return EmptySuccessPayload.INSTANCE;
-            }
-
-            @Override
-            protected List<Topic> mustBeRegistryTopics() {
-                return List.of(SchemaComboBoxTopics.CHANGED_SELECTED_SCHEMA_ON_COMBOBOX);
             }
         });
     }
@@ -117,7 +112,7 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
         }
 
         @Override
-        public void addComponents() {
+        public void setComponents() {
             this.add(this.list.getScroll(), BorderLayout.CENTER);
         }
 
@@ -154,7 +149,7 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
         }
 
         @Override
-        public void addComponents() {
+        public void setComponents() {
             this.add(headerLabel, BorderLayout.NORTH);
             this.add(schemasOfLeftSideStructurePanel, BorderLayout.CENTER);
             this.add(headerOfLeftSideStructurePanelLineLeft, BorderLayout.SOUTH);
@@ -198,7 +193,7 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
             }
 
             @Override
-            public void addComponents() {
+            public void setComponents() {
                 this.add(this.buttonsPanelOfSchemasOfLeftSideStructurePanel, BorderLayout.WEST);
                 this.add(this.schemaComboBox, BorderLayout.CENTER);
             }
@@ -220,7 +215,7 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
                 }
 
                 @Override
-                public void addComponents() {
+                public void setComponents() {
                     this.add(this.addSchemaButton);
                     this.add(this.editSchemaButton);
                 }
@@ -266,7 +261,7 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
                 }
 
                 @Override
-                public void addComponents() {
+                public void setComponents() {
                     this.add(this.nameLabel);
                 }
 
@@ -296,7 +291,7 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
             }
 
             @Override
-            public void addComponents() {
+            public void setComponents() {
                 this.add(this.leftPaneHeaderOfLeftSideStructurePanel, BorderLayout.WEST);
                 this.add(this.rightPaneHeaderOfLeftSideStructurePanel, BorderLayout.EAST);
             }
@@ -325,7 +320,7 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
                 }
 
                 @Override
-                public void addComponents() {
+                public void setComponents() {
                     this.add(this.addButton);
                     this.add(this.deleteButton);
                     this.add(this.duplicateButton);
@@ -354,7 +349,7 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
                 }
 
                 @Override
-                public void addComponents() {
+                public void setComponents() {
                     this.add(this.undoButton);
                     this.add(this.redoButton);
                 }

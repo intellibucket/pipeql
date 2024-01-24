@@ -31,7 +31,7 @@ public class SimpleGTextField extends AbstractGTextField {
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
 
     }
 }

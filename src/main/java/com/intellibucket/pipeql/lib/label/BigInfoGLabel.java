@@ -44,7 +44,7 @@ public class BigInfoGLabel extends AbstractGLabel{
     }
 
     @Override
-    public void addComponents() {
+    public void setComponents() {
 
     }
 }
