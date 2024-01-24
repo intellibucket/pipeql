@@ -3,10 +3,9 @@ package com.intellibucket.pipeql.lib.panel;
 import com.intellibucket.pipeql.eventlink.model.payload.Payload;
 import com.intellibucket.pipeql.eventlink.model.payload.SuccessPayload;
 import com.intellibucket.pipeql.eventlink.rx.abstracts.EventListener;
-import com.intellibucket.pipeql.view.Refreshable;
-import com.intellibucket.pipeql.lib.ActionInitializer;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.lib.Listener;
+import com.intellibucket.pipeql.view.Refreshable;
 
 import javax.swing.*;
 import java.awt.*;
