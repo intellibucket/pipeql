@@ -137,7 +137,7 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
                         if (Objects.nonNull(selectedValue)) {
                             var tableItemModel = selectedValue.getItem();
                             log.info("Selected table: {}", tableItemModel);
-                            mainCenterTablePanelClient.openTable(tableItemModel.id());
+                            mainCenterTablePanelClient.openTable(tableItemModel.getDomainId());
                         }
                     }
                 });

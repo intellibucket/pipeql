@@ -58,7 +58,7 @@ public class GListItemPanel extends AbstractGPanel{
 
     @Override
     public String toString() {
-        return item.schema() + "." + item.name();
+        return item.name();
     }
 
 

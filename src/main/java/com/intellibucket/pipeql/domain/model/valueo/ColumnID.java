@@ -21,4 +21,10 @@ public class ColumnID extends TableID{
     }
 
 
+    @Override
+    public String toString() {
+        return "ColumnID{" +
+                "columnId=" + columnId +
+                '}';
+    }
 }

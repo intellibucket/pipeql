@@ -13,4 +13,9 @@ public class SchemaRoot extends BaseRoot{
     private String name;
     private String description;
     private List<TableRoot> tables;
+
+    @Override
+    public <T> Boolean isSameId(T id) {
+        return this.getId().equals(id);
+    }
 }

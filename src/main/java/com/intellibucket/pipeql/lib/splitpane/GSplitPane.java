@@ -8,10 +8,8 @@ import java.awt.*;
 
 public class GSplitPane extends JSplitPane {
     private  Border border;
-    public GSplitPane() {
-    }
 
-
+    public GSplitPane() {}
 
     public GSplitPane(int newOrientation) {
         super(newOrientation);

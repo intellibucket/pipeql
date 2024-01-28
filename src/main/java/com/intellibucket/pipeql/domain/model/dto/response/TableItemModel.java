@@ -1,9 +1,16 @@
 package com.intellibucket.pipeql.domain.model.dto.response;
 
+import com.intellibucket.pipeql.domain.model.valueo.TableID;
+
 import java.util.UUID;
 
-public record TableItemModel(UUID id,String schema, String name, Boolean isValid) {
+public record TableItemModel(UUID id,UUID schemaId, String name, Boolean isValid) implements IDReference<TableID> {
     public String toString() {
-        return schema + "." + name;
+        return schemaId + "." + name;
+    }
+
+    @Override
+    public TableID getDomainId() {
+        return TableID.of(this.schemaId(),this.id());
     }
 }

@@ -20,7 +20,7 @@ public class SchemaDetailService implements AbstractSchemaDetailService {
                 .map(schema -> {
                     var tables = schema.getTables()
                             .stream()
-                            .map(table -> new TableItemModel(table.getId(), schema.getName(), table.getName(), table.getIsValid()))
+                            .map(table -> new TableItemModel(table.getId(), schema.getId(), table.getName(), table.getIsValid()))
                             .toList();
                     return new SchemaItemModel(schema.getId(), schema.getName(), tables);
                 })

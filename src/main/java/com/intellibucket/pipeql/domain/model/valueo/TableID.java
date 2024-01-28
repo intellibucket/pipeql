@@ -20,4 +20,11 @@ public class TableID extends SchemaID{
         return new TableID(schemaId, tableId);
     }
 
+
+    @Override
+    public String toString() {
+        return "TableID{" +
+                "tableId=" + tableId +
+                '}';
+    }
 }

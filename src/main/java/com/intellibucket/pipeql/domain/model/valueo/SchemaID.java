@@ -17,4 +17,11 @@ public class SchemaID {
         return new SchemaID(schemaId);
     }
 
+
+    @Override
+    public String toString() {
+        return "SchemaID{" +
+                "schemaId=" + schemaId +
+                '}';
+    }
 }

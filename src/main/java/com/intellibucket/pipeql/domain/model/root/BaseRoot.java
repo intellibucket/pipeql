@@ -8,11 +8,13 @@ import java.util.UUID;
 
 @Getter
 @Setter
-public class BaseRoot {
+public abstract class BaseRoot {
     private UUID id;
     private Boolean isActive;
 //    private LocalDateTime createdAt;
 //    private LocalDateTime updatedAt;
     private Short version;
     private Boolean isValid;
+
+    public abstract <T> Boolean isSameId(T id);
 }

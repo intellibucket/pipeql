@@ -14,4 +14,8 @@ public class TableRoot extends BaseRoot{
     private String description;
     private List<ColumnRoot> columns;
 
+    @Override
+    public <T> Boolean isSameId(T id) {
+        return this.getId().equals(id);
+    }
 }

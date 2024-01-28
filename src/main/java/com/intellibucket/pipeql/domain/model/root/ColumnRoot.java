@@ -34,4 +34,9 @@ public class ColumnRoot extends BaseRoot{
     private Boolean isSelectable;
     private Boolean isSearchable;
     private Boolean isCaseSensitive;
+
+    @Override
+    public <T> Boolean isSameId(T id) {
+        return this.getId().equals(id);
+    }
 }
