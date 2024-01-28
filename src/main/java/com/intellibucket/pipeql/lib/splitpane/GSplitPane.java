@@ -6,29 +6,29 @@ import javax.swing.plaf.basic.BasicSplitPaneDivider;
 import javax.swing.plaf.basic.BasicSplitPaneUI;
 import java.awt.*;
 
-public class CustomSplitPane extends JSplitPane {
+public class GSplitPane extends JSplitPane {
     private  Border border;
-    public CustomSplitPane() {
+    public GSplitPane() {
     }
 
 
 
-    public CustomSplitPane(int newOrientation) {
+    public GSplitPane(int newOrientation) {
         super(newOrientation);
     }
 
-    public CustomSplitPane(int newOrientation, boolean newContinuousLayout) {
+    public GSplitPane(int newOrientation, boolean newContinuousLayout) {
         super(newOrientation, newContinuousLayout);
     }
 
-    public CustomSplitPane(int newOrientation, Component newLeftComponent, Component newRightComponent, Border border) {
+    public GSplitPane(int newOrientation, Component newLeftComponent, Component newRightComponent, Border border) {
         super(newOrientation, newLeftComponent, newRightComponent);
         this.border = border;
         setUi();
 
     }
 
-    public CustomSplitPane(int newOrientation, boolean newContinuousLayout, Component newLeftComponent, Component newRightComponent) {
+    public GSplitPane(int newOrientation, boolean newContinuousLayout, Component newLeftComponent, Component newRightComponent) {
         super(newOrientation, newContinuousLayout, newLeftComponent, newRightComponent);
     }
 
@@ -39,7 +39,7 @@ public class CustomSplitPane extends JSplitPane {
             return new BasicSplitPaneDivider(this) {
                 @Override
                 public void setBorder(Border b) {
-                    super.setBorder(CustomSplitPane.this.border);
+                    super.setBorder(GSplitPane.this.border);
                 }
 
                 @Override

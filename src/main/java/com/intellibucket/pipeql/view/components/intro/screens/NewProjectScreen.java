@@ -5,7 +5,7 @@ import com.intellibucket.pipeql.eventlink.model.payload.EmptySuccessPayload;
 import com.intellibucket.pipeql.eventlink.model.payload.Payload;
 import com.intellibucket.pipeql.eventlink.rx.abstracts.EventListener;
 import com.intellibucket.pipeql.view.components.enums.CustomBorderProvider;
-import com.intellibucket.pipeql.lib.splitpane.CustomSplitPane;
+import com.intellibucket.pipeql.lib.splitpane.GSplitPane;
 import com.intellibucket.pipeql.lib.file.ImageToolKit;
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
 import com.intellibucket.pipeql.lib.frame.concretes.SmallGFrame;
@@ -32,7 +32,7 @@ public class NewProjectScreen extends SmallGFrame {
 
     public NewProjectScreen(AbstractGPanel abstractGPanel) {
         this.setLocationRelativeTo(abstractGPanel);
-        this.splitPane = new CustomSplitPane(JSplitPane.HORIZONTAL_SPLIT,
+        this.splitPane = new GSplitPane(JSplitPane.HORIZONTAL_SPLIT,
                 leftSideIntroductionPanel,
                 newProjectCenterMainPanel,
                 CustomBorderProvider.ONE_LINE_RIGHT_BORDER.getBorder(Color.BLACK));
