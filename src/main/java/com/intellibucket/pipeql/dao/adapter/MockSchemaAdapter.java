@@ -1,4 +1,6 @@
 package com.intellibucket.pipeql.dao.adapter;
 
-public class MockSchemaAdapter {
+import com.intellibucket.pipeql.domain.port.output.abstracts.AbstractSchemaAdapter;
+
+public class MockSchemaAdapter implements AbstractSchemaAdapter {
 }

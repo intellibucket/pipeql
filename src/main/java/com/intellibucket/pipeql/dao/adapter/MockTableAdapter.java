@@ -1,28 +1,24 @@
 package com.intellibucket.pipeql.dao.adapter;
 
-import com.fasterxml.jackson.core.StreamReadFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.intellibucket.pipeql.dao.MockDataProvider;
 import com.intellibucket.pipeql.domain.model.dto.request.TableGetRequest;
-import com.intellibucket.pipeql.domain.model.root.ProjectRoot;
 import com.intellibucket.pipeql.domain.model.root.TableRoot;
 import com.intellibucket.pipeql.domain.port.output.abstracts.AbstractTableAdapter;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.UUID;
 
 public class MockTableAdapter implements AbstractTableAdapter {
+
     @Override
     public TableRoot fetchTableDetails(TableGetRequest request) {
-        ProjectRoot schemaRoot = null;
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.enable(StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION.mappedFeature());
-        try {
-            schemaRoot = mapper.readValue(new File("src/main/resources/mock/project.json"), ProjectRoot.class);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        return null;
+        return MockDataProvider.MOKC_PROJECT.getSchemas().stream()
+                .filter(schema -> schema.getId().equals(request.schemaId()))
+                .findFirst()
+                .orElseThrow()
+                .getTables().stream()
+                .filter(table -> table.getId().equals(request.tableId()))
+                .findFirst()
+                .orElseThrow();
     }
 
     public static void main(String[] args) {

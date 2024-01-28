@@ -1,10 +1,10 @@
 package com.intellibucket.pipeql.application.kernel.concretes;
 
 import com.intellibucket.pipeql.application.kernel.abstracts.AbstractApplicationKernel;
+import com.intellibucket.pipeql.dao.MockDataProvider;
 import com.intellibucket.pipeql.eventlink.broker.concretes.DefaultEventLinkBroker;
 import com.intellibucket.pipeql.lib.file.ImageContainer;
 import com.intellibucket.pipeql.lib.frame.abstracts.AbstractGFrame;
-import com.intellibucket.pipeql.view.components.intro.screens.IntroductionScreen;
 import com.intellibucket.pipeql.view.components.main.screens.MainScreen;
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,6 +17,7 @@ public class ApplicationKernel extends AbstractApplicationKernel {
     public ApplicationKernel() {
         super();
         FRAME_INTERCEPTOR = new LoadFrameInterceptor();
+        MockDataProvider mockDataProvider = new MockDataProvider();
     }
 
     @Override

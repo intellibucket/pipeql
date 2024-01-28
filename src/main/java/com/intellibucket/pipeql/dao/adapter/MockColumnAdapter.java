@@ -1,4 +1,6 @@
 package com.intellibucket.pipeql.dao.adapter;
 
-public class MockColumnAdapter {
+import com.intellibucket.pipeql.domain.port.output.abstracts.AbstractColumnAdapter;
+
+public class MockColumnAdapter implements AbstractColumnAdapter {
 }
