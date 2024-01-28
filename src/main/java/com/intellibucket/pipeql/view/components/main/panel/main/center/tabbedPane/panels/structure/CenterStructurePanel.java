@@ -26,7 +26,7 @@ import static com.intellibucket.pipeql.view.topics.CenterStructurePanelTopics.TA
 @Slf4j
 public class CenterStructurePanel extends AbstractGSimplePanel {
 
-    private final AbstractGSimplePanel mainPanel;
+    private AbstractGSimplePanel mainPanel;
 
     {
         this.setLayout(new BorderLayout());
@@ -47,6 +47,13 @@ public class CenterStructurePanel extends AbstractGSimplePanel {
         );
     }
 
+    private void changeMainPanel(AbstractGSimplePanel panel) {
+        this.remove(this.mainPanel);
+        this.mainPanel = panel;
+        this.add(this.mainPanel, BorderLayout.CENTER);
+        this.refresh();
+    }
+
     @Override
     public void setComponents() {
         this.add(this.mainPanel, BorderLayout.CENTER);
@@ -59,6 +66,7 @@ public class CenterStructurePanel extends AbstractGSimplePanel {
             protected SuccessPayload listen(TableDataPayload message) throws DomainException {
                 var tableData = message.getTable();
                 log.info("Listen to table selected event {}", tableData);
+                CenterStructurePanel.this.changeMainPanel(new TableCenterStructurePanel(null));
                 return EmptySuccessPayload.INSTANCE;
             }
         });
