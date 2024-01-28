@@ -18,7 +18,7 @@ import com.intellibucket.pipeql.lib.textField.CustomTextField;
 import com.intellibucket.pipeql.view.client.main.concretes.IntroductionPanelClient;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.intro.models.ProjectItemModel;
-import com.intellibucket.pipeql.view.util.BordersUtil;
+import com.intellibucket.pipeql.view.util.BorderUtils;
 import com.intellibucket.pipeql.view.util.ColorUtils;
 import com.intellibucket.pipeql.view.util.FontsUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -222,7 +222,7 @@ class BodyProjectsCenterIntroPanel extends AbstractGPanel{
 
     {
         this.setLayout(new BorderLayout());
-        this.setBorder(BordersUtil.EMPTY_BORDER_5_10_10_5);
+        this.setBorder(BorderUtils.EMPTY_BORDER_5_10_10_5);
     }
 
     public BodyProjectsCenterIntroPanel(List<ProjectItemModel> projectItemModels) {
@@ -233,7 +233,7 @@ class BodyProjectsCenterIntroPanel extends AbstractGPanel{
                 .toList();
         bodyProjectsCenterIntroPanel = new GPanelList(projectItems);
         scrollPane = new JScrollPane(bodyProjectsCenterIntroPanel);
-        scrollPane.setBorder(BordersUtil.EMPTY_BORDER_5_10_10_5);
+        scrollPane.setBorder(BorderUtils.EMPTY_BORDER_5_10_10_5);
     }
 
     @Override
@@ -257,7 +257,7 @@ class ProjectItem extends AbstractGPanel {
 
     {
         this.setLayout(new BorderLayout());
-        this.setBorder(BordersUtil.EMPTY_BORDER_5_10_5_10);
+        this.setBorder(BorderUtils.EMPTY_BORDER_5_10_5_10);
     }
 
     public ProjectItem(ProjectItemModel model) {
@@ -315,7 +315,7 @@ class ProjectItem extends AbstractGPanel {
             this.label = new SimpleGLabel(model.getProjectName().substring(0, 1), FontsUtil.HELVETICA_PLAIN_20);
             this.label.setBackground(ColorUtils.TRANSPARENT);
             this.setLayout(new GridBagLayout());
-            this.label.setBorder(BordersUtil.EMPTY_BORDER);
+            this.label.setBorder(BorderUtils.EMPTY_BORDER);
             this.color = model.getColor();
         }
 
@@ -347,7 +347,7 @@ class ProjectItem extends AbstractGPanel {
 
         {
             this.setLayout(new GridLayout(2, 1));
-            this.setBorder(BordersUtil.EMPTY_BORDER_0_10_0_0);
+            this.setBorder(BorderUtils.EMPTY_BORDER_0_10_0_0);
         }
 
         public InfoProjectItem(String projectName,String projectPath) {

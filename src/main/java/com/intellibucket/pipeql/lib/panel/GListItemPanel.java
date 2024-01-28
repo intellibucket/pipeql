@@ -6,7 +6,7 @@ import com.intellibucket.pipeql.lib.label.AbstractGLabel;
 import com.intellibucket.pipeql.lib.label.SimpleGLabel;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.domain.model.dto.response.table.TableItemModel;
-import com.intellibucket.pipeql.view.util.BordersUtil;
+import com.intellibucket.pipeql.view.util.BorderUtils;
 import com.intellibucket.pipeql.view.util.FontsUtil;
 import com.intellibucket.pipeql.view.util.IconUtils;
 import lombok.Getter;
@@ -31,7 +31,7 @@ public class GListItemPanel extends AbstractGPanel{
         this.picLabel = new SimpleGLabel(ImageToolKit.getIcon("DataTables"));
         this.label = new SimpleGLabel(item.name(), FontsUtil.HELVETICA_PLAIN_12);
         this.dropButton = item.isValid() ? IconUtils.success() : IconUtils.fail();
-        this.label.setBorder(BordersUtil.EMPTY_BORDER_0_5_0_0);
+        this.label.setBorder(BorderUtils.EMPTY_BORDER_0_5_0_0);
     }
 
     @Override

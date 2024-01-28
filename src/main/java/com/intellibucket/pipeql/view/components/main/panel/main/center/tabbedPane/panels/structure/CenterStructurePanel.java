@@ -1,20 +1,16 @@
 package com.intellibucket.pipeql.view.components.main.panel.main.center.tabbedPane.panels.structure;
 
 import com.intellibucket.pipeql.domain.exception.DomainException;
-import com.intellibucket.pipeql.eventlink.model.payload.EmptyPayload;
 import com.intellibucket.pipeql.eventlink.model.payload.EmptySuccessPayload;
-import com.intellibucket.pipeql.eventlink.model.payload.Payload;
 import com.intellibucket.pipeql.eventlink.model.payload.SuccessPayload;
 import com.intellibucket.pipeql.eventlink.rx.abstracts.EventListener;
 import com.intellibucket.pipeql.lib.label.BigInfoGLabel;
 import com.intellibucket.pipeql.lib.label.BlueGLabel;
-import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
-import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
-import com.intellibucket.pipeql.lib.panel.LabelPairPanel;
-import com.intellibucket.pipeql.lib.panel.TransparentGPanel;
+import com.intellibucket.pipeql.lib.panel.*;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.domain.model.dto.response.table.TableItemModel;
 import com.intellibucket.pipeql.view.client.payloads.TableDataPayload;
+import com.intellibucket.pipeql.view.util.ColorUtils;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.swing.*;
@@ -149,15 +145,36 @@ class TableCenterStructurePanel extends AbstractGSimplePanel {
 
     class HeaderOfTableCenterStructurePanel extends TransparentGPanel{
 
+        private final GItemTextFieldPanel tableNameTFPanel = new ItemTextFieldPanel("Table Name:");
+        private final GItemTextFieldPanel commentsTFPanel = new ItemTextFieldPanel("Comments:");
+
+        {
+            this.setLayout(new GridLayout(1,2));
+        }
+
         @Override
         public List<ComponentInitializer> getComponentInitializers() {
-            return List.of();
+            return List.of(
+                    this.tableNameTFPanel,
+                    this.commentsTFPanel
+            );
         }
 
         @Override
         public void setComponents() {
-
+            this.add(this.tableNameTFPanel);
+            this.add(this.commentsTFPanel);
         }
+
+        class ItemTextFieldPanel extends GItemTextFieldPanel{
+            {
+                this.setBackground(ColorUtils.randomColor());
+            }
+            public ItemTextFieldPanel(String value) {
+                super(value);
+            }
+        }
+
     }
 
     class CenterOfTableCenterStructurePanel extends TransparentGPanel{
@@ -172,8 +189,5 @@ class TableCenterStructurePanel extends AbstractGSimplePanel {
 
         }
     }
-
-
-
 
 }

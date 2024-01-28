@@ -3,7 +3,7 @@ package com.intellibucket.pipeql.view.components.main.panel.main.center.tabbedPa
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.domain.model.dto.response.project.ProjectModel;
-import com.intellibucket.pipeql.view.util.BordersUtil;
+import com.intellibucket.pipeql.view.util.BorderUtils;
 
 import java.awt.*;
 import java.util.List;
@@ -19,7 +19,7 @@ public class StructurePanel extends AbstractGSimplePanel {
 
     {
         this.setLayout(new BorderLayout());
-        this.setBorder(BordersUtil.EMPTY_BORDER_5_5_5_5);
+        this.setBorder(BorderUtils.EMPTY_BORDER_5_5_5_5);
     }
 
     public StructurePanel(ProjectModel projectModel) {
