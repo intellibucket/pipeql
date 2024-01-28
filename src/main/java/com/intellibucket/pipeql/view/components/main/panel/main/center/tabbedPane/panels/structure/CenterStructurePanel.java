@@ -1,5 +1,11 @@
 package com.intellibucket.pipeql.view.components.main.panel.main.center.tabbedPane.panels.structure;
 
+import com.intellibucket.pipeql.domain.exception.DomainException;
+import com.intellibucket.pipeql.eventlink.model.payload.EmptyPayload;
+import com.intellibucket.pipeql.eventlink.model.payload.EmptySuccessPayload;
+import com.intellibucket.pipeql.eventlink.model.payload.Payload;
+import com.intellibucket.pipeql.eventlink.model.payload.SuccessPayload;
+import com.intellibucket.pipeql.eventlink.rx.abstracts.EventListener;
 import com.intellibucket.pipeql.lib.label.BigInfoGLabel;
 import com.intellibucket.pipeql.lib.label.BlueGLabel;
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
@@ -7,12 +13,17 @@ import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.lib.panel.LabelPairPanel;
 import com.intellibucket.pipeql.lib.panel.TransparentGPanel;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
-import com.intellibucket.pipeql.domain.model.dto.response.TableItemModel;
+import com.intellibucket.pipeql.domain.model.dto.response.table.TableItemModel;
+import com.intellibucket.pipeql.view.client.payloads.TableDataPayload;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
+import static com.intellibucket.pipeql.view.topics.CenterStructurePanelTopics.TABLE_SELECTED;
+
+@Slf4j
 public class CenterStructurePanel extends AbstractGSimplePanel {
 
     private final AbstractGSimplePanel mainPanel;
@@ -20,12 +31,13 @@ public class CenterStructurePanel extends AbstractGSimplePanel {
     {
         this.setLayout(new BorderLayout());
     }
+
     public CenterStructurePanel(TableItemModel tableItemModel) {
         this.mainPanel = new TableCenterStructurePanel(tableItemModel);
     }
 
-    public CenterStructurePanel(AbstractGSimplePanel mainPanel) {
-        this.mainPanel = mainPanel;
+    public CenterStructurePanel() {
+        this.mainPanel = new EmptyCenterStructurePanel();
     }
 
     @Override
@@ -39,9 +51,22 @@ public class CenterStructurePanel extends AbstractGSimplePanel {
     public void setComponents() {
         this.add(this.mainPanel, BorderLayout.CENTER);
     }
+
+    @Override
+    public void setEventListener() {
+        this.addEventListener(new EventListener<TableDataPayload,SuccessPayload>(List.of(TABLE_SELECTED)) {
+            @Override
+            protected SuccessPayload listen(TableDataPayload message) throws DomainException {
+                var tableData = message.getTable();
+                log.info("Listen to table selected event {}", tableData);
+                return EmptySuccessPayload.INSTANCE;
+            }
+        });
+    }
 }
 
 
+@Slf4j
 class EmptyCenterStructurePanel extends AbstractGSimplePanel {
 
     private final AbstractGPanel labelBox = new LabelBox();
@@ -84,6 +109,7 @@ class EmptyCenterStructurePanel extends AbstractGSimplePanel {
     }
 }
 
+@Slf4j
 class TableCenterStructurePanel extends AbstractGSimplePanel {
     {
         this.setLayout(new BorderLayout());
@@ -102,13 +128,15 @@ class TableCenterStructurePanel extends AbstractGSimplePanel {
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
         return List.of(
-                this.headerOfTableCenterStructurePanel
+                this.headerOfTableCenterStructurePanel,
+                this.centerOfTableCenterStructurePanel
         );
     }
 
     @Override
     public void setComponents() {
         this.add(this.headerOfTableCenterStructurePanel, BorderLayout.NORTH);
+        this.add(this.centerOfTableCenterStructurePanel, BorderLayout.CENTER);
     }
 
     class HeaderOfTableCenterStructurePanel extends TransparentGPanel{

@@ -1,7 +1,7 @@
 package com.intellibucket.pipeql.view.client.payloads;
 
 import com.intellibucket.pipeql.eventlink.model.payload.Payload;
-import com.intellibucket.pipeql.domain.model.dto.response.SchemaItemModel;
+import com.intellibucket.pipeql.domain.model.dto.response.schema.SchemaItemModel;
 import lombok.Getter;
 
 @Getter

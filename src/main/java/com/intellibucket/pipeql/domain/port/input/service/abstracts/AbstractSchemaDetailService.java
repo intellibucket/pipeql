@@ -1,6 +1,6 @@
 package com.intellibucket.pipeql.domain.port.input.service.abstracts;
 
-import com.intellibucket.pipeql.domain.model.dto.response.SchemaItemModel;
+import com.intellibucket.pipeql.domain.model.dto.response.schema.SchemaItemModel;
 
 import java.util.List;
 

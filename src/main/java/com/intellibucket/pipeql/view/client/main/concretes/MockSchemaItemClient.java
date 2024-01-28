@@ -1,8 +1,6 @@
 package com.intellibucket.pipeql.view.client.main.concretes;
 
-import com.intellibucket.pipeql.domain.model.dto.response.ProjectModel;
-import com.intellibucket.pipeql.domain.model.dto.response.SchemaItemModel;
-import com.intellibucket.pipeql.domain.model.dto.response.TableItemModel;
+import com.intellibucket.pipeql.domain.model.dto.response.project.ProjectModel;
 
 import java.util.List;
 

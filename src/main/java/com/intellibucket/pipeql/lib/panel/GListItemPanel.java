@@ -5,7 +5,7 @@ import com.intellibucket.pipeql.lib.file.ImageToolKit;
 import com.intellibucket.pipeql.lib.label.AbstractGLabel;
 import com.intellibucket.pipeql.lib.label.SimpleGLabel;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
-import com.intellibucket.pipeql.domain.model.dto.response.TableItemModel;
+import com.intellibucket.pipeql.domain.model.dto.response.table.TableItemModel;
 import com.intellibucket.pipeql.view.util.BordersUtil;
 import com.intellibucket.pipeql.view.util.FontsUtil;
 import com.intellibucket.pipeql.view.util.IconUtils;

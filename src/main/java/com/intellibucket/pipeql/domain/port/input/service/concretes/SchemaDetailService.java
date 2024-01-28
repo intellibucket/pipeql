@@ -1,12 +1,10 @@
 package com.intellibucket.pipeql.domain.port.input.service.concretes;
 
 import com.intellibucket.pipeql.dao.adapter.factory.AdapterFactory;
-import com.intellibucket.pipeql.domain.model.dto.response.SchemaItemModel;
-import com.intellibucket.pipeql.domain.model.dto.response.TableItemModel;
+import com.intellibucket.pipeql.domain.model.dto.response.schema.SchemaItemModel;
+import com.intellibucket.pipeql.domain.model.dto.response.table.TableItemModel;
 import com.intellibucket.pipeql.domain.port.input.service.abstracts.AbstractSchemaDetailService;
-import com.intellibucket.pipeql.domain.port.input.service.abstracts.AbstractTableDetailService;
 import com.intellibucket.pipeql.domain.port.output.abstracts.AbstractSchemaAdapter;
-import com.intellibucket.pipeql.domain.port.output.abstracts.AbstractTableAdapter;
 
 import java.util.List;
 

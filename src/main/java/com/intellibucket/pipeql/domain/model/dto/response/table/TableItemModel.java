@@ -1,5 +1,6 @@
-package com.intellibucket.pipeql.domain.model.dto.response;
+package com.intellibucket.pipeql.domain.model.dto.response.table;
 
+import com.intellibucket.pipeql.domain.model.dto.response.IDReference;
 import com.intellibucket.pipeql.domain.model.valueo.TableID;
 
 import java.util.UUID;

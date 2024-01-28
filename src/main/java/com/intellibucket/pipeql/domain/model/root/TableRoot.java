@@ -18,4 +18,14 @@ public class TableRoot extends BaseRoot{
     public <T> Boolean isSameId(T id) {
         return this.getId().equals(id);
     }
+
+    @Override
+    public String toString() {
+        return "TableRoot{" +
+                "schemaId=" + schemaId +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", columns size=" + columns.size() +
+                '}';
+    }
 }

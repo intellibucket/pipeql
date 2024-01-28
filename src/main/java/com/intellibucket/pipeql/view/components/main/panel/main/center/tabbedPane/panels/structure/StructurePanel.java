@@ -2,7 +2,7 @@ package com.intellibucket.pipeql.view.components.main.panel.main.center.tabbedPa
 
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
-import com.intellibucket.pipeql.domain.model.dto.response.ProjectModel;
+import com.intellibucket.pipeql.domain.model.dto.response.project.ProjectModel;
 import com.intellibucket.pipeql.view.util.BordersUtil;
 
 import java.awt.*;
@@ -27,7 +27,7 @@ public class StructurePanel extends AbstractGSimplePanel {
         this.leftSideStructurePanel = new LeftSideStructurePanel(projectModel);
         this.rightSideStructurePanel = new RightSideStructurePanel(projectModel);
         this.bottomStructurePanel = new BottomStructurePanel(projectModel);
-        this.centerStructurePanel = new EmptyCenterStructurePanel();
+        this.centerStructurePanel = new CenterStructurePanel();
     }
 
     @Override

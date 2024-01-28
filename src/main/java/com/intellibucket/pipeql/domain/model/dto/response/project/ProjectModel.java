@@ -1,5 +1,6 @@
-package com.intellibucket.pipeql.domain.model.dto.response;
+package com.intellibucket.pipeql.domain.model.dto.response.project;
 
+import com.intellibucket.pipeql.domain.model.dto.response.schema.SchemaItemModel;
 import lombok.Builder;
 import lombok.Getter;
 

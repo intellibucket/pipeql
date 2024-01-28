@@ -21,9 +21,9 @@ import com.intellibucket.pipeql.view.client.main.concretes.MainCenterTablePanelC
 import com.intellibucket.pipeql.view.client.main.concretes.SchemaComboBoxClient;
 import com.intellibucket.pipeql.view.client.payloads.SchemaItemModelPayload;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
-import com.intellibucket.pipeql.domain.model.dto.response.ProjectModel;
-import com.intellibucket.pipeql.domain.model.dto.response.SchemaItemModel;
-import com.intellibucket.pipeql.domain.model.dto.response.TableItemModel;
+import com.intellibucket.pipeql.domain.model.dto.response.project.ProjectModel;
+import com.intellibucket.pipeql.domain.model.dto.response.schema.SchemaItemModel;
+import com.intellibucket.pipeql.domain.model.dto.response.table.TableItemModel;
 import com.intellibucket.pipeql.view.topics.SchemaComboBoxTopics;
 import com.intellibucket.pipeql.view.util.BordersUtil;
 import com.intellibucket.pipeql.view.util.FontsUtil;
