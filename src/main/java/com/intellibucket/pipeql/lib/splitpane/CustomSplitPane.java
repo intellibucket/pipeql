@@ -1,4 +1,4 @@
-package com.intellibucket.pipeql.splitPane;
+package com.intellibucket.pipeql.lib.splitpane;
 
 import javax.swing.*;
 import javax.swing.border.Border;

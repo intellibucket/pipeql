@@ -5,7 +5,7 @@ import com.intellibucket.pipeql.eventlink.model.payload.EmptySuccessPayload;
 import com.intellibucket.pipeql.eventlink.model.payload.Payload;
 import com.intellibucket.pipeql.eventlink.rx.abstracts.EventListener;
 import com.intellibucket.pipeql.view.components.enums.CustomBorderProvider;
-import com.intellibucket.pipeql.splitPane.CustomSplitPane;
+import com.intellibucket.pipeql.lib.splitpane.CustomSplitPane;
 import com.intellibucket.pipeql.lib.file.ImageToolKit;
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
 import com.intellibucket.pipeql.lib.frame.concretes.SmallGFrame;
