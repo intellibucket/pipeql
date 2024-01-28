@@ -1,4 +1,6 @@
-package com.intellibucket.pipeql.domain.exception;
+package com.intellibucket.pipeql.domain.exception.unexpected;
+
+import com.intellibucket.pipeql.domain.exception.UnexpectedException;
 
 public class ConcurrentModifyException extends UnexpectedException {
     public ConcurrentModifyException(String message) {
