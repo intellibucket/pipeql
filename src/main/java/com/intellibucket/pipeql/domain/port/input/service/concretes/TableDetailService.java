@@ -10,8 +10,5 @@ public class TableDetailService implements AbstractTableDetailService {
 
     private final AbstractTableAdapter tableAdapter = new MockTableAdapter();
 
-    @Override
-    public TableRoot fetchTableDetails(TableGetRequest request) {
-        return tableAdapter.fetchTableDetails(request);
-    }
+
 }

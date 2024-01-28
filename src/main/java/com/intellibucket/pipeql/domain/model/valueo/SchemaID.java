@@ -1,6 +1,5 @@
 package com.intellibucket.pipeql.domain.model.valueo;
 
-import java.util.Objects;
 import java.util.UUID;
 
 public class SchemaID {
@@ -18,15 +17,4 @@ public class SchemaID {
         return new SchemaID(schemaId);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof SchemaID schemaID)) return false;
-        return Objects.equals(getSchemaId(), schemaID.getSchemaId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getSchemaId());
-    }
 }
