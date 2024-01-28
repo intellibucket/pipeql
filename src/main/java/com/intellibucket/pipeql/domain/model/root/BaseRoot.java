@@ -14,4 +14,5 @@ public class BaseRoot {
 //    private LocalDateTime createdAt;
 //    private LocalDateTime updatedAt;
     private Short version;
+    private Boolean isValid;
 }

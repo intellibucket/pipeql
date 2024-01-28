@@ -1,4 +1,4 @@
-package com.intellibucket.pipeql.eventlink.exception;
+package com.intellibucket.pipeql.domain.exception;
 
 public class DomainException extends Exception{
     public DomainException(String message) {

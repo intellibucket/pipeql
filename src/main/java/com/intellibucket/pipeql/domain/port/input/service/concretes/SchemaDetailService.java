@@ -13,7 +13,6 @@ import java.util.List;
 public class SchemaDetailService implements AbstractSchemaDetailService {
     private final AbstractSchemaAdapter tableAdapter = AdapterFactory.factorySchemaAdapter();
 
-
     @Override
     public List<SchemaItemModel> findAllSimpleItem() {
         return  tableAdapter.findAll()
@@ -21,7 +20,7 @@ public class SchemaDetailService implements AbstractSchemaDetailService {
                 .map(schema -> {
                     var tables = schema.getTables()
                             .stream()
-                            .map(table -> new TableItemModel(table.getId(), schema.getName(), table.getName(), table.getIsActive()))
+                            .map(table -> new TableItemModel(table.getId(), schema.getName(), table.getName(), table.getIsValid()))
                             .toList();
                     return new SchemaItemModel(schema.getId(), schema.getName(), tables);
                 })

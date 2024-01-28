@@ -1,6 +1,6 @@
 package com.intellibucket.pipeql.dao.exception;
 
-import com.intellibucket.pipeql.eventlink.exception.DomainException;
+import com.intellibucket.pipeql.domain.exception.DomainException;
 
 public class DataAccessException extends DomainException {
     public DataAccessException(String message) {

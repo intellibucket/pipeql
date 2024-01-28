@@ -1,7 +1,6 @@
 package com.intellibucket.pipeql.view.components.intro.panel.newProject.centerPanel;
 
-import com.intellibucket.pipeql.eventlink.exception.DomainException;
-import com.intellibucket.pipeql.eventlink.model.common.Topic;
+import com.intellibucket.pipeql.domain.exception.DomainException;
 import com.intellibucket.pipeql.eventlink.model.payload.EmptySuccessPayload;
 import com.intellibucket.pipeql.eventlink.model.payload.Payload;
 import com.intellibucket.pipeql.eventlink.rx.abstracts.EventListener;

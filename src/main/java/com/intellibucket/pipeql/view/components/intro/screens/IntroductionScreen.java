@@ -1,10 +1,9 @@
 package com.intellibucket.pipeql.view.components.intro.screens;
 
-import com.intellibucket.pipeql.eventlink.exception.DomainException;
+import com.intellibucket.pipeql.domain.exception.DomainException;
 import com.intellibucket.pipeql.eventlink.model.common.Topic;
 import com.intellibucket.pipeql.eventlink.model.payload.ChangeablePanelPayload;
 import com.intellibucket.pipeql.eventlink.model.payload.EmptySuccessPayload;
-import com.intellibucket.pipeql.eventlink.model.payload.Payload;
 import com.intellibucket.pipeql.eventlink.rx.abstracts.EventListener;
 import com.intellibucket.pipeql.lib.panel.ChangeablePanel;
 import com.intellibucket.pipeql.lib.frame.concretes.MidGFrame;

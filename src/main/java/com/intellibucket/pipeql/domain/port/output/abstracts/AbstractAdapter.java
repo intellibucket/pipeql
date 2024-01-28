@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface AbstractAdapter <ID,E>{
-    Optional<E> findById(ID id) throws DataNotFoundException;
+    Optional<E> findById(ID id) ;
     List<E> findAll();
     List<E> findAllById(List<ID> ids);
     E save(E entity);

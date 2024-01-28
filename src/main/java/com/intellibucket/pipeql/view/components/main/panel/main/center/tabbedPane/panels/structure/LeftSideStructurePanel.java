@@ -2,7 +2,7 @@ package com.intellibucket.pipeql.view.components.main.panel.main.center.tabbedPa
 
 import com.intellibucket.pipeql.domain.port.input.service.abstracts.AbstractSchemaDetailService;
 import com.intellibucket.pipeql.domain.port.input.service.factory.DetailServiceFactory;
-import com.intellibucket.pipeql.eventlink.exception.DomainException;
+import com.intellibucket.pipeql.domain.exception.DomainException;
 import com.intellibucket.pipeql.eventlink.model.payload.EmptySuccessPayload;
 import com.intellibucket.pipeql.eventlink.rx.abstracts.EventListener;
 import com.intellibucket.pipeql.lib.button.horizontal.AbstractGButton;
@@ -18,7 +18,6 @@ import com.intellibucket.pipeql.lib.scrollpane.GScrollPane;
 import com.intellibucket.pipeql.view.client.main.abstracts.AbstractMainCenterTablePanelClient;
 import com.intellibucket.pipeql.view.client.main.abstracts.AbstractSchemaComboBoxClient;
 import com.intellibucket.pipeql.view.client.main.concretes.MainCenterTablePanelClient;
-import com.intellibucket.pipeql.view.client.main.concretes.MockSchemaItemClient;
 import com.intellibucket.pipeql.view.client.main.concretes.SchemaComboBoxClient;
 import com.intellibucket.pipeql.view.client.payloads.SchemaItemModelPayload;
 import com.intellibucket.pipeql.lib.ComponentInitializer;

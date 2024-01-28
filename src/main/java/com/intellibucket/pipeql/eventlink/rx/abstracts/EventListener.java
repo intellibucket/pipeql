@@ -1,7 +1,7 @@
 package com.intellibucket.pipeql.eventlink.rx.abstracts;
 
 import com.intellibucket.pipeql.eventlink.broker.concretes.DefaultEventLinkBroker;
-import com.intellibucket.pipeql.eventlink.exception.DomainException;
+import com.intellibucket.pipeql.domain.exception.DomainException;
 import com.intellibucket.pipeql.eventlink.model.common.Topic;
 import com.intellibucket.pipeql.eventlink.model.consumer.ConsumingMessage;
 import com.intellibucket.pipeql.eventlink.model.event.concretes.FailureEvent;
