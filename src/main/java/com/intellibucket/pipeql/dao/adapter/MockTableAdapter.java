@@ -5,12 +5,13 @@ import com.intellibucket.pipeql.domain.model.valueo.TableID;
 import com.intellibucket.pipeql.domain.port.output.abstracts.AbstractTableAdapter;
 
 import java.util.List;
+import java.util.Optional;
 
 public class MockTableAdapter implements AbstractTableAdapter {
 
 
     @Override
-    public TableRoot findById(TableID tableID) {
+    public Optional<TableRoot> findById(TableID tableID) {
         return null;
     }
 

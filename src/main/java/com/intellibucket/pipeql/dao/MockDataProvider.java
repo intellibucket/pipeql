@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class MockDataProvider {
-    static ProjectRoot MOKC_PROJECT = null;
+    public static ProjectRoot MOKC_PROJECT = null;
 
     static {
         ObjectMapper mapper = new ObjectMapper();

@@ -7,7 +7,7 @@ import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.lib.panel.LabelPairPanel;
 import com.intellibucket.pipeql.lib.panel.TransparentGPanel;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
-import com.intellibucket.pipeql.view.components.main.model.TableItemModel;
+import com.intellibucket.pipeql.domain.model.dto.response.TableItemModel;
 
 import javax.swing.*;
 import java.awt.*;

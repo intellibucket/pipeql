@@ -5,11 +5,12 @@ import com.intellibucket.pipeql.domain.model.valueo.ColumnID;
 import com.intellibucket.pipeql.domain.port.output.abstracts.AbstractColumnAdapter;
 
 import java.util.List;
+import java.util.Optional;
 
 public class MockColumnAdapter implements AbstractColumnAdapter {
 
     @Override
-    public ColumnRoot findById(ColumnID columnID) {
+    public Optional<ColumnRoot> findById(ColumnID columnID) {
         return null;
     }
 

@@ -1,5 +1,7 @@
 package com.intellibucket.pipeql.view.components.main.panel.main.center.tabbedPane.panels.structure;
 
+import com.intellibucket.pipeql.domain.port.input.service.abstracts.AbstractSchemaDetailService;
+import com.intellibucket.pipeql.domain.port.input.service.factory.DetailServiceFactory;
 import com.intellibucket.pipeql.eventlink.exception.DomainException;
 import com.intellibucket.pipeql.eventlink.model.payload.EmptySuccessPayload;
 import com.intellibucket.pipeql.eventlink.rx.abstracts.EventListener;
@@ -20,9 +22,9 @@ import com.intellibucket.pipeql.view.client.main.concretes.MockSchemaItemClient;
 import com.intellibucket.pipeql.view.client.main.concretes.SchemaComboBoxClient;
 import com.intellibucket.pipeql.view.client.payloads.SchemaItemModelPayload;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
-import com.intellibucket.pipeql.view.components.main.model.ProjectModel;
-import com.intellibucket.pipeql.view.components.main.model.SchemaItemModel;
-import com.intellibucket.pipeql.view.components.main.model.TableItemModel;
+import com.intellibucket.pipeql.domain.model.dto.response.ProjectModel;
+import com.intellibucket.pipeql.domain.model.dto.response.SchemaItemModel;
+import com.intellibucket.pipeql.domain.model.dto.response.TableItemModel;
 import com.intellibucket.pipeql.view.topics.SchemaComboBoxTopics;
 import com.intellibucket.pipeql.view.util.BordersUtil;
 import com.intellibucket.pipeql.view.util.FontsUtil;
@@ -36,6 +38,7 @@ import java.util.Objects;
 @Slf4j
 public class LeftSideStructurePanel extends AbstractGSimplePanel {
 
+    private final AbstractSchemaDetailService schemaDetailService = DetailServiceFactory.factorySchemaDetailService();
     private HeaderOfLeftSideStructurePanelLine headerOfLeftSideStructurePanel;
     private ListTablesOfLeftSideStructurePanelLine listTablesOfLeftSideStructurePanel;
 
@@ -45,8 +48,8 @@ public class LeftSideStructurePanel extends AbstractGSimplePanel {
     }
 
     public LeftSideStructurePanel(ProjectModel projectModel) {
-        var schemas = MockSchemaItemClient.getSchemas();
-        headerOfLeftSideStructurePanel = new HeaderOfLeftSideStructurePanelLine(schemas);
+        var schemasFrom = this.schemaDetailService.findAllSimpleItem();
+        headerOfLeftSideStructurePanel = new HeaderOfLeftSideStructurePanelLine(schemasFrom);
         listTablesOfLeftSideStructurePanel = new ListTablesOfLeftSideStructurePanelLine(this.getCurrentSchema().tables());
     }
 

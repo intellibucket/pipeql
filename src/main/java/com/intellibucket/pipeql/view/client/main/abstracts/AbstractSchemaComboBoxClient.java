@@ -1,9 +1,6 @@
 package com.intellibucket.pipeql.view.client.main.abstracts;
 
-import com.intellibucket.pipeql.view.components.main.model.SchemaItemModel;
-import com.intellibucket.pipeql.view.components.main.model.TableItemModel;
-
-import java.util.List;
+import com.intellibucket.pipeql.domain.model.dto.response.SchemaItemModel;
 
 public interface AbstractSchemaComboBoxClient {
     void changeSchema(SchemaItemModel schema);

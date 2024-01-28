@@ -5,8 +5,7 @@ import com.intellibucket.pipeql.lib.file.ImageToolKit;
 import com.intellibucket.pipeql.lib.label.AbstractGLabel;
 import com.intellibucket.pipeql.lib.label.SimpleGLabel;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
-import com.intellibucket.pipeql.lib.list.GList;
-import com.intellibucket.pipeql.view.components.main.model.TableItemModel;
+import com.intellibucket.pipeql.domain.model.dto.response.TableItemModel;
 import com.intellibucket.pipeql.view.util.BordersUtil;
 import com.intellibucket.pipeql.view.util.FontsUtil;
 import com.intellibucket.pipeql.view.util.IconUtils;
@@ -14,9 +13,6 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.List;
 
 @Slf4j

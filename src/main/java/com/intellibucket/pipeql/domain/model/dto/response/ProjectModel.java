@@ -1,4 +1,4 @@
-package com.intellibucket.pipeql.view.components.main.model;
+package com.intellibucket.pipeql.domain.model.dto.response;
 
 import lombok.Builder;
 import lombok.Getter;

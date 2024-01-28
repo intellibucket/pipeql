@@ -5,12 +5,9 @@ import com.intellibucket.pipeql.eventlink.model.producer.ProducingMessage;
 import com.intellibucket.pipeql.eventlink.template.abstracts.EventLinkTemplate;
 import com.intellibucket.pipeql.view.client.main.abstracts.AbstractSchemaComboBoxClient;
 import com.intellibucket.pipeql.view.client.payloads.SchemaItemModelPayload;
-import com.intellibucket.pipeql.view.components.main.model.SchemaItemModel;
-import com.intellibucket.pipeql.view.components.main.model.TableItemModel;
+import com.intellibucket.pipeql.domain.model.dto.response.SchemaItemModel;
 import com.intellibucket.pipeql.view.topics.SchemaComboBoxTopics;
 import lombok.extern.slf4j.Slf4j;
-
-import java.util.List;
 
 @Slf4j
 public class SchemaComboBoxClient implements AbstractSchemaComboBoxClient {
