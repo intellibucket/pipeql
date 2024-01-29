@@ -12,6 +12,7 @@ public class ColumnRoot extends BaseRoot{
     private String name;
     private String description;
     private String dataType;
+    private String defaultValue;
     private Integer length;
     private Integer precision;
     private Integer scale;

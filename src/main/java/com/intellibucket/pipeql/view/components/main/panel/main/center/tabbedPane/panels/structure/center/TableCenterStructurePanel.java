@@ -4,6 +4,7 @@ import com.intellibucket.pipeql.domain.model.dto.response.table.TableItemModel;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.lib.panel.GItemTextFieldPanel;
+import com.intellibucket.pipeql.lib.panel.ItemWithBarPanel;
 import com.intellibucket.pipeql.lib.panel.TransparentGPanel;
 import com.intellibucket.pipeql.lib.tabbed.AbstractMaximizedGTabbedPane;
 import com.intellibucket.pipeql.view.components.main.panel.InnerResizeablePanel;
@@ -138,10 +139,10 @@ class TopOfCenterOfTableCenterStructurePanel extends InnerResizeablePanel{
 }
 
 class TabbedPaneOfTopOfCenterOfTableCenterStructurePanel extends AbstractMaximizedGTabbedPane {
-    private AbstractGSimplePanel columnsPanel;
-    private AbstractGSimplePanel indexesPanel;
-    private AbstractGSimplePanel triggersPanel;
-    private AbstractGSimplePanel foreignKeysPanel;
+    private ItemWithBarPanel columnsPanel;
+    private ItemWithBarPanel indexesPanel;
+    private ItemWithBarPanel triggersPanel;
+    private ItemWithBarPanel foreignKeysPanel;
 
     public TabbedPaneOfTopOfCenterOfTableCenterStructurePanel() {
         this.columnsPanel = new ColumnsPanel();
@@ -169,56 +170,20 @@ class TabbedPaneOfTopOfCenterOfTableCenterStructurePanel extends AbstractMaximiz
         this.add("Foreign Keys", this.foreignKeysPanel);
     }
 
-    class ColumnsPanel extends AbstractGSimplePanel{
+    class ColumnsPanel extends ItemWithBarPanel{
 
-        @Override
-        public List<ComponentInitializer> getComponentInitializers() {
-            return List.of();
-        }
-
-        @Override
-        public void setComponents() {
-
-        }
     }
 
-    class IndexesPanel extends AbstractGSimplePanel{
+    class IndexesPanel extends ItemWithBarPanel{
 
-        @Override
-        public List<ComponentInitializer> getComponentInitializers() {
-            return List.of();
-        }
-
-        @Override
-        public void setComponents() {
-
-        }
     }
 
-    class TriggersPanel extends AbstractGSimplePanel{
+    class TriggersPanel extends ItemWithBarPanel{
 
-        @Override
-        public List<ComponentInitializer> getComponentInitializers() {
-            return List.of();
-        }
-
-        @Override
-        public void setComponents() {
-
-        }
     }
 
-    class ForeignKeysPanel extends AbstractGSimplePanel{
+    class ForeignKeysPanel extends ItemWithBarPanel{
 
-        @Override
-        public List<ComponentInitializer> getComponentInitializers() {
-            return List.of();
-        }
-
-        @Override
-        public void setComponents() {
-
-        }
     }
 
 
