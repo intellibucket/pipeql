@@ -91,6 +91,7 @@ class CenterOfTableCenterStructurePanel extends TransparentGPanel {
         this.topPanel = new TopOfCenterOfTableCenterStructurePanel();
         this.bottomPanel = new BottomOfCenterOfTableCenterStructurePanel();
         this.splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, this.topPanel, this.bottomPanel);
+        this.splitPane.setDividerLocation(0.5);
     }
 
     {
