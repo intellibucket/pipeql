@@ -3,8 +3,10 @@ package com.intellibucket.pipeql.lib.panel;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.lib.button.horizontal.AbstractGButton;
 import com.intellibucket.pipeql.lib.button.horizontal.SimpleIconGButton;
-import com.intellibucket.pipeql.lib.table.ColumnGTable;
+import com.intellibucket.pipeql.lib.list.GColumnList;
+import com.intellibucket.pipeql.view.util.ColorUtils;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
@@ -12,9 +14,9 @@ public abstract class ItemWithBarPanel extends AbstractGSimplePanel{
     private AbstractGSimplePanel header;
     private AbstractGSimplePanel center;
 
-    public ItemWithBarPanel() {
+    public ItemWithBarPanel(List<AbstractGSimplePanel> columns) {
         this.header = new ItemHeaderPanel();
-        this.center = new ItemTextFieldPanel();
+        this.center = new ItemColumnsPanel(columns);
     }
 
     {
@@ -62,23 +64,35 @@ public abstract class ItemWithBarPanel extends AbstractGSimplePanel{
         }
     }
 
-    class ItemTextFieldPanel extends AbstractGSimplePanel {
+    class ItemColumnsPanel extends AbstractGSimplePanel {
+        private CustomGColumnList columnList;
 
         {
             this.setLayout(new BorderLayout());
+            this.setBorder(BorderFactory.createLineBorder(ColorUtils.COLORFUL_BUTTON_BACKGROUND, 1));
         }
-        public ItemTextFieldPanel() {
+        public ItemColumnsPanel(List<AbstractGSimplePanel> columnListItemPanels) {
+            this.columnList = new CustomGColumnList(columnListItemPanels);
         }
 
         @Override
         public List<ComponentInitializer> getComponentInitializers() {
             return List.of(
-
+                    this.columnList
             );
         }
 
         @Override
         public void setComponents() {
+            this.add(this.columnList, BorderLayout.CENTER);
+        }
+
+        class CustomGColumnList extends GColumnList{
+
+            protected CustomGColumnList(List<AbstractGSimplePanel> items) {
+                super(items);
+            }
+
         }
     }
 }

@@ -40,7 +40,7 @@
               "scale": 89,
               "isNullable": false,
               "isPrimaryKey": true,
-              "isForeignKey": true,
+              "isForeignKey": false,
               "isUnique": true,
               "isAutoIncrement": true,
               "isIndexed": true,

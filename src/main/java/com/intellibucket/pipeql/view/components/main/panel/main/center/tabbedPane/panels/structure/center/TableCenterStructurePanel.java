@@ -1,35 +1,42 @@
 package com.intellibucket.pipeql.view.components.main.panel.main.center.tabbedPane.panels.structure.center;
 
 import com.intellibucket.pipeql.domain.model.dto.response.table.TableItemModel;
+import com.intellibucket.pipeql.domain.model.root.ColumnRoot;
+import com.intellibucket.pipeql.domain.model.root.TableRoot;
+import com.intellibucket.pipeql.domain.model.valueo.TableID;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
-import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
-import com.intellibucket.pipeql.lib.panel.GItemTextFieldPanel;
-import com.intellibucket.pipeql.lib.panel.ItemWithBarPanel;
-import com.intellibucket.pipeql.lib.panel.TransparentGPanel;
+import com.intellibucket.pipeql.lib.panel.*;
 import com.intellibucket.pipeql.lib.tabbed.AbstractMaximizedGTabbedPane;
+import com.intellibucket.pipeql.view.client.main.abstracts.AbstractMainCenterTablePanelClient;
+import com.intellibucket.pipeql.view.client.main.abstracts.AbstractTableCenterStructurePanelClient;
+import com.intellibucket.pipeql.view.client.main.concretes.TableCenterStructurePanelClient;
 import com.intellibucket.pipeql.view.components.main.panel.InnerResizeablePanel;
+import com.intellibucket.pipeql.view.util.BorderUtils;
 import com.intellibucket.pipeql.view.util.ColorUtils;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 public
 class TableCenterStructurePanel extends AbstractGSimplePanel {
+
+    private final AbstractTableCenterStructurePanelClient client = new TableCenterStructurePanelClient();
+    private final TableRoot tableRoot;
+    private final HeaderOfTableCenterStructurePanel headerOfTableCenterStructurePanel;
+    private final CenterOfTableCenterStructurePanel centerOfTableCenterStructurePanel;
+
     {
         this.setLayout(new BorderLayout());
     }
 
-    private final TableItemModel tableItemModel;
-    private final HeaderOfTableCenterStructurePanel headerOfTableCenterStructurePanel;
-    private final CenterOfTableCenterStructurePanel centerOfTableCenterStructurePanel;
-
-    public TableCenterStructurePanel(TableItemModel tableItemModel) {
-        this.tableItemModel = tableItemModel;
-        this.headerOfTableCenterStructurePanel = new HeaderOfTableCenterStructurePanel();
-        this.centerOfTableCenterStructurePanel = new CenterOfTableCenterStructurePanel();
+    public TableCenterStructurePanel(TableRoot tableRoot) {
+        this.tableRoot = tableRoot;
+        this.headerOfTableCenterStructurePanel = new HeaderOfTableCenterStructurePanel(tableRoot);
+        this.centerOfTableCenterStructurePanel = new CenterOfTableCenterStructurePanel(tableRoot);
     }
 
 
@@ -51,11 +58,16 @@ class TableCenterStructurePanel extends AbstractGSimplePanel {
 
 class HeaderOfTableCenterStructurePanel extends TransparentGPanel {
 
-    private final GItemTextFieldPanel tableNameTFPanel = new HeaderOfTableCenterStructurePanel.ItemTextFieldPanel("Table Name:");
-    private final GItemTextFieldPanel commentsTFPanel = new HeaderOfTableCenterStructurePanel.ItemTextFieldPanel("Comments:");
+    private GItemTextFieldPanel tableNameTFPanel ;
+    private GItemTextFieldPanel commentsTFPanel ;
 
     {
         this.setLayout(new GridLayout(1, 2));
+    }
+
+    public HeaderOfTableCenterStructurePanel(TableRoot tableRoot) {
+        tableNameTFPanel = new HeaderOfTableCenterStructurePanel.ItemTextFieldPanel("Table Name:");
+        commentsTFPanel = new HeaderOfTableCenterStructurePanel.ItemTextFieldPanel("Comments:");
     }
 
     @Override
@@ -88,15 +100,16 @@ class CenterOfTableCenterStructurePanel extends TransparentGPanel {
     private InnerResizeablePanel topPanel;
     private InnerResizeablePanel bottomPanel;
 
-    public CenterOfTableCenterStructurePanel() {
-        this.topPanel = new TopOfCenterOfTableCenterStructurePanel();
+    public CenterOfTableCenterStructurePanel(TableRoot tableRoot) {
+        this.topPanel = new TopOfCenterOfTableCenterStructurePanel(tableRoot);
         this.bottomPanel = new BottomOfCenterOfTableCenterStructurePanel();
         this.splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, this.topPanel, this.bottomPanel);
-        this.splitPane.setDividerLocation(0.5);
+        this.splitPane.setDividerLocation(300);
     }
 
     {
         this.setLayout(new BorderLayout());
+        this.setBorder(BorderFactory.createLineBorder(ColorUtils.COLORFUL_BUTTON_BACKGROUND, 1));
     }
     @Override
     public java.util.List<ComponentInitializer> getComponentInitializers() {
@@ -117,11 +130,12 @@ class TopOfCenterOfTableCenterStructurePanel extends InnerResizeablePanel{
 
     private final TabbedPaneOfTopOfCenterOfTableCenterStructurePanel tabbedPaneOfTopOfCenterOfTableCenterStructurePanel;
 
-    public TopOfCenterOfTableCenterStructurePanel() {
-        this.tabbedPaneOfTopOfCenterOfTableCenterStructurePanel = new TabbedPaneOfTopOfCenterOfTableCenterStructurePanel();
+    public TopOfCenterOfTableCenterStructurePanel(TableRoot tableRoot) {
+        this.tabbedPaneOfTopOfCenterOfTableCenterStructurePanel = new TabbedPaneOfTopOfCenterOfTableCenterStructurePanel(tableRoot);
     }
 
     {
+        this.setBorder(BorderFactory.createLineBorder(ColorUtils.COLORFUL_BUTTON_BACKGROUND, 1));
         this.setLayout(new BorderLayout());
     }
 
@@ -138,17 +152,23 @@ class TopOfCenterOfTableCenterStructurePanel extends InnerResizeablePanel{
     }
 }
 
+class MapperOfTopOfCenterOfTableCenterStructurePanel {
+    public static List<AbstractGSimplePanel> map(List<ColumnRoot> columns) {
+        return columns.stream().map(GColumnListItemPanel::new).collect(Collectors.toList());
+    }
+}
+
 class TabbedPaneOfTopOfCenterOfTableCenterStructurePanel extends AbstractMaximizedGTabbedPane {
     private ItemWithBarPanel columnsPanel;
     private ItemWithBarPanel indexesPanel;
     private ItemWithBarPanel triggersPanel;
     private ItemWithBarPanel foreignKeysPanel;
 
-    public TabbedPaneOfTopOfCenterOfTableCenterStructurePanel() {
-        this.columnsPanel = new ColumnsPanel();
-        this.indexesPanel = new IndexesPanel();
-        this.triggersPanel = new TriggersPanel();
-        this.foreignKeysPanel = new ForeignKeysPanel();
+    public TabbedPaneOfTopOfCenterOfTableCenterStructurePanel(TableRoot tableRoot) {
+        this.columnsPanel = new ColumnsPanel(MapperOfTopOfCenterOfTableCenterStructurePanel.map(tableRoot.getColumns()));
+        this.indexesPanel = new IndexesPanel(List.of());
+        this.triggersPanel = new TriggersPanel(List.of());
+        this.foreignKeysPanel = new ForeignKeysPanel(List.of());
     }
 
 
@@ -172,18 +192,30 @@ class TabbedPaneOfTopOfCenterOfTableCenterStructurePanel extends AbstractMaximiz
 
     class ColumnsPanel extends ItemWithBarPanel{
 
+        public ColumnsPanel(List<AbstractGSimplePanel> columns) {
+            super(columns);
+        }
     }
 
     class IndexesPanel extends ItemWithBarPanel{
 
+        public IndexesPanel(List<AbstractGSimplePanel> columns) {
+            super(columns);
+        }
     }
 
     class TriggersPanel extends ItemWithBarPanel{
 
+        public TriggersPanel(List<AbstractGSimplePanel> columns) {
+            super(columns);
+        }
     }
 
     class ForeignKeysPanel extends ItemWithBarPanel{
 
+        public ForeignKeysPanel(List<AbstractGSimplePanel> columns) {
+            super(columns);
+        }
     }
 
 

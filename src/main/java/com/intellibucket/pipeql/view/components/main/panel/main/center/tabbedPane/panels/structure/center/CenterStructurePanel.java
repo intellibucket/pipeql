@@ -1,6 +1,7 @@
 package com.intellibucket.pipeql.view.components.main.panel.main.center.tabbedPane.panels.structure.center;
 
 import com.intellibucket.pipeql.domain.exception.DomainException;
+import com.intellibucket.pipeql.domain.model.root.TableRoot;
 import com.intellibucket.pipeql.eventlink.model.payload.EmptySuccessPayload;
 import com.intellibucket.pipeql.eventlink.model.payload.SuccessPayload;
 import com.intellibucket.pipeql.eventlink.rx.abstracts.EventListener;
@@ -24,8 +25,8 @@ public class CenterStructurePanel extends AbstractGSimplePanel {
         this.setLayout(new BorderLayout());
     }
 
-    public CenterStructurePanel(TableItemModel tableItemModel) {
-        this.mainPanel = new TableCenterStructurePanel(tableItemModel);
+    public CenterStructurePanel(TableRoot tableRoot) {
+        this.mainPanel = new TableCenterStructurePanel(tableRoot);
     }
 
     public CenterStructurePanel() {
@@ -58,7 +59,7 @@ public class CenterStructurePanel extends AbstractGSimplePanel {
             protected SuccessPayload listen(TableDataPayload message) throws DomainException {
                 var tableData = message.getTable();
                 log.info("Listen to table selected event {}", tableData);
-                CenterStructurePanel.this.changeMainPanel(new TableCenterStructurePanel(null));
+                CenterStructurePanel.this.changeMainPanel(new TableCenterStructurePanel(tableData));
                 return EmptySuccessPayload.INSTANCE;
             }
         });

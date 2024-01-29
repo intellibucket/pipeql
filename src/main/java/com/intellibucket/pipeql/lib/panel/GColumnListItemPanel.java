@@ -5,10 +5,11 @@ import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.lib.file.ImageToolKit;
 import com.intellibucket.pipeql.lib.label.SimpleGLabel;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-public abstract class ColumnListItemPanel extends AbstractGSimplePanel{
+public class GColumnListItemPanel extends AbstractGSimplePanel{
     private SimpleGLabel columnIconLabel;
     private SimpleGLabel columnNameLabel;
     private SimpleGLabel columnTypeLabel;
@@ -18,10 +19,10 @@ public abstract class ColumnListItemPanel extends AbstractGSimplePanel{
     private SimpleGLabel columnForeignKeyIconLabel;
 
     {
-        this.setLayout(new GridLayout(1, 7));
+        this.setLayout(new GridLayout(1, 10));
     }
 
-    public ColumnListItemPanel(ColumnRoot columnRoot) {
+    public GColumnListItemPanel(ColumnRoot columnRoot) {
         this.columnIconLabel =
                 new SimpleGLabel(columnRoot.getIsPrimaryKey()? ImageToolKit.getIcon("goldKey") : ImageToolKit.getIcon("empty"));
         this.columnNameLabel = new SimpleGLabel(columnRoot.getName());
@@ -29,7 +30,7 @@ public abstract class ColumnListItemPanel extends AbstractGSimplePanel{
         this.columnSizeLabel = new SimpleGLabel(String.valueOf(columnRoot.getLength()));
         this.columnNullableLabel = new SimpleGLabel(columnRoot.getIsPrimaryKey()? ImageToolKit.getIcon("gutterCheckBoxSelected") : ImageToolKit.getIcon("gutterCheckBoxIndeterminate"));
         this.columnDefaultLabel = new SimpleGLabel(columnRoot.getDefaultValue());
-        this.columnForeignKeyIconLabel = new SimpleGLabel(columnRoot.getIsPrimaryKey()? ImageToolKit.getIcon("blueKey") : ImageToolKit.getIcon("empty"));
+        this.columnForeignKeyIconLabel = new SimpleGLabel(columnRoot.getIsForeignKey() ? ImageToolKit.getIcon("blueKey") : ImageToolKit.getIcon("empty"));
     }
 
     @Override
