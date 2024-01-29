@@ -31,9 +31,6 @@ class TableCenterStructurePanel extends AbstractGSimplePanel {
         this.centerOfTableCenterStructurePanel = new CenterOfTableCenterStructurePanel();
     }
 
-    {
-        this.setBackground(ColorUtils.randomColor());
-    }
 
     @Override
     public java.util.List<ComponentInitializer> getComponentInitializers() {
@@ -75,9 +72,6 @@ class HeaderOfTableCenterStructurePanel extends TransparentGPanel {
     }
 
     class ItemTextFieldPanel extends GItemTextFieldPanel {
-        {
-            this.setBackground(ColorUtils.randomColor());
-        }
 
         public ItemTextFieldPanel(String value) {
             super(value);
