@@ -40,4 +40,8 @@ public class ColumnRoot extends BaseRoot{
     public <T> Boolean isSameId(T id) {
         return this.getId().equals(id);
     }
+
+    public String getDefaultValueOrElse() {
+        return this.defaultValue == null ? "not selected" : this.defaultValue;
+    }
 }

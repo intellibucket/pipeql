@@ -66,6 +66,7 @@ public abstract class ItemWithBarPanel extends AbstractGSimplePanel{
 
     class ItemColumnsPanel extends AbstractGSimplePanel {
         private CustomGColumnList columnList;
+        private GColumnListItemHeaderPanel headerPanel;
 
         {
             this.setLayout(new BorderLayout());
@@ -73,17 +74,20 @@ public abstract class ItemWithBarPanel extends AbstractGSimplePanel{
         }
         public ItemColumnsPanel(List<AbstractGSimplePanel> columnListItemPanels) {
             this.columnList = new CustomGColumnList(columnListItemPanels);
+            this.headerPanel = new GColumnListItemHeaderPanel();
         }
 
         @Override
         public List<ComponentInitializer> getComponentInitializers() {
             return List.of(
-                    this.columnList
+                    this.columnList,
+                    this.headerPanel
             );
         }
 
         @Override
         public void setComponents() {
+            this.add(this.headerPanel, BorderLayout.NORTH);
             this.add(this.columnList, BorderLayout.CENTER);
         }
 
