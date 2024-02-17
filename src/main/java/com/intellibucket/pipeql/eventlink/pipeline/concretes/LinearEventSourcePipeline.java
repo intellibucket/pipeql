@@ -17,10 +17,14 @@ public class LinearEventSourcePipeline extends AbstractPipeline {
     @Override
     public void send(ProducingMessage message) {
         log.info("Sending message to consumers for topic: {} , message : {}",this.topic().name(),message);
-        this.groupingConsumers().values().parallelStream().forEach(consumer -> {
-            var consumingMessage = new ConsumingMessage(message.getEvent(),message.getCallback());
-            consumer.consume(consumingMessage);
-        });
+        this.groupingConsumers()
+                .values()
+                .parallelStream()
+                .unordered()
+                .forEach(consumer -> {
+                    var consumingMessage = new ConsumingMessage(message.getEvent(),message.getCallback());
+                    consumer.consume(consumingMessage);
+                });
         log.info("Message sent to consumers for topic: {} , message : {}",this.topic().name(),message);
     }
 

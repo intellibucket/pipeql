@@ -2,12 +2,15 @@ package com.intellibucket.pipeql.lib;
 
 import java.time.LocalTime;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 import java.util.Queue;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.function.Consumer;
 
 public class ContextHolder<C> {
+    private List<Consumer<C>> listeners;
     private final Queue<C> contextQueue;
     private final Lock lock = new ReentrantLock();
     private LocalTime lastAccessTime = LocalTime.now();
@@ -20,6 +23,20 @@ public class ContextHolder<C> {
 
     public Optional<C> getContext() {
         return Optional.ofNullable(this.context);
+    }
+
+    public void addListener(Consumer<C> listener) {
+        this.listeners.add(listener);
+    }
+
+    public void removeListener(Consumer<C> listener) {
+        this.listeners.remove(listener);
+    }
+
+    public void notifyListeners() {
+        this.listeners.parallelStream()
+                .unordered()
+                .forEach(listener -> listener.accept(this.context));
     }
 
     private void updateLastAccessTime() {
