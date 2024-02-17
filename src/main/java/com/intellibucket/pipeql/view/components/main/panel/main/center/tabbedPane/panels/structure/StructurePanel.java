@@ -12,7 +12,6 @@ import java.util.List;
 
 public class StructurePanel extends AbstractGSimplePanel {
     private final ContextHolder<ProjectModel> projectModelContextHolder;
-
     private AbstractGSimplePanel headerStructurePanel;
     private AbstractGSimplePanel leftSideStructurePanel;
     private AbstractGSimplePanel rightSideStructurePanel;
