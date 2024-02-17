@@ -1,6 +1,5 @@
 package com.intellibucket.pipeql;
 
-import com.intellibucket.pipeql.application.kernel.abstracts.AbstractApplicationKernel;
 import com.intellibucket.pipeql.application.kernel.concretes.ApplicationKernel;
 import com.intellibucket.pipeql.application.profile.abstracts.AbstractApplicationProfileInitializer;
 import com.intellibucket.pipeql.application.profile.concretes.ApplicationProfileInitializer;
