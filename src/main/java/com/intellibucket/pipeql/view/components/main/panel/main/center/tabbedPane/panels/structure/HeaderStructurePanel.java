@@ -149,7 +149,7 @@ class InfoBoxPanel extends AbstractGPanel{
 
         public RightOfInfoBoxPanel(ProjectModel projectModel) {
             this.versionLabel = new SimpleValueLabelPanel("Version", projectModel.getVersion());
-            this.createdByLabel = new SimpleValueLabelPanel("Created By", projectModel.getCreatedBy());
+            this.createdByLabel = new SimpleValueLabelPanel("Owner", projectModel.getCreatedBy());
         }
 
         @Override

@@ -137,7 +137,7 @@ class BottomOfTableCenterStructurePanel extends TransparentGPanel{
 
 
     class LeftOfBottomOfTableCenterStructurePanel extends TransparentGPanel {
-        private AbstractGButton addColumnButton = new SimpleOkGButton("Save");
+        private AbstractGButton addColumnButton = new SimpleOkGButton("Apply");
         private AbstractGButton deleteColumnButton = new SimpleGButton("Cancel");
 
         {
