@@ -1,20 +1,17 @@
 package com.intellibucket.pipeql.lib;
 
 import java.time.LocalTime;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Queue;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Consumer;
 
 public class ContextHolder<C> {
+    private final Lock lock = new ReentrantLock(Boolean.TRUE);
     private final AtomicInteger currentQueueIndex;
     private final List<Consumer<C>> listeners;
     private final Queue<C> contextQueue;
-    private final Lock lock = new ReentrantLock();
     private volatile LocalTime lastAccessTime;
     private volatile C context;
 
@@ -60,17 +57,19 @@ public class ContextHolder<C> {
         this.lastAccessTime = LocalTime.now();
     }
 
-    public void change(C context) {
-        this.lock.lock();
-        //TODO: add a check for the same context
-        try {
-            this.context = context;
-            this.contextQueue.add(context);
-            this.updateLastAccessTime();
-            this.notifyListeners();
-            this.currentQueueIndex.incrementAndGet();
-        } finally {
-            this.lock.unlock();
+    public void update(C context) {
+        var result = this.lock.tryLock();
+        if (result) {
+            //TODO: add a check for the same context
+            try {
+                this.context = context;
+                this.contextQueue.add(context);
+                this.updateLastAccessTime();
+                this.notifyListeners();
+                this.currentQueueIndex.incrementAndGet();
+            } finally {
+                this.lock.unlock();
+            }
         }
     }
 
@@ -110,4 +109,20 @@ public class ContextHolder<C> {
         }
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ContextHolder<?> that)) return false;
+        return Objects.equals(getContext(), that.getContext());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getContext());
+    }
+
+    public LocalTime getLastAccessTime() {
+        return lastAccessTime;
+    }
 }
