@@ -1,4 +1,4 @@
-package com.intellibucket.pipeql.view;
+package com.intellibucket.pipeql.lib;
 
 public interface Refreshable {
     default void refresh(){}

@@ -25,6 +25,7 @@
           "schemaId": "dd0f82d9-c99a-45b4-89df-6f41eba2a094",
           "name": "cities",
           "description": "test_9786c49d1e9b",
+          "comments": "test_9786c49d1e9b",
           "columns": [
             {
               "id": "f30b3c7c-4873-4935-b87d-739b9cd426b6",
@@ -196,6 +197,7 @@
           "schemaId": "dd0f82d9-c99a-45b4-89df-6f41eba2a094",
           "name": "countries",
           "description": "test_9786c49d1e9b",
+          "comments": "test_9786c49d1e9b",
           "columns": [
             {
               "id": "f40b3c7c-4873-4935-b87d-739b9cd426b6",
@@ -374,6 +376,7 @@
           "schemaId": "cd0f82d9-c99a-45b4-89df-6f41eba2a094",
           "name": "users",
           "description": "test_9786c49d1e9b",
+          "comments": "test_9786c49d1e9b",
           "columns": [
             {
               "id": "f30b3c7c-4873-4935-b87d-739b9cd426b6",

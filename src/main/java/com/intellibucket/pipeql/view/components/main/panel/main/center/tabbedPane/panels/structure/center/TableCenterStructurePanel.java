@@ -5,6 +5,9 @@ import com.intellibucket.pipeql.domain.model.root.ColumnRoot;
 import com.intellibucket.pipeql.domain.model.root.TableRoot;
 import com.intellibucket.pipeql.domain.model.valueo.TableID;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
+import com.intellibucket.pipeql.lib.button.horizontal.AbstractGButton;
+import com.intellibucket.pipeql.lib.button.horizontal.SimpleGButton;
+import com.intellibucket.pipeql.lib.button.horizontal.SimpleOkGButton;
 import com.intellibucket.pipeql.lib.panel.*;
 import com.intellibucket.pipeql.lib.tabbed.AbstractMaximizedGTabbedPane;
 import com.intellibucket.pipeql.view.client.main.abstracts.AbstractMainCenterTablePanelClient;
@@ -29,6 +32,8 @@ class TableCenterStructurePanel extends AbstractGSimplePanel {
     private final HeaderOfTableCenterStructurePanel headerOfTableCenterStructurePanel;
     private final CenterOfTableCenterStructurePanel centerOfTableCenterStructurePanel;
 
+    private final BottomOfTableCenterStructurePanel bottomOfTableCenterStructurePanel;
+
     {
         this.setLayout(new BorderLayout());
     }
@@ -37,6 +42,7 @@ class TableCenterStructurePanel extends AbstractGSimplePanel {
         this.tableRoot = tableRoot;
         this.headerOfTableCenterStructurePanel = new HeaderOfTableCenterStructurePanel(tableRoot);
         this.centerOfTableCenterStructurePanel = new CenterOfTableCenterStructurePanel(tableRoot);
+        this.bottomOfTableCenterStructurePanel = new BottomOfTableCenterStructurePanel();
     }
 
 
@@ -44,7 +50,8 @@ class TableCenterStructurePanel extends AbstractGSimplePanel {
     public java.util.List<ComponentInitializer> getComponentInitializers() {
         return java.util.List.of(
                 this.headerOfTableCenterStructurePanel,
-                this.centerOfTableCenterStructurePanel
+                this.centerOfTableCenterStructurePanel,
+                this.bottomOfTableCenterStructurePanel
         );
     }
 
@@ -52,6 +59,7 @@ class TableCenterStructurePanel extends AbstractGSimplePanel {
     public void setComponents() {
         this.add(this.headerOfTableCenterStructurePanel, BorderLayout.NORTH);
         this.add(this.centerOfTableCenterStructurePanel, BorderLayout.CENTER);
+        this.add(this.bottomOfTableCenterStructurePanel, BorderLayout.SOUTH);
     }
 
 }
@@ -66,8 +74,8 @@ class HeaderOfTableCenterStructurePanel extends TransparentGPanel {
     }
 
     public HeaderOfTableCenterStructurePanel(TableRoot tableRoot) {
-        tableNameTFPanel = new HeaderOfTableCenterStructurePanel.ItemTextFieldPanel("Table Name:");
-        commentsTFPanel = new HeaderOfTableCenterStructurePanel.ItemTextFieldPanel("Comments:");
+        tableNameTFPanel = new HeaderOfTableCenterStructurePanel.ItemTextFieldPanel("Table Name:", tableRoot.getName());
+        commentsTFPanel = new HeaderOfTableCenterStructurePanel.ItemTextFieldPanel("Comments:", tableRoot.getComments());
     }
 
     @Override
@@ -89,8 +97,37 @@ class HeaderOfTableCenterStructurePanel extends TransparentGPanel {
         public ItemTextFieldPanel(String value) {
             super(value);
         }
+
+        public ItemTextFieldPanel(String label, String value) {
+            super(label, value);
+        }
     }
 
+}
+
+class BottomOfTableCenterStructurePanel extends TransparentGPanel{
+    private AbstractGButton saveButton = new SimpleOkGButton("Save");
+    private AbstractGButton cancelButton = new SimpleGButton("Cancel");
+
+
+    {
+        this.setBorder(BorderUtils.EMPTY_BORDER_5_5_5_5);
+        this.setLayout(new FlowLayout(FlowLayout.RIGHT));
+    }
+
+    @Override
+    public List<ComponentInitializer> getComponentInitializers() {
+        return List.of(
+                this.saveButton,
+                this.cancelButton
+        );
+    }
+
+    @Override
+    public void setComponents() {
+        this.add(this.saveButton);
+        this.add(this.cancelButton);
+    }
 }
 
 class CenterOfTableCenterStructurePanel extends TransparentGPanel {

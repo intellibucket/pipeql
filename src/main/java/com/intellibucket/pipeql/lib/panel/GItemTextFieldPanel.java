@@ -21,6 +21,15 @@ public abstract class GItemTextFieldPanel extends TransparentGPanel{
         this.label = new SimpleGLabel(itemName);
     }
 
+    public GItemTextFieldPanel(String itemName, String text) {
+        this.label = new SimpleGLabel(itemName);
+        this.textField.setText(text);
+    }
+
+    public SimpleGTextField getTextField() {
+        return this.textField;
+    }
+
     @Override
     public void setComponents() {
         this.label.setAlignmentX(LEFT_ALIGNMENT);

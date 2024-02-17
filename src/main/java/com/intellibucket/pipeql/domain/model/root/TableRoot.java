@@ -12,6 +12,8 @@ public class TableRoot extends BaseRoot{
     private UUID schemaId;
     private String name;
     private String description;
+
+    private String comments;
     private List<ColumnRoot> columns;
 
     @Override
