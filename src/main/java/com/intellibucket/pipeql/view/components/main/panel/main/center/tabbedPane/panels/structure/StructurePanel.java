@@ -1,5 +1,6 @@
 package com.intellibucket.pipeql.view.components.main.panel.main.center.tabbedPane.panels.structure;
 
+import com.intellibucket.pipeql.lib.ContextHolder;
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.domain.model.dto.response.project.ProjectModel;
@@ -10,6 +11,7 @@ import java.awt.*;
 import java.util.List;
 
 public class StructurePanel extends AbstractGSimplePanel {
+    private final ContextHolder<ProjectModel> projectModelContextHolder;
 
     private AbstractGSimplePanel headerStructurePanel;
     private AbstractGSimplePanel leftSideStructurePanel;
@@ -24,6 +26,7 @@ public class StructurePanel extends AbstractGSimplePanel {
     }
 
     public StructurePanel(ProjectModel projectModel) {
+        this.projectModelContextHolder = new ContextHolder<>(projectModel);
         this.headerStructurePanel = new HeaderStructurePanel(projectModel);
         this.leftSideStructurePanel = new LeftSideStructurePanel(projectModel);
         this.rightSideStructurePanel = new RightSideStructurePanel(projectModel);
