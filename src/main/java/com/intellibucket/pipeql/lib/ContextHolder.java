@@ -5,20 +5,33 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Queue;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Consumer;
 
 public class ContextHolder<C> {
-    private List<Consumer<C>> listeners;
+    private final AtomicInteger currentQueueIndex;
+    private final List<Consumer<C>> listeners;
     private final Queue<C> contextQueue;
     private final Lock lock = new ReentrantLock();
-    private LocalTime lastAccessTime = LocalTime.now();
+    private volatile LocalTime lastAccessTime;
     private volatile C context;
 
     public ContextHolder(C context) {
+        this(context, new LinkedList<>());
+    }
+
+    public ContextHolder(C context, Consumer<C> listener) {
+        this(context, new LinkedList<>(List.of(listener)));
+    }
+
+    public ContextHolder(C context, List<Consumer<C>> listeners) {
+        this.currentQueueIndex = new AtomicInteger(0);
         this.context = context;
         this.contextQueue = new LinkedList<>();
+        this.listeners = listeners;
+        this.lastAccessTime = LocalTime.now();
     }
 
     public Optional<C> getContext() {
@@ -33,6 +46,10 @@ public class ContextHolder<C> {
         this.listeners.remove(listener);
     }
 
+    public void clearListeners() {
+        this.listeners.clear();
+    }
+
     public void notifyListeners() {
         this.listeners.parallelStream()
                 .unordered()
@@ -45,10 +62,13 @@ public class ContextHolder<C> {
 
     public void change(C context) {
         this.lock.lock();
+        //TODO: add a check for the same context
         try {
             this.context = context;
             this.contextQueue.add(context);
             this.updateLastAccessTime();
+            this.notifyListeners();
+            this.currentQueueIndex.incrementAndGet();
         } finally {
             this.lock.unlock();
         }
@@ -65,6 +85,7 @@ public class ContextHolder<C> {
                 this.contextQueue.poll();
                 this.context = this.contextQueue.peek();
                 this.updateLastAccessTime();
+                this.currentQueueIndex.decrementAndGet();
                 return Optional.of(this.context);
             }
             return Optional.empty();
@@ -80,6 +101,7 @@ public class ContextHolder<C> {
                 this.context = this.contextQueue.poll();
                 this.context = this.contextQueue.peek();
                 this.updateLastAccessTime();
+                this.currentQueueIndex.incrementAndGet();
                 return Optional.of(this.context);
             }
             return Optional.empty();
