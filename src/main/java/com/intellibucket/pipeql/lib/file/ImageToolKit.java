@@ -21,6 +21,10 @@ public class ImageToolKit {
         }
     }
 
+    public static Icon getSmallIcon(String name) {
+        return getIconWithSize(name, new Dimension(16, 16));
+    }
+
     public static Icon getIconWithSize(String name, Dimension dimension) {
         ImageIcon image = (ImageIcon) ImageContainer.getIcon(name);
         var result = image.getImage().getScaledInstance(dimension.width, dimension.height, Image.SCALE_SMOOTH);

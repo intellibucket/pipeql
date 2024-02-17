@@ -1,7 +1,10 @@
 package com.intellibucket.pipeql.lib.panel;
 
+import com.intellibucket.pipeql.lib.file.ImageContainer;
+import com.intellibucket.pipeql.lib.file.ImageToolKit;
 import com.intellibucket.pipeql.lib.label.AbstractGLabel;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
+import com.intellibucket.pipeql.lib.label.SimpleGLabel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,5 +38,23 @@ public class LabelPairPanel extends AbstractGPanel{
         this.add(this.firstLabel);
         this.add(Box.createRigidArea(new Dimension(5,0)));
         this.add(this.secondLabel);
+    }
+
+    public static class Prototype{
+        public static LabelPairPanel success(String text){
+            return new LabelPairPanel(new SimpleGLabel(ImageToolKit.getSmallIcon("successDialog")), new SimpleGLabel(text));
+        }
+
+        public static LabelPairPanel error(String text){
+            return new LabelPairPanel(new SimpleGLabel(ImageToolKit.getSmallIcon("errorDialog")), new SimpleGLabel(text));
+        }
+
+        public static LabelPairPanel info(String text){
+            return new LabelPairPanel(new SimpleGLabel(ImageToolKit.getSmallIcon("informationDialog")), new SimpleGLabel(text));
+        }
+
+        public static LabelPairPanel warning(String text){
+            return new LabelPairPanel(new SimpleGLabel(ImageToolKit.getSmallIcon("warningDialog")), new SimpleGLabel(text));
+        }
     }
 }

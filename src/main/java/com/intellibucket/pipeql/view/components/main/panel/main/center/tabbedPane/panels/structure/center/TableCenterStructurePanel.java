@@ -8,6 +8,9 @@ import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.lib.button.horizontal.AbstractGButton;
 import com.intellibucket.pipeql.lib.button.horizontal.SimpleGButton;
 import com.intellibucket.pipeql.lib.button.horizontal.SimpleOkGButton;
+import com.intellibucket.pipeql.lib.file.ImageContainer;
+import com.intellibucket.pipeql.lib.label.AbstractGLabel;
+import com.intellibucket.pipeql.lib.label.SimpleGLabel;
 import com.intellibucket.pipeql.lib.panel.*;
 import com.intellibucket.pipeql.lib.tabbed.AbstractMaximizedGTabbedPane;
 import com.intellibucket.pipeql.view.client.main.abstracts.AbstractMainCenterTablePanelClient;
@@ -20,6 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.ImageProducer;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -106,27 +110,54 @@ class HeaderOfTableCenterStructurePanel extends TransparentGPanel {
 }
 
 class BottomOfTableCenterStructurePanel extends TransparentGPanel{
-    private AbstractGButton saveButton = new SimpleOkGButton("Save");
-    private AbstractGButton cancelButton = new SimpleGButton("Cancel");
-
+    private AbstractGPanel label;
+    private LeftOfBottomOfTableCenterStructurePanel leftOfBottomOfTableCenterStructurePanel = new LeftOfBottomOfTableCenterStructurePanel();
 
     {
-        this.setBorder(BorderUtils.EMPTY_BORDER_5_5_5_5);
-        this.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        this.setLayout(new BorderLayout());
+    }
+
+    public BottomOfTableCenterStructurePanel() {
+        this.label = LabelPairPanel.Prototype.success("Relax! All changes were saved successfully.");
     }
 
     @Override
     public List<ComponentInitializer> getComponentInitializers() {
         return List.of(
-                this.saveButton,
-                this.cancelButton
+                this.label,
+                this.leftOfBottomOfTableCenterStructurePanel
         );
     }
 
     @Override
     public void setComponents() {
-        this.add(this.saveButton);
-        this.add(this.cancelButton);
+        this.add(this.label, BorderLayout.WEST);
+        this.add(this.leftOfBottomOfTableCenterStructurePanel, BorderLayout.EAST);
+    }
+
+
+    class LeftOfBottomOfTableCenterStructurePanel extends TransparentGPanel {
+        private AbstractGButton addColumnButton = new SimpleOkGButton("Save");
+        private AbstractGButton deleteColumnButton = new SimpleGButton("Cancel");
+
+        {
+            this.setBorder(BorderUtils.EMPTY_BORDER_5_5_5_5);
+            this.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        }
+
+        @Override
+        public List<ComponentInitializer> getComponentInitializers() {
+            return List.of(
+                    this.addColumnButton,
+                    this.deleteColumnButton
+            );
+        }
+
+        @Override
+        public void setComponents() {
+            this.add(this.addColumnButton);
+            this.add(this.deleteColumnButton);
+        }
     }
 }
 
