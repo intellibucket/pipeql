@@ -37,6 +37,11 @@ public abstract class ContextListener<C> {
     public final void dispose(List<ContextListener<C>> listeners){
         log.info("Disposing listener with id: {}", id);
         listeners.remove(this);
+        this.onDispose();
+    }
+
+    public void onDispose(){
+        log.warn("onDispose not implemented with id: {}", id);
     }
 
 }

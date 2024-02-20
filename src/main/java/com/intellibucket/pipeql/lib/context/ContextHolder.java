@@ -13,13 +13,13 @@ public class ContextHolder<C> {
 
     private final Lock lock = new ReentrantLock(Boolean.TRUE);
 
+    private volatile LocalTime lastAccessTime = LocalTime.now();
+
     private final AtomicInteger currentQueueIndex;
 
     private final List<ContextListener<C>> listeners;
 
     private final Queue<C> contextQueue;
-
-    private volatile LocalTime lastAccessTime;
 
     private volatile C context;
 
@@ -36,7 +36,6 @@ public class ContextHolder<C> {
         this.context = context;
         this.contextQueue = new LinkedList<>();
         this.listeners = listeners;
-        this.lastAccessTime = LocalTime.now();
     }
 
     public Optional<C> getContext() {
@@ -52,8 +51,9 @@ public class ContextHolder<C> {
     }
 
     public void clearSubscribers() {
-        this.listeners.clear();
+        this.listeners.forEach(listener -> listener.dispose(this.listeners));
     }
+
 
     public void notifyListeners(ContextListener<C> ownerListener) {
         this.listeners.parallelStream()
