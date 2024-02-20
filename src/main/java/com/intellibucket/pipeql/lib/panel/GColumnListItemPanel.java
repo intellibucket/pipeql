@@ -8,6 +8,7 @@ import com.intellibucket.pipeql.lib.label.SimpleGLabel;
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class GColumnListItemPanel extends AbstractGSimplePanel{
     private ColumnRoot columnRoot;

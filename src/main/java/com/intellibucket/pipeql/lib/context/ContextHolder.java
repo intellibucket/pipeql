@@ -1,29 +1,37 @@
-package com.intellibucket.pipeql.lib;
+package com.intellibucket.pipeql.lib.context;
+
+import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalTime;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-import java.util.function.Consumer;
 
+@Slf4j
 public class ContextHolder<C> {
+
     private final Lock lock = new ReentrantLock(Boolean.TRUE);
+
     private final AtomicInteger currentQueueIndex;
-    private final List<Consumer<C>> listeners;
+
+    private final List<ContextListener<C>> listeners;
+
     private final Queue<C> contextQueue;
+
     private volatile LocalTime lastAccessTime;
+
     private volatile C context;
 
     public ContextHolder(C context) {
         this(context, new LinkedList<>());
     }
 
-    public ContextHolder(C context, Consumer<C> listener) {
+    public ContextHolder(C context, ContextListener<C> listener) {
         this(context, new LinkedList<>(List.of(listener)));
     }
 
-    public ContextHolder(C context, List<Consumer<C>> listeners) {
+    public ContextHolder(C context, List<ContextListener<C>> listeners) {
         this.currentQueueIndex = new AtomicInteger(0);
         this.context = context;
         this.contextQueue = new LinkedList<>();
@@ -35,38 +43,49 @@ public class ContextHolder<C> {
         return Optional.ofNullable(this.context);
     }
 
-    public void addListener(Consumer<C> listener) {
+    public void subscribe(ContextListener<C> listener) {
         this.listeners.add(listener);
     }
 
-    public void removeListener(Consumer<C> listener) {
-        this.listeners.remove(listener);
+    public void dispose(ContextListener<C> listener) {
+        listener.dispose(this.listeners);
     }
 
-    public void clearListeners() {
+    public void clearSubscribers() {
         this.listeners.clear();
     }
 
     public void notifyListeners() {
         this.listeners.parallelStream()
                 .unordered()
-                .forEach(listener -> listener.accept(this.context));
+                .forEach(listener -> {
+                    try {
+                        listener.onChange(this.context);
+                        listener.onSuccessChangeState(this.context);
+                    } catch (Exception e) {
+                        log.error("Error while notifying listener", e);
+                        listener.onErrorChangeState(this.context);
+                    }
+                });
     }
 
     private void updateLastAccessTime() {
         this.lastAccessTime = LocalTime.now();
     }
 
-    public void update(C context) {
+    public void setState(C context) {
         var result = this.lock.tryLock();
         if (result) {
-            //TODO: add a check for the same context
+            if (this.context.equals(context)) {
+                this.lock.unlock();
+                return;
+            }
             try {
                 this.context = context;
                 this.contextQueue.add(context);
                 this.updateLastAccessTime();
-                this.notifyListeners();
                 this.currentQueueIndex.incrementAndGet();
+                this.notifyListeners();
             } finally {
                 this.lock.unlock();
             }
@@ -85,6 +104,7 @@ public class ContextHolder<C> {
                 this.context = this.contextQueue.peek();
                 this.updateLastAccessTime();
                 this.currentQueueIndex.decrementAndGet();
+                this.notifyListeners();
                 return Optional.of(this.context);
             }
             return Optional.empty();
@@ -101,6 +121,7 @@ public class ContextHolder<C> {
                 this.context = this.contextQueue.peek();
                 this.updateLastAccessTime();
                 this.currentQueueIndex.incrementAndGet();
+                this.notifyListeners();
                 return Optional.of(this.context);
             }
             return Optional.empty();
