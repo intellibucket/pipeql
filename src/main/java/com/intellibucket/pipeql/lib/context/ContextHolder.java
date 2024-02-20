@@ -55,6 +55,21 @@ public class ContextHolder<C> {
         this.listeners.clear();
     }
 
+    public void notifyListeners(ContextListener<C> ownerListener) {
+        this.listeners.parallelStream()
+                .unordered()
+                .filter(listener -> !listener.equals(ownerListener))
+                .forEach(listener -> {
+                    try {
+                        listener.onChange(this.context);
+                        listener.onSuccessChangeState(this.context);
+                    } catch (Exception e) {
+                        log.error("Error while notifying listener", e);
+                        listener.onErrorChangeState(this.context);
+                    }
+                });
+    }
+
     public void notifyListeners() {
         this.listeners.parallelStream()
                 .unordered()
@@ -73,7 +88,7 @@ public class ContextHolder<C> {
         this.lastAccessTime = LocalTime.now();
     }
 
-    public void setState(C context) {
+    public void setState(ContextListener<C> ownerListener, C context) {
         var result = this.lock.tryLock();
         if (result) {
             if (this.context.equals(context)) {
@@ -85,7 +100,7 @@ public class ContextHolder<C> {
                 this.contextQueue.add(context);
                 this.updateLastAccessTime();
                 this.currentQueueIndex.incrementAndGet();
-                this.notifyListeners();
+                this.notifyListeners(ownerListener);
             } finally {
                 this.lock.unlock();
             }
