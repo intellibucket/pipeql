@@ -1,11 +1,11 @@
 package com.intellibucket.pipeql.application.profile.concretes;
 
-import com.intellibucket.pipeql.application.profile.abstracts.AbstractApplicationProfileInitializer;
+import com.intellibucket.pipeql.application.profile.abstracts.AbstractApplicationEnvironmentInitializer;
 
 import java.util.Locale;
 import java.util.Objects;
 
-public class ApplicationProfileInitializer extends AbstractApplicationProfileInitializer {
+public class ApplicationEnvironmentInitializer extends AbstractApplicationEnvironmentInitializer {
 
 
     @Override

@@ -17,6 +17,7 @@
         <intelli-ui.version>1.0</intelli-ui.version>
         <miglayout.version>3.7.4</miglayout.version>
         <flat.version>3.0</flat.version>
+        <rxjava.version>3.1.8</rxjava.version>
     </properties>
 
     <developers>
@@ -38,8 +39,9 @@
         <dependency>
             <groupId>io.reactivex.rxjava3</groupId>
             <artifactId>rxjava</artifactId>
-            <version>3.1.8</version>
+            <version>${rxjava.version}</version>
         </dependency>
+
 
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -95,4 +97,6 @@
             <version>${flat.version}</version>
         </dependency>
     </dependencies>
+
+
 </project>

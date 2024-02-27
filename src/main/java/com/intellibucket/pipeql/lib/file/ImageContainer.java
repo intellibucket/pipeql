@@ -1,6 +1,6 @@
 package com.intellibucket.pipeql.lib.file;
 
-import com.intellibucket.pipeql.application.profile.abstracts.AbstractApplicationProfileInitializer;
+import com.intellibucket.pipeql.application.profile.abstracts.AbstractApplicationEnvironmentInitializer;
 import com.intellibucket.pipeql.lib.icon.GFlatSVGIcon;
 
 import javax.swing.*;
@@ -18,7 +18,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class ImageContainer {
-    public static final Image LOAD_IMAGE = Toolkit.getDefaultToolkit().getImage(AbstractApplicationProfileInitializer.PROFILE.resourcePath() + "pics/load.jpg");
+    public static final Image LOAD_IMAGE = Toolkit.getDefaultToolkit().getImage(AbstractApplicationEnvironmentInitializer.PROFILE.resourcePath() + "pics/load.jpg");
     private static final Map<String, Icon> ICON_CONTAINER  = new HashMap<>();
 
     public static Icon getIcon(String name) {
@@ -48,7 +48,7 @@ public class ImageContainer {
 
     public static void initialize(){
         ICON_CONTAINER.clear();
-        var resourcePath = AbstractApplicationProfileInitializer.PROFILE.resourcePath();
+        var resourcePath = AbstractApplicationEnvironmentInitializer.PROFILE.resourcePath();
         var iconPath = resourcePath + "icons/";
         Set<File> fileSet = new HashSet<>();
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(iconPath))) {

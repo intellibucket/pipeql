@@ -1,6 +1,6 @@
 package com.intellibucket.pipeql.lib.file;
 
-import com.intellibucket.pipeql.application.profile.abstracts.AbstractApplicationProfileInitializer;
+import com.intellibucket.pipeql.application.profile.abstracts.AbstractApplicationEnvironmentInitializer;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -15,7 +15,7 @@ public class ImageToolKit {
 
     public static Icon readPicture(String fullName) {
         try {
-            return  new ImageIcon(ImageIO.read(new File(AbstractApplicationProfileInitializer.PROFILE.resourcePath() + fullName+"/"+fullName)));
+            return  new ImageIcon(ImageIO.read(new File(AbstractApplicationEnvironmentInitializer.PROFILE.resourcePath() + fullName+"/"+fullName)));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -32,7 +32,7 @@ public class ImageToolKit {
     }
 
     public static ImageIcon getLogo() {
-        var path = AbstractApplicationProfileInitializer.PROFILE.resourcePath() + "pics/logo.png";
+        var path = AbstractApplicationEnvironmentInitializer.PROFILE.resourcePath() + "pics/logo.png";
         var image =  new ImageIcon(path);
         return new ImageIcon(image.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH));
     }

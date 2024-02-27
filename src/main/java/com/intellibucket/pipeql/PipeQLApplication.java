@@ -1,13 +1,14 @@
 package com.intellibucket.pipeql;
 
 import com.intellibucket.pipeql.application.kernel.concretes.ApplicationKernel;
-import com.intellibucket.pipeql.application.profile.abstracts.AbstractApplicationProfileInitializer;
-import com.intellibucket.pipeql.application.profile.concretes.ApplicationProfileInitializer;
+import com.intellibucket.pipeql.application.profile.abstracts.AbstractApplicationEnvironmentInitializer;
+import com.intellibucket.pipeql.application.profile.concretes.ApplicationEnvironmentInitializer;
 
 public class PipeQLApplication {
-    private static final AbstractApplicationProfileInitializer PROFILE_INITIALIZER = new ApplicationProfileInitializer();
+    private static final AbstractApplicationEnvironmentInitializer ENVIRONMENT_INITIALIZER = new ApplicationEnvironmentInitializer();
+
     public static void main(String[] args) {
-        PROFILE_INITIALIZER.initialize();
+        ENVIRONMENT_INITIALIZER.initialize();
         new ApplicationKernel().start();
     }
 }
