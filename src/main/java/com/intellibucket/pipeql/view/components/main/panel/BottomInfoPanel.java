@@ -6,8 +6,8 @@ import com.intellibucket.pipeql.lib.label.AbstractGLabel;
 import com.intellibucket.pipeql.lib.label.SimpleGLabel;
 import com.intellibucket.pipeql.lib.panel.line.InnerPanel;
 import com.intellibucket.pipeql.lib.panel.line.LinePanel;
-import com.intellibucket.pipeql.view.client.main.abstracts.AbstractCenterPanelClient;
-import com.intellibucket.pipeql.view.client.main.concretes.CenterPanelClient;
+import com.intellibucket.pipeql.view.actions.main.abstracts.AbstractCenterPanelClient;
+import com.intellibucket.pipeql.view.actions.main.concretes.CenterPanelClient;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
 
 import java.awt.*;

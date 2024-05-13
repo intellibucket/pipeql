@@ -1,21 +1,15 @@
 package com.intellibucket.pipeql.view.components.main.panel.main.center.tabbedPane.panels.structure.center;
 
-import com.intellibucket.pipeql.domain.model.dto.response.table.TableItemModel;
 import com.intellibucket.pipeql.domain.model.root.ColumnRoot;
 import com.intellibucket.pipeql.domain.model.root.TableRoot;
-import com.intellibucket.pipeql.domain.model.valueo.TableID;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.lib.button.horizontal.AbstractGButton;
 import com.intellibucket.pipeql.lib.button.horizontal.SimpleGButton;
 import com.intellibucket.pipeql.lib.button.horizontal.SimpleOkGButton;
-import com.intellibucket.pipeql.lib.file.ImageContainer;
-import com.intellibucket.pipeql.lib.label.AbstractGLabel;
-import com.intellibucket.pipeql.lib.label.SimpleGLabel;
 import com.intellibucket.pipeql.lib.panel.*;
 import com.intellibucket.pipeql.lib.tabbed.AbstractMaximizedGTabbedPane;
-import com.intellibucket.pipeql.view.client.main.abstracts.AbstractMainCenterTablePanelClient;
-import com.intellibucket.pipeql.view.client.main.abstracts.AbstractTableCenterStructurePanelClient;
-import com.intellibucket.pipeql.view.client.main.concretes.TableCenterStructurePanelClient;
+import com.intellibucket.pipeql.view.actions.main.abstracts.AbstractTableCenterStructurePanelClient;
+import com.intellibucket.pipeql.view.actions.main.concretes.TableCenterStructurePanelClient;
 import com.intellibucket.pipeql.view.components.main.panel.InnerResizeablePanel;
 import com.intellibucket.pipeql.view.util.BorderUtils;
 import com.intellibucket.pipeql.view.util.ColorUtils;
@@ -23,7 +17,6 @@ import lombok.extern.slf4j.Slf4j;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.ImageProducer;
 import java.util.List;
 import java.util.stream.Collectors;
 

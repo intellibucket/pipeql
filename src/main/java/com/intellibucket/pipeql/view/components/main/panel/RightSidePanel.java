@@ -6,8 +6,8 @@ import com.intellibucket.pipeql.lib.button.vertical.SimpleVerticalGButton;
 import com.intellibucket.pipeql.lib.file.ImageToolKit;
 import com.intellibucket.pipeql.lib.panel.side.InnerSideGPanel;
 import com.intellibucket.pipeql.lib.panel.side.SimpleSideGPanel;
-import com.intellibucket.pipeql.view.client.main.abstracts.AbstractRightSidePanelClient;
-import com.intellibucket.pipeql.view.client.main.concretes.RightSidePanelClient;
+import com.intellibucket.pipeql.view.actions.main.abstracts.AbstractRightSidePanelClient;
+import com.intellibucket.pipeql.view.actions.main.concretes.RightSidePanelClient;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
 
 import java.awt.*;

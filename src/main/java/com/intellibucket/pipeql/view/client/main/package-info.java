@@ -1,1 +1,0 @@
-package com.intellibucket.pipeql.view.client.main;

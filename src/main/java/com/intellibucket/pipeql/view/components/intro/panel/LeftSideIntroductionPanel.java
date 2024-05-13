@@ -6,8 +6,8 @@ import com.intellibucket.pipeql.lib.button.horizontal.SimpleIconGButton;
 import com.intellibucket.pipeql.lib.label.AbstractGLabel;
 import com.intellibucket.pipeql.lib.label.BlueGLabel;
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
-import com.intellibucket.pipeql.view.client.intro.abstracts.AbstractIntroChangeableCenterPanelClient;
-import com.intellibucket.pipeql.view.client.intro.concretes.IntroChangeableCenterPanelClient;
+import com.intellibucket.pipeql.view.actions.intro.abstracts.AbstractIntroChangeableCenterPanelClient;
+import com.intellibucket.pipeql.view.actions.intro.concretes.IntroChangeableCenterPanelClient;
 import com.intellibucket.pipeql.view.components.ApplicationLogoHeaderPanel;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
 

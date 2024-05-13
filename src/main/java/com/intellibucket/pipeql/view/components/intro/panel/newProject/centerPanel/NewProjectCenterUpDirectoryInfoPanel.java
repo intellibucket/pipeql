@@ -8,7 +8,7 @@ import com.intellibucket.pipeql.lib.compundComponents.LabelTextFieldCompoundComp
 import com.intellibucket.pipeql.lib.customAdapters.MouseAdapterForTextField;
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.lib.textField.AbstractGTextField;
-import com.intellibucket.pipeql.view.client.main.concretes.IntroductionPanelClient;
+import com.intellibucket.pipeql.view.actions.main.concretes.IntroductionPanelClient;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.enums.Colors;
 import com.intellibucket.pipeql.view.components.enums.CustomBorderProvider;

@@ -15,7 +15,7 @@ import com.intellibucket.pipeql.lib.panel.TransparentGPanel;
 import com.intellibucket.pipeql.lib.seperator.GSeparator;
 import com.intellibucket.pipeql.lib.textField.AbstractGTextField;
 import com.intellibucket.pipeql.lib.textField.CustomTextField;
-import com.intellibucket.pipeql.view.client.main.concretes.IntroductionPanelClient;
+import com.intellibucket.pipeql.view.actions.main.concretes.IntroductionPanelClient;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.view.components.intro.models.ProjectItemModel;
 import com.intellibucket.pipeql.view.util.BorderUtils;

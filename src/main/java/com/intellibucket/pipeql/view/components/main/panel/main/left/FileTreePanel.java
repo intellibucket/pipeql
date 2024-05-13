@@ -2,7 +2,7 @@ package com.intellibucket.pipeql.view.components.main.panel.main.left;
 
 import com.intellibucket.pipeql.application.profile.abstracts.AbstractApplicationEnvironmentInitializer;
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
-import com.intellibucket.pipeql.view.client.main.concretes.IntroductionPanelClient;
+import com.intellibucket.pipeql.view.actions.main.concretes.IntroductionPanelClient;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
 
 import javax.swing.*;
