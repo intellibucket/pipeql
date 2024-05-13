@@ -1,7 +1,7 @@
 package com.intellibucket.pipeql.lib.label;
 
 import com.intellibucket.pipeql.lib.ComponentInitializer;
-import com.intellibucket.pipeql.view.util.ColorUtils;
+import com.intellibucket.pipeql.view.util.color.PaletteUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,7 +35,7 @@ public class BigInfoGLabel extends AbstractGLabel{
 
     public BigInfoGLabel(String text) {
         super(text);
-        this.setBackground(ColorUtils.TRANSPARENT);
+        this.setBackground(PaletteUtils.TRANSPARENT);
     }
 
     @Override

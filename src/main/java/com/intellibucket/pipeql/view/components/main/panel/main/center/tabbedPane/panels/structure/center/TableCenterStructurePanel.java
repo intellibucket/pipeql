@@ -11,8 +11,8 @@ import com.intellibucket.pipeql.lib.tabbed.AbstractMaximizedGTabbedPane;
 import com.intellibucket.pipeql.view.actions.main.abstracts.AbstractTableCenterStructurePanelClient;
 import com.intellibucket.pipeql.view.actions.main.concretes.TableCenterStructurePanelClient;
 import com.intellibucket.pipeql.view.components.main.panel.InnerResizeablePanel;
-import com.intellibucket.pipeql.view.util.BorderUtils;
-import com.intellibucket.pipeql.view.util.ColorUtils;
+import com.intellibucket.pipeql.view.util.border.BorderUtils;
+import com.intellibucket.pipeql.view.util.color.PaletteUtils;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.swing.*;
@@ -170,7 +170,7 @@ class CenterOfTableCenterStructurePanel extends TransparentGPanel {
 
     {
         this.setLayout(new BorderLayout());
-        this.setBorder(BorderFactory.createLineBorder(ColorUtils.COLORFUL_BUTTON_BACKGROUND, 1));
+        this.setBorder(BorderFactory.createLineBorder(PaletteUtils.COLORFUL_BUTTON_BACKGROUND, 1));
     }
     @Override
     public java.util.List<ComponentInitializer> getComponentInitializers() {
@@ -196,7 +196,7 @@ class TopOfCenterOfTableCenterStructurePanel extends InnerResizeablePanel{
     }
 
     {
-        this.setBorder(BorderFactory.createLineBorder(ColorUtils.COLORFUL_BUTTON_BACKGROUND, 1));
+        this.setBorder(BorderFactory.createLineBorder(PaletteUtils.COLORFUL_BUTTON_BACKGROUND, 1));
         this.setLayout(new BorderLayout());
     }
 

@@ -3,9 +3,8 @@ package com.intellibucket.pipeql.lib.list;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.lib.panel.GColumnListItemPanel;
-import com.intellibucket.pipeql.lib.panel.GListItemPanel;
-import com.intellibucket.pipeql.view.util.BorderUtils;
-import com.intellibucket.pipeql.view.util.ColorUtils;
+import com.intellibucket.pipeql.view.util.border.BorderUtils;
+import com.intellibucket.pipeql.view.util.color.PaletteUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -53,7 +52,7 @@ public abstract class GColumnList  extends JList<GColumnListItemPanel> implement
 
         @Override
         public Component getListCellRendererComponent(JList<? extends GColumnListItemPanel> list, GColumnListItemPanel value, int index, boolean isSelected, boolean cellHasFocus) {
-            value.setBackground(isSelected ? ColorUtils.COLORFUL_BUTTON_BACKGROUND : list.getBackground());
+            value.setBackground(isSelected ? PaletteUtils.COLORFUL_BUTTON_BACKGROUND : list.getBackground());
             return value;
         }
 

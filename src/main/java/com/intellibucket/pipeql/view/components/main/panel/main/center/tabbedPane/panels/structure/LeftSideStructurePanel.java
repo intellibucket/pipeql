@@ -25,7 +25,7 @@ import com.intellibucket.pipeql.domain.model.dto.response.project.ProjectModel;
 import com.intellibucket.pipeql.domain.model.dto.response.schema.SchemaItemModel;
 import com.intellibucket.pipeql.domain.model.dto.response.table.TableItemModel;
 import com.intellibucket.pipeql.view.topics.SchemaComboBoxTopics;
-import com.intellibucket.pipeql.view.util.BorderUtils;
+import com.intellibucket.pipeql.view.util.border.BorderUtils;
 import com.intellibucket.pipeql.view.util.FontsUtil;
 import lombok.extern.slf4j.Slf4j;
 

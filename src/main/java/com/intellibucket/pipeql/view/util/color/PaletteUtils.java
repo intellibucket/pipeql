@@ -1,8 +1,8 @@
-package com.intellibucket.pipeql.view.util;
+package com.intellibucket.pipeql.view.util.color;
 
 import java.awt.*;
 
-public class ColorUtils {
+public class PaletteUtils {
     public static final Color TRANSPARENT = new Color(0, 0, 0, 0);
     public static final Color LIGHT_BLUE = new Color(0, 166, 255);
     public static final Color DARK_BLUE = new Color(0, 122, 255);

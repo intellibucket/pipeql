@@ -8,15 +8,15 @@ import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.view.actions.main.abstracts.AbstractIntroductionPanelClient;
 import com.intellibucket.pipeql.view.actions.main.concretes.IntroductionPanelClient;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
-import com.intellibucket.pipeql.view.components.enums.Colors;
+import com.intellibucket.pipeql.view.util.color.Colors;
 import com.intellibucket.pipeql.view.topics.NewProjectPanelTopics;
 import lombok.extern.slf4j.Slf4j;
 
 import java.awt.*;
 import java.util.List;
 
-import static com.intellibucket.pipeql.view.components.enums.Colors.NEW_PROJECT_CREATE_BUTTON_BACKGROUND_COLOR;
-import static com.intellibucket.pipeql.view.components.enums.Colors.NEW_PROJECT_CREATE_BUTTON_MOUSE_ENTERED_COLOR;
+import static com.intellibucket.pipeql.view.util.color.Colors.NEW_PROJECT_CREATE_BUTTON_BACKGROUND_COLOR;
+import static com.intellibucket.pipeql.view.util.color.Colors.NEW_PROJECT_CREATE_BUTTON_MOUSE_ENTERED_COLOR;
 
 @Slf4j
 public class NewProjectButtonPanel extends AbstractGSimplePanel {

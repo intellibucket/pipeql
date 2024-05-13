@@ -4,7 +4,7 @@ import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.lib.button.horizontal.AbstractGButton;
 import com.intellibucket.pipeql.lib.button.horizontal.SimpleIconGButton;
 import com.intellibucket.pipeql.lib.list.GColumnList;
-import com.intellibucket.pipeql.view.util.ColorUtils;
+import com.intellibucket.pipeql.view.util.color.PaletteUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -70,7 +70,7 @@ public abstract class ItemWithBarPanel extends AbstractGSimplePanel{
 
         {
             this.setLayout(new BorderLayout());
-            this.setBorder(BorderFactory.createLineBorder(ColorUtils.COLORFUL_BUTTON_BACKGROUND, 1));
+            this.setBorder(BorderFactory.createLineBorder(PaletteUtils.COLORFUL_BUTTON_BACKGROUND, 1));
         }
         public ItemColumnsPanel(List<AbstractGSimplePanel> columnListItemPanels) {
             this.columnList = new CustomGColumnList(columnListItemPanels);

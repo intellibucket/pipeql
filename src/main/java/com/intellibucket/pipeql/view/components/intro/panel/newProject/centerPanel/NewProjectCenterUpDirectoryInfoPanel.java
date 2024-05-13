@@ -10,8 +10,8 @@ import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.lib.textField.AbstractGTextField;
 import com.intellibucket.pipeql.view.actions.main.concretes.IntroductionPanelClient;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
-import com.intellibucket.pipeql.view.components.enums.Colors;
-import com.intellibucket.pipeql.view.components.enums.CustomBorderProvider;
+import com.intellibucket.pipeql.view.util.color.Colors;
+import com.intellibucket.pipeql.view.util.border.CustomBorderProvider;
 import com.intellibucket.pipeql.view.components.intro.panel.newProject.ExceptionPanel;
 import com.intellibucket.pipeql.view.topics.NewProjectPanelTopics;
 
@@ -24,8 +24,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-import static com.intellibucket.pipeql.view.components.enums.Colors.NEW_PROJECT_TEXT_FIELD_MOUSE_ENTERED_COLOR;
-import static com.intellibucket.pipeql.view.components.enums.Colors.NEW_PROJECT_TEXT_FIELD_MOUSE_EXITED_COLOR;
+import static com.intellibucket.pipeql.view.util.color.Colors.NEW_PROJECT_TEXT_FIELD_MOUSE_ENTERED_COLOR;
+import static com.intellibucket.pipeql.view.util.color.Colors.NEW_PROJECT_TEXT_FIELD_MOUSE_EXITED_COLOR;
 
 public class NewProjectCenterUpDirectoryInfoPanel extends AbstractGSimplePanel {
 

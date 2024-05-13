@@ -1,4 +1,4 @@
-package com.intellibucket.pipeql.view.components.enums;
+package com.intellibucket.pipeql.view.util.border;
 
 import com.intellibucket.pipeql.lib.borders.custom.CustomRoundBorder;
 

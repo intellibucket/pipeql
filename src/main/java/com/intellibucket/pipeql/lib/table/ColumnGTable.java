@@ -1,10 +1,9 @@
 package com.intellibucket.pipeql.lib.table;
 
 import com.intellibucket.pipeql.lib.ComponentInitializer;
-import com.intellibucket.pipeql.view.util.BorderUtils;
+import com.intellibucket.pipeql.view.util.border.BorderUtils;
 
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
 import java.util.List;
 
 public class ColumnGTable extends AbstractGTable{

@@ -7,7 +7,7 @@ import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.lib.panel.ChangeablePanel;
 import com.intellibucket.pipeql.lib.panel.LabelPairPanel;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
-import com.intellibucket.pipeql.view.util.ColorUtils;
+import com.intellibucket.pipeql.view.util.color.PaletteUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -39,7 +39,7 @@ class LabelBox extends AbstractGSimplePanel{
 
     {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.setBackground(ColorUtils.TRANSPARENT);
+        this.setBackground(PaletteUtils.TRANSPARENT);
     }
 
     @Override

@@ -6,7 +6,7 @@ import com.intellibucket.pipeql.lib.label.AbstractGLabel;
 import com.intellibucket.pipeql.lib.label.SimpleGLabel;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.domain.model.dto.response.table.TableItemModel;
-import com.intellibucket.pipeql.view.util.BorderUtils;
+import com.intellibucket.pipeql.view.util.border.BorderUtils;
 import com.intellibucket.pipeql.view.util.FontsUtil;
 import com.intellibucket.pipeql.view.util.IconUtils;
 import lombok.Getter;

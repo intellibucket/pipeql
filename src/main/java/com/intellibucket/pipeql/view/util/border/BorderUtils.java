@@ -1,4 +1,4 @@
-package com.intellibucket.pipeql.view.util;
+package com.intellibucket.pipeql.view.util.border;
 
 import javax.swing.*;
 import javax.swing.border.Border;

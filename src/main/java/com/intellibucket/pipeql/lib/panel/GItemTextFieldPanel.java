@@ -3,7 +3,7 @@ package com.intellibucket.pipeql.lib.panel;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.lib.label.SimpleGLabel;
 import com.intellibucket.pipeql.lib.textField.SimpleGTextField;
-import com.intellibucket.pipeql.view.util.BorderUtils;
+import com.intellibucket.pipeql.view.util.border.BorderUtils;
 
 import java.awt.*;
 import java.util.List;

@@ -2,7 +2,7 @@ package com.intellibucket.pipeql.lib.combo;
 
 import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
-import com.intellibucket.pipeql.view.util.ColorUtils;
+import com.intellibucket.pipeql.view.util.color.PaletteUtils;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.swing.*;
@@ -49,7 +49,7 @@ public abstract class GComboBox extends JComboBox<GComboBoxItem> implements Comp
 
         @Override
         public Component getListCellRendererComponent(JList<? extends GComboBoxItem> list, GComboBoxItem value, int index, boolean isSelected, boolean cellHasFocus) {
-            value.setBackground(isSelected ? ColorUtils.COLORFUL_BUTTON_BACKGROUND : list.getBackground());
+            value.setBackground(isSelected ? PaletteUtils.COLORFUL_BUTTON_BACKGROUND : list.getBackground());
             return value;
         }
     }

@@ -5,7 +5,7 @@ import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.domain.model.dto.response.project.ProjectModel;
 import com.intellibucket.pipeql.view.components.main.panel.main.center.tabbedPane.panels.structure.center.CenterStructurePanel;
-import com.intellibucket.pipeql.view.util.BorderUtils;
+import com.intellibucket.pipeql.view.util.border.BorderUtils;
 
 import java.awt.*;
 import java.util.List;

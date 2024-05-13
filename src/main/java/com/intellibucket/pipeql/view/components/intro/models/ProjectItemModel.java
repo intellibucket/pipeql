@@ -1,6 +1,6 @@
 package com.intellibucket.pipeql.view.components.intro.models;
 
-import com.intellibucket.pipeql.view.util.ColorUtils;
+import com.intellibucket.pipeql.view.util.color.PaletteUtils;
 import lombok.Getter;
 
 import java.awt.*;
@@ -15,7 +15,7 @@ public class ProjectItemModel {
     public ProjectItemModel(String projectName, String projectPath ) {
         this.projectName = projectName;
         this.projectPath = projectPath;
-        this.color = ColorUtils.randomColor();
+        this.color = PaletteUtils.randomColor();
     }
 
 }
