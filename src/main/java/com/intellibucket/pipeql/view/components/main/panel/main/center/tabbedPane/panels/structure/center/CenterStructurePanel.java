@@ -16,13 +16,9 @@ import java.util.List;
 import static com.intellibucket.pipeql.view.topics.CenterStructurePanelTopics.TABLE_SELECTED;
 
 @Slf4j
-public class CenterStructurePanel extends AbstractGSimplePanel {
+public class CenterStructurePanel extends BorderGSimplePanel {
 
     private AbstractGSimplePanel mainPanel;
-
-    {
-        this.setLayout(new BorderLayout());
-    }
 
     public CenterStructurePanel(TableRoot tableRoot) {
         this.mainPanel = new TableCenterStructurePanel(tableRoot);
