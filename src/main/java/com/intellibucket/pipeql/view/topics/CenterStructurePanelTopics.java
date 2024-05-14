@@ -4,4 +4,6 @@ import com.intellibucket.pipeql.eventlink.model.common.Topic;
 
 public class CenterStructurePanelTopics {
     public static final Topic TABLE_SELECTED = new Topic("TABLE_SELECTED");
+
+    public record TableSelected_Topic() { }
 }

@@ -1,24 +1,31 @@
 package com.intellibucket.pipeql.lib.panel.stateful;
 
 
+import com.intellibucket.pipeql.mgui.Flow;
 import com.intellibucket.pipeql.mgui.State;
 
-public class StatefulGPanel <S extends State>{
+import java.util.List;
+
+public abstract class StatefulGPanel <S extends State>  {
+    protected final Flow.Subscription subscription;
     private S state;
 
     {
         //register MGUI
     }
 
-    //Ekranda deyisiklik olandan sonra Panel cagirir bunu.
+    public StatefulGPanel(Flow.Subscription subscription) {
+        this.subscription = subscription;
+        this.subscriber().onSubscribe(this.subscription);
+    }
+
     public void setState(S state){
         this.state = state;
         this.publish();
     }
 
-    //Kenarda bir deyisiklik olanda bu cagrilir
     public void consume(S state){
-        this.state = state;
+        this.subscriber().onNext(state);
     }
 
     // Publish state to MGUI
@@ -26,5 +33,5 @@ public class StatefulGPanel <S extends State>{
 
     }
 
-
+    public abstract Flow.Subscriber<S> subscriber();
 }

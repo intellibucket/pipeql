@@ -11,4 +11,6 @@ public class LeftMainPanelTopics {
     public static final Topic CLICKED_SIDE_QUERY_BUTTON = new Topic("CLICKED_SIDE_QUERY_BUTTON");
     public static final Topic CLICKED_SIDE_DATASET_BUTTON = new Topic("CLICKED_SIDE_DATASET_BUTTON");
     public static final Topic CLICKED_SIDE_DATA_TYPES_BUTTON = new Topic("CLICKED_SIDE_DATATYPES_BUTTON");
+
+    public record ClickedSideProjectsButton_Topic(){}
 }
