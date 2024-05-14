@@ -1,5 +1,6 @@
 package com.intellibucket.pipeql.view.components.main.panel.main.center.tabbedPane.panels.structure.center;
 
+import com.intellibucket.pipeql.application.kernel.concretes.ApplicationContextLoader;
 import com.intellibucket.pipeql.domain.model.root.ColumnRoot;
 import com.intellibucket.pipeql.domain.model.root.TableRoot;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
@@ -22,10 +23,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Slf4j
-public
-class TableCenterStructurePanel extends AbstractGSimplePanel {
+public class TableCenterStructurePanel extends AbstractGSimplePanel {
 
-    private final AbstractTableCenterStructurePanelClient client = new TableCenterStructurePanelClient();
+    private final AbstractTableCenterStructurePanelClient tableCenterStructurePanelClient;
     private final HeaderOfTableCenterStructurePanel headerOfTableCenterStructurePanel;
     private final CenterOfTableCenterStructurePanel centerOfTableCenterStructurePanel;
 
@@ -36,6 +36,7 @@ class TableCenterStructurePanel extends AbstractGSimplePanel {
     }
 
     public TableCenterStructurePanel(TableRoot tableRoot) {
+        this.tableCenterStructurePanelClient = ApplicationContextLoader.APPLICATION_CONTEXT.getBean(AbstractTableCenterStructurePanelClient.class);
         this.headerOfTableCenterStructurePanel = new HeaderOfTableCenterStructurePanel(tableRoot);
         this.centerOfTableCenterStructurePanel = new CenterOfTableCenterStructurePanel(tableRoot);
         this.bottomOfTableCenterStructurePanel = new BottomOfTableCenterStructurePanel(tableRoot);

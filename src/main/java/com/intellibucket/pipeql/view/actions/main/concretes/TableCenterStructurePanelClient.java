@@ -5,7 +5,9 @@ import com.intellibucket.pipeql.domain.model.valueo.TableID;
 import com.intellibucket.pipeql.domain.port.input.service.abstracts.AbstractTableDetailService;
 import com.intellibucket.pipeql.domain.port.input.service.factory.DetailServiceFactory;
 import com.intellibucket.pipeql.view.actions.main.abstracts.AbstractTableCenterStructurePanelClient;
+import org.springframework.stereotype.Service;
 
+@Service
 public class TableCenterStructurePanelClient implements AbstractTableCenterStructurePanelClient {
     private final AbstractTableDetailService tableDetailService = DetailServiceFactory.factoryTableDetailService();
 
