@@ -5,6 +5,7 @@ import com.intellibucket.pipeql.lib.panel.AbstractGPanel;
 import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
 import com.intellibucket.pipeql.domain.model.dto.response.project.ProjectModel;
+import com.intellibucket.pipeql.lib.panel.layout.BorderGSimplePanel;
 import com.intellibucket.pipeql.view.util.JSeperatorUtils;
 
 import javax.swing.*;
@@ -12,12 +13,7 @@ import java.awt.*;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-public class HeaderStructurePanel extends AbstractGSimplePanel {
-
-
-    {
-        this.setLayout(new BorderLayout());
-    }
+public class HeaderStructurePanel extends BorderGSimplePanel {
 
     private final AbstractGSimplePanel mainHeaderPanel;
 
@@ -75,15 +71,10 @@ class MainOfHeaderStructurePanel extends  AbstractGSimplePanel {
     }
 
 }
-class InfoBoxPanel extends AbstractGPanel{
+class InfoBoxPanel extends BorderGSimplePanel{
 
     private LeftOfInfoBoxPanel leftOfInfoBoxPanel;
     private RightOfInfoBoxPanel rightOfInfoBoxPanel;
-
-
-    {
-        this.setLayout(new BorderLayout());
-    }
 
     public InfoBoxPanel(ProjectModel projectModel) {
         this.leftOfInfoBoxPanel = new LeftOfInfoBoxPanel(projectModel);

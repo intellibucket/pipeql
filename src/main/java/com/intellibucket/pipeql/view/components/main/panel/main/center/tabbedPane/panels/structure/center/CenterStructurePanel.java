@@ -7,6 +7,7 @@ import com.intellibucket.pipeql.eventlink.model.payload.SuccessPayload;
 import com.intellibucket.pipeql.eventlink.rx.abstracts.EventListener;
 import com.intellibucket.pipeql.lib.panel.*;
 import com.intellibucket.pipeql.lib.ComponentInitializer;
+import com.intellibucket.pipeql.lib.panel.layout.BorderGSimplePanel;
 import com.intellibucket.pipeql.view.actions.payloads.TableDataPayload;
 import lombok.extern.slf4j.Slf4j;
 

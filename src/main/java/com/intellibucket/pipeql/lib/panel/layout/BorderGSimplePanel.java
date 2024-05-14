@@ -1,4 +1,6 @@
-package com.intellibucket.pipeql.lib.panel;
+package com.intellibucket.pipeql.lib.panel.layout;
+
+import com.intellibucket.pipeql.lib.panel.AbstractGSimplePanel;
 
 import javax.swing.*;
 import java.awt.*;

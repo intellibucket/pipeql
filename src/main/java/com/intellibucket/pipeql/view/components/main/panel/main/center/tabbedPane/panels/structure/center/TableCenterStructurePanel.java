@@ -7,6 +7,7 @@ import com.intellibucket.pipeql.lib.button.horizontal.AbstractGButton;
 import com.intellibucket.pipeql.lib.button.horizontal.SimpleGButton;
 import com.intellibucket.pipeql.lib.button.horizontal.SimpleOkGButton;
 import com.intellibucket.pipeql.lib.panel.*;
+import com.intellibucket.pipeql.lib.panel.layout.BorderTransparentGPanel;
 import com.intellibucket.pipeql.lib.tabbed.AbstractMaximizedGTabbedPane;
 import com.intellibucket.pipeql.view.actions.main.abstracts.AbstractTableCenterStructurePanelClient;
 import com.intellibucket.pipeql.view.actions.main.concretes.TableCenterStructurePanelClient;
@@ -25,7 +26,6 @@ public
 class TableCenterStructurePanel extends AbstractGSimplePanel {
 
     private final AbstractTableCenterStructurePanelClient client = new TableCenterStructurePanelClient();
-    private final TableRoot tableRoot;
     private final HeaderOfTableCenterStructurePanel headerOfTableCenterStructurePanel;
     private final CenterOfTableCenterStructurePanel centerOfTableCenterStructurePanel;
 
@@ -36,10 +36,9 @@ class TableCenterStructurePanel extends AbstractGSimplePanel {
     }
 
     public TableCenterStructurePanel(TableRoot tableRoot) {
-        this.tableRoot = tableRoot;
         this.headerOfTableCenterStructurePanel = new HeaderOfTableCenterStructurePanel(tableRoot);
         this.centerOfTableCenterStructurePanel = new CenterOfTableCenterStructurePanel(tableRoot);
-        this.bottomOfTableCenterStructurePanel = new BottomOfTableCenterStructurePanel();
+        this.bottomOfTableCenterStructurePanel = new BottomOfTableCenterStructurePanel(tableRoot);
     }
 
 
@@ -102,16 +101,13 @@ class HeaderOfTableCenterStructurePanel extends TransparentGPanel {
 
 }
 
-class BottomOfTableCenterStructurePanel extends TransparentGPanel{
+class BottomOfTableCenterStructurePanel extends BorderTransparentGPanel {
     private AbstractGPanel label;
-    private LeftOfBottomOfTableCenterStructurePanel leftOfBottomOfTableCenterStructurePanel = new LeftOfBottomOfTableCenterStructurePanel();
+    private LeftOfBottomOfTableCenterStructurePanel leftOfBottomOfTableCenterStructurePanel;
 
-    {
-        this.setLayout(new BorderLayout());
-    }
-
-    public BottomOfTableCenterStructurePanel() {
+    public BottomOfTableCenterStructurePanel(TableRoot tableRoot) {
         this.label = LabelPairPanel.Prototype.success("Relax! All changes were saved successfully.");
+        this.leftOfBottomOfTableCenterStructurePanel = new LeftOfBottomOfTableCenterStructurePanel();
     }
 
     @Override
